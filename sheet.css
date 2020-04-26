@@ -18,13 +18,19 @@
 	display: none;
 }
 
-.sheet-background-show-flag:checked ~ .sheet-background-container {
+.sheet-background-show-flag:checked ~ .sheet-background-select {
 	display: none;
 }
 
-.sheet-background-show-flag:not(:checked) ~ .sheet-background-container {
+.sheet-background-show-flag:not(:checked) ~ .sheet-background-select {
 	display: inline;
 }
+
+span.sheet-emptiable:empty,
+span.sheet-emptiable:empty + br {
+    display: none;
+}
+
 /*всплывашка*/
 .sheet-tip-confirm-flag {
 	display: none;
@@ -262,3 +268,67 @@ button[type=action] {
     border-color: #6e9ec6;
 }
 
+/* rolltemplate test*/
+.sheet-rolltemplate-info .sheet-templateMain {
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	-ms-flex-pack: distribute;
+	    justify-content: space-around;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	width: 100%;
+	/*background-color: white;*/
+	padding: 0px;
+	/*border: 1px solid black;*/
+	/*white-space: nowrap;*/
+}
+
+.sheet-rolltemplate-info .sheet-templateheader,
+.sheet-rolltemplate-info .sheet-templatesubheader {
+    width: 100%;
+    margin: 0 0 0 0;
+    padding: 2px 2px 2px 2px;
+    background-color: #e8d394;
+    color: #770912;
+    text-align: center;
+    border: 1px solid #A48623;
+    border-bottom: none;
+}
+
+.sheet-rolltemplate-info .sheet-templatesubheader {
+    color: black;
+    border-left: 1px solid #A48623;
+    border-right: 1px solid #A48623;
+    border-top: none;
+}
+
+.sheet-rolltemplate-info .sheet-templatedescription {
+    background-color: white;
+    color: black;
+    font-size: .8em;
+    padding: 5px;
+    width: 100%;
+    border: 1px solid #A48623;
+}
+
+button[type=roll].sheet-backgroundOutput {
+    border: none;
+    background-color: transparent;
+    background-image: none;
+    font-size: 1.05em;
+    font-weight: bold;
+    box-shadow: none;
+    text-shadow: none;
+    height: 28px;
+    margin: 0px;
+    padding: 0px;
+}
+
+button[type=roll].sheet-backgroundOutput::before {
+    content: '';
+}
+
+button[type=roll].sheet-backgroundOutput {
+    font-family: "Pictos";
+}

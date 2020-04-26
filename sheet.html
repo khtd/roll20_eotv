@@ -35,20 +35,30 @@
     <input type="radio" class="hpage-sub invisible" tabindex="-1" name="attr_calc_page" value="1">
 
     <div class="page main-page">
-        <span name="attr_description"></span>
-
-        <h3><span>Происхождение</span></h3>
-        <button type='action' name='act_changebackground'>Изменить</button>
-
-        <span name="attr_background"></span>
-
-        <input type="checkbox" class="background-show-flag" name="attr_background_show_flag" value="1">
-        <div class='background-container'>
-            <fieldset class='repeating_background'>
-                <button type="action" name="act_backgroundselect" value='@{attr_buttontext}'><span name='attr_buttontext'></span></button>
-                <span name="attr_backgroundtext"></span>
-            </fieldset>
+        <div class='description'>
+            <span name="attr_description"></span>
         </div>
+
+        <div class="background">
+            <h3><span>Происхождение</span></h3>
+            <button type='action' name='act_changebackground'>Изменить</button><br>
+            <span class='emptiable' name="attr_pre_background"></span><br>
+            
+            <button type='roll' class="sheet-backgroundOutput" name='roll_outBackground' value="&{template:info} {{name=@{character_name}}} {{type=Background}} {{item=Происхождение}} {{description=@{background}}}">w</button>
+            <span class='emptiable' name="attr_background"></span><br>
+
+            <input type="checkbox" class="background-show-flag" name="attr_background_show_flag" value="1">
+            <div class='background-select'>
+                <fieldset class='repeating_background'>
+                    <button type="action" name="act_backgroundselect" value='@{attr_buttontext}'><span name='attr_buttontext'></span></button>
+                    <span name="attr_backgroundtext"></span>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class='cyborg-path'></div>
+
+        <div class='stranger-specialty'></div>
     </div>
 
     <div class="page sub-page"></div>
@@ -65,6 +75,17 @@
 	<button type="action" name="act_cyborg">Киборг</button>
 </div>
 
+<rolltemplate class="sheet-rolltemplate-info">
+    <div class="sheet-templateMain">
+        <h2 class="sheet-templateheader">{{name}}</h2>
+        <h3 class="sheet-templatesubheader">{{item}}{{#type}} ({{type}}){{/type}}</h3>
+        <div class="sheet-templatedescription">
+            {{#description}}{{description}}{{/description}}
+			{{#allprops() description item type}}<p><strong>{{key}}:</strong> {{value}}</p>{{/allprops() description item type}}
+        </div>
+    </div>
+</rolltemplate>
+
 <!-- type="text/worker" -->
 <script type="text/worker">
     var classNames = {
@@ -78,58 +99,64 @@
     }
 
     var backgrounds = {
-        Noble: [
-            {
-                button: 'Дом Адана',
-                text: 'Фехтование входит в обязательную программу обучения Дома. Твой Урон в ближнем бою увеличен на 1.'
-            },
-            {
-                button: 'Дом Акоста',
-                text: 'Сражаясь один на один в ближнем бою, ты можешь использовать Репутацию вместо Ярости.'
-            },
-            {
-                button: 'Дом Алуат',
-                text: 'Спокойный дом, склонный к наблюдению. Когда ты успешно Ориентируешься, задай на 1 вопрос больше.'
-            },
-            {
-                button: 'Дом Анхил',
-                text: 'Ты свой человек в криминальном мире. Потрать 1 Припас и поменяй в своём ID имя и другие данные.'
-            },
-            {
-                button: 'Дом Астор',
-                text: 'Твой дом баснословно влиятелен. Раз в сессию, когда Договариваешься, получи 10+. Рычаг всё ещё нужен.'
-            },
-            {
-                button: 'Дом Дега Росса',
-                text: 'Дом понимает в снабжении. Раз в сессию можешь достать любой не очень редкий предмет. Опиши, откуда.'
-            },
-            {
-                button: 'Малый дом',
-                text: 'Один раз за сессию ты можешь превратить 6— в 7—9 или 7—9 в 10+, если это пойдет на пользу Дому.'
-            },
-            {
-                button: 'Кастонианская марка',
-                text: 'Бароны и баронессы — самые гордые люди на свете. Когда ты Помогаешь, один раз в сессию ты можешь превратить проверку союзника в 10+.'
-            },
-            {
-                button: 'Эмираты Эльхали',
-                text: 'Ты — клон самого эмира, созданный луч-шими биотехнологами. Обычные ранения на тебе заживают меньше, чем за день, а Критическое—за пару дней. В мед-капсулах ты лечишься в два раза быстрее, чем другие.'
-            }
-        ],
-        Cyborg: [
-            {
-                button: 'Багровый лотос',
-                text: '«Смерть не является оправданием». Приказание должно быть выполнено несмотря ни на что. Когда ты испускаешь последний вздох, ты можешь заполнить 2 ячейки Бесчестия и сделать бросок успешным (10+).'
-            },
-            {
-                button: 'Стальной журавль',
-                text: '«Честь превыше Жизни». Под знаменами этого синдиката служат только безупречные. Когда ты по-ступил достойно, тут же очисти 1 ячейку Бесчестия. Очисти 2 ячейки, если поступил достойно и в соответствии с выбранными догматами.'
-            },
-            {
-                button: 'Чёрный лис',
-                text: '«Всё имеет свою цену». Пока у тебя есть хотя бы 1 заполненная ячейка Бесчестия, когда ты Сражаешься, то на 10+ можешь выбрать на 1 вариант больше из списка. Проиграв бой, немедленно заполни 1 ячейку Бесчестия.'
-            }
-        ]
+        Noble: {
+            preInfo: 'Выбери правящий дом, в котором ты рожден:',
+            options: [
+                {
+                    button: 'Дом Адана',
+                    text: 'Фехтование входит в обязательную программу обучения Дома. Твой Урон в ближнем бою увеличен на 1.'
+                },
+                {
+                    button: 'Дом Акоста',
+                    text: 'Сражаясь один на один в ближнем бою, ты можешь использовать Репутацию вместо Ярости.'
+                },
+                {
+                    button: 'Дом Алуат',
+                    text: 'Спокойный дом, склонный к наблюдению. Когда ты успешно Ориентируешься, задай на 1 вопрос больше.'
+                },
+                {
+                    button: 'Дом Анхил',
+                    text: 'Ты свой человек в криминальном мире. Потрать 1 Припас и поменяй в своём ID имя и другие данные.'
+                },
+                {
+                    button: 'Дом Астор',
+                    text: 'Твой дом баснословно влиятелен. Раз в сессию, когда Договариваешься, получи 10+. Рычаг всё ещё нужен.'
+                },
+                {
+                    button: 'Дом Дега Росса',
+                    text: 'Дом понимает в снабжении. Раз в сессию можешь достать любой не очень редкий предмет. Опиши, откуда.'
+                },
+                {
+                    button: 'Малый дом',
+                    text: 'Один раз за сессию ты можешь превратить 6— в 7—9 или 7—9 в 10+, если это пойдет на пользу Дому.'
+                },
+                {
+                    button: 'Кастонианская марка',
+                    text: 'Бароны и баронессы — самые гордые люди на свете. Когда ты Помогаешь, один раз в сессию ты можешь превратить проверку союзника в 10+.'
+                },
+                {
+                    button: 'Эмираты Эльхали',
+                    text: 'Ты — клон самого эмира, созданный лучшими биотехнологами. Обычные ранения на тебе заживают меньше, чем за день, а Критическое—за пару дней. В мед-капсулах ты лечишься в два раза быстрее, чем другие.'
+                }
+            ]
+        },
+        Cyborg: {
+            preInfo: `Тао Прайм: Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут. Выбери синдикат, который тебя вырастил:`,
+            options: [
+                {
+                    button: 'Багровый лотос',
+                    text: '«Смерть не является оправданием». Приказание должно быть выполнено несмотря ни на что. Когда ты испускаешь последний вздох, ты можешь заполнить 2 ячейки Бесчестия и сделать бросок успешным (10+).'
+                },
+                {
+                    button: 'Стальной журавль',
+                    text: '«Честь превыше Жизни». Под знаменами этого синдиката служат только безупречные. Когда ты по-ступил достойно, тут же очисти 1 ячейку Бесчестия. Очисти 2 ячейки, если поступил достойно и в соответствии с выбранными догматами.'
+                },
+                {
+                    button: 'Чёрный лис',
+                    text: '«Всё имеет свою цену». Пока у тебя есть хотя бы 1 заполненная ячейка Бесчестия, когда ты Сражаешься, то на 10+ можешь выбрать на 1 вариант больше из списка. Проиграв бой, немедленно заполни 1 ячейку Бесчестия.'
+                }
+            ]
+        }
     }
 
     on("sheet:opened", function() {
@@ -150,7 +177,12 @@
               removeRepeatingRow("repeating_background_" + idarray[i]);
             }
          });
-        setAttrs({tip_confirm_flag: 0, background: ' ', "background_show_flag": 0})
+        setAttrs({
+            tip_confirm_flag: 0,
+            background: ' ',
+            "background_show_flag": 0,
+            "pre_background": ' '
+        })
     })
 
     on("clicked:noble", function(eventinfo) {
@@ -170,8 +202,12 @@
     });
 
     var addBackground = function(classname) {
-        if (backgrounds[classname]) {
-            backgrounds[classname].forEach(function(row) {
+        let data = backgrounds[classname]
+        if (data) {
+            if(data.preInfo) {
+                setAttrs({pre_background: data.preInfo})
+            }
+            data.options.forEach(function(row) {
                 var  newbackid = generateRowID();
                 var prefix = "repeating_background_" + newbackid + "_";
                 var attrs = {};
