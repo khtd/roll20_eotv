@@ -1,0 +1,264 @@
+/* общее */
+.charsheet {
+	background-color: rgb(230, 231, 233);
+	height: auto;
+	border: 1px solid rgb(35, 31, 32);
+	min-width: 820px;
+}
+
+.charsheet .sheet-container label {
+	font-weight: normal;
+	font-size: medium;
+	color: white;
+	line-height: normal;
+	text-align: unset;
+}
+/* бекграунд */
+.sheet-background-show-flag {
+	display: none;
+}
+
+.sheet-background-show-flag:checked ~ .sheet-background-container {
+	display: none;
+}
+
+.sheet-background-show-flag:not(:checked) ~ .sheet-background-container {
+	display: inline;
+}
+/*всплывашка*/
+.sheet-tip-confirm-flag {
+	display: none;
+}
+
+.sheet-tip-confirm-flag:checked ~ .sheet-class-tip {
+	display: none;
+}
+
+.sheet-tip-confirm-flag:not(:checked) ~ .sheet-class-tip {
+	display: block;
+	position: absolute;
+	top: 12.8em;
+	left: 10.7em;
+	background: white;
+	z-index: 99;
+	border: 2px solid black;
+	border-radius: 6px;
+	padding: 5px;
+	width: 701px;
+	height: 85px;
+}
+
+.sheet-class-tip .sheet-cancel-button {
+	float: right;
+}
+
+.sheet-class-tip button[type=action] {
+	color: black;
+}
+
+.sheet-class-tip button[type=action]:hover {
+	border-color: #6e9ec6;
+}
+
+/*pages*/
+input[type=radio],
+.sheet-invisible {
+	border: 0; 
+	clip: rect(0 0 0 0); 
+	height: 1px; margin: -1px; 
+	overflow: hidden; 
+	padding: 0; 
+	position: absolute; 
+	width: 1px;
+}
+
+div.sheet-page {
+	display: none;
+}
+
+.sheet-hpage-main:checked ~ div.sheet-main-page,
+.sheet-hpage-sub:checked ~ div.sheet-sub-page {
+	display: block;
+}
+
+p {
+    margin: 0
+}
+
+ol,
+ul {
+    margin: 0 0 0 15px
+}
+
+.sheet-navigation-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+
+.sheet-label {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.sheet-smaller {
+	font-size: smaller;
+}
+
+.sheet-container {
+	min-width: 820px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.sheet-top-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.sheet-rows-container {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+}
+
+.sheet-header-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.sheet-header-container input {
+	box-shadow: none;
+}
+
+.sheet-name-container {
+	flex: 1 1 400px;
+	margin: 8px;
+	padding: 5px;
+	background-color: white;
+	border-radius: 8px;
+	border: 1px solid;
+	display: inline-flex;
+	align-items: center;
+}
+
+.sheet-name-container input {
+	border: 0px solid;
+	margin-left: 5px;
+	flex: 1 1 auto;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.sheet-class-container {
+	flex: 0 1 auto;
+	margin: 8px;
+	padding: 5px;
+	background-color: white;
+	border-radius: 8px;
+	border: 1px solid;
+	display: inline-flex;
+	align-items: center;
+}
+
+.sheet-class-container .sheet-label {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.sheet-class-container input {
+	border: 0px solid;
+	margin-left: 5px;
+	flex: 1 1 300px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+
+button input[disabled=true] {
+    font-weight: bold;
+    border-style: none;
+    box-shadow: none;
+    background: none;
+    cursor: pointer;
+    color: inherit;
+}
+
+button span {
+	font-weight: bold;
+	font-size: 13px;
+}
+
+.sheet-toggler {
+	position: relative;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.sheet-toggler label {
+	z-index: 5;
+	position:relative;
+	margin: 0;
+	width: fit-content;
+	width: -moz-fit-content;
+}
+
+.sheet-toggler label:hover {
+	cursor: pointer;
+}
+
+.sheet-toggler input[type=radio],
+.sheet-toggler input[type=checkbox] {
+	border: 0; 
+	clip: rect(0 0 0 0); 
+	height: 1px; margin: -1px; 
+	overflow: hidden; 
+	padding: 0; 
+	position: absolute; 
+	width: 1px;
+}
+
+.sheet-toggler input[type=radio] + span,
+.sheet-toggler input[type=checkbox] + span,
+button[type=action] {
+	border: 1px solid rgb(35, 31, 32);
+	border-radius: 6px;
+	padding: 1px 6px;
+	background-color: white;
+	color: rgb(10, 7, 7);
+	text-align: center;
+	font-size: 0.8em;
+	font-weight: bold;
+}
+
+.sheet-nav-tabs {
+	margin-left: +6px;
+}
+
+.sheet-nav-tabs .sheet-toggler input[type=radio] + span {
+	border-radius: 2px;
+	font-size: 0.9em;
+	padding-top: 0.2em;
+}
+
+.sheet-nav-tabs .sheet-toggler input[type=radio]:checked + span {
+	background-color: unset;
+	background-image: linear-gradient(#ffffffb8, transparent);
+	border-bottom-color: transparent;
+}
+
+.sheet-nav-tabs .sheet-toggler input[type=radio]:focus + span {
+	border-bottom-color: transparent;
+}
+
+.sheet-toggler input[type=radio]:checked + span,
+.sheet-toggler input[type=checkbox]:checked + span {
+	color: rgb(35, 31, 32);
+}
+
+.sheet-toggler input[type=radio]:focus + span,
+.sheet-toggler input[type=checkbox]:focus + span {
+    border-color: #6e9ec6;
+}
+

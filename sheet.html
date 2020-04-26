@@ -1,0 +1,168 @@
+<div class="container">
+
+    <div class="top-container">
+        <div class="rows-container">
+            <div class="header-container">
+                <div class="name-container">
+                    <span class="label">Имя</span>
+                    <input type="text" name="attr_character_name">
+                </div>
+            </div>
+    
+            <div class="class-container">
+                <span class="label">Класс</span>
+                <input type="hidden" name="attr_comp_name">
+                <input type="hidden" name="attr_comp_classmoves">
+                <span name="attr_character_class"></span>
+                <button type='action' name='act_changeclass'>Изменить</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation-container">
+        <div class="nav-tabs">
+            <div class="toggler">
+                <label>
+                    <input type="radio" class="pagebutton-main" name="attr_page" value="0" checked="checked"><span>Main</span>
+                </label>
+                <label>
+                    <input type="radio" class="pagebutton-sub" name="attr_page" value="1"><span>Sub</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <input type="radio" class="hpage-main invisible" tabindex="-1" name="attr_calc_page" value="0" checked="checked">
+    <input type="radio" class="hpage-sub invisible" tabindex="-1" name="attr_calc_page" value="1">
+
+    <div class="page main-page">
+        <span name="attr_description"></span>
+
+        <h3><span>Происхождение</span></h3>
+        <button type='action' name='act_changebackground'>Изменить</button>
+
+        <span name="attr_background"></span>
+
+        <input type="checkbox" class="background-show-flag" name="attr_background_show_flag" value="1">
+        <div class='background-container'>
+            <fieldset class='repeating_background'>
+                <button type="action" name="act_backgroundselect" value='@{attr_buttontext}'><span name='attr_buttontext'></span></button>
+                <span name="attr_backgroundtext"></span>
+            </fieldset>
+        </div>
+    </div>
+
+    <div class="page sub-page"></div>
+</div>
+
+<!-- Start welcome -->
+
+<input type="checkbox" class="tip-confirm-flag" name="attr_tip_confirm_flag" value="1">
+<div class="class-tip">
+	<button type="action" class="cancel-button" name="act_cancelclass">&#128473;</button>
+	<h3><span>Getting Started</span></h3>
+	<p><span>Welcome to the Edge of The Verse Character Sheet!  To get started select class from the choices below:</span></p>
+	<button type="action" name="act_noble">Аристократ</button>
+	<button type="action" name="act_cyborg">Киборг</button>
+</div>
+
+<!-- type="text/worker" -->
+<script type="text/worker">
+    var classNames = {
+        Noble: 'Аристократ',
+        Cyborg: 'Киборг'
+    }
+
+    var descriptions = {
+        Noble: `Хотя Федерация и пытается всеми силами оспорить первенство Империи, все-таки стоит признать, что после Дня Агонии именно последняя сумела по максимуму сохранить свои традиции и устои. Немаловажную роль в этом сыграли аристократы — привилегированный класс дворян, правящих доменами, из которых состоят миры под властью Императрицы. Но для тебя все сложилось иначе. У тебя нет собственного домена, а потому тебе предстоит самостоятельно найти место в этом мире. Но у тебя всё ещё остались честь, происхождение и жажда власти. А галактика — достаточно непредсказуемое место для того, чтобы дерзкий и смелый юноша мог в итоге сорвать куш и вернуться на родину баснословно богатым аристократом`,
+        Cyborg: 'какой-то текст описания для киборга'
+    }
+
+    var backgrounds = {
+        Noble: [
+            {
+                button: 'Дом Адана',
+                text: 'Фехтование входит в обязательную программу обучения Дома. Твой Урон в ближнем бою увеличен на 1.'
+            },
+            {
+                button: 'Дом Акоста',
+                text: 'Сражаясь один на один в ближнем бою, ты можешь использовать Репутацию вместо Ярости.'
+            }
+        ]
+    }
+
+    on("sheet:opened", function() {
+        getAttrs(["character_class"], function(v) {
+            update = {};
+            if (v.character_class == null || v.character_class == "") {
+                update["tip_confirm_flag"] = "0";
+            } else {
+                update["tip_confirm_flag"] = "1";
+            }
+            setAttrs(update);
+        });
+    });
+
+    on("clicked:changeclass", function() {
+        setAttrs({tip_confirm_flag: 0})
+    })
+
+    on("clicked:noble", function(eventinfo) {
+        setupClass("Noble");
+    });
+
+    on("clicked:cyborg", function(eventinfo) {
+        setupClass("Cyborg");
+    });
+
+    on("clicked:cancelclass", function(eventinfo) {
+        setAttrs({tip_confirm_flag: 1}, "silent");
+    });
+
+    on('clicked:changebackground', function(eventInfo) {
+        setAttrs({"background_show_flag": 0}, 'silent');
+    });
+
+    var addBackground = function(classname) {
+        if (backgrounds[classname]) {
+            backgrounds[classname].forEach(function(row) {
+                var  newbackid = generateRowID();
+                var prefix = "repeating_background_" + newbackid + "_";
+                var attrs = {};
+                attrs[prefix + "backgroundtext"] = row.text;
+                attrs[prefix + "buttontext"] = row.button;
+                setAttrs(attrs);
+            })
+        }
+    }
+
+    on('clicked:repeating_background:backgroundselect', function(eventInfo) {
+        var id = eventInfo.sourceAttribute.slice(21, -17);
+        var text = `repeating_background_${id}_backgroundtext`;
+        var button = `repeating_background_${id}_buttontext`;
+        getAttrs([button, text], (v) => {
+			setAttrs({
+                background: `${v[button]}: ${v[text]}`,
+                background_show_flag: 1
+			});
+		});
+    })
+
+
+
+    on("change:page", function() {
+        getAttrs(["page"], function(v) {
+            setAttrs({calc_page:v.page});
+        });
+    });
+
+    var setupClass = function(classname) {
+        var update = {};
+        update['character_class'] = classNames[classname]
+        update['comp_name'] = classname
+        update['description'] = descriptions[classname]
+        update['tip_confirm_flag'] = 1
+        addBackground(classname);
+        setAttrs(update);
+    };
+
+</script>
