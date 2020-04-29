@@ -1,38 +1,36 @@
 <div class="container">
 
-    <div class="top-container">
-        <div class="rows-container">
-            <div class="header-container">
-                <div class="name-container">
-                    <span class="label">Имя</span>
-                    <input type="text" name="attr_character_name">
-                </div>
-            </div>
-    
-            <div class="class-container">
-                <span class="label">Класс</span>
-                <input type="hidden" name="attr_comp_name">
-                <input type="hidden" name="attr_comp_classmoves">
-                <span name="attr_character_class"></span>
-                <button type='action' name='act_changeclass'>Изменить</button>
-            </div>
+    <div class="header-container">
+        <img class="logo" src="https://github.com/khtd/roll20_eotv/blob/master/EotV_Logotype_3.png?raw=true">
+
+        <div class="name-container">
+            <span class="name-label">Имя</span>
+            <input type="text" class="name-input" name="attr_character_name">
+        </div>
+
+        <div class="class-container">
+            <span class="class-label">Класс</span>
+            <input type="hidden" name="attr_comp_name">
+            <input type="hidden" name="attr_comp_classmoves">
+            <span class="class-span" name="attr_character_class">Аристократ</span>
+            <button type='action' class='change-button class-change-button' name='act_changeclass'>Изменить</button>
         </div>
     </div>
 
     <div class="navigation-container">
         <div class="nav-tabs">
-            <div class="toggler">
-                <label>
-                    <input type="radio" class="pagebutton-main" name="attr_page" value="0" checked="checked"><span>Main</span>
-                </label>
-                <label>
-                    <input type="radio" class="pagebutton-sub" name="attr_page" value="1"><span>Sub</span>
-                </label>
-            </div>
+            <label class="nav-button">
+                <input type="radio"  name="attr_page" value="main" checked="checked">
+                <span>Main</span>
+            </label>
+            <label class="nav-button">
+                <input type="radio"  name="attr_page" value="sub">
+                <span>Sub</span>
+            </label>
         </div>
     </div>
-    <input type="radio" class="hpage-main invisible" tabindex="-1" name="attr_calc_page" value="0" checked="checked">
-    <input type="radio" class="hpage-sub invisible" tabindex="-1" name="attr_calc_page" value="1">
+    <input type='hidden' class='tabstoggle' name='attr_sheetTab'  value='main'/>
+
 
     <div class="page main-page">
         <div class='description'>

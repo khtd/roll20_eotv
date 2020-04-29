@@ -1,273 +1,181 @@
-/* общее */
-.charsheet {
-	background-color: rgb(230, 231, 233);
-	height: auto;
-	border: 1px solid rgb(35, 31, 32);
-	min-width: 820px;
-}
-
-.charsheet .sheet-container label {
-	font-weight: normal;
-	font-size: medium;
-	color: white;
-	line-height: normal;
-	text-align: unset;
-}
-/* бекграунд */
-.sheet-background-show-flag {
-	display: none;
-}
-
-.sheet-background-show-flag:checked ~ .sheet-background-select {
-	display: none;
-}
-
-.sheet-background-show-flag:not(:checked) ~ .sheet-background-select {
-	display: inline;
-}
-
-span.sheet-emptiable:empty,
-span.sheet-emptiable:empty + br {
-    display: none;
-}
-
-/*всплывашка*/
-.sheet-tip-confirm-flag {
-	display: none;
-}
-
-.sheet-tip-confirm-flag:checked ~ .sheet-class-tip {
-	display: none;
-}
-
-.sheet-tip-confirm-flag:not(:checked) ~ .sheet-class-tip {
-	display: block;
-	position: absolute;
-	top: 12.8em;
-	left: 10.7em;
-	background: white;
-	z-index: 99;
-	border: 2px solid black;
-	border-radius: 6px;
-	padding: 5px;
-	width: 701px;
-	height: 85px;
-}
-
-.sheet-class-tip .sheet-cancel-button {
-	float: right;
-}
-
-.sheet-class-tip button[type=action] {
+.sheet-container {
+	width: 772px;
+	display: grid;
+	grid-template-columns: repeat(1, [col] 772px );
+	grid-template-rows: 70px 35px auto;
+	grid-gap: 2px;
+	grid-template-areas:
+    "header"
+    "navigation"
+    "page";
+	background-color: #fff;
 	color: black;
 }
 
-.sheet-class-tip button[type=action]:hover {
-	border-color: #6e9ec6;
+/* header start */
+.sheet-header-container{
+	grid-area: header;
+	display: grid;
+	grid-template-columns: 170px  342px  256px;
+	grid-template-rows: 35px 35px;
+	grid-gap: 2px;
+	grid-template-areas:
+    "logo name exp"
+    "logo class exp"
 }
 
-/*pages*/
-input[type=radio],
-.sheet-invisible {
-	border: 0; 
-	clip: rect(0 0 0 0); 
-	height: 1px; margin: -1px; 
-	overflow: hidden; 
-	padding: 0; 
-	position: absolute; 
-	width: 1px;
-}
-
-div.sheet-page {
-	display: none;
-}
-
-.sheet-hpage-main:checked ~ div.sheet-main-page,
-.sheet-hpage-sub:checked ~ div.sheet-sub-page {
-	display: block;
-}
-
-p {
-    margin: 0
-}
-
-ol,
-ul {
-    margin: 0 0 0 15px
-}
-
-.sheet-navigation-container {
-	display: flex;
-	justify-content: space-between;
-}
-
-
-.sheet-label {
-	font-size: 12px;
-	font-weight: bold;
-}
-
-.sheet-smaller {
-	font-size: smaller;
-}
-
-.sheet-container {
-	min-width: 820px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
-
-.sheet-top-container {
-	display: flex;
-	flex-direction: row;
-}
-
-.sheet-rows-container {
-	display: flex;
-	flex: 1 1 auto;
-	flex-direction: column;
-}
-
-.sheet-header-container {
-	display: flex;
-	flex-direction: row;
-}
-
-.sheet-header-container input {
-	box-shadow: none;
+.sheet-logo {
+	grid-area: logo;
+	width: 170px;
+	justify-self: center;
+	align-self: center;
 }
 
 .sheet-name-container {
-	flex: 1 1 400px;
-	margin: 8px;
-	padding: 5px;
+	grid-area: name;
 	background-color: white;
-	border-radius: 8px;
-	border: 1px solid;
-	display: inline-flex;
-	align-items: center;
+	height: 35px;
+	display: grid;
+	grid-template-columns: 70px 272px;
+	grid-template-rows: 5px 25px 5px;
+	grid-gap: 0px;
 }
 
-.sheet-name-container input {
-	border: 0px solid;
-	margin-left: 5px;
-	flex: 1 1 auto;
-	font-size: 14px;
-	font-weight: bold;
+.sheet-name-label {
+	background-color: black;
+	color: white;
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 2;
+	grid-row-end: 3;
+	padding: 3px;
+}
+
+.sheet-name-input {
+	grid-column-start: 2;
+	grid-row-start: 1;
+	grid-row-end: 4;
+	background: white;
+	border-color: black;
+	border-width: 2px;
+	text-align: center;
+	border-radius: 0px;
+	height: 29px;
+	width: auto;
 }
 
 .sheet-class-container {
-	flex: 0 1 auto;
-	margin: 8px;
-	padding: 5px;
+	grid-area: class;
 	background-color: white;
-	border-radius: 8px;
-	border: 1px solid;
-	display: inline-flex;
-	align-items: center;
+	height: 35px;
+	display: grid;
+	grid-template-columns: 70px 185px 2px 85px;
+	grid-template-rows: 5px 25px 5px;
+	grid-gap: 0px;
 }
 
-.sheet-class-container .sheet-label {
-	font-size: 12px;
-	font-weight: bold;
+.sheet-class-label {
+	background-color: black;
+	color: white;
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 2;
+	grid-row-end: 3;
+	padding: 3px;
 }
 
-.sheet-class-container input {
-	border: 0px solid;
-	margin-left: 5px;
-	flex: 1 1 300px;
-	font-size: 14px;
-	font-weight: bold;
-}
-
-
-button input[disabled=true] {
-    font-weight: bold;
-    border-style: none;
-    box-shadow: none;
-    background: none;
-    cursor: pointer;
-    color: inherit;
-}
-
-button span {
-	font-weight: bold;
-	font-size: 13px;
-}
-
-.sheet-toggler {
-	position: relative;
-	display: flex;
-	justify-content: space-evenly;
-}
-
-.sheet-toggler label {
-	z-index: 5;
-	position:relative;
-	margin: 0;
-	width: fit-content;
-	width: -moz-fit-content;
-}
-
-.sheet-toggler label:hover {
-	cursor: pointer;
-}
-
-.sheet-toggler input[type=radio],
-.sheet-toggler input[type=checkbox] {
-	border: 0; 
-	clip: rect(0 0 0 0); 
-	height: 1px; margin: -1px; 
-	overflow: hidden; 
-	padding: 0; 
-	position: absolute; 
-	width: 1px;
-}
-
-.sheet-toggler input[type=radio] + span,
-.sheet-toggler input[type=checkbox] + span,
-button[type=action] {
-	border: 1px solid rgb(35, 31, 32);
-	border-radius: 6px;
-	padding: 1px 6px;
-	background-color: white;
-	color: rgb(10, 7, 7);
+.sheet-class-span {
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 1;
+	grid-row-end: 4;
+	background: white;
+	border: 2px solid black;
 	text-align: center;
-	font-size: 0.8em;
-	font-weight: bold;
+	padding: 5px 0px; 
+	border-radius: 0px;
+}
+
+.sheet-change-button {
+	display:inline-block;
+	border:0.1em solid rgb(14, 13, 13);
+	background-color: transparent;
+	border-radius:0.12em;
+	box-sizing: border-box;
+	text-decoration:none;
+	font-family:'Roboto',sans-serif;
+	font-weight:300;
+	color: black;
+	text-align:center;
+	transition: all 0.2s;
+}
+
+.sheet-class-change-button {
+	grid-column-start: 4;
+	grid-row-start: 1;
+	grid-row-end: 4;
+}
+/* header end */
+
+/* navigation start */
+.sheet-navigation-container {
+	grid-area: navigation;
+	display: grid;
 }
 
 .sheet-nav-tabs {
-	margin-left: +6px;
+	justify-self: center;
+	align-self: end;
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-column-gap: 5px;
 }
 
-.sheet-nav-tabs .sheet-toggler input[type=radio] + span {
-	border-radius: 2px;
-	font-size: 0.9em;
-	padding-top: 0.2em;
+.sheet-nav-button {
+	margin: 0;
+	padding: 0;
+	font-size: 1em;
 }
 
-.sheet-nav-tabs .sheet-toggler input[type=radio]:checked + span {
-	background-color: unset;
+.sheet-nav-button input {
+	display: none;
+}
+
+.sheet-nav-button span{
+	display:inline-grid;
+	border:0.1em solid rgb(14, 13, 13);
+	background-color: transparent;
+	border-radius:0.12em;
+	box-sizing: border-box;
+	text-decoration:none;
+	font-family:'Roboto',sans-serif;
+	font-weight:300;
+	color: black;
+	text-align:center;
+	transition: all 0.2s;
+	padding: 2px 6px 2px 6px;
+}
+
+.sheet-nav-button input[type=radio]:checked + span {
 	background-image: linear-gradient(#ffffffb8, transparent);
 	border-bottom-color: transparent;
 }
+/* navigation end */
 
-.sheet-nav-tabs .sheet-toggler input[type=radio]:focus + span {
-	border-bottom-color: transparent;
+/* pages common start */
+.sheet-page {
+	grid-area: page;
+	display: none;
 }
 
-.sheet-toggler input[type=radio]:checked + span,
-.sheet-toggler input[type=checkbox]:checked + span {
-	color: rgb(35, 31, 32);
+/* show the selected tab */
+.sheet-tabstoggle[value="main"] ~ .sheet-main-page,
+.sheet-tabstoggle[value="sub"] ~ .sheet-sub-page {
+	display: block;
 }
+/*pages common end */
 
-.sheet-toggler input[type=radio]:focus + span,
-.sheet-toggler input[type=checkbox]:focus + span {
-    border-color: #6e9ec6;
-}
-
+/*TODO*/
 /* rolltemplate test*/
 .sheet-rolltemplate-info .sheet-templateMain {
 	display:-webkit-box;
@@ -331,4 +239,56 @@ button[type=roll].sheet-backgroundOutput::before {
 
 button[type=roll].sheet-backgroundOutput {
     font-family: "Pictos";
+}
+
+.sheet-background-show-flag {
+	display: none;
+}
+
+.sheet-background-show-flag:checked ~ .sheet-background-select {
+	display: none;
+}
+
+.sheet-background-show-flag:not(:checked) ~ .sheet-background-select {
+	display: inline;
+}
+
+span.sheet-emptiable:empty,
+span.sheet-emptiable:empty + br {
+    display: none;
+}
+
+/*всплывашка*/
+.sheet-tip-confirm-flag {
+	display: none;
+}
+
+.sheet-tip-confirm-flag:checked ~ .sheet-class-tip {
+	display: none;
+}
+
+.sheet-tip-confirm-flag:not(:checked) ~ .sheet-class-tip {
+	display: block;
+	position: absolute;
+	top: 12.8em;
+	left: 10.7em;
+	background: white;
+	z-index: 99;
+	border: 2px solid black;
+	border-radius: 6px;
+	padding: 5px;
+	width: 701px;
+	height: 85px;
+}
+
+.sheet-class-tip .sheet-cancel-button {
+	float: right;
+}
+
+.sheet-class-tip button[type=action] {
+	color: black;
+}
+
+.sheet-class-tip button[type=action]:hover {
+	border-color: #6e9ec6;
 }
