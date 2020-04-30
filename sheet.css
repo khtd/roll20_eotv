@@ -172,13 +172,35 @@
 .sheet-tabstoggle[value="sub"] ~ .sheet-sub-page {
 	display: grid;
 }
+
+.sheet-tabstoggle[value="main"] ~ .sheet-sub-page,
+.sheet-tabstoggle[value="sub"] ~ .sheet-main-page {
+	display: none;
+}
 /*pages common end */
 
 /*main pages start */
 .sheet-main-page {
-	grid-template-columns: 385px 385px;
-	grid-gap: 2px;
+	display: grid;
+	grid-template-columns: 383px 383px;
+	grid-gap: 6px;
 	grid-template-rows: auto;
+	grid-template-areas: 
+	"desc looks"
+	"back .";
+	grid-auto-flow: column;
+}
+
+.sheet-description {
+	grid-area: desc;
+}
+
+.sheet-background {
+	grid-area: back;
+}
+
+.sheet-look {
+	grid-area: looks;
 }
 
 /* cyborg special */
@@ -231,7 +253,7 @@ button[type=roll].sheet-cyborgPathOutput::before {
 
 .sheet-look .sheet-look-example {
 	width: 380px;
-	height: 100px;
+	height: 72px;
 	resize: none;
 	padding: 0px;
 	margin: 0px;
