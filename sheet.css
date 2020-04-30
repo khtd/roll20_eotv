@@ -203,6 +203,21 @@
 	grid-area: looks;
 }
 
+.sheet-background,
+.sheet-cyborg-path {
+	display: grid;
+	gap: 10px;
+    grid-template-rows: 26.4px min-content;
+}
+
+.sheet-background .sheet-title,
+.sheet-cyborg-path .sheet-title {
+	display: grid;
+    grid-template-columns: min-content 26.4px auto;
+    gap: 10px;
+}
+
+
 /* cyborg special */
 .sheet-is-cyborg-flag {
 	display: none;
@@ -214,6 +229,10 @@
 
 .sheet-is-cyborg-flag:not(:checked) + .sheet-cyborg-additional {
 	display: inline;
+}
+
+.sheet-is-cyborg-flag:not(:checked) + .sheet-cyborg-path {
+	display: grid;
 }
 
 .sheet-cyborgPath-show-flag {

@@ -38,16 +38,18 @@
         </div>
 
         <div class="background">
-            <h3><span>ПРОИСХОЖДЕНИЕ</span></h3>
-            <button type='action' class='change-button' name='act_changebackground'>p</button><br>
+            <div class="title">
+                <h3><span>ПРОИСХОЖДЕНИЕ</span></h3>
+                <button type='action' class='change-button' name='act_changebackground'>p</button>
+            </div>
 
             <input type="checkbox" class="is-cyborg-flag" name="attr_isCyborg" value="1" checked="false">
             <div class="additional-background cyborg-additional">
                 <button type='roll' class="sheet-backgroundOutput" name='roll_outAddBackground' value="&{template:info} {{name=@{character_name}}} {{type=Тао Прайм}} {{item=Происхождение}} {{description=Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут.}}">w</button>
-                <span><strong>Тао Прайм:</strong> Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут.</span><br>
+                <span><strong>Тао Прайм:</strong> Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут.</span>
             </div>
             
-            <div class="background">
+            <div class="background-text">
                 <button type='roll' class="sheet-backgroundOutput" name='roll_outBackground' value="&{template:info} {{name=@{character_name}}} {{type=@{backgroundtype}}} {{item=Происхождение}} {{description=@{backgroundtext}}}">w</button>
                 <strong><span name="attr_backgroundtype"></span>:</strong><span name="attr_backgroundtext"></span>
             </div>
@@ -55,7 +57,7 @@
            
             <input type="checkbox" class="background-show-flag" name="attr_background_show_flag" value="1">
             <div class='background-select'>
-                <span class='emptiable' name="attr_pre_background"></span><br>
+                <span class='emptiable' name="attr_pre_background"></span>
                 <fieldset class='repeating_background'>
                     <button type="action" name="act_select" value='@{attr_button}'><span name='attr_button'></span></button>
                     <span name="attr_text"></span>
@@ -66,8 +68,11 @@
 
         <input type="checkbox" class="is-cyborg-flag" name="attr_isCyborg" value="1" checked="false">
         <div class='cyborg-additional cyborg-path'>
-            <h3><span>ПУТЬ</span></h3>
-            <button type='action' class='change-button' name='act_changecyborgPath'>p</button><br>
+            <div class="title">
+                <h3><span>ПУТЬ</span></h3>
+                <button type='action' class='change-button' name='act_changecyborgPath'>p</button><br>
+            </div>
+
 
             <div class="cyborgPath">
                 <button type='roll' class="cyborgPathOutput" name='roll_outCyborgPath' value="&{template:info} {{name=@{character_name}}} {{type=@{cyborgPathtype}}} {{item=Путь}} {{description=@{cyborgPathtext}}}">w</button>
