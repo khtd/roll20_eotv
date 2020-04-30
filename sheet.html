@@ -12,7 +12,7 @@
             <span class="class-label">Класс</span>
             <input type="hidden" name="attr_comp_name">
             <input type="hidden" name="attr_comp_classmoves">
-            <span class="class-span" name="attr_character_class">Аристократ</span>
+            <span class="class-span" name="attr_character_class"></span>
             <button type='action' class='change-button class-change-button' name='act_changeclass'>Изменить</button>
         </div>
     </div>
@@ -41,7 +41,7 @@
             <h3><span>ПРОИСХОЖДЕНИЕ</span></h3>
             <button type='action' class='change-button' name='act_changebackground'>p</button><br>
 
-            <input type="checkbox" class="is-cyborg-flag" name="attr_isCyborg" value="1">
+            <input type="checkbox" class="is-cyborg-flag" name="attr_isCyborg" value="1" checked="false">
             <div class="additional-background cyborg-additional">
                 <button type='roll' class="sheet-backgroundOutput" name='roll_outAddBackground' value="&{template:info} {{name=@{character_name}}} {{type=Тао Прайм}} {{item=Происхождение}} {{description=Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут.}}">w</button>
                 <span><strong>Тао Прайм:</strong> Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут.</span><br>
@@ -64,7 +64,7 @@
 
         </div>
 
-        <input type="checkbox" class="is-cyborg-flag" name="attr_isCyborg" value="1">
+        <input type="checkbox" class="is-cyborg-flag" name="attr_isCyborg" value="1" checked="false">
         <div class='cyborg-additional cyborg-path'>
             <h3><span>ПУТЬ</span></h3>
             <button type='action' class='change-button' name='act_changecyborgPath'>p</button><br>
@@ -74,7 +74,7 @@
                 <strong><span name="attr_cyborgPathtype"></span>:</strong><span name="attr_cyborgPathtext"></span>
             </div>
 
-            <input type="checkbox" class="cyborgPath-show-flag" name="attr_cyborgPath_show_flag" value="1">
+            <input type="checkbox" class="cyborgPath-show-flag" name="attr_cyborgPath_show_flag" value="1" checked="false">
             <div class="cyborgPath-select">
                 <span>Выбери мотив, который вынуждает тебя путешествовать:</span>
                 <fieldset class='repeating_cyborgPath'>
@@ -88,13 +88,8 @@
 
         <div class="look">
             <h3><span>ВНЕШНИЙ ВИД</span></h3>
-            <textarea          
-                name='attr_look'
-                placeholder="Раскосые, «анимешные» или искусственные глаза
-Фиолетовые, наращённые или искусственные волосы
-Кукольное, роботизированное или крепкое телосложение
-Трубки из головы, кибер-конечность или синтокожа"
-           ></textarea>
+            <textarea class="look-example" name="attr_look_example" readonly="true"></textarea>
+            <textarea class="look-input" name='attr_look'></textarea>
         </div>
     </div>
 
@@ -133,6 +128,17 @@
     var descriptions = {
         Noble: `Хотя Федерация и пытается всеми силами оспорить первенство Империи, все-таки стоит признать, что после Дня Агонии именно последняя сумела по максимуму сохранить свои традиции и устои. Немаловажную роль в этом сыграли аристократы — привилегированный класс дворян, правящих доменами, из которых состоят миры под властью Императрицы. Но для тебя все сложилось иначе. У тебя нет собственного домена, а потому тебе предстоит самостоятельно найти место в этом мире. Но у тебя всё ещё остались честь, происхождение и жажда власти. А галактика — достаточно непредсказуемое место для того, чтобы дерзкий и смелый юноша мог в итоге сорвать куш и вернуться на родину баснословно богатым аристократом`,
         Cyborg: 'В обществе, где всё направлено на развитие личной эффективности на службе Синдикату, биологические процессы признаны отсталыми. Первая имплантация проводится вскоре после рождения, а модульная платформа позволяет затем изменять и настраивать собственное тело в течение всей жизни. Да, киборгов умеют делать и в других уголках галактики, но только на Тао Прайм это возведено в смысл жизни. Этот процесс как-то уживается с жёстким следованием кодексу чести и неукоснительным соблюдением многочисленных заповедей и табу. Не все выдерживают строгость этих правил.'
+    }
+
+    var look = {
+        Noble: `Хитрый, надёжный или невинный взгляд
+Атлет, рыхлое или красивое тело
+Короткие волосы, стильная причёска или дорогая шляпа
+Роскошный наряд, мундир или деловой костюм`,
+        Cyborg: `Раскосые, «анимешные» или искусственные глаза
+Фиолетовые, наращённые или искусственные волосы
+Кукольное, роботизированное или крепкое телосложение
+Трубки из головы, кибер-конечность или синтокожа`,
     }
 
     var backgrounds = {
@@ -242,8 +248,14 @@
          });
         setAttrs({
             tip_confirm_flag: 0,
+            description: ' ',
             backgroundtype: ' ',
             backgroundtext: ' ',
+            cyborgPathtype: ' ',
+            cyborgPathtext: ' ',
+            look_example: ' ',
+            character_class: ' ',
+            comp_name: ' ',
             "background_show_flag": 0,
             "pre_background": ' ',
             isCyborg: 1
@@ -255,19 +267,19 @@
     });
 
     on("clicked:cyborg", function(eventinfo) {
-        var update = addCyborgPath()
-        update.isCyborg= 0;
+        var update = addRepeatingInfo(special.Cyborg.cyborgPath, 'cyborgPath')
+        update.isCyborg = 0;
+        update.cyborgPath_show_flag = 0
         setAttrs(update, undefined, function() {setupClass("Cyborg")})
     });
 
-    var addCyborgPath = function() {
-        let data = special.Cyborg.cyborgPath
+    var addRepeatingInfo = function(options, param) {
         var update = {}
-        data.forEach(function(row) {
+        options.forEach(function(row) {
             var  newbackid = generateRowID();
-            var prefix = "repeating_cyborgPath_" + newbackid + "_";
-            update[prefix + "text"] = row.text;
-            update[prefix + "button"] = row.button;
+            var prefix = `repeating_${param}_${newbackid}_`;
+            update[`${prefix}text`] = row.text;
+            update[`${prefix}button`] = row.button;
         })
         return update;
     }
@@ -279,23 +291,6 @@
     on('clicked:changebackground', function(eventInfo) {
         setAttrs({"background_show_flag": 0}, 'silent');
     });
-
-    var addBackground = function(classname) {
-        let data = backgrounds[classname]
-        if (data) {
-            var update = {}
-            if(data.preInfo) {
-                update.pre_background = data.preInfo
-            }
-            data.options.forEach(function(row) {
-                var  newbackid = generateRowID();
-                var prefix = "repeating_background_" + newbackid + "_";
-                update[prefix + "text"] = row.text;
-                update[prefix + "button"] = row.button;
-            })
-            setAttrs(update);
-        }
-    }
 
     on('clicked:repeating_background:select', function() {
         getAttrs(["repeating_background_button", "repeating_background_text"], (v) => {
@@ -326,9 +321,13 @@
         update['character_class'] = classNames[classname]
         update['comp_name'] = classname
         update['description'] = descriptions[classname]
+        update['look_example'] = look[classname]
         update['tip_confirm_flag'] = 1
-        addBackground(classname);
-        setAttrs(update);
+        var backgroundUpdate = addRepeatingInfo(backgrounds[classname].options, 'background')
+        if(backgrounds[classname].preInfo) {
+            backgroundUpdate.pre_background = backgrounds[classname].preInfo
+        }
+        setAttrs({...update, ...backgroundUpdate});
     };
 
 </script>
