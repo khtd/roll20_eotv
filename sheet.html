@@ -40,21 +40,43 @@
         <div class="background">
             <h3><span>Происхождение</span></h3>
             <button type='action' name='act_changebackground'>Изменить</button><br>
-            <span class='emptiable' name="attr_pre_background"></span><br>
+
+            <input type="checkbox" class="is-cyborg-flag" name="attr_isCyborg" value="1">
+            <div>
+                <span><strong>Тао Прайм:</strong> Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут.</span><br>
+            </div>
+            
             
             <button type='roll' class="sheet-backgroundOutput" name='roll_outBackground' value="&{template:info} {{name=@{character_name}}} {{type=Background}} {{item=Происхождение}} {{description=@{background}}}">w</button>
             <span class='emptiable' name="attr_background"></span><br>
 
             <input type="checkbox" class="background-show-flag" name="attr_background_show_flag" value="1">
             <div class='background-select'>
+                <span class='emptiable' name="attr_pre_background"></span><br>
                 <fieldset class='repeating_background'>
-                    <button type="action" name="act_backgroundselect" value='@{attr_buttontext}'><span name='attr_buttontext'></span></button>
-                    <span name="attr_backgroundtext"></span>
+                    <button type="action" name="act_select" value='@{attr_button}'><span name='attr_button'></span></button>
+                    <span name="attr_text"></span>
                 </fieldset>
             </div>
         </div>
 
-        <div class='cyborg-path'></div>
+        <input type="checkbox" class="is-cyborg-flag" name="attr_isCyborg" value="1">
+        <div class='cyborg-path'>
+            <h3><span>Путь</span></h3>
+            <button type='action' name='act_changecyborgPath'>Изменить</button><br>
+
+            <button type='roll' class="cyborgPathOutput" name='roll_outCyborgPath' value="&{template:info} {{name=@{character_name}}} {{type=CyborgPath}} {{item=Путь}} {{description=@{cyborgPath}}}">w</button>
+            <span name="attr_cyborgPath"></span>
+
+            <input type="checkbox" class="cyborgPath-show-flag" name="attr_cyborgPath_show_flag" value="1">
+            <div class="cyborgPath-select">
+                <span>Выбери мотив, который вынуждает тебя путешествовать:</span>
+                <fieldset class='repeating_cyborgPath'>
+                    <button type="action" name="act_select" value='@{attr_button}'><span name='attr_button'></span></button>
+                    <span name="attr_text"></span>
+                </fieldset>
+            </div>
+        </div>
 
         <div class='stranger-specialty'></div>
     </div>
@@ -93,7 +115,7 @@
 
     var descriptions = {
         Noble: `Хотя Федерация и пытается всеми силами оспорить первенство Империи, все-таки стоит признать, что после Дня Агонии именно последняя сумела по максимуму сохранить свои традиции и устои. Немаловажную роль в этом сыграли аристократы — привилегированный класс дворян, правящих доменами, из которых состоят миры под властью Императрицы. Но для тебя все сложилось иначе. У тебя нет собственного домена, а потому тебе предстоит самостоятельно найти место в этом мире. Но у тебя всё ещё остались честь, происхождение и жажда власти. А галактика — достаточно непредсказуемое место для того, чтобы дерзкий и смелый юноша мог в итоге сорвать куш и вернуться на родину баснословно богатым аристократом`,
-        Cyborg: 'какой-то текст описания для киборга'
+        Cyborg: 'В обществе, где всё направлено на развитие личной эффективности на службе Синдикату, биологические процессы признаны отсталыми. Первая имплантация проводится вскоре после рождения, а модульная платформа позволяет затем изменять и настраивать собственное тело в течение всей жизни. Да, киборгов умеют делать и в других уголках галактики, но только на Тао Прайм это возведено в смысл жизни. Этот процесс как-то уживается с жёстким следованием кодексу чести и неукоснительным соблюдением многочисленных заповедей и табу. Не все выдерживают строгость этих правил.'
     }
 
     var backgrounds = {
@@ -139,7 +161,7 @@
             ]
         },
         Cyborg: {
-            preInfo: `Тао Прайм: Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут. Выбери синдикат, который тебя вырастил:`,
+            preInfo: `Выбери синдикат, который тебя вырастил:`,
             options: [
                 {
                     button: 'Багровый лотос',
@@ -157,6 +179,21 @@
         }
     }
 
+    var special = {
+        Cyborg: {
+            cyborgPath: [
+                {
+                    button: 'Буси',
+                    text: 'Ты — воин сёгуна, преумножающий свою славу и честь синдиката. Твоя цель — показать себя с лучшей стороны и на фоне гайдзинов продемонстрировать превосходство Тао.'
+                },
+                {
+                    button: 'Ронин',
+                    text: 'Ты совершил ошибку и покрыл себя позором (или тебя подставили). Ты изгнан из синдиката и скитаешься по Галактике в надежде восстановить свою честь, найти новый дом или умереть достойно.'
+                }
+            ]
+        }
+    }
+
     on("sheet:opened", function() {
         getAttrs(["character_class"], function(v) {
             update = {};
@@ -169,17 +206,29 @@
         });
     });
 
+    on("change:page", function() {
+        getAttrs(["page"], function(v) {
+            setAttrs({sheetTab:v.page});
+        });
+    });
+
     on("clicked:changeclass", function() {
         getSectionIDs("repeating_background", function(idarray) {
             for(var i=0; i < idarray.length; i++) {
               removeRepeatingRow("repeating_background_" + idarray[i]);
             }
          });
+         getSectionIDs("repeating_cyborgPath", function(idarray) {
+            for(var i=0; i < idarray.length; i++) {
+              removeRepeatingRow("repeating_cyborgPath_" + idarray[i]);
+            }
+         });
         setAttrs({
             tip_confirm_flag: 0,
             background: ' ',
             "background_show_flag": 0,
-            "pre_background": ' '
+            "pre_background": ' ',
+            isCyborg: 1
         })
     })
 
@@ -188,8 +237,22 @@
     });
 
     on("clicked:cyborg", function(eventinfo) {
-        setupClass("Cyborg");
+        var update = addCyborgPath()
+        update.isCyborg= 0;
+        setAttrs(update, undefined, function() {setupClass("Cyborg")})
     });
+
+    var addCyborgPath = function() {
+        let data = special.Cyborg.cyborgPath
+        var update = {}
+        data.forEach(function(row) {
+            var  newbackid = generateRowID();
+            var prefix = "repeating_cyborgPath_" + newbackid + "_";
+            update[prefix + "text"] = row.text;
+            update[prefix + "button"] = row.button;
+        })
+        return update;
+    }
 
     on("clicked:cancelclass", function(eventinfo) {
         setAttrs({tip_confirm_flag: 1}, "silent");
@@ -202,24 +265,25 @@
     var addBackground = function(classname) {
         let data = backgrounds[classname]
         if (data) {
+            var update = {}
             if(data.preInfo) {
-                setAttrs({pre_background: data.preInfo})
+                update.pre_background = data.preInfo
             }
             data.options.forEach(function(row) {
                 var  newbackid = generateRowID();
                 var prefix = "repeating_background_" + newbackid + "_";
-                var attrs = {};
-                attrs[prefix + "backgroundtext"] = row.text;
-                attrs[prefix + "buttontext"] = row.button;
-                setAttrs(attrs);
+                update[prefix + "text"] = row.text;
+                update[prefix + "button"] = row.button;
             })
+            setAttrs(update);
         }
     }
 
-    on('clicked:repeating_background:backgroundselect', function(eventInfo) {
-        var id = eventInfo.sourceAttribute.slice(21, -17);
-        var text = `repeating_background_${id}_backgroundtext`;
-        var button = `repeating_background_${id}_buttontext`;
+    on('clicked:repeating_background:select', function(eventInfo) {
+        console.log(eventInfo.sourceAttribute)
+        var id = eventInfo.sourceAttribute.match(/repeating_.*_(-.*)_select/)[1];
+        var text = `repeating_background_${id}_text`;
+        var button = `repeating_background_${id}_button`;
         getAttrs([button, text], (v) => {
 			setAttrs({
                 background: `${v[button]}: ${v[text]}`,
@@ -228,13 +292,21 @@
 		});
     })
 
-
-
-    on("change:page", function() {
-        getAttrs(["page"], function(v) {
-            setAttrs({calc_page:v.page});
-        });
+    on('clicked:changecyborgPath', function(eventInfo) {
+        setAttrs({"cyborgPath_show_flag": 0}, 'silent');
     });
+
+    on('clicked:repeating_cyborgPath:select', (eventInfo) => {
+        var id = eventInfo.sourceAttribute.match(/repeating_.*_(-.*)_select/)[1];
+        var text = `repeating_cyborgPath_${id}_text`;
+        var button = `repeating_cyborgPath_${id}_button`;
+        getAttrs([button, text], (v) => {
+			setAttrs({
+                cyborgPath: `${v[button]}: ${v[text]}`,
+                cyborgPath_show_flag: 1
+			});
+		});
+    })
 
     var setupClass = function(classname) {
         var update = {};

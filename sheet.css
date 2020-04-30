@@ -175,6 +175,51 @@
 }
 /*pages common end */
 
+/* cyborg special */
+.sheet-is-cyborg-flag {
+	display: none;
+}
+
+.sheet-is-cyborg-flag:checked + div {
+	display: none;
+}
+
+.sheet-is-cyborg-flag:not(:checked) + div {
+	display: inline;
+}
+
+.sheet-cyborgPath-show-flag {
+	display: none;
+}
+
+.sheet-cyborgPath-show-flag:checked + div {
+	display: none;
+}
+
+.sheet-cyborgPath-show-flag:not(:checked) + div{
+	display: inline;
+}
+
+button[type=roll].sheet-cyborgPathOutput {
+    border: none;
+    background-color: transparent;
+    background-image: none;
+    font-size: 1.05em;
+    font-weight: bold;
+    box-shadow: none;
+    text-shadow: none;
+    height: 28px;
+    margin: 0px;
+	padding: 0px;
+	font-family: "Pictos";
+}
+
+button[type=roll].sheet-cyborgPathOutput::before {
+    content: '';
+}
+/* cyborg special end*/
+
+
 /*TODO*/
 /* rolltemplate test*/
 .sheet-rolltemplate-info .sheet-templateMain {
