@@ -180,11 +180,11 @@
 	display: none;
 }
 
-.sheet-is-cyborg-flag:checked + div {
+.sheet-is-cyborg-flag:checked + .sheet-cyborg-additional {
 	display: none;
 }
 
-.sheet-is-cyborg-flag:not(:checked) + div {
+.sheet-is-cyborg-flag:not(:checked) + .sheet-cyborg-additional {
 	display: inline;
 }
 
@@ -196,7 +196,7 @@
 	display: none;
 }
 
-.sheet-cyborgPath-show-flag:not(:checked) + div{
+.sheet-cyborgPath-show-flag:not(:checked) + div {
 	display: inline;
 }
 

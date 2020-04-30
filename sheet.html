@@ -42,14 +42,17 @@
             <button type='action' name='act_changebackground'>Изменить</button><br>
 
             <input type="checkbox" class="is-cyborg-flag" name="attr_isCyborg" value="1">
-            <div>
+            <div class="additional-background cyborg-additional">
+                <button type='roll' class="sheet-backgroundOutput" name='roll_outAddBackground' value="&{template:info} {{name=@{character_name}}} {{type=Тао Прайм}} {{item=Происхождение}} {{description=Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут.}}">w</button>
                 <span><strong>Тао Прайм:</strong> Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут.</span><br>
             </div>
             
-            
-            <button type='roll' class="sheet-backgroundOutput" name='roll_outBackground' value="&{template:info} {{name=@{character_name}}} {{type=Background}} {{item=Происхождение}} {{description=@{background}}}">w</button>
-            <span class='emptiable' name="attr_background"></span><br>
+            <div class="background">
+                <button type='roll' class="sheet-backgroundOutput" name='roll_outBackground' value="&{template:info} {{name=@{character_name}}} {{type=@{backgroundtype}}} {{item=Происхождение}} {{description=@{backgroundtext}}}">w</button>
+                <strong><span name="attr_backgroundtype"></span>:</strong><span name="attr_backgroundtext"></span>
+            </div>
 
+           
             <input type="checkbox" class="background-show-flag" name="attr_background_show_flag" value="1">
             <div class='background-select'>
                 <span class='emptiable' name="attr_pre_background"></span><br>
@@ -58,15 +61,18 @@
                     <span name="attr_text"></span>
                 </fieldset>
             </div>
+
         </div>
 
         <input type="checkbox" class="is-cyborg-flag" name="attr_isCyborg" value="1">
-        <div class='cyborg-path'>
+        <div class='cyborg-additional cyborg-path'>
             <h3><span>Путь</span></h3>
             <button type='action' name='act_changecyborgPath'>Изменить</button><br>
 
-            <button type='roll' class="cyborgPathOutput" name='roll_outCyborgPath' value="&{template:info} {{name=@{character_name}}} {{type=CyborgPath}} {{item=Путь}} {{description=@{cyborgPath}}}">w</button>
-            <span name="attr_cyborgPath"></span>
+            <div class="cyborgPath">
+                <button type='roll' class="cyborgPathOutput" name='roll_outCyborgPath' value="&{template:info} {{name=@{character_name}}} {{type=@{cyborgPathtype}}} {{item=Путь}} {{description=@{cyborgPathtext}}}">w</button>
+                <strong><span name="attr_cyborgPathtype"></span>:</strong><span name="attr_cyborgPathtext"></span>
+            </div>
 
             <input type="checkbox" class="cyborgPath-show-flag" name="attr_cyborgPath_show_flag" value="1">
             <div class="cyborgPath-select">
@@ -225,7 +231,8 @@
          });
         setAttrs({
             tip_confirm_flag: 0,
-            background: ' ',
+            backgroundtype: ' ',
+            backgroundtext: ' ',
             "background_show_flag": 0,
             "pre_background": ' ',
             isCyborg: 1
@@ -279,30 +286,25 @@
         }
     }
 
-    on('clicked:repeating_background:select', function(eventInfo) {
-        console.log(eventInfo.sourceAttribute)
-        var id = eventInfo.sourceAttribute.match(/repeating_.*_(-.*)_select/)[1];
-        var text = `repeating_background_${id}_text`;
-        var button = `repeating_background_${id}_button`;
-        getAttrs([button, text], (v) => {
+    on('clicked:repeating_background:select', function() {
+        getAttrs(["repeating_background_button", "repeating_background_text"], (v) => {
 			setAttrs({
-                background: `${v[button]}: ${v[text]}`,
+                backgroundtype: v.repeating_background_button,
+                backgroundtext: v.repeating_background_text,
                 background_show_flag: 1
 			});
 		});
     })
 
-    on('clicked:changecyborgPath', function(eventInfo) {
+    on('clicked:changecyborgPath', function() {
         setAttrs({"cyborgPath_show_flag": 0}, 'silent');
     });
 
-    on('clicked:repeating_cyborgPath:select', (eventInfo) => {
-        var id = eventInfo.sourceAttribute.match(/repeating_.*_(-.*)_select/)[1];
-        var text = `repeating_cyborgPath_${id}_text`;
-        var button = `repeating_cyborgPath_${id}_button`;
-        getAttrs([button, text], (v) => {
+    on('clicked:repeating_cyborgPath:select', () => {
+        getAttrs(["repeating_cyborgPath_button", "repeating_cyborgPath_text"], (v) => {
 			setAttrs({
-                cyborgPath: `${v[button]}: ${v[text]}`,
+                cyborgPathtype: v.repeating_cyborgPath_button,
+                cyborgPathtext: v.repeating_cyborgPath_text,
                 cyborgPath_show_flag: 1
 			});
 		});
