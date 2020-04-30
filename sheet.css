@@ -217,8 +217,17 @@ button[type=roll].sheet-cyborgPathOutput {
 button[type=roll].sheet-cyborgPathOutput::before {
     content: '';
 }
+
+.sheet-main-page .sheet-change-button {
+	font-family: "Pictos";
+}
 /* cyborg special end*/
 
+.sheet-look textarea {
+	width: 385px;
+	height: 100px;
+	resize: vertical;
+  }
 
 /*TODO*/
 /* rolltemplate test*/

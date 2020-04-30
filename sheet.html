@@ -38,8 +38,8 @@
         </div>
 
         <div class="background">
-            <h3><span>Происхождение</span></h3>
-            <button type='action' name='act_changebackground'>Изменить</button><br>
+            <h3><span>ПРОИСХОЖДЕНИЕ</span></h3>
+            <button type='action' class='change-button' name='act_changebackground'>p</button><br>
 
             <input type="checkbox" class="is-cyborg-flag" name="attr_isCyborg" value="1">
             <div class="additional-background cyborg-additional">
@@ -66,8 +66,8 @@
 
         <input type="checkbox" class="is-cyborg-flag" name="attr_isCyborg" value="1">
         <div class='cyborg-additional cyborg-path'>
-            <h3><span>Путь</span></h3>
-            <button type='action' name='act_changecyborgPath'>Изменить</button><br>
+            <h3><span>ПУТЬ</span></h3>
+            <button type='action' class='change-button' name='act_changecyborgPath'>p</button><br>
 
             <div class="cyborgPath">
                 <button type='roll' class="cyborgPathOutput" name='roll_outCyborgPath' value="&{template:info} {{name=@{character_name}}} {{type=@{cyborgPathtype}}} {{item=Путь}} {{description=@{cyborgPathtext}}}">w</button>
@@ -85,6 +85,17 @@
         </div>
 
         <div class='stranger-specialty'></div>
+
+        <div class="look">
+            <h3><span>ВНЕШНИЙ ВИД</span></h3>
+            <textarea          
+                name='attr_look'
+                placeholder="Раскосые, «анимешные» или искусственные глаза
+Фиолетовые, наращённые или искусственные волосы
+Кукольное, роботизированное или крепкое телосложение
+Трубки из головы, кибер-конечность или синтокожа"
+           ></textarea>
+        </div>
     </div>
 
     <div class="page sub-page"></div>
