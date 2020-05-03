@@ -45,12 +45,12 @@
 
             <input type="checkbox" class="is-cyborg-flag" name="attr_isCyborg" value="1" checked="false">
             <div class="additional-background cyborg-additional">
-                <button type='roll' class="sheet-backgroundOutput" name='roll_outAddBackground' value="&{template:info} {{name=@{character_name}}} {{type=Тао Прайм}} {{item=Происхождение}} {{description=Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут.}}">w</button>
+                <button type='roll' class="backgroundOutput infoOutput" name='roll_outAddBackground' value="&{template:info} {{name=@{character_name}}} {{type=Тао Прайм}} {{item=Происхождение}} {{description=Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут.}}">w</button>
                 <span><strong>Тао Прайм:</strong> Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут.</span>
             </div>
             
             <div class="background-text">
-                <button type='roll' class="sheet-backgroundOutput" name='roll_outBackground' value="&{template:info} {{name=@{character_name}}} {{type=@{backgroundtype}}} {{item=Происхождение}} {{description=@{backgroundtext}}}">w</button>
+                <button type='roll' class="backgroundOutput infoOutput" name='roll_outBackground' value="&{template:info} {{name=@{character_name}}} {{type=@{backgroundtype}}} {{item=Происхождение}} {{description=@{backgroundtext}}}">w</button>
                 <strong><span name="attr_backgroundtype"></span>:</strong><span name="attr_backgroundtext"></span>
             </div>
 
@@ -75,7 +75,7 @@
 
 
             <div class="cyborgPath">
-                <button type='roll' class="cyborgPathOutput" name='roll_outCyborgPath' value="&{template:info} {{name=@{character_name}}} {{type=@{cyborgPathtype}}} {{item=Путь}} {{description=@{cyborgPathtext}}}">w</button>
+                <button type='roll' class="cyborgPathOutput infoOutput" name='roll_outCyborgPath' value="&{template:info} {{name=@{character_name}}} {{type=@{cyborgPathtype}}} {{item=Путь}} {{description=@{cyborgPathtext}}}">w</button>
                 <strong><span name="attr_cyborgPathtype"></span>:</strong><span name="attr_cyborgPathtext"></span>
             </div>
 

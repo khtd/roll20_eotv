@@ -247,7 +247,7 @@
 	display: inline;
 }
 
-button[type=roll].sheet-cyborgPathOutput {
+button[type=roll].sheet-infoOutput {
     border: none;
     background-color: transparent;
     background-image: none;
@@ -261,7 +261,7 @@ button[type=roll].sheet-cyborgPathOutput {
 	font-family: "Pictos";
 }
 
-button[type=roll].sheet-cyborgPathOutput::before {
+button[type=roll].sheet-infoOutput::before {
     content: '';
 }
 
@@ -290,8 +290,10 @@ button[type=roll].sheet-cyborgPathOutput::before {
 }
 /* main page end */
 
-/*TODO*/
-/* rolltemplate test*/
+/* rolltemplate start*/
+.sheet-rolltemplate-info {
+	background-image: url("https://github.com/khtd/roll20_eotv/blob/master/space.jpg?raw=true");
+}
 .sheet-rolltemplate-info .sheet-templateMain {
 	display:-webkit-box;
 	display:-ms-flexbox;
@@ -301,10 +303,9 @@ button[type=roll].sheet-cyborgPathOutput::before {
 	-ms-flex-wrap: wrap;
 	    flex-wrap: wrap;
 	width: 100%;
-	/*background-color: white;*/
+    background:rgba(0,22,41,.75);
+    border-left: 4px solid rgba(255,255,255,.1);
 	padding: 0px;
-	/*border: 1px solid black;*/
-	/*white-space: nowrap;*/
 }
 
 .sheet-rolltemplate-info .sheet-templateheader,
@@ -312,50 +313,25 @@ button[type=roll].sheet-cyborgPathOutput::before {
     width: 100%;
     margin: 0 0 0 0;
     padding: 2px 2px 2px 2px;
-    background-color: #e8d394;
-    color: #770912;
+    background: rgba(0,0,0,.15);
+    color: rgba(255,255,255,.25);
     text-align: center;
-    border: 1px solid #A48623;
     border-bottom: none;
 }
 
 .sheet-rolltemplate-info .sheet-templatesubheader {
-    color: black;
-    border-left: 1px solid #A48623;
-    border-right: 1px solid #A48623;
-    border-top: none;
+    color: #e8f4ff;
 }
 
 .sheet-rolltemplate-info .sheet-templatedescription {
-    background-color: white;
-    color: black;
+    color: #e8f4ff;;
     font-size: .8em;
     padding: 5px;
     width: 100%;
-    border: 1px solid #A48623;
 }
+/* rolltemplate end*/
 
-button[type=roll].sheet-backgroundOutput {
-    border: none;
-    background-color: transparent;
-    background-image: none;
-    font-size: 1.05em;
-    font-weight: bold;
-    box-shadow: none;
-    text-shadow: none;
-    height: 28px;
-    margin: 0px;
-    padding: 0px;
-}
-
-button[type=roll].sheet-backgroundOutput::before {
-    content: '';
-}
-
-button[type=roll].sheet-backgroundOutput {
-    font-family: "Pictos";
-}
-
+/*TODO*/
 .sheet-background-show-flag {
 	display: none;
 }
