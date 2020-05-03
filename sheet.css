@@ -115,6 +115,95 @@
 	grid-row-start: 1;
 	grid-row-end: 4;
 }
+
+/*exp start */
+.sheet-exp-container {
+	grid-area: exp;
+	display: grid;
+	grid-template-columns: min-content 25px 25px 25px 25px min-content 45px;
+	grid-template-rows: 45px;
+	grid-template-areas: "exp-lbl exp-box1 exp-box2 exp-box3 exp-box4 exp-up-lbl exp-box5";
+	gap: 5px;
+	align-self: end;
+}
+
+.sheet-exp-label {
+    grid-area: exp-lbl;
+	align-self: end;
+	line-height: 1;
+}
+
+.sheet-exp-up-label {
+    grid-area: exp-up-lbl;
+	align-self: end;
+	line-height: 1;
+}
+
+input[type="checkbox"].sheet-exp-box {
+    opacity: 0;
+    cursor: pointer;
+	z-index: 1;
+	align-self: end;
+}
+
+input[type="checkbox"].sheet-exp-box1,
+input[type="checkbox"].sheet-exp-box2,
+input[type="checkbox"].sheet-exp-box3,
+input[type="checkbox"].sheet-exp-box4 {
+	width: 25px;
+    height: 25px;
+}
+
+input[type="checkbox"].sheet-exp-box5 {
+	width: 45px;
+    height: 45px;
+}
+
+input[type="checkbox"].sheet-exp-box + span {
+    align-self: end;
+    border: solid 2px black;
+    display: block;
+    background-color: #b1bfd8;
+    background-image: linear-gradient(315deg, #b1bfd8 0%, #6782b4 74%);
+    border-radius: 0px;
+}
+
+input[type="checkbox"].sheet-exp-box:checked ~ input[type="checkbox"] + span {    
+    background: white;
+}
+
+input.sheet-exp-box0 {
+    z-index: 0;
+    display: none;
+}
+
+.sheet-exp-box1 {
+    grid-area: exp-box1;
+    height: 21px;
+}
+
+.sheet-exp-box2{
+    grid-area: exp-box2;
+    height: 21px;
+}
+
+.sheet-exp-box3 {
+    grid-area: exp-box3;
+    height: 21px;
+}
+
+.sheet-exp-box4 {
+    grid-area: exp-box4;
+    height: 21px;
+}
+
+.sheet-exp-box5 {
+    grid-area: exp-box5;
+    height: 41px;
+}
+/*exp end*/
+
+
 /* header end */
 
 /* navigation start */
