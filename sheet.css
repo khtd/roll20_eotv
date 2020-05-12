@@ -257,19 +257,19 @@ input.sheet-exp-box0 {
 	display: none;
 }
 
-.sheet-tabstoggle[value="main"] ~ .sheet-main-page,
-.sheet-tabstoggle[value="sub"] ~ .sheet-sub-page {
+.sheet-tabstoggle[value="page1"] ~ .sheet-page1,
+.sheet-tabstoggle[value="page2"] ~ .sheet-page2 {
 	display: grid;
 }
 
-.sheet-tabstoggle[value="main"] ~ .sheet-sub-page,
-.sheet-tabstoggle[value="sub"] ~ .sheet-main-page {
+.sheet-tabstoggle[value="page1"] ~ .sheet-page2,
+.sheet-tabstoggle[value="page2"] ~ .sheet-page1 {
 	display: none;
 }
 /*pages common end */
 
-/*main pages start */
-.sheet-main-page {
+/*page1 pages start */
+.sheet-page1 {
 	display: grid;
 	grid-template-columns: 383px 383px;
 	grid-gap: 6px;
@@ -354,7 +354,7 @@ button[type=roll].sheet-infoOutput::before {
     content: '';
 }
 
-.sheet-main-page .sheet-change-button {
+.sheet-page1 .sheet-change-button {
 	font-family: "Pictos";
 }
 /* cyborg special end*/
@@ -377,7 +377,7 @@ button[type=roll].sheet-infoOutput::before {
 	padding: 0px;
 	margin: 0px;
 }
-/* main page end */
+/* page1 page end */
 
 /* rolltemplate start*/
 .sheet-rolltemplate-info {
