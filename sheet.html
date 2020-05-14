@@ -182,7 +182,37 @@
                     <button type="action" class="sbstrcthpbutton" name='act_subtractmaxhp'>_</button>
                 </div>
 
-                <div class='money sub-attribute-container'>
+                <div class='gear sub-attribute-container'>
+                    <span class='gear-lbl'>Обеспечение</span>
+                    <input type="checkbox" class="gear-box gear-box0" name="attr_gear" value="0" checked="checked">
+                    <input type="checkbox" class="gear-box gear-box1" name="attr_gear" value="1"><span class="gear-box1"></span>
+                    <input type="checkbox" class ="gear-max" name="attr_gear_max" value="1">
+                    <input type="checkbox" class="gear-box gear-box2" name="attr_gear" value="2"><span class="gear-box2"></span>
+                    <input type="checkbox" class ="gear-max" name="attr_gear_max" value="2">
+                    <input type="checkbox" class="gear-box gear-box3" name="attr_gear" value="3"><span class="gear-box3"></span>
+                    <input type="checkbox" class ="gear-max" name="attr_gear_max" value="3">
+                    <input type="checkbox" class="gear-box gear-box4" name="attr_gear" value="4"><span class="gear-box4"></span>
+                    <input type="checkbox" class ="gear-max" name="attr_gear_max" value="4">
+                    <input type="checkbox" class="gear-box gear-box5" name="attr_gear" value="5"><span class="gear-box5"></span>
+                    <input type="checkbox" class ="gear-max" name="attr_gear_max" value="5">
+                    <input type="checkbox" class="gear-box gear-box6" name="attr_gear" value="6"><span class="gear-box6"></span>
+                    <input type="checkbox" class ="gear-max" name="attr_gear_max" value="6">
+                    <input type="checkbox" class="gear-box gear-box7" name="attr_gear" value="7"><span class="gear-box7"></span>
+                    <input type="checkbox" class ="gear-max" name="attr_gear_max" value="7">
+                    <input type="checkbox" class="gear-box gear-box8" name="attr_gear" value="8"><span class="gear-box8"></span>
+                    <input type="checkbox" class ="gear-max" name="attr_gear_max" value="8">
+                    <input type="checkbox" class="gear-box gear-box9" name="attr_gear" value="9"><span class="gear-box9"></span>
+                    <input type="checkbox" class ="gear-max" name="attr_gear_max" value="9">
+                    <input type="checkbox" class="gear-box gear-box10" name="attr_gear" value="10"><span class="gear-box10"></span>
+                    <input type="checkbox" class ="gear-max" name="attr_gear_max" value="10">
+                    <button type="action" class="addgearbutton" name='act_addmaxgear'>&</button>
+                    <button type="action" class="sbstrctgearbutton" name='act_subtractmaxgear'>_</button>
+                </div>
+            </div>
+
+            <div class='fortune'>
+                
+                <div class='money fortune-container'>
                     <span class='money-lbl'>Деньги</span>
                     <input type="checkbox" class="money-box money-box0" name="attr_money" value="0" checked="checked">
                     <input type="checkbox" class="money-box money-box1" name="attr_money" value="1"><span class="money-box1"></span>
@@ -197,6 +227,20 @@
                     <input type="checkbox" class ="money-max" name="attr_money_max" value="5">
                     <button type="action" class="addmoneybutton" name='act_addmaxmoney'>&</button>
                     <button type="action" class="sbstrctmoneybutton" name='act_subtractmaxmoney'>_</button>
+                </div>
+
+                <div class='welth fortune-container'>
+                    <span class='welth-lbl'>Достаток</span>
+                    <input type="checkbox" class="welth-box welth-box0" name="attr_welth" value="0" checked="checked">
+                    <input type="checkbox" class ="welth-max" name="attr_welth_max" value="0">
+                    <input type="checkbox" class="welth-box welth-box1" name="attr_welth" value="1"><span class="welth-box1"></span>
+                    <input type="checkbox" class ="welth-max" name="attr_welth_max" value="1">
+                    <input type="checkbox" class="welth-box welth-box2" name="attr_welth" value="2"><span class="welth-box2"></span>
+                    <input type="checkbox" class ="welth-max" name="attr_welth_max" value="2">
+                    <input type="checkbox" class="welth-box welth-box3" name="attr_welth" value="3"><span class="welth-box3"></span>
+                    <input type="checkbox" class ="welth-max" name="attr_welth_max" value="3">
+                    <button type="action" class="addwelthbutton" name='act_addmaxwelth'>&</button>
+                    <button type="action" class="sbstrctwelthbutton" name='act_subtractmaxwelth'>_</button>
                 </div>
             </div>
         </div>
@@ -442,7 +486,7 @@
             let update = {};
             update.atack_max = parseInt(v.atack_max) -1 < 1 ? 1 : parseInt(v.atack_max) - 1
             if(parseInt(v.atack_max) -1 < parseInt(v.atack)) {
-                update.atack = parseInt(v.atack_max) -1
+                update.atack = update.atack_max
             }
             setAttrs(update);
         })
@@ -460,9 +504,9 @@
     on('clicked:subtractmaxarmor', ()=> {
         getAttrs(['armor_max', 'armor'], (v) => {
             let update = {};
-            update.armor_max = parseInt(v.armor_max) -1 < 1 ? 1 : parseInt(v.armor_max) - 1
+            update.armor_max = parseInt(v.armor_max) -1 < 0 ? 0 : parseInt(v.armor_max) - 1
             if(parseInt(v.armor_max) -1 < parseInt(v.armor)) {
-                update.armor = parseInt(v.armor_max) -1
+                update.armor = update.armor_max
             }
             setAttrs(update);
         })
@@ -482,7 +526,7 @@
             let update = {};
             update.hp_max = parseInt(v.hp_max) -1 < 1 ? 1 : parseInt(v.hp_max) - 1
             if(parseInt(v.hp_max) -1 < parseInt(v.hp)) {
-                update.hp = parseInt(v.hp_max) -1
+                update.hp = update.hp_max
             }
             setAttrs(update);
         })
@@ -497,12 +541,32 @@
         })
     })
 
+    on('clicked:subtractmaxgear', ()=> {
+        getAttrs(['gear_max', 'gear'], (v) => {
+            let update = {};
+            update.gear_max = parseInt(v.gear_max) -1 < 1 ? 1 : parseInt(v.gear_max) - 1
+            if(parseInt(v.gear_max) -1 < parseInt(v.gear)) {
+                update.gear = update.gear_max
+            }
+            setAttrs(update);
+        })
+    })
+
+    on('clicked:addmaxgear', ()=> {
+        getAttrs(['gear_max'], (v) => {
+            var update = {
+                gear_max: parseInt(v.gear_max) + 1 > 10 ? 10 : parseInt(v.gear_max) + 1
+            }
+            setAttrs(update);
+        })
+    })
+
     on('clicked:subtractmaxmoney', ()=> {
         getAttrs(['money_max', 'money'], (v) => {
             let update = {};
             update.money_max = parseInt(v.money_max) -1 < 1 ? 1 : parseInt(v.money_max) - 1
             if(parseInt(v.money_max) -1 < parseInt(v.money)) {
-                update.money = parseInt(v.money_max) -1
+                update.money = update.money_max
             }
             setAttrs(update);
         })
@@ -512,6 +576,26 @@
         getAttrs(['money_max'], (v) => {
             var update = {
                 money_max: parseInt(v.money_max) + 1 > 5 ? 5 : parseInt(v.money_max) + 1
+            }
+            setAttrs(update);
+        })
+    })
+
+    on('clicked:subtractmaxwelth', ()=> {
+        getAttrs(['welth_max', 'welth'], (v) => {
+            let update = {};
+            update.welth_max = parseInt(v.welth_max) -1 < 0 ? 0 : parseInt(v.welth_max) - 1
+            if(parseInt(v.welth_max) -1 < parseInt(v.welth)) {
+                update.welth = update.welth_max
+            }
+            setAttrs(update);
+        })
+    })
+
+    on('clicked:addmaxwelth', ()=> {
+        getAttrs(['welth_max'], (v) => {
+            var update = {
+                welth_max: parseInt(v.welth_max) + 1 > 3 ? 3 : parseInt(v.welth_max) + 1
             }
             setAttrs(update);
         })
