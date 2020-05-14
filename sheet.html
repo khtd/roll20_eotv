@@ -181,6 +181,23 @@
                     <button type="action" class="addhpbutton" name='act_addmaxhp'>&</button>
                     <button type="action" class="sbstrcthpbutton" name='act_subtractmaxhp'>_</button>
                 </div>
+
+                <div class='money sub-attribute-container'>
+                    <span class='money-lbl'>Деньги</span>
+                    <input type="checkbox" class="money-box money-box0" name="attr_money" value="0" checked="checked">
+                    <input type="checkbox" class="money-box money-box1" name="attr_money" value="1"><span class="money-box1"></span>
+                    <input type="checkbox" class ="money-max" name="attr_money_max" value="1">
+                    <input type="checkbox" class="money-box money-box2" name="attr_money" value="2"><span class="money-box2"></span>
+                    <input type="checkbox" class ="money-max" name="attr_money_max" value="2">
+                    <input type="checkbox" class="money-box money-box3" name="attr_money" value="3"><span class="money-box3"></span>
+                    <input type="checkbox" class ="money-max" name="attr_money_max" value="3">
+                    <input type="checkbox" class="money-box money-box4" name="attr_money" value="4"><span class="money-box4"></span>
+                    <input type="checkbox" class ="money-max" name="attr_money_max" value="4">
+                    <input type="checkbox" class="money-box money-box5" name="attr_money" value="5"><span class="money-box5"></span>
+                    <input type="checkbox" class ="money-max" name="attr_money_max" value="5">
+                    <button type="action" class="addmoneybutton" name='act_addmaxmoney'>&</button>
+                    <button type="action" class="sbstrctmoneybutton" name='act_subtractmaxmoney'>_</button>
+                </div>
             </div>
         </div>
     </div>
@@ -475,6 +492,26 @@
         getAttrs(['hp_max'], (v) => {
             var update = {
                 hp_max: parseInt(v.hp_max) + 1 > 5 ? 5 : parseInt(v.hp_max) + 1
+            }
+            setAttrs(update);
+        })
+    })
+
+    on('clicked:subtractmaxmoney', ()=> {
+        getAttrs(['money_max', 'money'], (v) => {
+            let update = {};
+            update.money_max = parseInt(v.money_max) -1 < 1 ? 1 : parseInt(v.money_max) - 1
+            if(parseInt(v.money_max) -1 < parseInt(v.money)) {
+                update.money = parseInt(v.money_max) -1
+            }
+            setAttrs(update);
+        })
+    })
+
+    on('clicked:addmaxmoney', ()=> {
+        getAttrs(['money_max'], (v) => {
+            var update = {
+                money_max: parseInt(v.money_max) + 1 > 5 ? 5 : parseInt(v.money_max) + 1
             }
             setAttrs(update);
         })
