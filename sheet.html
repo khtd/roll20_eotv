@@ -164,6 +164,23 @@
                     <button type="action" class="addarmorbutton" name='act_addmaxarmor'>&</button>
                     <button type="action" class="sbstrctarmorbutton" name='act_subtractmaxarmor'>_</button>
                 </div>
+
+                <div class='hp sub-attribute-container'>
+                    <span class='hp-lbl'>Здоровье</span>
+                    <input type="checkbox" class="hp-box hp-box0" name="attr_hp" value="0" checked="checked">
+                    <input type="checkbox" class="hp-box hp-box1" name="attr_hp" value="1"><span class="hp-box1"></span>
+                    <input type="checkbox" class ="hp-max" name="attr_hp_max" value="1">
+                    <input type="checkbox" class="hp-box hp-box2" name="attr_hp" value="2"><span class="hp-box2"></span>
+                    <input type="checkbox" class ="hp-max" name="attr_hp_max" value="2">
+                    <input type="checkbox" class="hp-box hp-box3" name="attr_hp" value="3"><span class="hp-box3"></span>
+                    <input type="checkbox" class ="hp-max" name="attr_hp_max" value="3">
+                    <input type="checkbox" class="hp-box hp-box4" name="attr_hp" value="4"><span class="hp-box4"></span>
+                    <input type="checkbox" class ="hp-max" name="attr_hp_max" value="4">
+                    <input type="checkbox" class="hp-box hp-box5" name="attr_hp" value="5"><span class="hp-box5"></span>
+                    <input type="checkbox" class ="hp-max" name="attr_hp_max" value="5">
+                    <button type="action" class="addhpbutton" name='act_addmaxhp'>&</button>
+                    <button type="action" class="sbstrcthpbutton" name='act_subtractmaxhp'>_</button>
+                </div>
             </div>
         </div>
     </div>
@@ -438,6 +455,26 @@
         getAttrs(['armor_max'], (v) => {
             var update = {
                 armor_max: parseInt(v.armor_max) + 1 > 5 ? 5 : parseInt(v.armor_max) + 1
+            }
+            setAttrs(update);
+        })
+    })
+
+    on('clicked:subtractmaxhp', ()=> {
+        getAttrs(['hp_max', 'hp'], (v) => {
+            let update = {};
+            update.hp_max = parseInt(v.hp_max) -1 < 1 ? 1 : parseInt(v.hp_max) - 1
+            if(parseInt(v.hp_max) -1 < parseInt(v.hp)) {
+                update.hp = parseInt(v.hp_max) -1
+            }
+            setAttrs(update);
+        })
+    })
+
+    on('clicked:addmaxhp', ()=> {
+        getAttrs(['hp_max'], (v) => {
+            var update = {
+                hp_max: parseInt(v.hp_max) + 1 > 5 ? 5 : parseInt(v.hp_max) + 1
             }
             setAttrs(update);
         })

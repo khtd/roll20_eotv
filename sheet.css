@@ -558,7 +558,7 @@ input[type="checkbox"].sheet-atack-max:checked ~ input[type="checkbox"].sheet-at
 
 .sheet-sub-attributes .sheet-armor {
 	grid-row-start: 1;
-	grid-row-end: 1;
+	grid-row-end: 2;
 	display: grid;
 	grid-template-columns: 80px 25px 2px 25px 2px 25px 2px 25px 2px 25px 3px 25px 2px 25px;
 	grid-template-rows: 5px 25px 5px;
@@ -647,6 +647,100 @@ input[type="checkbox"].sheet-armor-max:checked ~ input[type="checkbox"].sheet-ar
 
 .sheet-addarmorbutton {
 	grid-area: addarmorbutton;
+	font-family: "Pictos";
+}
+
+.sheet-sub-attributes .sheet-hp {
+	grid-row-start: 2;
+	grid-row-end: 3;
+	display: grid;
+	grid-template-columns: 80px 25px 2px 25px 2px 25px 2px 25px 2px 25px 3px 25px 2px 25px;
+	grid-template-rows: 5px 25px 5px;
+	grid-template-areas: 
+	". . . . . . . . . . . . . ."
+	"hp-lbl hp-box1 . hp-box2 . hp-box3 . hp-box4 . hp-box5 . addhpbutton . sbstrcthpbutton"
+	". . . . . . . . . . . . . .";
+	align-self: center;
+}
+
+.sheet-hp-lbl {
+    grid-area: hp-lbl;
+	align-self: center;
+	line-height: 1;
+	background-color: black;
+	color: white;
+	padding: 5px;
+	height: 15px;
+}
+
+input[type="checkbox"].sheet-hp-box {
+    opacity: 0;
+    cursor: pointer;
+	z-index: 1;
+	width: 25px;
+	height: 25px;
+	align-self: center;
+}
+
+input[type="checkbox"].sheet-hp-box + span {
+	border: solid 2px black;
+	border-right: solid 4px black;
+    display: block;
+	background-color: #000000;
+    background-image: linear-gradient(315deg, #000000 -50%, #ffffff 194%);
+	border-radius: 0px;
+	align-self: center;
+	height: 21px;
+	width: 21px;
+}
+
+input[type="checkbox"].sheet-hp-box:checked ~ input[type="checkbox"].sheet-hp-box + span {    
+    background: white;
+}
+
+input.sheet-hp-box0 {
+    z-index: 0;
+    display: none;
+}
+
+.sheet-hp-box1 {
+	grid-area: hp-box1;
+}
+.sheet-hp-box2 {
+	grid-area: hp-box2;
+}
+.sheet-hp-box3 {
+	grid-area: hp-box3;
+}
+.sheet-hp-box4 {
+	grid-area: hp-box4;
+}
+.sheet-hp-box5 {
+	grid-area: hp-box5;
+}
+
+input.sheet-hp-max {
+	display: none;
+}
+
+input[type="checkbox"].sheet-hp-max:checked ~ input[type="checkbox"].sheet-hp-box {
+	pointer-events: none;
+}
+
+input[type="checkbox"].sheet-hp-max:checked ~ input[type="checkbox"].sheet-hp-box +span {
+	opacity:0.5;
+	background-color: #b8c6db;
+	background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+	border-color: #b8c6db;
+}
+
+.sheet-sbstrcthpbutton {
+	grid-area: sbstrcthpbutton;
+	font-family: "Pictos";
+}
+
+.sheet-addhpbutton {
+	grid-area: addhpbutton;
 	font-family: "Pictos";
 }
 
