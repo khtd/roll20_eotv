@@ -453,10 +453,6 @@ button[type=roll].sheet-infoOutput::before {
 	row-gap: 3px;
 }
 
-input.sheet-atack-max {
-	display: none;
-}
-
 .sheet-sub-attributes .sheet-atack {
 	grid-row-start: 0;
 	grid-row-end: 1;
@@ -526,6 +522,10 @@ input.sheet-atack-box0 {
 	grid-area: atack-box5;
 }
 
+input.sheet-atack-max {
+	display: none;
+}
+
 input[type="checkbox"].sheet-atack-max:checked ~ input[type="checkbox"].sheet-atack-box {
 	pointer-events: none;
 }
@@ -544,6 +544,100 @@ input[type="checkbox"].sheet-atack-max:checked ~ input[type="checkbox"].sheet-at
 
 .sheet-addatackbutton {
 	grid-area: addatackbutton;
+	font-family: "Pictos";
+}
+
+.sheet-sub-attributes .sheet-armor {
+	grid-row-start: 1;
+	grid-row-end: 1;
+	display: grid;
+	grid-template-columns: 80px 25px 2px 25px 2px 25px 2px 25px 2px 25px 3px 25px 2px 25px;
+	grid-template-rows: 5px 25px 5px;
+	grid-template-areas: 
+	". . . . . . . . . . . . . ."
+	"armor-lbl armor-box1 . armor-box2 . armor-box3 . armor-box4 . armor-box5 . addarmorbutton . sbstrctarmorbutton"
+	". . . . . . . . . . . . . .";
+	align-self: center;
+}
+
+.sheet-armor-lbl {
+    grid-area: armor-lbl;
+	align-self: center;
+	line-height: 1;
+	background-color: black;
+	color: white;
+	padding: 5px;
+	height: 15px;
+}
+
+input[type="checkbox"].sheet-armor-box {
+    opacity: 0;
+    cursor: pointer;
+	z-index: 1;
+	width: 25px;
+	height: 25px;
+	align-self: center;
+}
+
+input[type="checkbox"].sheet-armor-box + span {
+	border: solid 2px black;
+	border-right: solid 4px black;
+    display: block;
+    background-color: #b1bfd8;
+    background-image: linear-gradient(315deg, #b1bfd8 0%, #6782b4 74%);
+	border-radius: 0px;
+	align-self: center;
+	height: 21px;
+	width: 21px;
+}
+
+input[type="checkbox"].sheet-armor-box:checked ~ input[type="checkbox"].sheet-armor-box + span {    
+    background: white;
+}
+
+input.sheet-armor-box0 {
+    z-index: 0;
+    display: none;
+}
+
+.sheet-armor-box1 {
+	grid-area: armor-box1;
+}
+.sheet-armor-box2 {
+	grid-area: armor-box2;
+}
+.sheet-armor-box3 {
+	grid-area: armor-box3;
+}
+.sheet-armor-box4 {
+	grid-area: armor-box4;
+}
+.sheet-armor-box5 {
+	grid-area: armor-box5;
+}
+
+input.sheet-armor-max {
+	display: none;
+}
+
+input[type="checkbox"].sheet-armor-max:checked ~ input[type="checkbox"].sheet-armor-box {
+	pointer-events: none;
+}
+
+input[type="checkbox"].sheet-armor-max:checked ~ input[type="checkbox"].sheet-armor-box +span {
+	opacity:0.5;
+	background-color: #b8c6db;
+	background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+	border-color: #b8c6db;
+}
+
+.sheet-sbstrctarmorbutton {
+	grid-area: sbstrctarmorbutton;
+	font-family: "Pictos";
+}
+
+.sheet-addarmorbutton {
+	grid-area: addarmorbutton;
 	font-family: "Pictos";
 }
 

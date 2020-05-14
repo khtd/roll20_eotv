@@ -148,6 +148,22 @@
                     <button type="action" class="sbstrctatackbutton" name='act_subtractmaxatack'>_</button>
                 </div>
 
+                <div class='armor sub-attribute-container'>
+                    <span class='armor-lbl'>Броня</span>
+                    <input type="checkbox" class="armor-box armor-box0" name="attr_armor" value="0" checked="checked">
+                    <input type="checkbox" class="armor-box armor-box1" name="attr_armor" value="1"><span class="armor-box1"></span>
+                    <input type="checkbox" class ="armor-max" name="attr_armor_max" value="1">
+                    <input type="checkbox" class="armor-box armor-box2" name="attr_armor" value="2"><span class="armor-box2"></span>
+                    <input type="checkbox" class ="armor-max" name="attr_armor_max" value="2">
+                    <input type="checkbox" class="armor-box armor-box3" name="attr_armor" value="3"><span class="armor-box3"></span>
+                    <input type="checkbox" class ="armor-max" name="attr_armor_max" value="3">
+                    <input type="checkbox" class="armor-box armor-box4" name="attr_armor" value="4"><span class="armor-box4"></span>
+                    <input type="checkbox" class ="armor-max" name="attr_armor_max" value="4">
+                    <input type="checkbox" class="armor-box armor-box5" name="attr_armor" value="5"><span class="armor-box5"></span>
+                    <input type="checkbox" class ="armor-max" name="attr_armor_max" value="5">
+                    <button type="action" class="addarmorbutton" name='act_addmaxarmor'>&</button>
+                    <button type="action" class="sbstrctarmorbutton" name='act_subtractmaxarmor'>_</button>
+                </div>
             </div>
         </div>
     </div>
@@ -402,6 +418,26 @@
         getAttrs(['atack_max'], (v) => {
             var update = {
                 atack_max: parseInt(v.atack_max) + 1 > 5 ? 5 : parseInt(v.atack_max) + 1
+            }
+            setAttrs(update);
+        })
+    })
+
+    on('clicked:subtractmaxarmor', ()=> {
+        getAttrs(['armor_max', 'armor'], (v) => {
+            let update = {};
+            update.armor_max = parseInt(v.armor_max) -1 < 1 ? 1 : parseInt(v.armor_max) - 1
+            if(parseInt(v.armor_max) -1 < parseInt(v.armor)) {
+                update.armor = parseInt(v.armor_max) -1
+            }
+            setAttrs(update);
+        })
+    })
+
+    on('clicked:addmaxarmor', ()=> {
+        getAttrs(['armor_max'], (v) => {
+            var update = {
+                armor_max: parseInt(v.armor_max) + 1 > 5 ? 5 : parseInt(v.armor_max) + 1
             }
             setAttrs(update);
         })
