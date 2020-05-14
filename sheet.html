@@ -109,7 +109,48 @@
         </div>
     </div>
 
-    <div class="page page2"></div>
+    <div class="page page2">
+        <div class="attributes">
+            <div class='main-attributes'>
+                <div class='furry attribute-container'>
+                    <span class='attribute-name'>Ярость</span>
+                    <input class='attribute-input' name='attr_furry' type='number'>
+                </div>
+                <div class='controll attribute-container'>
+                    <span class='attribute-name'>Контроль</span>
+                    <input class='attribute-input' name='attr_controll' type='number'>
+                </div>
+                <div class='skill attribute-container'>
+                    <span class='attribute-name'>Навык</span>
+                    <input class='attribute-input' name='attr_skill' type='number'>
+                </div>
+                <div class='reputation attribute-container'>
+                    <span class='attribute-name'>Репутация</span>
+                    <input class='attribute-input' name='attr_reputation' type='number'>
+                </div>
+            </div>
+
+            <div class='sub-attributes'>
+                <div class='atack sub-attribute-container'>
+                    <span class='atack-lbl'>Атака</span>
+                    <input type="checkbox" class="atack-box atack-box0" name="attr_atack" value="0" checked="checked">
+                    <input type="checkbox" class="atack-box atack-box1" name="attr_atack" value="1"><span class="atack-box1"></span>
+                    <input type="checkbox" class ="atack-max" name="attr_atack_max" value="1">
+                    <input type="checkbox" class="atack-box atack-box2" name="attr_atack" value="2"><span class="atack-box2"></span>
+                    <input type="checkbox" class ="atack-max" name="attr_atack_max" value="2">
+                    <input type="checkbox" class="atack-box atack-box3" name="attr_atack" value="3"><span class="atack-box3"></span>
+                    <input type="checkbox" class ="atack-max" name="attr_atack_max" value="3">
+                    <input type="checkbox" class="atack-box atack-box4" name="attr_atack" value="4"><span class="atack-box4"></span>
+                    <input type="checkbox" class ="atack-max" name="attr_atack_max" value="4">
+                    <input type="checkbox" class="atack-box atack-box5" name="attr_atack" value="5"><span class="atack-box5"></span>
+                    <input type="checkbox" class ="atack-max" name="attr_atack_max" value="5">
+                    <button type="action" class="addatackbutton" name='act_addmaxatack'>&</button>
+                    <button type="action" class="sbstrctatackbutton" name='act_subtractmaxatack'>_</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Start welcome -->
@@ -345,5 +386,25 @@
         }
         setAttrs({...update, ...backgroundUpdate});
     };
+
+    on('clicked:subtractmaxatack', ()=> {
+        getAttrs(['atack_max', 'atack'], (v) => {
+            let update = {};
+            update.atack_max = parseInt(v.atack_max) -1 < 1 ? 1 : parseInt(v.atack_max) - 1
+            if(parseInt(v.atack_max) -1 < parseInt(v.atack)) {
+                update.atack = parseInt(v.atack_max) -1
+            }
+            setAttrs(update);
+        })
+    })
+
+    on('clicked:addmaxatack', ()=> {
+        getAttrs(['atack_max'], (v) => {
+            var update = {
+                atack_max: parseInt(v.atack_max) + 1 > 5 ? 5 : parseInt(v.atack_max) + 1
+            }
+            setAttrs(update);
+        })
+    })
 
 </script>
