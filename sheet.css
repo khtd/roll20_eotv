@@ -499,7 +499,7 @@ button[type=roll].sheet-infoOutput::before {
 
 .sheet-look .sheet-look-example {
 	width: 380px;
-	height: 72px;
+	height: 92px;
 	resize: none;
 	padding: 0px;
 	margin: 0px;
@@ -1251,23 +1251,28 @@ span.sheet-emptiable:empty + br {
 .sheet-tip-confirm-flag:not(:checked) ~ .sheet-class-tip {
 	display: block;
 	position: absolute;
-	top: 12.8em;
-	left: 10.7em;
+	top: 7em;
+	left: 7em;
 	background: white;
 	z-index: 99;
-	border: 2px solid black;
-	border-radius: 6px;
+	border: 5px double black;
+	border-radius: 0px;
 	padding: 5px;
 	width: 701px;
-	height: 85px;
+	height: auto;
 }
 
 .sheet-class-tip .sheet-cancel-button {
 	float: right;
+	border: 1.5px solid black;
+    background: white;
 }
 
 .sheet-class-tip button[type=action] {
 	color: black;
+	border: 1.5px solid black;
+    background: white;
+    margin-bottom: 5px;
 }
 
 .sheet-class-tip button[type=action]:hover {
