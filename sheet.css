@@ -311,7 +311,8 @@ input.sheet-exp-box0 {
 
 .sheet-background,
 .sheet-cyborg-path,
-.sheet-stranger-specialization {
+.sheet-stranger-specialization,
+.sheet-juggernaut-handicraft {
 	display: grid;
 	gap: 10px;
     grid-template-rows: 26.4px min-content;
@@ -319,7 +320,8 @@ input.sheet-exp-box0 {
 
 .sheet-background .sheet-title,
 .sheet-cyborg-path .sheet-title,
-.sheet-stranger-specialization .sheet-title {
+.sheet-stranger-specialization .sheet-title,
+.sheet-juggernaut-handicraft .sheet-title  {
 	display: grid;
     grid-template-columns: min-content 26.4px auto;
     gap: 10px;
@@ -419,8 +421,37 @@ button[type=roll].sheet-infoOutput::before {
 .sheet-strangerSpecialization-show-flag:not(:checked) + div {
 	display: inline;
 }
-
 /* stranger special end*/
+
+/* juggernaut special */
+.sheet-is-juggernaut-flag {
+	display: none;
+}
+
+.sheet-is-juggernaut-flag:checked + .sheet-juggernaut-additional {
+	display: none;
+}
+
+.sheet-is-juggernaut-flag:not(:checked) + .sheet-juggernaut-additional {
+	display: inline;
+}
+
+.sheet-is-juggernaut-flag:not(:checked) + .sheet-juggernaut-path {
+	display: grid;
+}
+
+.sheet-juggernautHandicraft-show-flag {
+	display: none;
+}
+
+.sheet-juggernautHandicraft-show-flag:checked + div {
+	display: none;
+}
+
+.sheet-juggernautHandicraft-show-flag:not(:checked) + div {
+	display: inline;
+}
+/* juggernaut special end*/
 
 
 .sheet-look .sheet-look-example {
