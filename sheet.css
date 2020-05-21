@@ -310,19 +310,42 @@ input.sheet-exp-box0 {
 }
 
 .sheet-background,
-.sheet-cyborg-path {
+.sheet-cyborg-path,
+.sheet-stranger-specialization {
 	display: grid;
 	gap: 10px;
     grid-template-rows: 26.4px min-content;
 }
 
 .sheet-background .sheet-title,
-.sheet-cyborg-path .sheet-title {
+.sheet-cyborg-path .sheet-title,
+.sheet-stranger-specialization .sheet-title {
 	display: grid;
     grid-template-columns: min-content 26.4px auto;
     gap: 10px;
 }
 
+button[type=roll].sheet-infoOutput {
+    border: none;
+    background-color: transparent;
+    background-image: none;
+    font-size: 1.05em;
+    font-weight: bold;
+    box-shadow: none;
+    text-shadow: none;
+    height: 28px;
+    margin: 0px;
+	padding: 0px;
+	font-family: "Pictos";
+}
+
+button[type=roll].sheet-infoOutput::before {
+    content: '';
+}
+
+.sheet-page1 .sheet-change-button {
+	font-family: "Pictos";
+}
 
 /* cyborg special */
 .sheet-is-cyborg-flag {
@@ -352,29 +375,53 @@ input.sheet-exp-box0 {
 .sheet-cyborgPath-show-flag:not(:checked) + div {
 	display: inline;
 }
-
-button[type=roll].sheet-infoOutput {
-    border: none;
-    background-color: transparent;
-    background-image: none;
-    font-size: 1.05em;
-    font-weight: bold;
-    box-shadow: none;
-    text-shadow: none;
-    height: 28px;
-    margin: 0px;
-	padding: 0px;
-	font-family: "Pictos";
-}
-
-button[type=roll].sheet-infoOutput::before {
-    content: '';
-}
-
-.sheet-page1 .sheet-change-button {
-	font-family: "Pictos";
-}
 /* cyborg special end*/
+
+/*shadow special start */
+.sheet-is-shadow-flag {
+	display: none;
+}
+
+.sheet-is-shadow-flag:checked + .sheet-shadow-additional {
+	display: none;
+}
+
+.sheet-is-shadow-flag:not(:checked) + .sheet-shadow-additional {
+	display: inline;
+}
+/*shadow special end */
+
+/* stranger special start*/
+.sheet-is-stranger-flag {
+	display: none;
+}
+
+.sheet-is-stranger-flag:checked + .sheet-stranger-additional {
+	display: none;
+}
+
+.sheet-is-stranger-flag:not(:checked) + .sheet-stranger-additional {
+	display: inline;
+}
+
+.sheet-is-stranger-flag:not(:checked) + .sheet-stranger-specialization {
+	display: grid;
+}
+
+.sheet-strangerSpecialization-show-flag {
+	display: none;
+}
+
+.sheet-strangerSpecialization-show-flag:checked + div {
+	display: none;
+}
+
+.sheet-strangerSpecialization-show-flag:not(:checked) + div {
+	display: inline;
+}
+
+/* stranger special end*/
+
 
 .sheet-look .sheet-look-example {
 	width: 380px;
