@@ -312,7 +312,8 @@ input.sheet-exp-box0 {
 .sheet-background,
 .sheet-cyborg-path,
 .sheet-stranger-specialization,
-.sheet-juggernaut-handicraft {
+.sheet-juggernaut-handicraft,
+.sheet-raelith-function {
 	display: grid;
 	gap: 10px;
     grid-template-rows: 26.4px min-content;
@@ -321,7 +322,8 @@ input.sheet-exp-box0 {
 .sheet-background .sheet-title,
 .sheet-cyborg-path .sheet-title,
 .sheet-stranger-specialization .sheet-title,
-.sheet-juggernaut-handicraft .sheet-title  {
+.sheet-juggernaut-handicraft .sheet-title,
+.sheet-raelith-function .sheet-title {
 	display: grid;
     grid-template-columns: min-content 26.4px auto;
     gap: 10px;
@@ -453,6 +455,47 @@ button[type=roll].sheet-infoOutput::before {
 }
 /* juggernaut special end*/
 
+/* raelith special */
+.sheet-is-raelith-flag {
+	display: none;
+}
+
+.sheet-is-raelith-flag:checked + .sheet-raelith-additional {
+	display: none;
+}
+
+.sheet-is-raelith-flag:not(:checked) + .sheet-raelith-additional {
+	display: grid;
+}
+
+.sheet-is-raelith-flag:not(:checked) + .sheet-raelith-path {
+	display: grid;
+}
+
+.sheet-is-raelith-flag:checked + .sheet-background {
+	display: grid;
+}
+
+.sheet-is-raelith-flag:not(:checked) + .sheet-background {
+	display: none;
+}
+
+.sheet-is-raelith-flag:not(:checked) + .sheet-background {
+	display: none;
+}
+
+.sheet-raelithFunction-show-flag {
+	display: none;
+}
+
+.sheet-raelithFunction-show-flag:checked + div {
+	display: none;
+}
+
+.sheet-raelithFunction-show-flag:not(:checked) + div {
+	display: inline;
+}
+/* raelith special end*/
 
 .sheet-look .sheet-look-example {
 	width: 380px;
