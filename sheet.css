@@ -343,12 +343,62 @@ button[type=roll].sheet-infoOutput {
 	font-family: "Pictos";
 }
 
+button[type=action].sheet-setting {
+    border: none;
+    background-color: transparent;
+    background-image: none;
+    font-size: 1.05em;
+    font-weight: bold;
+    box-shadow: none;
+    text-shadow: none;
+    height: 28px;
+    margin: 0px;
+	padding: 0px;
+	font-family: "Pictos";
+}
+
 button[type=roll].sheet-infoOutput::before {
     content: '';
 }
 
 .sheet-page1 .sheet-change-button {
 	font-family: "Pictos";
+}
+
+.repcontainer[data-groupname="repeating_background"] > .repitem > button {
+	min-height: 10px;
+	min-height: 10px;
+}
+
+.repcontainer[data-groupname="repeating_background"] > .repitem > .sheet-show-settings  {
+	display: none;
+}
+
+.repcontainer[data-groupname="repeating_background"] > .repitem > .sheet-show-settings + div {
+	display: none;
+}
+
+.repcontainer[data-groupname="repeating_background"] > .repitem > .sheet-show-settings:not(:checked) + div{
+	display: block;
+}
+
+.repcontainer[data-groupname="repeating_background"] > .repitem > div> textarea {
+	width: 300px;
+	resize: vertical;
+	border: 1px solid;
+	margin: 5px;
+	margin-top: 0px;
+	height: 54px;
+	border-radius: 0px;
+	border-top: 0px;
+}
+
+.repcontainer[data-groupname="repeating_background"] > .repitem > div> input[type='text'] {
+	width: 310px;
+	border: 1px solid;
+	margin: 5px;
+	margin-bottom: 0px;
+	border-radius: 0px;
 }
 
 /*special start*/

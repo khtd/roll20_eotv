@@ -77,8 +77,14 @@
             <div class='background-select'>
                 <span class='emptiable' name="attr_pre_background"></span>
                 <fieldset class='repeating_background'>
+                    <button type="action"  class="setting" name='act_setting'>y</button>
                     <button type="action" name="act_select" value='@{attr_button}'><span name='attr_button'></span></button>
                     <span name="attr_text"></span>
+                    <input type="checkbox" class="show-settings" name="attr_settingsshowflag" value="1" checked='false'>
+                    <div>
+                        <input type='text'name='attr_button' value='Название'>
+                        <textarea name="attr_text">Текст</textarea>
+                    </div>
                 </fieldset>
             </div>
 
@@ -563,7 +569,7 @@
                 },
                 {
                     button: 'Тао Прайм (только для женщин)',
-                    text: 'Крылатый един����рог — синдикат, управляемый исключительно женщинами и обладающий большим флотом. Выбери 1 имплант с третьего листа Киборга. Впиши его в снаряжение.'
+                    text: 'Крылатый единорог — синдикат, управляемый исключительно женщинами и обладающий большим флотом. Выбери 1 имплант с третьего листа Киборга. Впиши его в снаряжение.'
                 }
             ]
         },
@@ -1178,9 +1184,18 @@
     on('clicked:repeating_background:select', function() {
         getAttrs(["repeating_background_button", "repeating_background_text"], (v) => {
 			setAttrs({
-                backgroundtype: v.repeating_background_button,
-                backgroundtext: v.repeating_background_text,
+                backgroundtype: v.repeating_background_button || '',
+                backgroundtext: v.repeating_background_text || '',
                 background_show_flag: 1
+			});
+		});
+    })
+
+    on('clicked:repeating_background:setting', function() {
+        getAttrs(["repeating_background_settingsshowflag"], (v) => {
+            console.log(v.repeating_background_settingsshowflag == 1)
+			setAttrs({
+                repeating_background_settingsshowflag: v.repeating_background_settingsshowflag && v.repeating_background_settingsshowflag == '1' ? 0 : 1
 			});
 		});
     })
