@@ -351,124 +351,60 @@ button[type=roll].sheet-infoOutput::before {
 	font-family: "Pictos";
 }
 
-/* cyborg special */
-.sheet-is-cyborg-flag {
-	display: none;
-}
-
-.sheet-is-cyborg-flag:checked + .sheet-cyborg-additional {
-	display: none;
-}
-
-.sheet-is-cyborg-flag:not(:checked) + .sheet-cyborg-additional {
-	display: inline;
-}
-
-.sheet-is-cyborg-flag:not(:checked) + .sheet-cyborg-path {
-	display: grid;
-}
-
-.sheet-cyborgPath-show-flag {
-	display: none;
-}
-
-.sheet-cyborgPath-show-flag:checked + div {
-	display: none;
-}
-
-.sheet-cyborgPath-show-flag:not(:checked) + div {
-	display: inline;
-}
-/* cyborg special end*/
-
-/*shadow special start */
-.sheet-is-shadow-flag {
-	display: none;
-}
-
-.sheet-is-shadow-flag:checked + .sheet-shadow-additional {
-	display: none;
-}
-
-.sheet-is-shadow-flag:not(:checked) + .sheet-shadow-additional {
-	display: inline;
-}
-/*shadow special end */
-
-/* stranger special start*/
-.sheet-is-stranger-flag {
-	display: none;
-}
-
-.sheet-is-stranger-flag:checked + .sheet-stranger-additional {
-	display: none;
-}
-
-.sheet-is-stranger-flag:not(:checked) + .sheet-stranger-additional {
-	display: inline;
-}
-
-.sheet-is-stranger-flag:not(:checked) + .sheet-stranger-specialization {
-	display: grid;
-}
-
-.sheet-strangerSpecialization-show-flag {
-	display: none;
-}
-
-.sheet-strangerSpecialization-show-flag:checked + div {
-	display: none;
-}
-
-.sheet-strangerSpecialization-show-flag:not(:checked) + div {
-	display: inline;
-}
-/* stranger special end*/
-
-/* juggernaut special */
-.sheet-is-juggernaut-flag {
-	display: none;
-}
-
-.sheet-is-juggernaut-flag:checked + .sheet-juggernaut-additional {
-	display: none;
-}
-
-.sheet-is-juggernaut-flag:not(:checked) + .sheet-juggernaut-additional {
-	display: inline;
-}
-
-.sheet-is-juggernaut-flag:not(:checked) + .sheet-juggernaut-path {
-	display: grid;
-}
-
-.sheet-juggernautHandicraft-show-flag {
-	display: none;
-}
-
-.sheet-juggernautHandicraft-show-flag:checked + div {
-	display: none;
-}
-
-.sheet-juggernautHandicraft-show-flag:not(:checked) + div {
-	display: inline;
-}
-/* juggernaut special end*/
-
-/* raelith special */
+/*special start*/
+.sheet-is-cyborg-flag,
+.sheet-is-shadow-flag,
+.sheet-is-stranger-flag,
+.sheet-is-juggernaut-flag,
 .sheet-is-raelith-flag {
 	display: none;
 }
 
+.sheet-is-cyborg-flag:checked + .sheet-cyborg-additional,
+.sheet-is-shadow-flag:checked + .sheet-shadow-additional,
+.sheet-is-stranger-flag:checked + .sheet-stranger-additional,
+.sheet-is-juggernaut-flag:checked + .sheet-juggernaut-additional,
 .sheet-is-raelith-flag:checked + .sheet-raelith-additional {
 	display: none;
 }
 
-.sheet-is-raelith-flag:not(:checked) + .sheet-raelith-additional {
+.sheet-is-cyborg-flag:not(:checked) + .sheet-cyborg-additional,
+.sheet-is-shadow-flag:not(:checked) + .sheet-shadow-additional,
+.sheet-is-stranger-flag:not(:checked) + .sheet-stranger-additional,
+.sheet-is-juggernaut-flag:not(:checked) + .sheet-juggernaut-additional {
+	display: inline;
+}
+
+.sheet-is-cyborg-flag:not(:checked) + .sheet-cyborg-path,
+.sheet-is-stranger-flag:not(:checked) + .sheet-stranger-specialization,
+.sheet-is-juggernaut-flag:not(:checked) + .sheet-juggernaut-path,
+.sheet-is-raelith-flag:not(:checked) + .sheet-raelith-path {
 	display: grid;
 }
 
-.sheet-is-raelith-flag:not(:checked) + .sheet-raelith-path {
+.sheet-cyborgPath-show-flag,
+.sheet-strangerSpecialization-show-flag,
+.sheet-juggernautHandicraft-show-flag,
+.sheet-raelithFunction-show-flag {
+	display: none;
+}
+
+.sheet-cyborgPath-show-flag:checked + div,
+.sheet-strangerSpecialization-show-flag:checked + div,
+.sheet-juggernautHandicraft-show-flag:checked + div,
+.sheet-raelithFunction-show-flag:checked + div {
+	display: none;
+}
+
+.sheet-cyborgPath-show-flag:not(:checked) + div,
+.sheet-strangerSpecialization-show-flag:not(:checked) + div,
+.sheet-juggernautHandicraft-show-flag:not(:checked) + div,
+.sheet-raelithFunction-show-flag:not(:checked) + div {
+	display: inline;
+}
+
+/* raelith special start*/
+.sheet-is-raelith-flag:not(:checked) + .sheet-raelith-additional {
 	display: grid;
 }
 
@@ -483,19 +419,8 @@ button[type=roll].sheet-infoOutput::before {
 .sheet-is-raelith-flag:not(:checked) + .sheet-background {
 	display: none;
 }
-
-.sheet-raelithFunction-show-flag {
-	display: none;
-}
-
-.sheet-raelithFunction-show-flag:checked + div {
-	display: none;
-}
-
-.sheet-raelithFunction-show-flag:not(:checked) + div {
-	display: inline;
-}
-/* raelith special end*/
+/* raelith special end */
+/* special end*/
 
 .sheet-look .sheet-look-example {
 	width: 380px;
@@ -590,21 +515,63 @@ button[type=roll].sheet-infoOutput::before {
 	row-gap: 3px;
 }
 
+.sheet-sub-attributes .sheet-atack,
+.sheet-sub-attributes .sheet-armor,
+.sheet-sub-attributes .sheet-hp ,
+.sheet-sub-attributes .sheet-gear {
+    display: grid;
+    grid-template-rows: 5px 25px 5px;
+    align-self: center;
+}
+
 .sheet-sub-attributes .sheet-atack {
 	grid-row-start: 1;
-	grid-row-end: 2;
-	display: grid;
-	grid-template-columns: 80px 25px 2px 25px 2px 25px 2px 25px 2px 25px 3px 25px 2px 25px;
-	grid-template-rows: 5px 25px 5px;
+    grid-row-end: 2;
+    grid-template-columns: 80px 25px 2px 25px 2px 25px 2px 25px 2px 25px 3px 25px 2px 25px;
 	grid-template-areas: 
 	". . . . . . . . . . . . . ."
 	"atack-lbl atack-box1 . atack-box2 . atack-box3 . atack-box4 . atack-box5 . addatackbutton . sbstrctatackbutton"
 	". . . . . . . . . . . . . .";
-	align-self: center;
 }
 
-.sheet-atack-lbl {
-    grid-area: atack-lbl;
+.sheet-sub-attributes .sheet-armor {
+	grid-row-start: 2;
+    grid-row-end: 3;
+    grid-template-columns: 80px 25px 2px 25px 2px 25px 2px 25px 2px 25px 3px 25px 2px 25px;
+	grid-template-areas: 
+	". . . . . . . . . . . . . ."
+	"armor-lbl armor-box1 . armor-box2 . armor-box3 . armor-box4 . armor-box5 . addarmorbutton . sbstrctarmorbutton"
+	". . . . . . . . . . . . . .";
+}
+
+.sheet-sub-attributes .sheet-hp {
+	grid-row-start: 3;
+    grid-row-end: 4;
+    grid-template-columns: 80px 25px 2px 25px 2px 25px 2px 25px 2px 25px 3px 25px 2px 25px;
+	grid-template-areas: 
+	". . . . . . . . . . . . . ."
+	"hp-lbl hp-box1 . hp-box2 . hp-box3 . hp-box4 . hp-box5 . addhpbutton . sbstrcthpbutton"
+	". . . . . . . . . . . . . .";
+}
+
+.sheet-sub-attributes .sheet-gear {
+	grid-row-start: 4;
+	grid-row-end: 5;
+	grid-template-columns: 95px 25px 2px 25px 2px 25px 2px 25px 2px 25px 3px 25px;
+	grid-template-rows: 5px 12.5px 12.5px 12.5px 12.5px 5px;
+	grid-template-areas: 
+	". . . . . . . . . . . ."
+	". gear-box1 . gear-box2 . gear-box3 . gear-box4 . gear-box5 . addgearbutton"
+	"gear-lbl gear-box1 . gear-box2 . gear-box3 . gear-box4 . gear-box5 . addgearbutton"
+	"gear-lbl gear-box6 . gear-box7 . gear-box8 . gear-box9 . gear-box10 . sbstrctgearbutton"
+	". gear-box6 . gear-box7 . gear-box8 . gear-box9 . gear-box10 . sbstrctgearbutton"
+	". . . . . . . . . . . .";
+}
+
+.sheet-atack-lbl,
+.sheet-armor-lbl,
+.sheet-hp-lbl,
+.sheet-gear-lbl {
 	align-self: center;
 	line-height: 1;
 	background-color: black;
@@ -613,7 +580,26 @@ button[type=roll].sheet-infoOutput::before {
 	height: 15px;
 }
 
-input[type="checkbox"].sheet-atack-box {
+.sheet-atack-lbl {
+    grid-area: atack-lbl;
+}
+
+.sheet-armor-lbl {
+    grid-area: armor-lbl;
+}
+
+.sheet-hp-lbl {
+    grid-area: hp-lbl;
+}
+
+.sheet-gear-lbl {
+    grid-area: gear-lbl;
+}
+
+input[type="checkbox"].sheet-atack-box,
+input[type="checkbox"].sheet-armor-box, 
+input[type="checkbox"].sheet-hp-box,
+input[type="checkbox"].sheet-gear-box {
     opacity: 0;
     cursor: pointer;
 	z-index: 1;
@@ -622,7 +608,10 @@ input[type="checkbox"].sheet-atack-box {
 	align-self: center;
 }
 
-input[type="checkbox"].sheet-atack-box + span {
+input[type="checkbox"].sheet-atack-box + span,
+input[type="checkbox"].sheet-armor-box + span,
+input[type="checkbox"].sheet-hp-box + span,
+input[type="checkbox"].sheet-gear-box + span {
 	border: solid 2px black;
 	border-right: solid 4px black;
     display: block;
@@ -634,11 +623,17 @@ input[type="checkbox"].sheet-atack-box + span {
 	width: 21px;
 }
 
-input[type="checkbox"].sheet-atack-box:checked ~ input[type="checkbox"].sheet-atack-box + span {    
+input[type="checkbox"].sheet-atack-box:checked ~ input[type="checkbox"].sheet-atack-box + span,
+input[type="checkbox"].sheet-armor-box:checked ~ input[type="checkbox"].sheet-armor-box + span,
+input[type="checkbox"].sheet-hp-box:checked ~ input[type="checkbox"].sheet-hp-box + span,
+input[type="checkbox"].sheet-gear-box:checked ~ input[type="checkbox"].sheet-gear-box + span {    
     background: white;
 }
 
-input.sheet-atack-box0 {
+input.sheet-atack-box0,
+input.sheet-armor-box0,
+input.sheet-hp-box0,
+input.sheet-gear-box0 {
     z-index: 0;
     display: none;
 }
@@ -659,84 +654,6 @@ input.sheet-atack-box0 {
 	grid-area: atack-box5;
 }
 
-input.sheet-atack-max {
-	display: none;
-}
-
-input[type="checkbox"].sheet-atack-max:checked ~ input[type="checkbox"].sheet-atack-box {
-	pointer-events: none;
-}
-
-input[type="checkbox"].sheet-atack-max:checked ~ input[type="checkbox"].sheet-atack-box +span {
-	opacity:0.5;
-	background-color: #b8c6db;
-	background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
-	border-color: #b8c6db;
-}
-
-.sheet-sbstrctatackbutton {
-	grid-area: sbstrctatackbutton;
-	font-family: "Pictos";
-}
-
-.sheet-addatackbutton {
-	grid-area: addatackbutton;
-	font-family: "Pictos";
-}
-
-.sheet-sub-attributes .sheet-armor {
-	grid-row-start: 2;
-	grid-row-end: 3;
-	display: grid;
-	grid-template-columns: 80px 25px 2px 25px 2px 25px 2px 25px 2px 25px 3px 25px 2px 25px;
-	grid-template-rows: 5px 25px 5px;
-	grid-template-areas: 
-	". . . . . . . . . . . . . ."
-	"armor-lbl armor-box1 . armor-box2 . armor-box3 . armor-box4 . armor-box5 . addarmorbutton . sbstrctarmorbutton"
-	". . . . . . . . . . . . . .";
-	align-self: center;
-}
-
-.sheet-armor-lbl {
-    grid-area: armor-lbl;
-	align-self: center;
-	line-height: 1;
-	background-color: black;
-	color: white;
-	padding: 5px;
-	height: 15px;
-}
-
-input[type="checkbox"].sheet-armor-box {
-    opacity: 0;
-    cursor: pointer;
-	z-index: 1;
-	width: 25px;
-	height: 25px;
-	align-self: center;
-}
-
-input[type="checkbox"].sheet-armor-box + span {
-	border: solid 2px black;
-	border-right: solid 4px black;
-    display: block;
-	background-color: #000000;
-    background-image: linear-gradient(315deg, #000000 -50%, #ffffff 194%);
-	border-radius: 0px;
-	align-self: center;
-	height: 21px;
-	width: 21px;
-}
-
-input[type="checkbox"].sheet-armor-box:checked ~ input[type="checkbox"].sheet-armor-box + span {    
-    background: white;
-}
-
-input.sheet-armor-box0 {
-    z-index: 0;
-    display: none;
-}
-
 .sheet-armor-box1 {
 	grid-area: armor-box1;
 }
@@ -753,84 +670,6 @@ input.sheet-armor-box0 {
 	grid-area: armor-box5;
 }
 
-input.sheet-armor-max {
-	display: none;
-}
-
-input[type="checkbox"].sheet-armor-max:checked ~ input[type="checkbox"].sheet-armor-box {
-	pointer-events: none;
-}
-
-input[type="checkbox"].sheet-armor-max:checked ~ input[type="checkbox"].sheet-armor-box +span {
-	opacity:0.5;
-	background-color: #b8c6db;
-	background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
-	border-color: #b8c6db;
-}
-
-.sheet-sbstrctarmorbutton {
-	grid-area: sbstrctarmorbutton;
-	font-family: "Pictos";
-}
-
-.sheet-addarmorbutton {
-	grid-area: addarmorbutton;
-	font-family: "Pictos";
-}
-
-.sheet-sub-attributes .sheet-hp {
-	grid-row-start: 3;
-	grid-row-end: 4;
-	display: grid;
-	grid-template-columns: 80px 25px 2px 25px 2px 25px 2px 25px 2px 25px 3px 25px 2px 25px;
-	grid-template-rows: 5px 25px 5px;
-	grid-template-areas: 
-	". . . . . . . . . . . . . ."
-	"hp-lbl hp-box1 . hp-box2 . hp-box3 . hp-box4 . hp-box5 . addhpbutton . sbstrcthpbutton"
-	". . . . . . . . . . . . . .";
-	align-self: center;
-}
-
-.sheet-hp-lbl {
-    grid-area: hp-lbl;
-	align-self: center;
-	line-height: 1;
-	background-color: black;
-	color: white;
-	padding: 5px;
-	height: 15px;
-}
-
-input[type="checkbox"].sheet-hp-box {
-    opacity: 0;
-    cursor: pointer;
-	z-index: 1;
-	width: 25px;
-	height: 25px;
-	align-self: center;
-}
-
-input[type="checkbox"].sheet-hp-box + span {
-	border: solid 2px black;
-	border-right: solid 4px black;
-    display: block;
-	background-color: #000000;
-    background-image: linear-gradient(315deg, #000000 -50%, #ffffff 194%);
-	border-radius: 0px;
-	align-self: center;
-	height: 21px;
-	width: 21px;
-}
-
-input[type="checkbox"].sheet-hp-box:checked ~ input[type="checkbox"].sheet-hp-box + span {    
-    background: white;
-}
-
-input.sheet-hp-box0 {
-    z-index: 0;
-    display: none;
-}
-
 .sheet-hp-box1 {
 	grid-area: hp-box1;
 }
@@ -845,87 +684,6 @@ input.sheet-hp-box0 {
 }
 .sheet-hp-box5 {
 	grid-area: hp-box5;
-}
-
-input.sheet-hp-max {
-	display: none;
-}
-
-input[type="checkbox"].sheet-hp-max:checked ~ input[type="checkbox"].sheet-hp-box {
-	pointer-events: none;
-}
-
-input[type="checkbox"].sheet-hp-max:checked ~ input[type="checkbox"].sheet-hp-box +span {
-	opacity:0.5;
-	background-color: #b8c6db;
-	background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
-	border-color: #b8c6db;
-}
-
-.sheet-sbstrcthpbutton {
-	grid-area: sbstrcthpbutton;
-	font-family: "Pictos";
-}
-
-.sheet-addhpbutton {
-	grid-area: addhpbutton;
-	font-family: "Pictos";
-}
-
-.sheet-sub-attributes .sheet-gear {
-	grid-row-start: 4;
-	grid-row-end: 5;
-	display: grid;
-	grid-template-columns: 95px 25px 2px 25px 2px 25px 2px 25px 2px 25px 3px 25px;
-	grid-template-rows: 5px 12.5px 12.5px 12.5px 12.5px 5px;
-	grid-template-areas: 
-	". . . . . . . . . . . ."
-	". gear-box1 . gear-box2 . gear-box3 . gear-box4 . gear-box5 . addgearbutton"
-	"gear-lbl gear-box1 . gear-box2 . gear-box3 . gear-box4 . gear-box5 . addgearbutton"
-	"gear-lbl gear-box6 . gear-box7 . gear-box8 . gear-box9 . gear-box10 . sbstrctgearbutton"
-	". gear-box6 . gear-box7 . gear-box8 . gear-box9 . gear-box10 . sbstrctgearbutton"
-	". . . . . . . . . . . .";
-	align-self: center;
-}
-
-.sheet-gear-lbl {
-    grid-area: gear-lbl;
-	align-self: center;
-	line-height: 1;
-	background-color: black;
-	color: white;
-	padding: 5px;
-	height: 15px;
-}
-
-input[type="checkbox"].sheet-gear-box {
-    opacity: 0;
-    cursor: pointer;
-	z-index: 1;
-	width: 25px;
-	height: 25px;
-	align-self: center;
-}
-
-input[type="checkbox"].sheet-gear-box + span {
-	border: solid 2px black;
-	border-right: solid 4px black;
-    display: block;
-	background-color: #000000;
-    background-image: linear-gradient(315deg, #000000 -50%, #ffffff 194%);
-	border-radius: 0px;
-	align-self: center;
-	height: 21px;
-	width: 21px;
-}
-
-input[type="checkbox"].sheet-gear-box:checked ~ input[type="checkbox"].sheet-gear-box + span {    
-    background: white;
-}
-
-input.sheet-gear-box0 {
-    z-index: 0;
-    display: none;
 }
 
 .sheet-gear-box1 {
@@ -959,14 +717,23 @@ input.sheet-gear-box0 {
 	grid-area: gear-box10;
 }
 
+input.sheet-atack-max,
+input.sheet-armor-max,
+input.sheet-hp-max,
 input.sheet-gear-max {
 	display: none;
 }
 
-input[type="checkbox"].sheet-gear-max:checked ~ input[type="checkbox"].sheet-gear-box {
+input[type="checkbox"].sheet-atack-max:checked ~ input[type="checkbox"].sheet-atack-box,
+input[type="checkbox"].sheet-armor-max:checked ~ input[type="checkbox"].sheet-armor-box,
+input[type="checkbox"].sheet-hp-max:checked ~ input[type="checkbox"].sheet-hp-box,
+input[type="checkbox"].sheet-gear-max:checked ~ input[type="checkbox"].sheet-gear-box  {
 	pointer-events: none;
 }
 
+input[type="checkbox"].sheet-atack-max:checked ~ input[type="checkbox"].sheet-atack-box +span,
+input[type="checkbox"].sheet-armor-max:checked ~ input[type="checkbox"].sheet-armor-box +span,
+input[type="checkbox"].sheet-hp-max:checked ~ input[type="checkbox"].sheet-hp-box +span, 
 input[type="checkbox"].sheet-gear-max:checked ~ input[type="checkbox"].sheet-gear-box +span {
 	opacity:0.5;
 	background-color: #b8c6db;
@@ -974,16 +741,40 @@ input[type="checkbox"].sheet-gear-max:checked ~ input[type="checkbox"].sheet-gea
 	border-color: #b8c6db;
 }
 
+.sheet-sbstrctatackbutton, .sheet-addatackbutton,
+.sheet-sbstrctarmorbutton, .sheet-addarmorbutton,
+.sheet-sbstrcthpbutton, .sheet-addhpbutton,
+.sheet-sbstrctgearbutton, .sheet-addgearbutton {
+    font-family: "Pictos";
+}
+
+.sheet-sbstrctatackbutton {
+	grid-area: sbstrctatackbutton;
+}
+.sheet-addatackbutton {
+	grid-area: addatackbutton;
+}
+
+.sheet-sbstrctarmorbutton {
+	grid-area: sbstrctarmorbutton;
+}
+.sheet-addarmorbutton {
+	grid-area: addarmorbutton;
+}
+
+.sheet-sbstrcthpbutton {
+	grid-area: sbstrcthpbutton;
+}
+.sheet-addhpbutton {
+	grid-area: addhpbutton;
+}
+
 .sheet-sbstrctgearbutton {
 	grid-area: sbstrctgearbutton;
-	font-family: "Pictos";
 }
-
 .sheet-addgearbutton {
 	grid-area: addgearbutton;
-	font-family: "Pictos";
 }
-
 /*page2 sub-attr end*/
 
 /*page2 fortune start */
@@ -994,21 +785,38 @@ input[type="checkbox"].sheet-gear-max:checked ~ input[type="checkbox"].sheet-gea
 	gap: 5px;
 	grid-template-rows: 35px;
 }
+
+.sheet-fortune .sheet-money,
+.sheet-fortune .sheet-welth {
+	grid-column-end: 3;
+    display: grid;
+    align-self: center;
+}
+
 .sheet-fortune .sheet-money {
 	grid-row-start: 1;
 	grid-row-end: 2;
-	grid-column-end: 3;
-	display: grid;
 	grid-template-columns: 60px 25px 2px 25px 2px 25px 2px 25px 2px 25px 3px 25px 2px 25px;
 	grid-template-rows: 5px 25px 5px;
 	grid-template-areas: 
 	". . . . . . . . . . . . . ."
 	"money-lbl money-box1 . money-box2 . money-box3 . money-box4 . money-box5 . addmoneybutton . sbstrctmoneybutton"
 	". . . . . . . . . . . . . .";
-	align-self: center;
 }
 
-.sheet-money-lbl {
+.sheet-fortune .sheet-welth {
+	grid-row-start: 2;
+	grid-row-end: 3;
+	grid-template-columns: 87px 25px 2px 25px 2px 25px 3px 25px 2px 25px 27px;
+	grid-template-rows: 5px 25px 5px;
+	grid-template-areas: 
+	". . . . . . . . . ."
+	"welth-lbl welth-box1 . welth-box2 . welth-box3 . addwelthbutton . sbstrctwelthbutton"
+	". . . . . . . . . .";
+}
+
+.sheet-money-lbl,
+.sheet-welth-lbl {
     grid-area: money-lbl;
 	align-self: center;
 	line-height: 1;
@@ -1018,7 +826,16 @@ input[type="checkbox"].sheet-gear-max:checked ~ input[type="checkbox"].sheet-gea
 	height: 15px;
 }
 
-input[type="checkbox"].sheet-money-box {
+.sheet-money-lbl {
+    grid-area: money-lbl;
+}
+
+.sheet-welth-lbl {
+    grid-area: welth-lbl;
+}
+
+input[type="checkbox"].sheet-money-box,
+input[type="checkbox"].sheet-welth-box  {
     opacity: 0;
     cursor: pointer;
 	z-index: 1;
@@ -1027,7 +844,8 @@ input[type="checkbox"].sheet-money-box {
 	align-self: center;
 }
 
-input[type="checkbox"].sheet-money-box + span {
+input[type="checkbox"].sheet-money-box + span,
+input[type="checkbox"].sheet-welth-box + span {
 	border: solid 2px black;
 	border-right: solid 4px black;
     display: block;
@@ -1039,11 +857,13 @@ input[type="checkbox"].sheet-money-box + span {
 	width: 21px;
 }
 
-input[type="checkbox"].sheet-money-box:checked ~ input[type="checkbox"].sheet-money-box + span {    
+input[type="checkbox"].sheet-money-box:checked ~ input[type="checkbox"].sheet-money-box + span,
+input[type="checkbox"].sheet-welth-box:checked ~ input[type="checkbox"].sheet-welth-box + span {    
     background: white;
 }
 
-input.sheet-money-box0 {
+input.sheet-money-box0,
+input.sheet-welth-box0 {
     z-index: 0;
     display: none;
 }
@@ -1064,85 +884,6 @@ input.sheet-money-box0 {
 	grid-area: money-box5;
 }
 
-input.sheet-money-max {
-	display: none;
-}
-
-input[type="checkbox"].sheet-money-max:checked ~ input[type="checkbox"].sheet-money-box {
-	pointer-events: none;
-}
-
-input[type="checkbox"].sheet-money-max:checked ~ input[type="checkbox"].sheet-money-box +span {
-	opacity:0.5;
-	background-color: #b8c6db;
-	background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
-	border-color: #b8c6db;
-}
-
-.sheet-sbstrctmoneybutton {
-	grid-area: sbstrctmoneybutton;
-	font-family: "Pictos";
-}
-
-.sheet-addmoneybutton {
-	grid-area: addmoneybutton;
-	font-family: "Pictos";
-}
-
-.sheet-fortune .sheet-welth {
-	grid-row-start: 2;
-	grid-row-end: 3;
-	grid-column-end: 3;
-	display: grid;
-	grid-template-columns: 87px 25px 2px 25px 2px 25px 3px 25px 2px 25px 27px;
-	grid-template-rows: 5px 25px 5px;
-	grid-template-areas: 
-	". . . . . . . . . ."
-	"welth-lbl welth-box1 . welth-box2 . welth-box3 . addwelthbutton . sbstrctwelthbutton"
-	". . . . . . . . . .";
-	align-self: center;
-}
-
-.sheet-welth-lbl {
-    grid-area: welth-lbl;
-	align-self: center;
-	line-height: 1;
-	background-color: black;
-	color: white;
-	padding: 5px;
-	height: 15px;
-}
-
-input[type="checkbox"].sheet-welth-box {
-    opacity: 0;
-    cursor: pointer;
-	z-index: 1;
-	width: 25px;
-	height: 25px;
-	align-self: center;
-}
-
-input[type="checkbox"].sheet-welth-box + span {
-	border: solid 2px black;
-	border-right: solid 4px black;
-    display: block;
-	background-color: #000000;
-    background-image: linear-gradient(315deg, #000000 -50%, #ffffff 194%);
-	border-radius: 0px;
-	align-self: center;
-	height: 21px;
-	width: 21px;
-}
-
-input[type="checkbox"].sheet-welth-box:checked ~ input[type="checkbox"].sheet-welth-box + span {    
-    background: white;
-}
-
-input.sheet-welth-box0 {
-    z-index: 0;
-    display: none;
-}
-
 .sheet-welth-box1 {
 	grid-area: welth-box1;
 }
@@ -1153,14 +894,17 @@ input.sheet-welth-box0 {
 	grid-area: welth-box3;
 }
 
+input.sheet-money-max,
 input.sheet-welth-max {
 	display: none;
 }
 
+input[type="checkbox"].sheet-money-max:checked ~ input[type="checkbox"].sheet-money-box,
 input[type="checkbox"].sheet-welth-max:checked ~ input[type="checkbox"].sheet-welth-box {
 	pointer-events: none;
 }
 
+input[type="checkbox"].sheet-money-max:checked ~ input[type="checkbox"].sheet-money-box +span,
 input[type="checkbox"].sheet-welth-max:checked ~ input[type="checkbox"].sheet-welth-box +span {
 	opacity:0.5;
 	background-color: #b8c6db;
@@ -1168,14 +912,24 @@ input[type="checkbox"].sheet-welth-max:checked ~ input[type="checkbox"].sheet-we
 	border-color: #b8c6db;
 }
 
-.sheet-sbstrctwelthbutton {
-	grid-area: sbstrctwelthbutton;
+.sheet-sbstrctmoneybutton, .sheet-addmoneybutton,
+.sheet-sbstrctwelthbutton, .sheet-addwelthbutton {
 	font-family: "Pictos";
 }
 
+.sheet-sbstrctmoneybutton {
+	grid-area: sbstrctmoneybutton;
+}
+.sheet-addmoneybutton {
+	grid-area: addmoneybutton;
+}
+
+
+.sheet-sbstrctwelthbutton {
+	grid-area: sbstrctwelthbutton;
+}
 .sheet-addwelthbutton {
 	grid-area: addwelthbutton;
-	font-family: "Pictos";
 }
 /* page2 fortune end*/
 
