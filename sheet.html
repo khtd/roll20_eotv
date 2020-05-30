@@ -107,8 +107,14 @@
             <div class="cyborgPath-select">
                 <span>Выбери мотив, который вынуждает тебя путешествовать:</span>
                 <fieldset class='repeating_cyborgPath'>
+                    <button type="action"  class="setting" name='act_setting'>y</button>
                     <button type="action" name="act_select" value='@{attr_button}'><span name='attr_button'></span></button>
                     <span name="attr_text"></span>
+                    <input type="checkbox" class="show-settings" name="attr_settingsshowflag" value="1" checked='false'>
+                    <div>
+                        <input type='text'name='attr_button' value='Название'>
+                        <textarea name="attr_text">Текст</textarea>
+                    </div>
                 </fieldset>
             </div>
         </div>
@@ -129,8 +135,14 @@
             <div class="strangerSpecialization-select">
                 <span>Это то, чем ты занимаешься в иерархии странников. Выбери 1:</span>
                 <fieldset class='repeating_strangerSpecialization'>
+                    <button type="action"  class="setting" name='act_setting'>y</button>
                     <button type="action" name="act_select" value='@{attr_button}'><span name='attr_button'></span></button>
                     <span name="attr_text"></span>
+                    <input type="checkbox" class="show-settings" name="attr_settingsshowflag" value="1" checked='false'>
+                    <div>
+                        <input type='text'name='attr_button' value='Название'>
+                        <textarea name="attr_text">Текст</textarea>
+                    </div>
                 </fieldset>
             </div>
         </div>
@@ -151,8 +163,14 @@
             <div class="juggernautHandicraft-select">
                 <span>Какова была твоя роль в племени? Ты можешь брать Усиления только своего Ремесла. Выбери 1:</span>
                 <fieldset class='repeating_juggernautHandicraft'>
+                    <button type="action"  class="setting" name='act_setting'>y</button>
                     <button type="action" name="act_select" value='@{attr_button}'><span name='attr_button'></span></button>
                     <span name="attr_text"></span>
+                    <input type="checkbox" class="show-settings" name="attr_settingsshowflag" value="1" checked='false'>
+                    <div>
+                        <input type='text'name='attr_button' value='Название'>
+                        <textarea name="attr_text">Текст</textarea>
+                    </div>
                 </fieldset>
             </div>
         </div>
@@ -177,8 +195,14 @@
             <div class="raelithFunction-select">
                 <span>Выбери один вариант:</span>
                 <fieldset class='repeating_raelithFunction'>
+                    <button type="action"  class="setting" name='act_setting'>y</button>
                     <button type="action" name="act_select" value='@{attr_button}'><span name='attr_button'></span></button>
                     <span name="attr_text"></span>
+                    <input type="checkbox" class="show-settings" name="attr_settingsshowflag" value="1" checked='false'>
+                    <div>
+                        <input type='text'name='attr_button' value='Название'>
+                        <textarea name="attr_text">Текст</textarea>
+                    </div>
                 </fieldset>
             </div>
         </div>
@@ -1214,6 +1238,15 @@
 		});
     });
 
+    on('clicked:repeating_cyborgPath:setting', function() {
+        getAttrs(["repeating_cyborgPath_settingsshowflag"], (v) => {
+            console.log(v.repeating_cyborgPath_settingsshowflag == 1)
+            setAttrs({
+                repeating_cyborgPath_settingsshowflag: v.repeating_cyborgPath_settingsshowflag && v.repeating_cyborgPath_settingsshowflag == '1' ? 0 : 1
+            });
+        });
+    })
+
     on('clicked:changestrangerSpecialization', function() {
         setAttrs({"strangerSpecialization_show_flag": 0}, 'silent');
     });
@@ -1227,6 +1260,15 @@
 			});
 		});
     });
+
+    on('clicked:repeating_strangerSpecialization:setting', function() {
+        getAttrs(["repeating_strangerSpecialization_settingsshowflag"], (v) => {
+            console.log(v.repeating_strangerSpecialization_settingsshowflag == 1)
+            setAttrs({
+                repeating_strangerSpecialization_settingsshowflag: v.repeating_strangerSpecialization_settingsshowflag && v.repeating_strangerSpecialization_settingsshowflag == '1' ? 0 : 1
+            });
+        });
+    })
 
     on('clicked:changejuggernautHandicraft', function() {
         setAttrs({"juggernautHandicraft_show_flag": 0}, 'silent');
@@ -1242,6 +1284,15 @@
 		});
     });
 
+    on('clicked:repeating_juggernautHandicraft:setting', function() {
+        getAttrs(["repeating_juggernautHandicraft_settingsshowflag"], (v) => {
+            console.log(v.repeating_juggernautHandicraft_settingsshowflag == 1)
+            setAttrs({
+                repeating_juggernautHandicraft_settingsshowflag: v.repeating_juggernautHandicraft_settingsshowflag && v.repeating_juggernautHandicraft_settingsshowflag == '1' ? 0 : 1
+            });
+        });
+    })
+
     on('clicked:changeraelithFunction', function() {
         setAttrs({"raelithFunction_show_flag": 0}, 'silent');
     });
@@ -1255,6 +1306,15 @@
 			});
 		});
     });
+
+    on('clicked:repeating_raelithFunction:setting', function() {
+        getAttrs(["repeating_raelithFunction_settingsshowflag"], (v) => {
+            console.log(v.repeating_raelithFunction_settingsshowflag == 1)
+            setAttrs({
+                repeating_raelithFunction_settingsshowflag: v.repeating_raelithFunction_settingsshowflag && v.repeating_raelithFunction_settingsshowflag == '1' ? 0 : 1
+            });
+        });
+    })
 
     var setupClass = function(classname) {
         var update = {};

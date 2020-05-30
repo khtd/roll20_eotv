@@ -365,24 +365,44 @@ button[type=roll].sheet-infoOutput::before {
 	font-family: "Pictos";
 }
 
-.repcontainer[data-groupname="repeating_background"] > .repitem > button {
+.repcontainer[data-groupname="repeating_background"] > .repitem > button,
+.repcontainer[data-groupname="repeating_raelithfunction"] > .repitem > button,
+.repcontainer[data-groupname="repeating_juggernauthandicraft"] > .repitem > button,
+.repcontainer[data-groupname="repeating_strangerspecialization"] > .repitem > button,
+.repcontainer[data-groupname="repeating_cyborgpath"] > .repitem > button {
 	min-height: 10px;
 	min-height: 10px;
 }
 
-.repcontainer[data-groupname="repeating_background"] > .repitem > .sheet-show-settings  {
+.repcontainer[data-groupname="repeating_background"] > .repitem > .sheet-show-settings,
+.repcontainer[data-groupname="repeating_raelithfunction"] > .repitem > .sheet-show-settings,
+.repcontainer[data-groupname="repeating_juggernauthandicraft"] > .repitem > .sheet-show-settings,
+.repcontainer[data-groupname="repeating_strangerspecialization"] > .repitem > .sheet-show-settings,
+.repcontainer[data-groupname="repeating_cyborgpath"] > .repitem > .sheet-show-settings {
 	display: none;
 }
 
-.repcontainer[data-groupname="repeating_background"] > .repitem > .sheet-show-settings + div {
+.repcontainer[data-groupname="repeating_background"] > .repitem > .sheet-show-settings + div,
+.repcontainer[data-groupname="repeating_raelithfunction"] > .repitem > .sheet-show-settings + div,
+.repcontainer[data-groupname="repeating_juggernauthandicraft"] > .repitem > .sheet-show-settings + div, 
+.repcontainer[data-groupname="repeating_strangerspecialization"] > .repitem > .sheet-show-settings + div,
+.repcontainer[data-groupname="repeating_cyborgpath"] > .repitem > .sheet-show-settings + div {
 	display: none;
 }
 
-.repcontainer[data-groupname="repeating_background"] > .repitem > .sheet-show-settings:not(:checked) + div{
+.repcontainer[data-groupname="repeating_background"] > .repitem > .sheet-show-settings:not(:checked) + div,
+.repcontainer[data-groupname="repeating_raelithfunction"] > .repitem > .sheet-show-settings:not(:checked) + div,
+.repcontainer[data-groupname="repeating_juggernauthandicraft"] > .repitem > .sheet-show-settings:not(:checked) + div,
+.repcontainer[data-groupname="repeating_strangerspecialization"] > .repitem > .sheet-show-settings:not(:checked) + div,
+.repcontainer[data-groupname="repeating_cyborgpath"] > .repitem > .sheet-show-settings:not(:checked) + div {
 	display: block;
 }
 
-.repcontainer[data-groupname="repeating_background"] > .repitem > div> textarea {
+.repcontainer[data-groupname="repeating_background"] > .repitem > div> textarea,
+.repcontainer[data-groupname="repeating_raelithfunction"] > .repitem > div> textarea,
+.repcontainer[data-groupname="repeating_juggernauthandicraft"] > .repitem > div> textarea,
+.repcontainer[data-groupname="repeating_strangerspecialization"] > .repitem > div> textarea,
+.repcontainer[data-groupname="repeating_cyborgpath"] > .repitem > div> textarea {
 	width: 300px;
 	resize: vertical;
 	border: 1px solid;
@@ -393,7 +413,11 @@ button[type=roll].sheet-infoOutput::before {
 	border-top: 0px;
 }
 
-.repcontainer[data-groupname="repeating_background"] > .repitem > div> input[type='text'] {
+.repcontainer[data-groupname="repeating_background"] > .repitem > div> input[type='text'],
+.repcontainer[data-groupname="repeating_raelithfunction"] > .repitem > div> input[type='text'],
+.repcontainer[data-groupname="repeating_juggernauthandicraft"] > .repitem > div> input[type='text'],
+.repcontainer[data-groupname="repeating_strangerspecialization"] > .repitem > div> input[type='text'],
+.repcontainer[data-groupname="repeating_cyborgpath"] > .repitem > div> input[type='text'] {
 	width: 310px;
 	border: 1px solid;
 	margin: 5px;
