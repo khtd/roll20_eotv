@@ -523,7 +523,8 @@ button[type=roll].sheet-infoOutput::before {
 	grid-gap: 6px;
 	grid-template-rows: auto;
 	grid-template-areas: 
-	"attributes .";
+	"attributes bonds"
+	"inventory notes";
 	grid-auto-flow: column;
 }
 
@@ -1007,7 +1008,32 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 }
 /* page2 fortune end*/
 
-/*page 2 bonds start */
+/* page2 inventory start */
+.sheet-inventory {
+	grid-area: inventory;
+}
+.sheet-inventory-label {
+	display: block;
+	background-color: black;
+  color: white;
+  padding: 5px;
+  height: 15px;
+}
+.sheet-inventory-input {
+	width: calc(100% - 20px);
+	resize: vertical;
+	border: 1px solid;
+	margin: 5px;
+	height: 54px;
+	border-radius: 0px;
+}
+/* page2 inventory end */
+
+/* page2 bonds start */
+.sheet-bonds {
+	grid-area: bonds;
+}
+
 .sheet-bonds-label {
 	display: block;
 	margin-top: 5px;
@@ -1024,7 +1050,7 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 	margin: 5px;
 	height: 54px;
 	border-radius: 0px;
-    border-top: 0px;
+  border-top: 0px;
 }
 
 .sheet-bonds input {
@@ -1082,6 +1108,28 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 	margin-top: -10px;
 }
 /* page2 bonds end */
+
+/* page2 notes start */
+.sheet-notes {
+	grid-area: notes;
+}
+.sheet-notes-label {
+	display: block;
+	background-color: black;
+  color: white;
+  padding: 5px;
+  height: 15px;
+}
+.sheet-notes-input {
+	width: calc(100% - 20px);
+	resize: vertical;
+	border: 1px solid;
+	margin: 5px;
+	height: 54px;
+	border-radius: 0px;
+}
+/* page2 notes end */
+
 /* page2 page end*/
 
 /* rolltemplate start*/
