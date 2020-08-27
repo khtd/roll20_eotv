@@ -335,18 +335,18 @@
                     <button type="action" class="sbstrctmoneybutton" name='act_subtractmaxmoney'>_</button>
                 </div>
 
-                <div class='welth fortune-container'>
-                    <span class='welth-lbl'>Достаток</span>
-                    <input type="checkbox" class="welth-box welth-box0" name="attr_welth" value="0" checked="checked">
-                    <input type="checkbox" class ="welth-max" name="attr_welth_max" value="0">
-                    <input type="checkbox" class="welth-box welth-box1" name="attr_welth" value="1"><span class="welth-box1"></span>
-                    <input type="checkbox" class ="welth-max" name="attr_welth_max" value="1">
-                    <input type="checkbox" class="welth-box welth-box2" name="attr_welth" value="2"><span class="welth-box2"></span>
-                    <input type="checkbox" class ="welth-max" name="attr_welth_max" value="2">
-                    <input type="checkbox" class="welth-box welth-box3" name="attr_welth" value="3"><span class="welth-box3"></span>
-                    <input type="checkbox" class ="welth-max" name="attr_welth_max" value="3">
-                    <button type="action" class="addwelthbutton" name='act_addmaxwelth'>&</button>
-                    <button type="action" class="sbstrctwelthbutton" name='act_subtractmaxwelth'>_</button>
+                <div class='wealth fortune-container'>
+                    <span class='wealth-lbl'>Достаток</span>
+                    <input type="checkbox" class="wealth-box wealth-box0" name="attr_wealth" value="0" checked="checked">
+                    <input type="checkbox" class ="wealth-max" name="attr_wealth_max" value="0">
+                    <input type="checkbox" class="wealth-box wealth-box1" name="attr_wealth" value="1"><span class="wealth-box1"></span>
+                    <input type="checkbox" class ="wealth-max" name="attr_wealth_max" value="1">
+                    <input type="checkbox" class="wealth-box wealth-box2" name="attr_wealth" value="2"><span class="wealth-box2"></span>
+                    <input type="checkbox" class ="wealth-max" name="attr_wealth_max" value="2">
+                    <input type="checkbox" class="wealth-box wealth-box3" name="attr_wealth" value="3"><span class="wealth-box3"></span>
+                    <input type="checkbox" class ="wealth-max" name="attr_wealth_max" value="3">
+                    <button type="action" class="addwealthbutton" name='act_addmaxwealth'>&</button>
+                    <button type="action" class="sbstrctwealthbutton" name='act_subtractmaxwealth'>_</button>
                 </div>
             </div>
         </div>
@@ -1032,6 +1032,43 @@
         },
     }
 
+    var startAttrs = {
+        Noble: {
+            atack_max: 1,
+            armor_max: 0,
+            hp_max: 4,
+            gear_max: 2,
+            money_max: 3,
+            wealth_max: 0
+        },
+        Cyborg: {
+            atack_max: 3,
+            armor_max: 1,
+            hp_max: 5,
+            gear_max: 2,
+            money_max: 2,
+            wealth_max: 0
+        },
+        Companion: {},
+        Courier: {},
+        Mercenary: {},
+        Tactician: {},
+        Daredevil: {},
+        Stranger: {},
+        Shadow: {},
+        Manofsteel: {},
+        Bountyhunter: {},
+        Supernova: {},
+        Cenzor: {},
+        Engineer: {},
+        Doctor: {},
+        Juggernaut: {},
+        Kinetick: {},
+        DigitalDao: {},
+        Emissary: {},
+        Psychomant: {},
+        Raelith: {},
+    }
     on("sheet:opened", function() {
         getAttrs(["character_class"], function(v) {
             update = {};
@@ -1330,7 +1367,8 @@
                 backgroundUpdate.pre_background = backgrounds[classname].preInfo
             }
         }
-        setAttrs({...update, ...backgroundUpdate});
+        var attr = startAttrs[classname]
+        setAttrs({...update, ...backgroundUpdate, ...attr});
     };
 
     on('clicked:subtractmaxatack', ()=> {
@@ -1433,21 +1471,21 @@
         })
     })
 
-    on('clicked:subtractmaxwelth', ()=> {
-        getAttrs(['welth_max', 'welth'], (v) => {
+    on('clicked:subtractmaxwealth', ()=> {
+        getAttrs(['wealth_max', 'wealth'], (v) => {
             let update = {};
-            update.welth_max = parseInt(v.welth_max) -1 < 0 ? 0 : parseInt(v.welth_max) - 1
-            if(parseInt(v.welth_max) -1 < parseInt(v.welth)) {
-                update.welth = update.welth_max
+            update.wealth_max = parseInt(v.wealth_max) -1 < 0 ? 0 : parseInt(v.wealth_max) - 1
+            if(parseInt(v.wealth_max) -1 < parseInt(v.wealth)) {
+                update.wealth = update.wealth_max
             }
             setAttrs(update);
         })
     })
 
-    on('clicked:addmaxwelth', ()=> {
-        getAttrs(['welth_max'], (v) => {
+    on('clicked:addmaxwealth', ()=> {
+        getAttrs(['wealth_max'], (v) => {
             var update = {
-                welth_max: parseInt(v.welth_max) + 1 > 3 ? 3 : parseInt(v.welth_max) + 1
+                wealth_max: parseInt(v.wealth_max) + 1 > 3 ? 3 : parseInt(v.wealth_max) + 1
             }
             setAttrs(update);
         })
