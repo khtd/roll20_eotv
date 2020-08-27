@@ -359,8 +359,17 @@
         </div>
 
         <div class='inventory'>
-            <span class='inventory-label'>Инвентарь</span>
-            <textarea class="inventory-input" name='attr_inventory'></textarea>
+            <span class='inventory-label'>Снаряжение</span>
+            <fieldset class="repeating_inventory">
+                <div class="inventory-main">
+                    <input type="text" name="attr_inventory_simple" />
+                    <input class="expander expand-inventory" type="checkbox" name="attr_expand_inventory" value="1" title="Expand for additional notes" checked="checked" />
+                    <span> </span>
+                    <div class="inventory-expansion">
+                        <textarea name="attr_inventory_details"></textarea>
+                    </div>
+                </div>
+            </fieldset>
         </div>
 
         <div class="bonds">
