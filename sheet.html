@@ -45,7 +45,16 @@
 
     <div class="page page1">
         <div class='description'>
-            <span name="attr_description"></span>
+            <input type="checkbox" class="change-description-hidden" name="attr_changing_desciption" value="1" checked="true">
+            <div class="title">
+                <h3><span>Описание</span></h3>
+                <button type='action' class='change-descriprion' name='act_changedesciption'>
+                    <span class='change'>p</span>
+                    <span class='save'>3</span>
+                </button>
+            </div>
+            <textarea class="description-input-text" name="attr_description"></textarea>
+            <textarea class="description-saved-text" name="attr_description" readonly="true"></textarea>
         </div>
 
         <input type="checkbox" class="is-raelith-flag" name="attr_isRaelith" value="1" checked="false">
@@ -1401,6 +1410,14 @@
         getAttrs(["expand_look"], function(v) {
           setAttrs({
             "expand_look": v["expand_look"] == 1 ? 0 : 1
+          });
+        });
+    });
+
+    on("clicked:changedesciption", function() {
+        getAttrs(["changing_desciption"], function(v) {
+          setAttrs({
+            "changing_desciption": v["changing_desciption"] == 1 ? 0 : 1
           });
         });
     });
