@@ -208,7 +208,14 @@
         </div>
 
         <div class="look">
-            <h3><span>ВНЕШНИЙ ВИД</span></h3>
+            <input type="checkbox" class="expand-hidden" name="attr_expand_look" value="1" checked="true">
+            <div class="sheet-title">
+                <h3><span>ВНЕШНИЙ ВИД</span></h3>
+                <button type="action" name="act_expand_look" class="expand-look">
+                    <span class="expanded">▼</span>
+                    <span class="notexpanded">◀</span>
+                </button>
+            </div>
             <textarea class="look-example" name="attr_look_example" readonly="true"></textarea>
             <textarea class="look-input" name='attr_look'></textarea>
         </div>
@@ -1380,6 +1387,14 @@
         var attr = startAttrs[classname]
         setAttrs({...update, ...backgroundUpdate, ...attr});
     };
+
+    on("clicked:expand_look", function() {
+        getAttrs(["expand_look"], function(v) {
+          setAttrs({
+            "expand_look": v["expand_look"] == 1 ? 0 : 1
+          });
+        });
+    });
 
     on('clicked:subtractmaxatack', ()=> {
         getAttrs(['atack_max', 'atack'], (v) => {

@@ -495,10 +495,51 @@ button[type=roll].sheet-infoOutput::before {
 }
 /* raelith special end */
 /* special end*/
+.sheet-look .sheet-expand-hidden {
+	display: none;
+}
 
-.sheet-look .sheet-look-example {
+.sheet-look .sheet-title {
+	display: grid;
+	grid-template-columns: max-content 26.4px auto;
+	gap: 10px;
+}
+
+.sheet-look button.sheet-expand-look {
+  margin: 0;
+  overflow: visible;
+  text-transform: none;
+  border-style: none;
+  padding: 0;
+  background: transparent;
+	cursor: pointer;
+	border:0.1em solid rgb(14, 13, 13);
+	background-color: transparent;
+}
+
+/* Hide the section(s) that do not match the attribute value */
+input.sheet-expand-hidden:not(:checked) + div > button.sheet-expand-look  > span.sheet-expanded {
+  display: none;
+}
+input.sheet-expand-hidden:checked + div > button.sheet-expand-look  > span.sheet-notexpanded {
+  display: none;
+}
+
+.sheet-look-example {
+	display: block;
+	opacity: 0;
+	max-height: 0;
+	transition: max-height 0.5s ease-out;
+	overflow: hidden;
+	cursor: default;
+}
+
+.sheet-look .sheet-expand-hidden:checked ~ .sheet-look-example {
+	display: block;
+	opacity: 1;
+	max-height: 92px;
+	transition: max-height 0.5s ease-in;
 	width: 380px;
-	height: 92px;
 	resize: none;
 	padding: 0px;
 	margin: 0px;
