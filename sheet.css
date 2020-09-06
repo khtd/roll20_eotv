@@ -233,7 +233,7 @@ input.sheet-exp-box0 {
 	justify-self: center;
 	align-self: end;
 	display: grid;
-	grid-template-columns: auto auto;
+	grid-template-columns: auto auto auto;
 	grid-column-gap: 5px;
 }
 
@@ -275,12 +275,17 @@ input.sheet-exp-box0 {
 }
 
 .sheet-tabstoggle[value="page1"] ~ .sheet-page1,
-.sheet-tabstoggle[value="page2"] ~ .sheet-page2 {
+.sheet-tabstoggle[value="page2"] ~ .sheet-page2,
+.sheet-tabstoggle[value="page3"] ~ .sheet-page3 {
 	display: grid;
 }
 
 .sheet-tabstoggle[value="page1"] ~ .sheet-page2,
-.sheet-tabstoggle[value="page2"] ~ .sheet-page1 {
+.sheet-tabstoggle[value="page1"] ~ .sheet-page3,
+.sheet-tabstoggle[value="page2"] ~ .sheet-page1,
+.sheet-tabstoggle[value="page2"] ~ .sheet-page3,
+.sheet-tabstoggle[value="page3"] ~ .sheet-page1,
+.sheet-tabstoggle[value="page3"] ~ .sheet-page2 {
 	display: none;
 }
 /*pages common end */
@@ -1023,7 +1028,7 @@ input[type="checkbox"].sheet-gear-max:checked ~ input[type="checkbox"].sheet-gea
 
 .sheet-money-lbl,
 .sheet-wealth-lbl {
-    grid-area: money-lbl;
+  grid-area: money-lbl;
 	align-self: center;
 	line-height: 1;
 	background-color: black;
@@ -1319,7 +1324,167 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 
 /* page2 page end*/
 
+/* page3 page start */
+.sheet-page1 {
+	display: grid;
+	grid-template-columns: 383px 383px;
+	grid-gap: 6px;
+}
+/* page3 moves start */
+.repcontainer[data-groupname=repeating_moves]  button[type=roll]::before { 
+	content: none; 
+}
+
+.repcontainer[data-groupname=repeating_moves] button[type=roll] {
+	margin: 0;
+  overflow: visible;
+  text-transform: none;
+  border-style: none;
+  padding: 0;
+  background: transparent;
+	cursor: pointer;
+	background-color: transparent;
+}
+.repcontainer[data-groupname=repeating_moves] button[type=roll] span {
+	font-family: "dicefontd6";
+}
+ 
+
+/*grid start*/
+.sheet-moves-container {
+	display: grid;
+	grid-template-areas: "moves-title" "moves-main";
+	grid-template-rows: 27px auto;
+	width: 383px;
+}
+
+.sheet-moves-container .sheet-title {
+	grid-area: "moves-title";
+}
+
+.sheet-moves-container .sheet-moves {
+	grid-area: "moves-main";
+}
+
+.repcontainer[data-groupname=repeating_moves] {
+	display: grid;
+	grid-template-columns: 383px;
+	gap: 6px;
+}
+
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title {
+	display: grid;
+	grid-template-columns: 26.4px max-content 18px 18px;
+	gap: 5px;
+	align-items: end;
+}
+
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title span {
+	max-width: 305px;
+	text-align: center;
+}
+
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-expansion textarea {
+	width: calc(100% - 20px);
+	resize: vertical;
+	height: 80px;
+}
+
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-description textarea {
+	margin: 0;
+  resize: vertical;
+  padding: 0;
+  border: none;
+	width: 380px;
+	background: none;
+	cursor: default;
+	overflow: auto;
+	outline: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+.repcontainer[data-groupname=repeating_moves] input[type='number'] {
+	width: 40px;
+	text-align: center;
+}
+/* grid end */
+
+.sheet-moves .sheet-expand-hidden {
+	display: none;
+}
+
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title button.sheet-expand-move,
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title button.sheet-change-move {
+  margin: 0;
+  overflow: visible;
+  text-transform: none;
+  border-style: none;
+  padding: 0;
+  background: transparent;
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+}
+
+.sheet-moves button.sheet-expand-move > span.sheet-expanded,
+.sheet-moves button.sheet-expand-move > span.sheet-not-expanded  {
+	display: block;
+}
+
+.sheet-moves button.sheet-change-move > span.sheet-save,
+.sheet-moves button.sheet-change-move > span.sheet-change  {
+	display: block;
+	font-family: "Pictos";
+}
+
+.sheet-moves input.sheet-expand-description:not(:checked) ~ div > button.sheet-expand-move  > span.sheet-expanded {
+  display: none;
+}
+.sheet-moves input.sheet-expand-description:checked ~ div > button.sheet-expand-move  > span.sheet-not-expanded {
+  display: none;
+}
+.sheet-moves input.sheet-expand-settings:not(:checked) ~ div > button.sheet-change-move  > span.sheet-save {
+  display: none;
+}
+.sheet-moves input.sheet-expand-settings:checked ~ div > button.sheet-change-move  > span.sheet-change {
+  display: none;
+}
+
+.sheet-moves .sheet-move-expansion {
+	display: block;
+	transition: max-height 0.5s ease-out;
+	opacity: 0;
+	max-height: 0;
+	overflow: hidden;
+}
+
+.sheet-moves input.sheet-expand-settings:checked ~ .sheet-move-expansion {
+	display: block;
+	opacity: 1;
+	max-height: 1500px;
+	transition: max-height 1s ease-in;
+}
+
+.sheet-moves .sheet-move-description {
+	display: none;
+}
+
+.sheet-moves input.sheet-expand-description:checked ~ .sheet-move-description {
+	display: block;
+}
+
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-expansion input.sheet-enable-roll:not(:checked) ~ div {
+	display: none;
+}
+
+/* page3 moves end */
+
+/* page3 page end */
+
 /* rolltemplate start*/
+/* rolltemplate info start */ 
 .sheet-rolltemplate-info {
 	background-image: url("https://github.com/khtd/roll20_eotv/blob/master/space.jpg?raw=true");
 }
@@ -1358,6 +1523,62 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
     padding: 5px;
     width: 100%;
 }
+/* rolltemplate info end */ 
+/* rolltemplate move start */ 
+.sheet-rolltemplate-move .sheet-rt-container {
+	background-color: rgb(35, 31, 32);
+	border-radius: 2px;
+	margin-left: -10px;
+	display: flex;
+	flex-direction: column;
+}
+
+.sheet-rolltemplate-move .sheet-rt-header {
+	font-weight: bold;
+	font-size: medium;
+    padding: 6px 6px 0px 6px;
+	color: white;
+}
+
+.sheet-rolltemplate-move .sheet-rt-header-minor {
+	font-size: 90%;
+	font-style: italic;
+}
+
+.sheet-rolltemplate-move .sheet-rt-content {
+	background-color: white;
+	margin: 5px;
+	padding: 2px;
+	display: flex;
+	flex-direction: column;
+}
+
+.sheet-rolltemplate-move .sheet-rt-row {
+	flex: 1 0 auto;
+	display: flex;
+
+	padding-top: 6px;
+	padding-bottom: 2px;
+	border-bottom: 1px solid black;
+}
+
+.sheet-rolltemplate-move .sheet-rt-label {
+	font-weight: bold;
+	font-size: 0.9em;
+	display: block;
+	flex: 1;
+	padding-right: 4px;
+	margin-right: 2px;
+	text-align: right;
+}
+
+.sheet-rolltemplate-move .sheet-rt-value {
+	display: block;
+	font-size: .9em;
+	flex: 3;
+	text-align: left;
+}
+/* rolltemplate move end */ 
 /* rolltemplate end*/
 
 /*TODO*/

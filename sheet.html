@@ -1,3 +1,6 @@
+<input type="hidden" name="attr_bond_query" value="(0)[Other Bond]">
+<input type="hidden" name="attr_statmod_query" value="?{Stat|Ярость,@{furry}[furry]|Контроль, @{controll}[controll]|Навык, @{skill}[skill]|Репутация, @{reputation}[reputation]|Благосостояние, @{money}[money]}">
+
 <div class="container">
 
     <div class="header-container">
@@ -38,6 +41,10 @@
                 <input type="radio"  name="attr_page" value="page2">
                 <span>лист 2</span>
             </label>
+            <label class="nav-button">
+                <input type="radio"  name="attr_page" value="page3">
+                <span>ходы</span>
+            </label>
         </div>
     </div>
     <input type='hidden' class='tabstoggle' name='attr_sheetTab'  value='page1'/>
@@ -47,7 +54,7 @@
         <div class='description'>
             <input type="checkbox" class="change-description-hidden" name="attr_changing_desciption" value="1" checked="true">
             <div class="title">
-                <h3><span>Описание</span></h3>
+                <h3><span>ОПИСАНИЕ</span></h3>
                 <button type='action' class='change-descriprion' name='act_changedesciption'>
                     <span class='change'>p</span>
                     <span class='save'>3</span>
@@ -305,7 +312,7 @@
                 </div>
 
                 <div class='gear sub-attribute-container'>
-                    <span class='gear-lbl'>Обеспечение</span>
+                    <span class='gear-lbl'>Припасы</span>
                     <input type="checkbox" class="gear-box gear-box0" name="attr_gear" value="0" checked="checked">
                     <input type="checkbox" class="gear-box gear-box1" name="attr_gear" value="1"><span class="gear-box1"></span>
                     <input type="checkbox" class ="gear-max" name="attr_gear_max" value="1">
@@ -335,7 +342,7 @@
             <div class='fortune'>
                 
                 <div class='money fortune-container'>
-                    <span class='money-lbl'>Деньги</span>
+                    <span class='money-lbl'>Благосостояние</span>
                     <input type="checkbox" class="money-box money-box0" name="attr_money" value="0" checked="checked">
                     <input type="checkbox" class="money-box money-box1" name="attr_money" value="1"><span class="money-box1"></span>
                     <input type="checkbox" class ="money-max" name="attr_money_max" value="1">
@@ -352,7 +359,7 @@
                 </div>
 
                 <div class='wealth fortune-container'>
-                    <span class='wealth-lbl'>Достаток</span>
+                    <span class='wealth-lbl'>Фишки прибыли</span>
                     <input type="checkbox" class="wealth-box wealth-box0" name="attr_wealth" value="0" checked="checked">
                     <input type="checkbox" class ="wealth-max" name="attr_wealth_max" value="0">
                     <input type="checkbox" class="wealth-box wealth-box1" name="attr_wealth" value="1"><span class="wealth-box1"></span>
@@ -400,6 +407,86 @@
             <textarea class="notes-input" name='attr_notes'></textarea>
         </div>
     </div>
+
+    <div class="page page3">
+        <div class="moves-container">
+            <div class='title'>
+                <h3><span>ХОДЫ 1</span></h3>
+            </div>
+            <div class="moves">
+                <fieldset class="repeating_moves">
+                    <div class="move-main">
+                        <input type="checkbox" class="expand-hidden expand-description" name="attr_expandmovedescription" value="1" title="Details"  />
+                        <input type="checkbox" class="expand-hidden expand-settings" name="attr_expandmovesettings" value="1" title="Settings"/>
+                        
+                        <div class='move-title'>
+                            <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=@{movename_base}}} {{trigger=@{movetrigger}}} {{success=@{movesuccess}}} {{partial=@{movepartial}}} {{miss=@{movemiss}}} {{doroll=[[@{move_doroll}]]}} {{result=[[2d6 + @{movestat}]]}} {{details=@{movedetails}}}">
+                                <span>Lo</span>
+                            </button>
+                            <span class="rolltext" name="attr_move_name" value="@{move_name}"></span>
+                            <button type="action" name="act_expanddescription" class="expand-move">
+                                <span class="expanded">▼</span>
+                                <span class="not-expanded">◀</span>
+                            </button>
+                            <button type='action' name='act_expandsettings'  class='change-move'>
+                                <span class='change'>p</span>
+                                <span class='save'>3</span>
+                            </button>
+                        </div>
+        
+                        <div class="move-expansion">
+                            <div class='move-expansion-name'>
+                                <span class="label">Move Name:</span>
+                                <input type="text" name="attr_movename_base" value="" />
+                            </div>
+                            <div class='move-expansion-when'>
+                                <span class="label">Когда:</span>
+                                <br>
+                                <textarea type="text" name="attr_movetrigger"></textarea>
+                            </div>
+                            <div class='move-expansion-roll'>
+                                <input class="enable-roll" type="checkbox" name="attr_move_doroll" value="1" checked="checked" />
+                                <input type="hidden" name="attr_movestat">
+                                <span class="label">Проверь:</span>
+                                    <select class="moveroll" name="attr_movestat_name">
+                                        <option selected="selected">--</option>
+                                        <option>Ярость</option>
+                                        <option>Контроль</option>
+                                        <option>Навык</option>
+                                        <option>Репутация</option>
+                                        <option>Благосостояние</option>
+                                        <option>?</option>
+                                        <option>Связь</option>
+                                    </select>
+                                    <span class="label moveroll"> + </span>
+                                    <input class="moveroll" type="number" name="attr_movemod" value="0" />
+                                <div class="rollresults-container">
+                                    <span class="label">Успех (10+):</span>
+                                    <br>
+                                    <textarea type="text" name="attr_movesuccess"></textarea>
+                                    <span class="label">Частичный успех (7-9):</span>
+                                    <br>
+                                    <textarea type="text" name="attr_movepartial"></textarea>
+                                    <span class="label">Провал (6-):</span>
+                                    <br>
+                                    <textarea type="text" name="attr_movemiss"></textarea>
+                                </div>
+                            </div>
+                            <div class='move-expansion-extra'>
+                                <span class="label">Описание:</span>
+                                <br />
+                                <textarea class="move-details" name="attr_movedetails"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class='move-description'>
+                            <textarea name='attr_movetext' readonly='true'></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Start welcome -->
@@ -445,6 +532,70 @@
         <div class="sheet-templatedescription">
             {{#description}}{{description}}{{/description}}
 			{{#allprops() description item type}}<p><strong>{{key}}:</strong> {{value}}</p>{{/allprops() description item type}}
+        </div>
+    </div>
+</rolltemplate>
+
+<rolltemplate class="sheet-rolltemplate-move">
+    <div class="rt-container">
+        <div class="rt-header rt-header-minor">{{charname}}</div>
+        <div class="rt-header">{{movename}}</div>
+        <div class="rt-content">
+            {{#trigger}}
+            <div class="rt-row">
+                <span class="label rt-label" >Trigger:</span>
+                <span class="rt-value rt-text">{{trigger}}</span>
+            </div>
+            {{/trigger}}
+            {{#modifiers}}
+            <div class="rt-row">
+                <span class="label rt-label" >Modifier(s):</span>
+                <span class="rt-value rt-text">{{modifiers}}</span>
+            </div>
+            {{/modifiers}}
+    
+            {{#rollGreater() doroll 0}}
+            {{#result}}
+                <div class="rt-row">
+                    <span class="label rt-label" >Roll:</span>
+                    <span class="rt-value rt-text">{{result}}</span>
+                </div>
+                {{#rollLess() result 7}}
+                {{#miss}}
+                <div class="rt-row">
+                    <span class="label rt-label" >Effect:</span>
+                    <span class="rt-value rt-text">{{miss}}</span>
+                </div>
+                {{/miss}}
+                {{/rollLess() result 7}}
+    
+                {{#rollBetween() result 7 9}}
+                {{#partial}}
+                <div class="rt-row">
+                    <span class="label rt-label" >Effect:</span>
+                    <span class="rt-value rt-text">{{partial}}</span>
+                </div>
+                {{/partial}}
+                {{/rollBetween() result 7 9}}
+    
+                {{#rollGreater() result 9}}
+                {{#success}}
+                <div class="rt-row">
+                    <span class="label rt-label" >Effect:</span>
+                    <span class="rt-value rt-text">{{success}}</span>
+                </div>
+                {{/success}}
+                {{/rollGreater() result 9}}
+            {{/result}}
+            {{/rollGreater() doroll 0}}
+            
+            {{#details}}
+            <div class="rt-row">
+                <span class="label rt-label" >Details:</span>
+                <span class="rt-value rt-text">{{details}}</span>
+            </div>
+            {{/details}}
+    
         </div>
     </div>
 </rolltemplate>
@@ -1542,4 +1693,133 @@
         })
     })
 
+    /* MOVES SECTION START */
+    var statnameToStatQuery = function(statname) {
+        if (statname == "--") return "0[no stat]";
+        if (statname == "Ярость") return "@{furry}[furry]";
+        if (statname == "Контроль") return "@{controll}[controll]";
+        if (statname == "Навык") return "@{skill}[skill]";
+        if (statname == "Репутация") return "@{reputation}[reputation]";
+        if (statname == "Благосостояние") return "@{money}[money]";
+        if (statname == "?") return "@{statmod_query}";
+        if (statname == "Связь") return "@{bond_query}";
+        return "0[no stat]";
+    }
+
+    on("change:repeating_moves:expandmovedescription", function() {
+        getAttrs([
+            "repeating_moves_movetrigger",
+            "repeating_moves_move_doroll",
+            "repeating_moves_movestat_name",
+            "repeating_moves_movemod",
+            "repeating_moves_movesuccess",
+            "repeating_moves_movepartial",
+            "repeating_moves_movemiss",
+            "repeating_moves_movedetails"
+        ], function(v) {
+            var text = ''
+            if(v.repeating_moves_movetrigger) text += `Когда: ${v.repeating_moves_movetrigger}\r\n` 
+            if(v.repeating_moves_move_doroll == '1') {
+                var stat = `проверь ${v.repeating_moves_movestat_name}`
+                if(v.repeating_moves_movestat_name == '--') stat = 'брось 2d6'
+                if(parseInt(v.repeating_moves_movemod) > 0) stat += ` + ${v.repeating_moves_movemod}`
+                text += `${stat}\r\n`
+                if(v.repeating_moves_movesuccess) text += `При успехе: ${v.repeating_moves_movesuccess}\r\n`
+                if(v.repeating_moves_movepartial) text += `При частичном успехе: ${v.repeating_moves_movepartial}\r\n`
+                if(v.repeating_moves_movemiss) text += `При провале: ${v.repeating_moves_movemiss}\r\n`
+            }
+            if(v.repeating_moves_movedetails) text += `Описание: ${v.repeating_moves_movedetails}`
+            setAttrs({
+                repeating_moves_movetext: text || ' '
+            });
+        })
+    }) 
+
+    on("change:repeating_moves:movename_base", function() {
+        getAttrs(["repeating_moves_movename_base"], function(values) {
+            setAttrs({
+                repeating_moves_move_name: values.repeating_moves_movename_base
+            });
+        });
+    });
+
+    on("change:repeating_moves:movestat_name", function() {
+        getAttrs(["repeating_moves_movestat_name"], function(values) {
+            setAttrs({
+                repeating_moves_movestat: statnameToStatQuery(values.repeating_moves_movestat_name)
+            });
+        });
+    });
+
+    on("clicked:repeating_moves:expanddescription", function() {
+        getAttrs(["repeating_moves_expandmovedescription", "repeating_moves_expandmovesettings"], function(v) {
+            console.log(v)
+            var newValue = v.repeating_moves_expandmovedescription == "0" ? "1" : "0" ;
+            var update = {
+                repeating_moves_expandmovedescription: newValue,
+                repeating_moves_expandmovesettings: newValue == "1" ? "0" : v.repeating_moves_expandmovesettings,
+            }
+            console.log(update)
+            setAttrs(update);
+        });
+    });
+
+    on("clicked:repeating_moves:expandsettings", function() {
+        getAttrs(["repeating_moves_expandmovesettings", "repeating_moves_expandmovedescription"], function(v) {
+            console.log(v)
+            var newValue = v.repeating_moves_expandmovesettings  == "0" ? "1" : "0" ;
+            var update = {
+                repeating_moves_expandmovesettings: newValue,
+                repeating_moves_expandmovedescription: newValue == "1" ? "0" : v.repeating_moves_expandmovedescription,
+            }
+            console.log(update)
+            setAttrs(update);
+        });
+    });
+
+    on("change:repeating_moves:move_doroll", function() {
+        getAttrs(["repeating_moves_move_doroll", "repeating_moves_movestat"], function(v) {
+            if (v.repeating_moves_move_doroll != "1" && v.repeating_moves_movestat == "@{statmod_query}")
+                setAttrs({repeating_moves_movestat: 0});
+        });
+    });
+
+    on("change:repeating_bonds", function(eventInfo) {
+        getSectionIDs("repeating_bonds", function(ids) {
+            if (ids.length == 0){
+                setAttrs({
+                    bond_query: "(0)[Other Bond]"
+                });
+                return;
+            }
+            
+            var attrs = [];
+            for(var i=0; i < ids.length; i++) {
+                var attr = "repeating_bonds_" + ids[i] + "_bond_simple";
+                attrs.push(attr);
+            }
+            
+            getAttrs(attrs, function(v) {
+                var bonds = {};
+                _.each(v, function(val, attrName) {
+                    if (val in bonds){
+                        bonds[val] += 1;
+                    }else{
+                        bonds[val] = 1;
+                    }
+                });
+                
+                var query = "?{Связь";
+                _.each(bonds, function(count, name) {
+                    query = query.concat(`|${name}, (${count})[Bonds with ${name}]`);
+                });
+                query = query.concat("|Other, (0)[Other Bond]}");
+                
+                setAttrs({
+                    bond_query: query
+                });
+            });
+        });
+    });
+    /* MOVES SECTION END */
 </script>
