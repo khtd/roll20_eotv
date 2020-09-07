@@ -1484,49 +1484,51 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 /* page3 page end */
 
 /* rolltemplate start*/
-/* rolltemplate info start */ 
-.sheet-rolltemplate-info {
-	background-image: url("https://github.com/khtd/roll20_eotv/blob/master/space.jpg?raw=true");
+.sheet-rolltemplate-move .inlinerollresult,
+.sheet-rolltemplate-move .inlinerollresult.fullfail,
+.sheet-rolltemplate-move .inlinerollresult.fullcrit,
+.sheet-rolltemplate-move .inlinerollresult.importantroll {
+	background-color: transparent;
+	border: none;
+	font-size: 1.3em;
 }
+/* rolltemplate info start */ 
 .sheet-rolltemplate-info .sheet-templateMain {
+	background:rgba(35, 31, 32);
+	background-image: url("https://github.com/khtd/roll20_eotv/blob/master/space.jpg?raw=true");
+	border-radius: 2px;
+	margin-left: -10px;
 	display:-webkit-box;
 	display:-ms-flexbox;
 	display:flex;
-	-ms-flex-pack: distribute;
-	    justify-content: space-around;
-	-ms-flex-wrap: wrap;
-	    flex-wrap: wrap;
-	width: 100%;
-    background:rgba(0,22,41,.75);
-    border-left: 4px solid rgba(255,255,255,.1);
-	padding: 0px;
+	flex-direction: column;
 }
-
+.sheet-rolltemplate-info .sheet-templateheader {
+	font-size: 90%;
+	font-style: italic;
+}
 .sheet-rolltemplate-info .sheet-templateheader,
 .sheet-rolltemplate-info .sheet-templatesubheader {
-    width: 100%;
-    margin: 0 0 0 0;
-    padding: 2px 2px 2px 2px;
-    background: rgba(0,0,0,.15);
-    color: rgba(255,255,255,.25);
-    text-align: center;
-    border-bottom: none;
-}
-
-.sheet-rolltemplate-info .sheet-templatesubheader {
-    color: #e8f4ff;
+	color: white;
+	font-weight: bold;
+	padding: 6px 6px 0px 6px;
 }
 
 .sheet-rolltemplate-info .sheet-templatedescription {
-    color: #e8f4ff;;
-    font-size: .8em;
-    padding: 5px;
-    width: 100%;
+	background-color: white;
+	margin: 5px;
+	padding: 2px;
+	display: flex;
+	flex-direction: column;
+	font-size: .9em;
+	padding: 6px 6px 3px 6px;
+	flex: 3;
 }
 /* rolltemplate info end */ 
 /* rolltemplate move start */ 
 .sheet-rolltemplate-move .sheet-rt-container {
 	background-color: rgb(35, 31, 32);
+	background-image: url("https://github.com/khtd/roll20_eotv/blob/master/space.jpg?raw=true");
 	border-radius: 2px;
 	margin-left: -10px;
 	display: flex;
@@ -1536,7 +1538,7 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 .sheet-rolltemplate-move .sheet-rt-header {
 	font-weight: bold;
 	font-size: medium;
-    padding: 6px 6px 0px 6px;
+  padding: 6px 6px 0px 6px;
 	color: white;
 }
 

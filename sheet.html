@@ -527,8 +527,8 @@
 
 <rolltemplate class="sheet-rolltemplate-info">
     <div class="sheet-templateMain">
-        <h2 class="sheet-templateheader">{{name}}</h2>
-        <h3 class="sheet-templatesubheader">{{item}}{{#type}} ({{type}}){{/type}}</h3>
+        <div class="sheet-templateheader">{{name}}</div>
+        <div class="sheet-templatesubheader">{{item}}{{#type}} ({{type}}){{/type}}</div>
         <div class="sheet-templatedescription">
             {{#description}}{{description}}{{/description}}
 			{{#allprops() description item type}}<p><strong>{{key}}:</strong> {{value}}</p>{{/allprops() description item type}}
