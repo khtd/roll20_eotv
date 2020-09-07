@@ -250,6 +250,25 @@
             <textarea class="look-example" name="attr_look_example" readonly="true"></textarea>
             <textarea class="look-input" name='attr_look'></textarea>
         </div>
+
+        <div class='start-gear'>
+            <div class="title">
+                <h3><span>СТАРТОВОЕ СНАРЯЖЕНИЕ</span></h3>
+            </div>
+            <span name="attr_startgear_note_text"></span><br>
+            <span name="attr_startgear_choose_text"></span><br>
+            <fieldset class='repeating_startgear'>
+                <input type="hidden" name="attr_type"></input>
+                <input type="hidden" class="toggle" name="attr_get_flag" />
+                <button type="action" name="act_get" class="toggle">
+                    <span class="checked">✓</span>
+                </button>
+                <div>
+                    <span class='name' name="attr_name"></span>:
+                    <span class='detail' name="attr_details"></span>
+                </div>
+            </fieldset>
+        </div>
     </div>
 
     <div class="page page2">
@@ -1270,6 +1289,65 @@
         Psychomant: {},
         Raelith: {},
     }
+    
+    var startGear = {
+        Noble: {
+            note_text: '',
+            choose_text: '',
+            options: [
+                {
+                    type: 'item',
+                    name: '',
+                    details: ''
+                }
+            ]
+        },
+        Cyborg: {
+            note_text: 'Ты начинаешь игру, имея ID, коммуникатор, кредитный чип, два комплекта повседневной одежды (кимоно и что-то менее традиционное) и вместительную сумку, а также монокатану (в упор, бесшумное, бронебойное). Из-за встроенных имплантов твоя Защита составляет 1.',
+            choose_text: 'Выбери два:',
+            options: [
+                {
+                    type: 'item',
+                    name: 'High-end Коммуникатор',
+                    details: 'Твои переговоры крайне сложно прослушать, да и отследить тебя по передатчику коммуникатора невозможно.'
+                },
+                {
+                    type: 'item',
+                    name: '«Кикстарт» (в ампулах)',
+                    details: 'Когда Сражаешься, потрать Припас и увеличь бросок на 1 категорию.'
+                },
+                {
+                    type: 'item',
+                    name: 'Документы на оружие',
+                    details: 'Твоя монокатана считается ритуальным предметом и приобретает тег штатский.'
+                },
+                {
+                    type: 'note',
+                    name: 'Дополнительный апгрейд',
+                    details: 'Ты можешь выбрать еще 1 имплант, расположенный на третьем листе.'
+                }
+            ]
+        },
+        Companion: {},
+        Courier: {},
+        Mercenary: {},
+        Tactician: {},
+        Daredevil: {},
+        Stranger: {},
+        Shadow: {},
+        Manofsteel: {},
+        Bountyhunter: {},
+        Supernova: {},
+        Cenzor: {},
+        Engineer: {},
+        Doctor: {},
+        Juggernaut: {},
+        Kinetick: {},
+        DigitalDao: {},
+        Emissary: {},
+        Psychomant: {},
+        Raelith: {},
+    }
     on("sheet:opened", function() {
         getAttrs(["character_class"], function(v) {
             update = {};
@@ -1312,6 +1390,11 @@
          getSectionIDs("repeating_raelithFunction", function(idarray) {
             for(var i=0; i < idarray.length; i++) {
               removeRepeatingRow("repeating_raelithFunction_" + idarray[i]);
+            }
+         });
+         getSectionIDs("repeating_startgear", function(idarray) {
+            for(var i=0; i < idarray.length; i++) {
+              removeRepeatingRow("repeating_startgear_" + idarray[i]);
             }
          });
         setAttrs({
@@ -1429,8 +1512,9 @@
         options.forEach(function(row) {
             var  newbackid = generateRowID();
             var prefix = `repeating_${param}_${newbackid}_`;
-            update[`${prefix}text`] = row.text;
-            update[`${prefix}button`] = row.button;
+            for(var key of Object.keys(row)) {
+                update[`${prefix}${key}`] = row[key];
+            }
         })
         return update;
     }
@@ -1455,7 +1539,6 @@
 
     on('clicked:repeating_background:setting', function() {
         getAttrs(["repeating_background_settingsshowflag"], (v) => {
-            console.log(v.repeating_background_settingsshowflag == 1)
 			setAttrs({
                 repeating_background_settingsshowflag: v.repeating_background_settingsshowflag && v.repeating_background_settingsshowflag == '1' ? 0 : 1
 			});
@@ -1569,7 +1652,10 @@
             }
         }
         var attr = startAttrs[classname]
-        setAttrs({...update, ...backgroundUpdate, ...attr});
+        var gear = addRepeatingInfo(startGear[classname].options, 'startgear')
+        gear.startgear_note_text = startGear[classname].note_text
+        gear.startgear_choose_text = startGear[classname].choose_text
+        setAttrs({...update, ...backgroundUpdate, ...attr, ...gear});
     };
 
     on("clicked:expand_look", function() {
@@ -1837,4 +1923,13 @@
         });
     });
     /* MOVES SECTION END */
+    /* STARTGEAR SECTION START */
+    on(`clicked:repeating_startgear:get`, function() {
+        getAttrs(['repeating_startgear_get_flag'], function(v) {
+          setAttrs({
+            'repeating_startgear_get_flag': v.repeating_startgear_get_flag !== "1" ? "1" : "0"
+          });
+        });
+    });
+    /* STARTGEAR SECTION END */
 </script>

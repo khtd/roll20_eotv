@@ -360,12 +360,12 @@ input.sheet-exp-box0 {
 .sheet-page1 {
 	display: grid;
 	grid-template-columns: 383px 383px;
-	grid-gap: 6px;
+	grid-gap: 10px 6px;
 	grid-template-rows: auto;
 	grid-template-areas: 
 	"desc looks"
 	"back .";
-	grid-auto-flow: column;
+	grid-auto-flow: row;
 }
 
 /*page1 descriprion start*/
@@ -650,6 +650,8 @@ button[type=roll].sheet-infoOutput::before {
 }
 /* raelith special end */
 /* special end*/
+
+/* page1 look start */
 .sheet-look .sheet-expand-hidden {
 	display: none;
 }
@@ -716,6 +718,40 @@ input.sheet-expand-hidden:checked + div > button.sheet-expand-look  > span.sheet
 	padding: 0px;
 	margin: 0px;
 }
+/* page1 look end */
+
+/* page1 startgear start */
+
+.sheet-start-gear button.sheet-toggle {
+	padding: 0;
+  border: solid 1px #a8a8a8;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  justify-content: center;
+  align-items: center;
+	font-size: 19px;
+	vertical-align: middle;
+}
+
+.sheet-start-gear input.sheet-toggle:not([value="1"]) ~ button.sheet-toggle > span.sheet-checked {
+  display: none;
+}
+/* .repcontainer[data-groupname="repeating_startgear"] > .repitem  {
+	line-height: 12px;
+} */
+.repcontainer[data-groupname="repeating_startgear"] > .repitem {
+	display: grid;
+	grid-template-columns: 18px auto;
+	gap: 3px;
+	margin-bottom: 4px;
+}
+.repcontainer[data-groupname="repeating_startgear"] > .repitem span.sheet-name {
+	font-weight: bold;
+}
+
+/* page1 startgear end */
 /* page1 page end */
 
 /* page2 page start*/
@@ -1391,7 +1427,7 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 /* page2 page end*/
 
 /* page3 page start */
-.sheet-page1 {
+.sheet-page3 {
 	display: grid;
 	grid-template-columns: 383px 383px;
 	grid-gap: 6px;
