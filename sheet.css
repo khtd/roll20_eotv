@@ -1,3 +1,9 @@
+button:focus,
+input:focus {
+	background: unset;
+	outline: unset;
+}
+
 .sheet-container {
 	width: 772px;
 	display: grid;
@@ -37,7 +43,7 @@
 	grid-template-rows: 35px 35px;
 	grid-gap: 2px;
 	grid-template-areas:
-    "logo name exp"
+    "logo name bonus"
     "logo class exp"
 }
 
@@ -132,6 +138,67 @@
 	grid-row-start: 1;
 	grid-row-end: 4;
 }
+
+/* rollbonus start */
+.sheet-roll-bonus {
+	grid-area: bonus;
+	display: grid;
+	align-content: end;
+}
+
+.sheet-toggler {
+	display: grid;
+	grid-template-columns: repeat(4, max-content);
+	grid-auto-flow: column;
+	gap: 3px;
+}
+
+.sheet-toggler label {
+	margin: 0;
+	width: fit-content;
+	width: -moz-fit-content;
+	padding: 0px;
+}
+
+.sheet-toggler label:hover {
+	cursor: pointer;
+}
+
+.sheet-toggler input[type=radio],
+.sheet-toggler input[type=checkbox] {
+	border: 0; 
+	clip: rect(0 0 0 0); 
+	height: 1px; margin: -1px; 
+	overflow: hidden; 
+	padding: 0; 
+	position: absolute; 
+	width: 1px;
+}
+
+.sheet-toggler input[type=radio] + span,
+.sheet-toggler input[type=checkbox] + span {
+	border: 1px solid rgb(35, 31, 32);
+	padding: 1px 6px;
+	background-color: white;
+	color: #D3D3D3;
+	text-align: center;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.sheet-toggler input[type=radio]:checked + span,
+.sheet-toggler input[type=checkbox]:checked + span {
+	color: rgb(35, 31, 32);
+}
+
+.sheet-roll-bonus input[type=number] {
+	border: 1px solid black;
+	border-radius: 0px;
+	text-align: center;
+	height: 19px;
+	width: 2em;
+}
+/* rollbonus end */
 
 /*exp start */
 .sheet-exp-container {
@@ -256,15 +323,14 @@ input.sheet-exp-box0 {
 	text-decoration:none;
 	font-family:'Roboto',sans-serif;
 	font-weight:300;
-	color: black;
+	color: #D3D3D3;
 	text-align:center;
 	transition: all 0.2s;
 	padding: 2px 6px 2px 6px;
 }
 
 .sheet-nav-button input[type=radio]:checked + span {
-	background-image: linear-gradient(#ffffffb8, transparent);
-	border-bottom-color: transparent;
+	color: rgb(35, 31, 32);
 }
 /* navigation end */
 

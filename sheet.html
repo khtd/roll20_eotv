@@ -19,6 +19,21 @@
             <button type='action' class='change-button class-change-button' name='act_changeclass'>Изменить</button>
         </div>
 
+        <div class="roll-bonus">
+            <div class="toggler">
+                <label>
+                    <input type="radio" class="roll-normal" name="attr_bonus" value="0" checked="checked"><span>Nothing</span>
+                </label>
+                <label>
+                    <input type="radio" class="roll-query" name="attr_bonus" value="?{Modifier|0}"><span>Query</span>
+                </label>
+                <label>
+                    <input type="radio" class="roll-query" name="attr_bonus" value="@{hold}"><span>Hold:</span>
+                </label>
+                <input type="number" name="attr_hold" value="0" />
+            </div>
+        </div>
+
         <div class="exp-container">
             <strong class="exp-label">EXP.</strong>
             <input type="checkbox" class="exp-box exp-box0" name="attr_exp" value="0" checked="checked">
@@ -420,7 +435,7 @@
                         <input type="checkbox" class="expand-hidden expand-settings" name="attr_expandmovesettings" value="1" title="Settings"/>
                         
                         <div class='move-title'>
-                            <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=@{movename_base}}} {{trigger=@{movetrigger}}} {{success=@{movesuccess}}} {{partial=@{movepartial}}} {{miss=@{movemiss}}} {{doroll=[[@{move_doroll}]]}} {{result=[[2d6 + @{movestat}]]}} {{details=@{movedetails}}}">
+                            <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=@{movename_base}}} {{trigger=@{movetrigger}}} {{success=@{movesuccess}}} {{partial=@{movepartial}}} {{miss=@{movemiss}}} {{doroll=[[@{move_doroll}]]}} {{result=[[2d6 + @{movestat} + @{movemod} + (@{bonus})[bonus]]]}} {{details=@{movedetails}}}">
                                 <span>Lo</span>
                             </button>
                             <span class="rolltext" name="attr_move_name" value="@{move_name}"></span>
