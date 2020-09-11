@@ -153,7 +153,7 @@ input:focus {
 
 .sheet-toggler {
 	display: grid;
-	grid-template-columns: repeat(4, max-content);
+	grid-template-columns: repeat(2, max-content);
 	grid-auto-flow: column;
 	gap: 3px;
 }
@@ -163,6 +163,9 @@ input:focus {
 	width: fit-content;
 	width: -moz-fit-content;
 	padding: 0px;
+	align-items: end;
+	display: grid;
+	font-size: 1em;
 }
 
 .sheet-toggler label:hover {
@@ -183,12 +186,10 @@ input:focus {
 .sheet-toggler input[type=radio] + span,
 .sheet-toggler input[type=checkbox] + span {
 	border: 1px solid rgb(35, 31, 32);
-	padding: 1px 6px;
+	padding: 2px 6px;
 	background-color: white;
 	color: #D3D3D3;
 	text-align: center;
-	font-size: 13px;
-	font-weight: bold;
 }
 
 .sheet-toggler input[type=radio]:checked + span,
@@ -196,12 +197,12 @@ input:focus {
 	color: rgb(35, 31, 32);
 }
 
-.sheet-roll-bonus input[type=number] {
+.sheet-roll-bonus input[type=text] {
 	border: 1px solid black;
 	border-radius: 0px;
 	text-align: center;
-	height: 19px;
-	width: 2em;
+	height: 24px;
+	width: 42px;
 }
 /* rollbonus end */
 

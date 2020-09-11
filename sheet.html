@@ -49,7 +49,7 @@
 
         <div class="roll-bonus">
             <div class="toggler">
-                <input type="number" name="attr_hold" value="+0" />
+                <input type="text" name="attr_hold" value="+0" />
                 <label>
                     <input type="checkbox" class="roll-query" name="attr_bonus" value="@{hold}"><span>К броску</span>
                 </label>
@@ -1815,13 +1815,13 @@
             if(v.repeating_moves_move_doroll == '1') {
                 var stat = `Проверь: ${v.repeating_moves_movestat_name}`
                 if(v.repeating_moves_movestat_name == '--') stat = 'Брось 2d6'
-                if(v.repeating_moves_movestat_name == '--') stat = 'Проверь нужную харрактеристику'
+                if(v.repeating_moves_movestat_name == '?') stat = 'Проверь нужную харрактеристику'
                 text += `${stat}\r\n`
                 if(v.repeating_moves_movesuccess) text += `При успехе: ${v.repeating_moves_movesuccess}\r\n`
                 if(v.repeating_moves_movepartial) text += `При частичном успехе: ${v.repeating_moves_movepartial}\r\n`
                 if(v.repeating_moves_movemiss) text += `При провале: ${v.repeating_moves_movemiss}\r\n`
             }
-            if(v.repeating_moves_movedetails) text += `Описание: ${v.repeating_moves_movedetails}`
+            if(v.repeating_moves_movedetails) text += `${v.repeating_moves_movedetails}`
             setAttrs({
                 repeating_moves_movetext: text || ' '
             });
