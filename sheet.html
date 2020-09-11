@@ -84,18 +84,18 @@
             <input type="checkbox" class="is-cyborg-flag" name="attr_isCyborg" value="1" checked="false">
             <div class="additional-background cyborg-additional">
                 <button type='roll' class="backgroundOutput infoOutput" name='roll_outAddBackground' value="&{template:info} {{name=@{character_name}}} {{type=Тао Прайм}} {{item=Происхождение}} {{description=Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут.}}">w</button>
-                <span><strong>Тао Прайм:</strong> Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут.</span>
+                <div><span><strong>Тао Прайм:</strong> Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут.</span></div>
             </div>
 
             <input type="checkbox" class="is-shadow-flag" name="attr_isShadow" value="1" checked="false">
             <div class="additional-background shadow-additional">
                 <button type='roll' class="backgroundOutput infoOutput" name='roll_outAddBackground' value="&{template:info} {{name=@{character_name}}} {{type=Тао (Клоака)}} {{item=Происхождение}} {{description=Ты принадлежишь синдикату Ледяного Дракона. У тебя тоже есть кодекс чести, просто он внутренний — это то, что другие кланы так и не смогли принять. Ты — человек вне системы. Но ты не в одиночестве—иногда ты можешь получить задание. Это значит, что кто-то скоро умрёт.}}">w</button>
-                <span><strong>Тао (Клоака):</strong> Ты принадлежишь синдикату Ледяного Дракона. У тебя тоже есть кодекс чести, просто он внутренний — это то, что другие кланы так и не смогли принять. Ты — человек вне системы. Но ты не в одиночестве—иногда ты можешь получить задание. Это значит, что кто-то скоро умрёт.</span>
+                <div><span><strong>Тао (Клоака):</strong> Ты принадлежишь синдикату Ледяного Дракона. У тебя тоже есть кодекс чести, просто он внутренний — это то, что другие кланы так и не смогли принять. Ты — человек вне системы. Но ты не в одиночестве—иногда ты можешь получить задание. Это значит, что кто-то скоро умрёт.</span></div>
             </div>
             
             <div class="background-text">
                 <button type='roll' class="backgroundOutput infoOutput" name='roll_outBackground' value="&{template:info} {{name=@{character_name}}} {{type=@{backgroundtype}}} {{item=Происхождение}} {{description=@{backgroundtext}}}">w</button>
-                <strong><span name="attr_backgroundtype"></span>:</strong><span name="attr_backgroundtext"></span>
+                <div><strong><span name="attr_backgroundtype"></span>:</strong><span name="attr_backgroundtext"></span></div>
             </div>
 
            
@@ -126,7 +126,7 @@
 
             <div class="cyborgPath">
                 <button type='roll' class="cyborgPathOutput infoOutput" name='roll_outCyborgPath' value="&{template:info} {{name=@{character_name}}} {{type=@{cyborgPathtype}}} {{item=Путь}} {{description=@{cyborgPathtext}}}">w</button>
-                <strong><span name="attr_cyborgPathtype"></span>:</strong><span name="attr_cyborgPathtext"></span>
+                <div><strong><span name="attr_cyborgPathtype"></span>:</strong><span name="attr_cyborgPathtext"></span></div>
             </div>
 
             <input type="checkbox" class="cyborgPath-show-flag" name="attr_cyborgPath_show_flag" value="1" checked="false">
@@ -154,7 +154,7 @@
             
             <div class="strangerSpecialization">
                 <button type='roll' class="strangerSpecializationOutput infoOutput" name='roll_outStrangerSpecialization' value="&{template:info} {{name=@{character_name}}} {{type=@{strangerSpecializationtype}}} {{item=Специализация}} {{description=@{strangerSpecializationtext}}}">w</button>
-                <strong><span name="attr_strangerSpecializationtype"></span>:</strong><span name="attr_strangerSpecializationtext"></span>
+                <div><strong><span name="attr_strangerSpecializationtype"></span>:</strong><span name="attr_strangerSpecializationtext"></span></div>
             </div>
 
             <input type="checkbox" class="strangerSpecialization-show-flag" name="attr_strangerSpecialization_show_flag" value="1" checked="false">
@@ -182,7 +182,7 @@
             
             <div class="juggernautHandicraft">
                 <button type='roll' class="juggernautHandicraftOutput infoOutput" name='roll_outJuggernautHandicraft' value="&{template:info} {{name=@{character_name}}} {{type=@{juggernautHandicrafttype}}} {{item=Ремесло}} {{description=@{juggernautHandicrafttext}}}">w</button>
-                <strong><span name="attr_juggernautHandicrafttype"></span>:</strong><span name="attr_juggernautHandicrafttext"></span>
+                <div><strong><span name="attr_juggernautHandicrafttype"></span>:</strong><span name="attr_juggernautHandicrafttext"></span></div>
             </div>
 
             <input type="checkbox" class="juggernautHandicraft-show-flag" name="attr_juggernautHandicraft_show_flag" value="1" checked="false">
@@ -214,7 +214,7 @@
             
             <div class="raelithFunction">
                 <button type='roll' class="raelithFunctionOutput infoOutput" name='roll_outStrangerFunction' value="&{template:info} {{name=@{character_name}}} {{type=@{raelithFunctiontype}}} {{item=Функция}} {{description=@{raelithFunctiontext}}}">w</button>
-                <strong><span name="attr_raelithFunctiontype"></span>:</strong><span name="attr_raelithFunctiontext"></span>
+                <div><strong><span name="attr_raelithFunctiontype"></span>:</strong><span name="attr_raelithFunctiontext"></span></div>
             </div>
 
             <input type="checkbox" class="raelithFunction-show-flag" name="attr_raelithFunction_show_flag" value="1" checked="false">

@@ -495,16 +495,27 @@ button.sheet-change-descriprion  > span.sheet-change  {
     gap: 10px;
 }
 
+.sheet-background .sheet-background-text,
+.sheet-background .sheet-additional-background,
+.sheet-cyborgPath,
+.sheet-strangerSpecialization,
+.sheet-juggernautHandicraft,
+.sheet-raelithFunction {
+	display: grid;
+	grid-template-columns: 18px auto;
+	gap: 3px;
+}
+
 button[type=roll].sheet-infoOutput {
-    border: none;
-    background-color: transparent;
-    background-image: none;
-    font-size: 1.05em;
-    font-weight: bold;
-    box-shadow: none;
-    text-shadow: none;
-    height: 28px;
-    margin: 0px;
+  border: none;
+  background-color: transparent;
+  background-image: none;
+  font-size: 1.05em;
+  font-weight: bold;
+  box-shadow: none;
+  text-shadow: none;
+  height: 21px;
+  margin: 0px;
 	padding: 0px;
 	font-family: "Pictos";
 }
@@ -612,7 +623,7 @@ button[type=roll].sheet-infoOutput::before {
 .sheet-is-shadow-flag:not(:checked) + .sheet-shadow-additional,
 .sheet-is-stranger-flag:not(:checked) + .sheet-stranger-additional,
 .sheet-is-juggernaut-flag:not(:checked) + .sheet-juggernaut-additional {
-	display: inline;
+	display: grid;
 }
 
 .sheet-is-cyborg-flag:not(:checked) + .sheet-cyborg-path,
