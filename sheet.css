@@ -753,12 +753,8 @@ input.sheet-expand-hidden:checked + div > button.sheet-expand-look  > span.sheet
   border-radius: 3px;
   justify-content: center;
   align-items: center;
-	font-size: 19px;
+	font-size: 30px;
 	vertical-align: middle;
-}
-
-.sheet-start-gear input.sheet-toggle:not([value="1"]) ~ button.sheet-toggle > span.sheet-checked {
-  display: none;
 }
 /* .repcontainer[data-groupname="repeating_startgear"] > .repitem  {
 	line-height: 12px;

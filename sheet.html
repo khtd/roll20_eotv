@@ -254,9 +254,9 @@
             <span name="attr_startgear_choose_text"></span><br>
             <fieldset class='repeating_startgear'>
                 <input type="hidden" name="attr_type"></input>
-                <input type="hidden" class="toggle" name="attr_get_flag" />
+                <!-- <input type="hidden" class="toggle" name="attr_get_flag" /> -->
                 <button type="action" name="act_get" class="toggle">
-                    <span class="checked">✓</span>
+                    <span class="checked">+</span>
                 </button>
                 <div>
                     <span class='name' name="attr_name"></span>:
@@ -1917,10 +1917,21 @@
     /* MOVES SECTION END */
     /* STARTGEAR SECTION START */
     on(`clicked:repeating_startgear:get`, function() {
-        getAttrs(['repeating_startgear_get_flag'], function(v) {
-          setAttrs({
-            'repeating_startgear_get_flag': v.repeating_startgear_get_flag !== "1" ? "1" : "0"
-          });
+        getAttrs(['repeating_startgear_name', 'repeating_startgear_details', 'repeating_startgear_type'], function(v) {
+            if(v.repeating_startgear_type == 'item') {
+                var newrowid = generateRowID();
+                var newItem = {}
+                newItem[`repeating_inventory_${newrowid}_inventory_simple`] = v.repeating_startgear_name;
+                newItem[`repeating_inventory_${newrowid}_inventory_details`] = v.repeating_startgear_details;
+                setAttrs(newItem);
+            } else {
+                getAttrs(['notes'], (vv) => {
+                    setAttrs({
+                        notes: vv.notes += `\n${v.repeating_startgear_name}: ${v.repeating_startgear_details}`
+                    })
+                })
+            }
+
         });
     });
     /* STARTGEAR SECTION END */
