@@ -775,6 +775,7 @@ input.sheet-expand-hidden:checked + div > button.sheet-expand-look  > span.sheet
 	"fortune fortune"
 	"special special";
 	gap: 5px;
+	grid-auto-rows: min-content;
 }
 
 /*page2 main-attr start*/
@@ -784,6 +785,7 @@ input.sheet-expand-hidden:checked + div > button.sheet-expand-look  > span.sheet
 	grid-template-columns: 110px;
 	grid-template-rows: 35px 35px 35px 35px;
 	row-gap: 3px;
+	height: min-content;
 }
 
 .sheet-attributes .sheet-main-attributes .sheet-attribute-container {
@@ -826,6 +828,7 @@ input.sheet-expand-hidden:checked + div > button.sheet-expand-look  > span.sheet
 	grid-template-columns: 268px;
 	grid-template-rows: 35px 35px 35px 60px;
 	row-gap: 3px;
+	height: min-content;
 }
 
 .sheet-sub-attributes .sheet-atack,
@@ -1094,22 +1097,19 @@ input[type="checkbox"].sheet-gear-max:checked ~ input[type="checkbox"].sheet-gea
 .sheet-fortune {
 	grid-area: fortune;
 	display: grid;
-	grid-template-columns: 110px 268px;
 	gap: 5px;
-	grid-template-rows: 35px;
+	grid-auto-rows: 35px;
 }
 
 .sheet-fortune .sheet-money,
 .sheet-fortune .sheet-wealth {
 	grid-column-end: 3;
-    display: grid;
-    align-self: center;
+  display: grid;
+  align-self: center;
 }
 
 .sheet-fortune .sheet-money {
-	grid-row-start: 1;
-	grid-row-end: 2;
-	grid-template-columns: 60px 25px 2px 25px 2px 25px 2px 25px 2px 25px 3px 25px 2px 25px;
+	grid-template-columns: 120px 25px 2px 25px 2px 25px 2px 25px 2px 25px 3px 25px 2px 25px;
 	grid-template-rows: 5px 25px 5px;
 	grid-template-areas: 
 	". . . . . . . . . . . . . ."
@@ -1118,9 +1118,7 @@ input[type="checkbox"].sheet-gear-max:checked ~ input[type="checkbox"].sheet-gea
 }
 
 .sheet-fortune .sheet-wealth {
-	grid-row-start: 2;
-	grid-row-end: 3;
-	grid-template-columns: 87px 25px 2px 25px 2px 25px 3px 25px 2px 25px 27px;
+	grid-template-columns: 120px 25px 2px 25px 2px 25px 3px 25px 2px 25px 27px;
 	grid-template-rows: 5px 25px 5px;
 	grid-template-areas: 
 	". . . . . . . . . ."
@@ -1338,20 +1336,21 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 }
 
 .sheet-bonds textarea {
-	width: calc(100% - 40px);
+	width: calc(100% - 70px);
 	resize: vertical;
 	border: 1px solid;
 	margin: 5px;
 	height: 54px;
 	border-radius: 0px;
-  border-top: 0px;
+	border-top: 0px;
+	margin-left: 10%;
 }
 
 .sheet-bonds input {
 	margin: 5px;
 	font-weight: bold;
 	border: 1px solid;
-	width: calc(100% - 30px);
+	width: calc(100% - 60px);
 	border-radius: 0px;
 }
 
@@ -1484,6 +1483,7 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 .repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title span {
 	max-width: 305px;
 	text-align: center;
+	font-weight: bold;
 }
 
 .repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-expansion textarea {

@@ -1,5 +1,5 @@
 <input type="hidden" name="attr_bond_query" value="(0)[Other Bond]">
-<input type="hidden" name="attr_statmod_query" value="?{Stat|Ярость,@{furry}[furry]|Контроль, @{controll}[controll]|Навык, @{skill}[skill]|Репутация, @{reputation}[reputation]|Благосостояние, @{money}[money]}">
+<input type="hidden" name="attr_statmod_query" value="?{Stat|Ярость,@{furry}[furry]|Контроль, @{controll}[controll]|Навык, @{skill}[skill]|Репутация, @{reputation}[reputation]|Благосостояние, @{money}[money]|Что-нибудь,?{Value}}">
 
 <div class="container">
 
@@ -294,7 +294,7 @@
 
             <div class='sub-attributes'>
                 <div class='atack sub-attribute-container'>
-                    <span class='atack-lbl'>Атака</span>
+                    <span class='atack-lbl'>Урон</span>
                     <input type="checkbox" class="atack-box atack-box0" name="attr_atack" value="0" checked="checked">
                     <input type="checkbox" class="atack-box atack-box1" name="attr_atack" value="1"><span class="atack-box1"></span>
                     <input type="checkbox" class ="atack-max" name="attr_atack_max" value="1">
@@ -311,7 +311,7 @@
                 </div>
 
                 <div class='armor sub-attribute-container'>
-                    <span class='armor-lbl'>Броня</span>
+                    <span class='armor-lbl'>Защита</span>
                     <input type="checkbox" class="armor-box armor-box0" name="attr_armor" value="0" checked="checked">
                     <input type="checkbox" class ="armor-max" name="attr_armor_max" value="0">
                     <input type="checkbox" class="armor-box armor-box1" name="attr_armor" value="1"><span class="armor-box1"></span>
@@ -426,6 +426,7 @@
             <span class='bonds-label'>Связи</span>
             <fieldset class="repeating_bonds">
                 <div class="bonds-main">
+                    <span>Имя:</span>
                     <input type="text" name="attr_bond_simple" />
                     <input class="expander expand-bond" type="checkbox" name="attr_expand_bond" value="1" title="Expand for additional notes" checked="checked" />
                     <span> </span>
@@ -454,7 +455,7 @@
                         <input type="checkbox" class="expand-hidden expand-settings" name="attr_expandmovesettings" value="1" title="Settings"/>
                         
                         <div class='move-title'>
-                            <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=@{movename_base}}} {{trigger=@{movetrigger}}} {{success=@{movesuccess}}} {{partial=@{movepartial}}} {{miss=@{movemiss}}} {{doroll=[[@{move_doroll}]]}} {{result=[[2d6 + @{movestat} + @{movemod} + (@{bonus})[bonus]]]}} {{details=@{movedetails}}}">
+                            <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=@{movename_base}}} {{trigger=@{movetrigger}}} {{success=@{movesuccess}}} {{partial=@{movepartial}}} {{miss=@{movemiss}}} {{doroll=[[@{move_doroll}]]}} {{result=[[2d6 + (@{movestat}) + (@{bonus})[bonus]]]}} {{details=@{movedetails}}}">
                                 <span>Lo</span>
                             </button>
                             <span class="rolltext" name="attr_move_name" value="@{move_name}"></span>
@@ -492,8 +493,6 @@
                                         <option>?</option>
                                         <option>Связь</option>
                                     </select>
-                                    <span class="label moveroll"> + </span>
-                                    <input class="moveroll" type="number" name="attr_movemod" value="0" />
                                 <div class="rollresults-container">
                                     <span class="label">Успех (10+):</span>
                                     <br>
@@ -577,7 +576,7 @@
         <div class="rt-content">
             {{#trigger}}
             <div class="rt-row">
-                <span class="label rt-label" >Trigger:</span>
+                <span class="label rt-label" >Условие:</span>
                 <span class="rt-value rt-text">{{trigger}}</span>
             </div>
             {{/trigger}}
@@ -591,13 +590,13 @@
             {{#rollGreater() doroll 0}}
             {{#result}}
                 <div class="rt-row">
-                    <span class="label rt-label" >Roll:</span>
+                    <span class="label rt-label" >Проверка:</span>
                     <span class="rt-value rt-text">{{result}}</span>
                 </div>
                 {{#rollLess() result 7}}
                 {{#miss}}
                 <div class="rt-row">
-                    <span class="label rt-label" >Effect:</span>
+                    <span class="label rt-label" >Эффект:</span>
                     <span class="rt-value rt-text">{{miss}}</span>
                 </div>
                 {{/miss}}
@@ -606,7 +605,7 @@
                 {{#rollBetween() result 7 9}}
                 {{#partial}}
                 <div class="rt-row">
-                    <span class="label rt-label" >Effect:</span>
+                    <span class="label rt-label" >Эффект:</span>
                     <span class="rt-value rt-text">{{partial}}</span>
                 </div>
                 {{/partial}}
@@ -615,7 +614,7 @@
                 {{#rollGreater() result 9}}
                 {{#success}}
                 <div class="rt-row">
-                    <span class="label rt-label" >Effect:</span>
+                    <span class="label rt-label" >Эффект:</span>
                     <span class="rt-value rt-text">{{success}}</span>
                 </div>
                 {{/success}}
@@ -625,7 +624,6 @@
             
             {{#details}}
             <div class="rt-row">
-                <span class="label rt-label" >Details:</span>
                 <span class="rt-value rt-text">{{details}}</span>
             </div>
             {{/details}}
@@ -1812,7 +1810,6 @@
             "repeating_moves_movetrigger",
             "repeating_moves_move_doroll",
             "repeating_moves_movestat_name",
-            "repeating_moves_movemod",
             "repeating_moves_movesuccess",
             "repeating_moves_movepartial",
             "repeating_moves_movemiss",
@@ -1821,9 +1818,9 @@
             var text = ''
             if(v.repeating_moves_movetrigger) text += `Когда: ${v.repeating_moves_movetrigger}\r\n` 
             if(v.repeating_moves_move_doroll == '1') {
-                var stat = `проверь ${v.repeating_moves_movestat_name}`
-                if(v.repeating_moves_movestat_name == '--') stat = 'брось 2d6'
-                if(parseInt(v.repeating_moves_movemod) > 0) stat += ` + ${v.repeating_moves_movemod}`
+                var stat = `Проверь: ${v.repeating_moves_movestat_name}`
+                if(v.repeating_moves_movestat_name == '--') stat = 'Брось 2d6'
+                if(v.repeating_moves_movestat_name == '--') stat = 'Проверь нужную харрактеристику'
                 text += `${stat}\r\n`
                 if(v.repeating_moves_movesuccess) text += `При успехе: ${v.repeating_moves_movesuccess}\r\n`
                 if(v.repeating_moves_movepartial) text += `При частичном успехе: ${v.repeating_moves_movepartial}\r\n`
