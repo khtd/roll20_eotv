@@ -1,5 +1,5 @@
 <input type="hidden" name="attr_bond_query" value="(0)[Other Bond]">
-<input type="hidden" name="attr_statmod_query" value="?{Stat|Ярость,@{furry}[furry]|Контроль, @{controll}[controll]|Навык, @{skill}[skill]|Репутация, @{reputation}[reputation]|Благосостояние, @{money}[money]|Что-нибудь,?{Value}}">
+<input type="hidden" name="attr_statmod_query" value="?{Stat|Ярость,(@{furry})[furry]|Контроль,(@{controll})[controll]|Навык,(@{skill})[skill]|Репутация,(@{reputation})[reputation]|Благосостояние,(@{money})[money]|Что-нибудь,(?{Value&#124 0 &#125) }">
 
 <div class="container">
 
@@ -17,21 +17,6 @@
             <input type="hidden" name="attr_comp_classmoves">
             <span class="class-span" name="attr_character_class"></span>
             <button type='action' class='change-button class-change-button' name='act_changeclass'>Изменить</button>
-        </div>
-
-        <div class="roll-bonus">
-            <div class="toggler">
-                <label>
-                    <input type="radio" class="roll-normal" name="attr_bonus" value="0" checked="checked"><span>Nothing</span>
-                </label>
-                <label>
-                    <input type="radio" class="roll-query" name="attr_bonus" value="?{Modifier|0}"><span>Query</span>
-                </label>
-                <label>
-                    <input type="radio" class="roll-query" name="attr_bonus" value="@{hold}"><span>Hold:</span>
-                </label>
-                <input type="number" name="attr_hold" value="0" />
-            </div>
         </div>
 
         <div class="exp-container">
@@ -60,6 +45,16 @@
                 <input type="radio"  name="attr_page" value="page3">
                 <span>ходы</span>
             </label>
+        </div>
+
+        <div class="roll-bonus">
+            <div class="toggler">
+                <input type="number" name="attr_hold" value="+0" />
+                <label>
+                    <input type="checkbox" class="roll-query" name="attr_bonus" value="@{hold}"><span>К броску</span>
+                </label>
+
+            </div>
         </div>
     </div>
     <input type='hidden' class='tabstoggle' name='attr_sheetTab'  value='page1'/>
@@ -455,7 +450,7 @@
                         <input type="checkbox" class="expand-hidden expand-settings" name="attr_expandmovesettings" value="1" title="Settings"/>
                         
                         <div class='move-title'>
-                            <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=@{movename_base}}} {{trigger=@{movetrigger}}} {{success=@{movesuccess}}} {{partial=@{movepartial}}} {{miss=@{movemiss}}} {{doroll=[[@{move_doroll}]]}} {{result=[[2d6 + (@{movestat}) + (@{bonus})[bonus]]]}} {{details=@{movedetails}}}">
+                            <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=@{movename_base}}} {{trigger=@{movetrigger}}} {{success=@{movesuccess}}} {{partial=@{movepartial}}} {{miss=@{movemiss}}} {{doroll=[[@{move_doroll}]]}} {{result=[[2d6 + @{movestat} + (@{bonus})[bonus]]]}} {{details=@{movedetails}}}">
                                 <span>Lo</span>
                             </button>
                             <span class="rolltext" name="attr_move_name" value="@{move_name}"></span>
@@ -1795,11 +1790,11 @@
     /* MOVES SECTION START */
     var statnameToStatQuery = function(statname) {
         if (statname == "--") return "0[no stat]";
-        if (statname == "Ярость") return "@{furry}[furry]";
-        if (statname == "Контроль") return "@{controll}[controll]";
-        if (statname == "Навык") return "@{skill}[skill]";
-        if (statname == "Репутация") return "@{reputation}[reputation]";
-        if (statname == "Благосостояние") return "@{money}[money]";
+        if (statname == "Ярость") return "(@{furry})[furry]";
+        if (statname == "Контроль") return "(@{controll})[controll]";
+        if (statname == "Навык") return "(@{skill})[skill]";
+        if (statname == "Репутация") return "(@{reputation})[reputation]";
+        if (statname == "Благосостояние") return "(@{money})[money]";
         if (statname == "?") return "@{statmod_query}";
         if (statname == "Связь") return "@{bond_query}";
         return "0[no stat]";
