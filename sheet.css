@@ -1810,3 +1810,50 @@ span.sheet-emptiable:empty + br {
 .sheet-class-tip button[type=action]:hover {
 	border-color: #6e9ec6;
 }
+
+/*вслывашка 2*/
+.sheet-tip-warning-flag {
+	display: none;
+}
+
+.sheet-tip-warning-flag:checked ~ .sheet-change-warning {
+	display: none;
+}
+
+.sheet-tip-warning-flag:not(:checked) ~ .sheet-change-warning {
+	display: grid;
+	gap: 5px;
+	grid-template-rows: repeat(2, auto);
+	position: absolute;
+	top: 7em;
+	left: 7em;
+	background: white;
+	z-index: 99;
+	border: 5px double black;
+	border-radius: 0px;
+	padding: 5px;
+	width: 701px;
+	height: auto;
+}
+
+.sheet-change-warning .sheet-wrn-text {
+	text-align: center;
+	font-size: large;
+}
+
+.sheet-change-warning .sheet-wrn-btn {
+	display: grid;
+	grid-auto-flow: column;
+	justify-content: center;
+  gap: 5px;
+}
+
+.sheet-change-warning button[type=action] {
+	color: black;
+	border: 1.5px solid black;
+  background: white;
+}
+
+.sheet-change-warning button[type=action]:hover {
+	border-color: #6e9ec6;
+}

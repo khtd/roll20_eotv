@@ -519,6 +519,15 @@
 
 <!-- Start welcome -->
 
+<input type="checkbox" class="tip-warning-flag" name="attr_warning_flag" value="1">
+<div class="change-warning">
+    <span class="wrn-text">Все данные сбросятся. Вы уверены?</span>
+    <div class="wrn-btn">
+        <button type="action" name="act_changeclassconfirm">Изменить</button>
+        <button type="action" name="act_changeclasscancel">Отмена</button>
+    </div>
+</div>
+
 <input type="checkbox" class="tip-confirm-flag" name="attr_tip_confirm_flag" value="1">
 <div class="class-tip">
 	<button type="action" class="cancel-button" name="act_cancelclass">&#128473;</button>
@@ -1358,8 +1367,13 @@
             setAttrs({sheetTab:v.page});
         });
     });
-
     on("clicked:changeclass", function() {
+        setAttrs({warning_flag: 0})
+    })
+    on("clicked:changeclasscancel", function() {
+        setAttrs({warning_flag: 1})
+    })
+    on("clicked:changeclassconfirm", function() {
         getSectionIDs("repeating_background", function(idarray) {
             for(var i=0; i < idarray.length; i++) {
               removeRepeatingRow("repeating_background_" + idarray[i]);
@@ -1392,6 +1406,7 @@
          });
         setAttrs({
             tip_confirm_flag: 0,
+            warning_flag: 1,
             description: ' ',
             backgroundtype: ' ',
             backgroundtext: ' ',
