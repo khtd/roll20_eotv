@@ -762,7 +762,7 @@ input.sheet-expand-hidden:checked + div > button.sheet-expand-look  > span.sheet
 .repcontainer[data-groupname="repeating_startgear"] > .repitem {
 	display: grid;
 	grid-template-columns: 18px auto;
-	gap: 3px;
+	gap: 5px;
 	margin-bottom: 4px;
 }
 .repcontainer[data-groupname="repeating_startgear"] > .repitem span.sheet-name {
@@ -1390,6 +1390,10 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
     color: white;
     padding: 5px;
     height: 15px;
+}
+
+.sheet-bonds-main  {
+	padding: 0px 4px;
 }
 
 .sheet-bonds textarea {

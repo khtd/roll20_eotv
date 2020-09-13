@@ -270,19 +270,19 @@
         <div class="attributes">
             <div class='main-attributes'>
                 <div class='furry attribute-container'>
-                        <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Ярость}} {{doroll=[[1]]}} {{result=[[2d6 + (@{furry}) + (@{bonus})[bonus]]]}} ">Ярость</button>
+                        <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Ярость}} {{doroll=[[1]]}} {{result=[[2d6 + (@{furry}|0) + (@{bonus})[bonus]]]}} ">Ярость</button>
                     <input class='attribute-input' name='attr_furry' type='number'>
                 </div>
                 <div class='controll attribute-container'>
-                    <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Контроль}} {{doroll=[[1]]}} {{result=[[2d6 + (@{controll}) + (@{bonus})[bonus]]]}} ">Контроль</button>
+                    <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Контроль}} {{doroll=[[1]]}} {{result=[[2d6 + (@{controll}|0) + (@{bonus})[bonus]]]}} ">Контроль</button>
                     <input class='attribute-input' name='attr_controll' type='number'>
                 </div>
                 <div class='skill attribute-container'>
-                    <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Навык}} {{doroll=[[1]]}} {{result=[[2d6 + (@{skill}) + (@{bonus})[bonus]]]}} ">Навык</button>
+                    <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Навык}} {{doroll=[[1]]}} {{result=[[2d6 + (@{skill}|0) + (@{bonus})[bonus]]]}} ">Навык</button>
                     <input class='attribute-input' name='attr_skill' type='number'>
                 </div>
                 <div class='reputation attribute-container'>
-                    <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Репутация}} {{doroll=[[1]]}} {{result=[[2d6 + (@{reputation})  + (@{bonus})[bonus]]]}} ">Репутация</button>
+                    <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Репутация}} {{doroll=[[1]]}} {{result=[[2d6 + (@{reputation}|0)  + (@{bonus})[bonus]]]}} ">Репутация</button>
                     <input class='attribute-input' name='attr_reputation' type='number'>
                 </div>
             </div>
@@ -1652,6 +1652,7 @@
         update['description'] = descriptions[classname]
         update['look_example'] = look[classname]
         update['tip_confirm_flag'] = 1
+        update['warning_flag'] = 1
         var backgroundUpdate = {}
         if(backgrounds[classname]) {
             backgroundUpdate = addRepeatingInfo(backgrounds[classname].options, 'background')
