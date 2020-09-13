@@ -837,6 +837,45 @@ input.sheet-expand-hidden:checked + div > button.sheet-expand-look  > span.sheet
 	grid-row-end: 3;
 	padding: 3px;
 }
+
+button[type=roll].sheet-attribute-name {
+	background: unset;
+	background-color: black;
+	color: white;
+
+	padding: 3px;
+
+	text-transform: none;
+	text-decoration: none;
+	text-align: unset;
+
+  font-family: unset;
+	font-weight: unset;
+	font-size: unset;
+
+	border: none;
+  border-radius: 0em;
+	border-style: none;
+	
+
+	
+  box-sizing: border-box;
+	box-shadow: none;
+
+	transition: all 0.2s;
+
+	margin: 0;
+  overflow: visible;
+
+	cursor: pointer;
+}
+button[type=roll].sheet-attribute-name::before {
+	content: none;
+}
+button[type=roll].sheet-attribute-name:focus {
+	outline: unset;
+	outline-offset: unset;
+}
 /*page2 main-attr end*/
 
 /*page2 sub-attr start*/
