@@ -439,10 +439,23 @@
     </div>
 
     <div class="page page3">
-        <div class="moves-container">
-            <div class='title'>
-                <h3><span>СТАРТОВЫЕ ХОДЫ</span></h3>
-            </div>
+        <div class="moves-navigation">
+            <label class="nav-moves-button">
+                <input type="radio"  name="attr_moves_page" value="starting" checked="checked">
+                <span>Стартовые</span>
+            </label>
+            <label class="nav-moves-button">
+                <input type="radio"  name="attr_moves_page" value="base">
+                <span>Базовые</span>
+            </label>
+            <label class="nav-moves-button">
+                <input type="radio"  name="attr_moves_page" value="additional">
+                <span>Дополнительные</span>
+            </label>
+        </div>
+        <input type='hidden' class='tabstoggle' name='attr_moveTab'  value='starting'/>
+
+        <div class="moves-container moves-starting">
             <div class="moves">
                 <fieldset class="repeating_moves">
                     <div class="move-main">
@@ -596,6 +609,10 @@
                 </fieldset>
             </div>
         </div>
+
+        
+        <div class="moves-container moves-base">base</div>
+        <div class="moves-container moves-additional">additional</div>
     </div>
 </div>
 
@@ -1568,6 +1585,11 @@
     on("change:page", function() {
         getAttrs(["page"], function(v) {
             setAttrs({sheetTab:v.page});
+        });
+    });
+    on("change:moves_page", function() {
+        getAttrs(["moves_page"], function(v) {
+            setAttrs({moveTab:v.moves_page});
         });
     });
     on("clicked:changeclass", function() {
