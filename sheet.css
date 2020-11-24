@@ -1586,6 +1586,9 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 .repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title button.sheet-optional-move {
 	display: none;
 }
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-hidden {
+	display: none;
+}
 
 .repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title button.sheet-expand-move,
 .repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title button.sheet-change-move,

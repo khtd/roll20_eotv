@@ -441,17 +441,17 @@
     <div class="page page3">
         <div class="moves-container">
             <div class='title'>
-                <h3><span>СТАРОТОВЫЕ ХОДЫ</span></h3>
+                <h3><span>СТАРТОВЫЕ ХОДЫ</span></h3>
             </div>
             <div class="moves">
                 <fieldset class="repeating_moves">
                     <div class="move-main">
-                        <input type="checkbox" class="expand-hidden expand-description" name="attr_expandmovedescription" value="1" title="Details"  />
-                        <input type="checkbox" class="expand-hidden expand-settings" name="attr_expandmovesettings" value="1" title="Settings"/>
-                        <input type="checkbox" class="expand-hidden expand-optional" name="attr_expandmoveoptional" value="1" title="Optional"/>
+                        <input type="checkbox" class="expand-hidden expand-description" name="attr_expanddescriptionval" value="1" title="Details"  />
+                        <input type="checkbox" class="expand-hidden expand-settings" name="attr_expandsettingsval" value="1" title="Settings"/>
+                        <input type="checkbox" class="expand-hidden expand-optional" name="attr_expandoptionalval" value="1" title="Optional"/>
 
                         <div class='move-title'>
-                            <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=@{movename_base}}} {{trigger=@{movetrigger}}} {{success=@{movesuccess}}} {{partial=@{movepartial}}} {{miss=@{movemiss}}} {{doroll=[[@{move_doroll}]]}} {{result=[[2d6 + @{movestat} + (@{bonus})[bonus]]]}} {{details=@{movedetails}}}">
+                            <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=@{movename_base}}} {{trigger=@{movetrigger}}} {{success=@{movesuccess}}} {{partial=@{movepartial}}} {{miss=@{movemiss}}} {{doroll=[[@{move_doroll}]]}} {{result=[[2d6 + @{movestat} + (@{bonus})[bonus]]]}} {{details=@{movedetails}}} {{opt1=[[@{opt1}]]}}  {{opt1name=@{opt1name}}} {{opt1details=@{opt1details}}} {{opt2=[[@{opt2}]]}}  {{opt2name=@{opt2name}}} {{opt2details=@{opt2details}}} {{opt3=[[@{opt3}]]}}  {{opt3name=@{opt3name}}} {{opt3details=@{opt3details}}} {{opt4=[[@{opt4}]]}}  {{opt4name=@{opt4name}}} {{opt4details=@{opt4details}}} {{opt5=[[@{opt5}]]}}  {{opt5name=@{opt5name}}} {{opt5details=@{opt5details}}} {{opt6=[[@{opt6}]]}}  {{opt6name=@{opt6name}}} {{opt6details=@{opt6details}}}">
                                 <span>Lo</span>
                             </button>
                             <span class="rolltext" name="attr_move_name" value="@{move_name}"></span>
@@ -511,6 +511,36 @@
                                 <br />
                                 <textarea class="move-details" name="attr_movedetails"></textarea>
                             </div>
+                            <div class='move-expansion-optional'>
+                                <input type="checkbox" class="show-expand-optional" name="attr_showexpandmoveoptional" value="1">
+                                <span class="label">Опции:</span>
+                                <div>
+                                    <input type="checkbox" class="move-opt" name="attr_showopt1" value="1" checked="true">
+                                    <input type="text" class='name' name="attr_opt1name"></span>:
+                                    <textarea class="move-opt-details" class='detail' name="attr_opt1details"></textarea>
+                                    <br />
+                                    <input type="checkbox" class="move-opt" name="attr_showopt2" value="1" checked="true">
+                                    <input type="text" class='name' name="attr_opt2name"></span>:
+                                    <textarea class="move-opt-details" class='detail' name="attr_opt2details"></textarea>
+                                    <br />
+                                    <input type="checkbox" class="move-opt" name="attr_showopt3" value="1" checked="true">
+                                    <input type="text" class='name' name="attr_opt3name"></span>:
+                                    <textarea class="move-opt-details" class='detail' name="attr_opt3details"></textarea>
+                                    <br />
+                                    <input type="checkbox" class="move-opt" name="attr_showopt4" value="1" checked="true">
+                                    <input type="text" class='name' name="attr_opt4name"></span>:
+                                    <textarea class="move-opt-details" class='detail' name="attr_opt4details"></textarea>
+                                    <br />
+                                    <input type="checkbox" class="move-opt" name="attr_showopt5" value="1" checked="true">
+                                    <input type="text" class='name' name="attr_opt5name"></span>:
+                                    <textarea class="move-opt-details" class='detail' name="attr_opt5details"></textarea>
+                                    <br />
+                                    <input type="checkbox" class="move-opt" name="attr_showopt6" value="1" checked="true">
+                                    <input type="text" class='name' name="attr_opt6name"></span>:
+                                    <textarea class="move-opt-details" class='detail' name="attr_opt6details"></textarea>
+                                    <br />
+                                </div>
+                            </div>
                         </div>
                         
                         <div class='move-description'>
@@ -519,7 +549,7 @@
 
                         
                         <div class='move-optional'>
-
+                            <input type="textarea" class="hidden optional-text" name="attr_moveoptional">
                             <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt1" value="1">
                             <div>
                                 <input type="checkbox" class="move-opt" name="attr_opt1" value="1">
@@ -547,7 +577,20 @@
                                 <span class='name' name="attr_opt4name"></span>:
                                 <span class='detail' name="attr_opt4details"></span>
                             </div>
-                        </div>
+
+                            <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt5" value="1">
+                            <div>
+                                <input type="checkbox" class="move-opt" name="attr_opt5" value="1">
+                                <span class='name' name="attr_opt5name"></span>:
+                                <span class='detail' name="attr_opt5details"></span>
+                            </div>
+
+                            <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt6" value="1">
+                            <div>
+                                <input type="checkbox" class="move-opt" name="attr_opt6" value="1">
+                                <span class='name' name="attr_opt6name"></span>:
+                                <span class='detail' name="attr_opt6details"></span>
+                            </div>
                         </div>
                     </div>
                 </fieldset>
@@ -670,7 +713,48 @@
                 <span class="rt-value rt-text">{{details}}</span>
             </div>
             {{/details}}
-    
+
+            {{#rollGreater() opt1 0}}
+            <div class="rt-row">
+                <span class="label rt-label" >{{opt1name}}</span>
+                <span class="rt-value rt-text">{{opt1details}}</span>
+            </div>
+            {{/rollGreater() opt1 0}} 
+
+            {{#rollGreater() opt2 0}}
+            <div class="rt-row">
+                <span class="label rt-label" >{{opt2name}}</span>
+                <span class="rt-value rt-text">{{opt2details}}</span>
+            </div>
+            {{/rollGreater() opt2 0}} 
+
+            {{#rollGreater() opt3 0}}
+            <div class="rt-row">
+                <span class="label rt-label" >{{opt3name}}</span>
+                <span class="rt-value rt-text">{{opt3details}}</span>
+            </div>
+            {{/rollGreater() opt3 0}} 
+
+            {{#rollGreater() opt4 0}}
+            <div class="rt-row">
+                <span class="label rt-label" >{{opt4name}}</span>
+                <span class="rt-value rt-text">{{opt4details}}</span>
+            </div>
+            {{/rollGreater() opt4 0}} 
+
+            {{#rollGreater() opt5 0}}
+            <div class="rt-row">
+                <span class="label rt-label" >{{opt5name}}</span>
+                <span class="rt-value rt-text">{{opt5details}}</span>
+            </div>
+            {{/rollGreater() opt5 0}} 
+
+            {{#rollGreater() opt6 0}}
+            <div class="rt-row">
+                <span class="label rt-label" >{{opt6name}}</span>
+                <span class="rt-value rt-text">{{opt6details}}</span>
+            </div>
+            {{/rollGreater() opt6 0}} 
         </div>
     </div>
 </rolltemplate>
@@ -1430,18 +1514,21 @@
                 movename_base: 'Свита',
                 move_doroll: '0',
                 movedetails: `Аристократ не должен путешествовать один, и поэтому тебя всегда сопровождает свита. Специалисты свиты могут выполнять твои небольшие задания. Выбери двух специалистов.
-                Ты управляешь действиями своих специалистов, пока вы на связи. Если связь пропадает, ты можешь лишь обозначать, как специалист поступил бы в той или иной ситуации. Когда он действует в одиночку, все его характеристики равны 0.
-                Если специалист погибает, ты легко завербуешь нового в любом населённом месте. Реши, будет это специалист, прибывший из дома, или нанятый местный.
-                □ Телохранитель. (Ярость) Один раз за бой может нанести Урон 3 любому противнику.
-                □ Квартирмейстер. (Контроль) Следит, чтобы у тебя под рукой всегда было необходимое. Раз в сессию получи 3 Припаса и распредели их между собой и соратниками.
-                □ Советник. (Навык). Когда тебе требуется какой-либо редкий, специализированный или неизвестный навык, 1 раз за сессию ты можешь сказать, что твой Советник им обладает. Получи +1 к проверке, связанной с этим навыком.
-                □ Герольд. (Репутация) Он может привлечь к себе внимание всех присутствующих. На какое-то короткое время никто не обращает внимание на тебя и твоих спутников.`,
+Ты управляешь действиями своих специалистов, пока вы на связи. Если связь пропадает, ты можешь лишь обозначать, как специалист поступил бы в той или иной ситуации. Когда он действует в одиночку, все его характеристики равны 0.
+Если специалист погибает, ты легко завербуешь нового в любом населённом месте. Реши, будет это специалист, прибывший из дома, или нанятый местный.`,
                 showopt1: "1",
                 opt1name: 'Телохранитель',
                 opt1details: '(Ярость) Один раз за бой может нанести Урон 3 любому противнику.',
                 showopt2: "1",
                 opt2name: 'Квартирмейстер',
-                opt2details: '(Контроль) Следит, чтобы у тебя под рукой всегда было необходимое. Раз в сессию получи 3 Припаса и распредели их между собой и соратниками.'
+                opt2details: '(Контроль) Следит, чтобы у тебя под рукой всегда было необходимое. Раз в сессию получи 3 Припаса и распредели их между собой и соратниками.',
+                showopt3: '1',
+                opt3name: 'Советник',
+                opt3details: '(Навык). Когда тебе требуется какой-либо редкий, специализированный или неизвестный навык, 1 раз за сессию ты можешь сказать, что твой Советник им обладает. Получи +1 к проверке, связанной с этим навыком.',
+                showopt4: '1',
+                opt4name: 'Герольд',
+                opt4details: '(Репутация) Он может привлечь к себе внимание всех присутствующих. На какое-то короткое время никто не обращает внимание на тебя и твоих спутников.',
+                
             }
         ],
         Cyborg: [],
@@ -1918,7 +2005,7 @@
         return "0[no stat]";
     }
 
-    on("change:repeating_moves:expandmovedescription", function() {
+    on("change:repeating_moves:expanddescriptionval", function() {
         getAttrs([
             "repeating_moves_movetrigger",
             "repeating_moves_move_doroll",
@@ -1926,7 +2013,8 @@
             "repeating_moves_movesuccess",
             "repeating_moves_movepartial",
             "repeating_moves_movemiss",
-            "repeating_moves_movedetails"
+            "repeating_moves_movedetails",
+            "repeating_moves_moveoptional"
         ], function(v) {
             var text = ''
             if(v.repeating_moves_movetrigger) text += `Когда: ${v.repeating_moves_movetrigger}\r\n` 
@@ -1939,7 +2027,8 @@
                 if(v.repeating_moves_movepartial) text += `При частичном успехе: ${v.repeating_moves_movepartial}\r\n`
                 if(v.repeating_moves_movemiss) text += `При провале: ${v.repeating_moves_movemiss}\r\n`
             }
-            if(v.repeating_moves_movedetails) text += `${v.repeating_moves_movedetails}`
+            if(v.repeating_moves_movedetails) text += `${v.repeating_moves_movedetails}\r\n\r\n`
+            if(v.repeating_moves_moveoptional) text += `${v.repeating_moves_moveoptional}`
             setAttrs({
                 repeating_moves_movetext: text || ' '
             });
@@ -1962,41 +2051,20 @@
         });
     });
 
-    on("clicked:repeating_moves:expanddescription", function() {
-        getAttrs(["repeating_moves_expandmovedescription", "repeating_moves_expandmovesettings"], function(v) {
-            console.log(v)
-            var newValue = v.repeating_moves_expandmovedescription == "0" ? "1" : "0" ;
-            var update = {
-                repeating_moves_expandmovedescription: newValue,
-                repeating_moves_expandmovesettings: newValue == "1" ? "0" : v.repeating_moves_expandmovesettings,
-            }
-            console.log(update)
-            setAttrs(update);
-        });
-    });
+    const moveButtons = ["expanddescription", "expandsettings", "expandoptional"]
 
-    on("clicked:repeating_moves:expandsettings", function() {
-        getAttrs(["repeating_moves_expandmovesettings", "repeating_moves_expandmovedescription"], function(v) {
-            console.log(v)
-            var newValue = v.repeating_moves_expandmovesettings  == "0" ? "1" : "0" ;
-            var update = {
-                repeating_moves_expandmovesettings: newValue,
-                repeating_moves_expandmovedescription: newValue == "1" ? "0" : v.repeating_moves_expandmovedescription,
-            }
-            console.log(update)
-            setAttrs(update);
-        });
-    });
-
-    on("clicked:repeating_moves:expandoptional", function() {
-        getAttrs(["repeating_moves_expandmoveoptional"], function(v) {
-            var newValue = v.repeating_moves_expandmoveoptional == "0" ? "1" : "0" ;
-            var update = {
-                repeating_moves_expandmoveoptional: newValue,
-            }
-            setAttrs(update);
-        });
-    });
+    moveButtons.forEach(b => {
+        on(`clicked:repeating_moves:${b}`, () => {
+            getAttrs(moveButtons.map(s=> `repeating_moves_${s}val`), (v) => {
+                var newValue = v[`repeating_moves_${b}val`] == "0" ? "1" : "0";
+                var update = moveButtons.reduce((acc, s) => ({...acc, [`repeating_moves_${s}val`]: newValue == "1" ? "0" : v[`repeating_moves_${s}val`]}), {})
+                setAttrs({
+                    ...update,
+                    [`repeating_moves_${b}val`]: newValue
+                })
+            })
+        })
+    })
 
     on("change:repeating_moves:move_doroll", function() {
         getAttrs(["repeating_moves_move_doroll", "repeating_moves_movestat"], function(v) {
@@ -2043,14 +2111,37 @@
         });
     });
     
-    const opts = ["showopt1", "showopt2", "showopt3", "showopt4"]
-    on(opts.map(o => `change:repeating_moves:${o}`).join(" "), (e) => {
-        getAttrs(opts.map(o => `repeating_moves_${o}`), vals => {
+    const opts = ["opt1", "opt2", "opt3", "opt4", "opt5", "opt6"]
+    on(opts.map(o => `change:repeating_moves:show${o}`).join(" "), (e) => {
+        getAttrs(opts.map(o => `repeating_moves_show${o}`), vals => {
+            const source = e.sourceAttribute.split('_').pop().replace('show', '')
             setAttrs({
-                repeating_moves_showexpandmoveoptional: _.values(vals).includes("1") ? "1" : "0"
+                repeating_moves_showexpandmoveoptional: _.values(vals).includes("1") ? "1" : "0",
+                [`repeating_moves_${source}`]: "0"
             })
         })
     })
+
+    on(opts.map(o => `change:repeating_moves:${o}`).join(" "), (e) => {
+        getAttrs([
+            ...opts.map(o => `repeating_moves_${o}`),
+            ...opts.map(o => `repeating_moves_${o}name`),
+            ...opts.map(o => `repeating_moves_${o}details`)
+        ], vals => {
+            let text = ''
+            for(let o of opts)  {
+                if(vals[`repeating_moves_${o}`]==="1") {
+                    text += `□ ${vals[`repeating_moves_${o}name`]}: ${vals[`repeating_moves_${o}details`]}
+
+`
+                }
+            }
+            setAttrs({
+                repeating_moves_moveoptional: text
+            })
+        })
+    })
+
     /* MOVES SECTION END */
     /* STARTGEAR SECTION START */
     on(`clicked:repeating_startgear:get`, function() {
