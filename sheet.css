@@ -1310,7 +1310,8 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 	background-color: black;
   color: white;
   padding: 5px;
-  height: 15px;
+	height: 15px;
+	margin-bottom: 5px;
 }
 .sheet-inventory textarea {
 	width: calc(100% - 40px);
@@ -1324,6 +1325,7 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 
 .sheet-inventory input {
 	margin: 5px;
+	margin-top: 0px;
 	font-weight: bold;
 	border: 1px solid;
 	width: calc(100% - 30px);
@@ -1386,6 +1388,7 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 .sheet-bonds-label {
 	display: block;
 	margin-top: 5px;
+	margin-bottom: 5px;
 	background-color: black;
     color: white;
     padding: 5px;
@@ -1409,6 +1412,7 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 
 .sheet-bonds input {
 	margin: 5px;
+	margin-top: 0px;
 	font-weight: bold;
 	border: 1px solid;
 	width: calc(100% - 60px);
