@@ -448,7 +448,8 @@
                     <div class="move-main">
                         <input type="checkbox" class="expand-hidden expand-description" name="attr_expandmovedescription" value="1" title="Details"  />
                         <input type="checkbox" class="expand-hidden expand-settings" name="attr_expandmovesettings" value="1" title="Settings"/>
-                        
+                        <input type="checkbox" class="expand-hidden expand-optional" name="attr_expandmoveoptional" value="1" title="Optional"/>
+
                         <div class='move-title'>
                             <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=@{movename_base}}} {{trigger=@{movetrigger}}} {{success=@{movesuccess}}} {{partial=@{movepartial}}} {{miss=@{movemiss}}} {{doroll=[[@{move_doroll}]]}} {{result=[[2d6 + @{movestat} + (@{bonus})[bonus]]]}} {{details=@{movedetails}}}">
                                 <span>Lo</span>
@@ -461,6 +462,11 @@
                             <button type='action' name='act_expandsettings'  class='change-move'>
                                 <span class='change'>p</span>
                                 <span class='save'>3</span>
+                            </button>
+                            <input type="checkbox" class="expand-hidden show-expand-optional" name="attr_showexpandmoveoptional" value="1">
+                            <button type='action' name='act_expandoptional'  class='optional-move'>
+                                <span class='open'>l</span>
+                                <span class='close'>l</span>
                             </button>
                         </div>
         
@@ -509,6 +515,39 @@
                         
                         <div class='move-description'>
                             <textarea name='attr_movetext' readonly='true'></textarea>
+                        </div>
+
+                        
+                        <div class='move-optional'>
+
+                            <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt1" value="1">
+                            <div>
+                                <input type="checkbox" class="move-opt" name="attr_opt1" value="1">
+                                <span class='name' name="attr_opt1name"></span>:
+                                <span class='detail' name="attr_opt1details"></span>
+                            </div>
+
+                            <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt2" value="1">
+                            <div>
+                                <input type="checkbox" class="move-opt" name="attr_opt2" value="1">
+                                <span class='name' name="attr_opt2name"></span>:
+                                <span class='detail' name="attr_opt2details"></span>
+                            </div>
+
+                            <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt3" value="1">
+                            <div>
+                                <input type="checkbox" class="move-opt" name="attr_opt3" value="1">
+                                <span class='name' name="attr_opt3name"></span>:
+                                <span class='detail' name="attr_opt3details"></span>
+                            </div>
+
+                            <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt4" value="1">
+                            <div>
+                                <input type="checkbox" class="move-opt" name="attr_opt4" value="1">
+                                <span class='name' name="attr_opt4name"></span>:
+                                <span class='detail' name="attr_opt4details"></span>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </fieldset>
@@ -1396,7 +1435,13 @@
                 □ Телохранитель. (Ярость) Один раз за бой может нанести Урон 3 любому противнику.
                 □ Квартирмейстер. (Контроль) Следит, чтобы у тебя под рукой всегда было необходимое. Раз в сессию получи 3 Припаса и распредели их между собой и соратниками.
                 □ Советник. (Навык). Когда тебе требуется какой-либо редкий, специализированный или неизвестный навык, 1 раз за сессию ты можешь сказать, что твой Советник им обладает. Получи +1 к проверке, связанной с этим навыком.
-                □ Герольд. (Репутация) Он может привлечь к себе внимание всех присутствующих. На какое-то короткое время никто не обращает внимание на тебя и твоих спутников.`
+                □ Герольд. (Репутация) Он может привлечь к себе внимание всех присутствующих. На какое-то короткое время никто не обращает внимание на тебя и твоих спутников.`,
+                showopt1: "1",
+                opt1name: 'Телохранитель',
+                opt1details: '(Ярость) Один раз за бой может нанести Урон 3 любому противнику.',
+                showopt2: "1",
+                opt2name: 'Квартирмейстер',
+                opt2details: '(Контроль) Следит, чтобы у тебя под рукой всегда было необходимое. Раз в сессию получи 3 Припаса и распредели их между собой и соратниками.'
             }
         ],
         Cyborg: [],
@@ -1943,6 +1988,16 @@
         });
     });
 
+    on("clicked:repeating_moves:expandoptional", function() {
+        getAttrs(["repeating_moves_expandmoveoptional"], function(v) {
+            var newValue = v.repeating_moves_expandmoveoptional == "0" ? "1" : "0" ;
+            var update = {
+                repeating_moves_expandmoveoptional: newValue,
+            }
+            setAttrs(update);
+        });
+    });
+
     on("change:repeating_moves:move_doroll", function() {
         getAttrs(["repeating_moves_move_doroll", "repeating_moves_movestat"], function(v) {
             if (v.repeating_moves_move_doroll != "1" && v.repeating_moves_movestat == "@{statmod_query}")
@@ -1987,6 +2042,15 @@
             });
         });
     });
+    
+    const opts = ["showopt1", "showopt2", "showopt3", "showopt4"]
+    on(opts.map(o => `change:repeating_moves:${o}`).join(" "), (e) => {
+        getAttrs(opts.map(o => `repeating_moves_${o}`), vals => {
+            setAttrs({
+                repeating_moves_showexpandmoveoptional: _.values(vals).includes("1") ? "1" : "0"
+            })
+        })
+    })
     /* MOVES SECTION END */
     /* STARTGEAR SECTION START */
     on(`clicked:repeating_startgear:get`, function() {
