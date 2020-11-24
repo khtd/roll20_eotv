@@ -441,7 +441,7 @@
     <div class="page page3">
         <div class="moves-container">
             <div class='title'>
-                <h3><span>ХОДЫ 1</span></h3>
+                <h3><span>СТАРОТОВЫЕ ХОДЫ</span></h3>
             </div>
             <div class="moves">
                 <fieldset class="repeating_moves">
@@ -1360,6 +1360,67 @@
         Psychomant: {},
         Raelith: {},
     }
+
+    var moves = {
+        Noble: [
+            {
+                movename_base: 'По моей воле',
+                movetrigger: 'Когда ты отдаешь приказ NPC используя свой социальный статус в качестве рычага',
+                move_doroll: '1',
+                movestat_name: 'Репутация',
+                movesuccuess: 'выбери 1',
+                movepartial: 'NPC выбирает 1',
+                movemiss: '',
+                movedetails: ` Он выполняет твой приказ;
+ Он отказывается, и ты получаешь +1 против него.`
+            },
+            {
+                movename_base: 'Полезные знакомства',
+                movetrigger: 'Когда ты ищешь что-то или кого-то',
+                move_doroll: '1',
+                movestat_name: 'Репутация',
+                movesuccuess: 'выбери 1',
+                movepartial: 'выбери 2',
+                movemiss: 'выбери 3',
+                movedetails: ` Это будет стоить тебе кучу денег;
+                 Это займёт много времени;
+                 Ты будешь должен ответную услугу;
+                 Тебе придется поступить недостойно;`
+            },
+            {
+                movename_base: 'Свита',
+                move_doroll: '0',
+                movedetails: `Аристократ не должен путешествовать один, и поэтому тебя всегда сопровождает свита. Специалисты свиты могут выполнять твои небольшие задания. Выбери двух специалистов.
+                Ты управляешь действиями своих специалистов, пока вы на связи. Если связь пропадает, ты можешь лишь обозначать, как специалист поступил бы в той или иной ситуации. Когда он действует в одиночку, все его характеристики равны 0.
+                Если специалист погибает, ты легко завербуешь нового в любом населённом месте. Реши, будет это специалист, прибывший из дома, или нанятый местный.
+                □ Телохранитель. (Ярость) Один раз за бой может нанести Урон 3 любому противнику.
+                □ Квартирмейстер. (Контроль) Следит, чтобы у тебя под рукой всегда было необходимое. Раз в сессию получи 3 Припаса и распредели их между собой и соратниками.
+                □ Советник. (Навык). Когда тебе требуется какой-либо редкий, специализированный или неизвестный навык, 1 раз за сессию ты можешь сказать, что твой Советник им обладает. Получи +1 к проверке, связанной с этим навыком.
+                □ Герольд. (Репутация) Он может привлечь к себе внимание всех присутствующих. На какое-то короткое время никто не обращает внимание на тебя и твоих спутников.`
+            }
+        ],
+        Cyborg: [],
+        Companion: [],
+        Courier: [],
+        Mercenary: [],
+        Tactician: [],
+        Daredevil: [],
+        Stranger: [],
+        Shadow: [],
+        Manofsteel: [],
+        Bountyhunter: [],
+        Supernova: [],
+        Cenzor: [],
+        Engineer: [],
+        Doctor: [],
+        Juggernaut: [],
+        Kinetick: [],
+        DigitalDao: [],
+        Emissary: [],
+        Psychomant: [],
+        Raelith: [],
+    }
+    
     on("sheet:opened", function() {
         getAttrs(["character_class"], function(v) {
             update = {};
@@ -1383,37 +1444,26 @@
     on("clicked:changeclasscancel", function() {
         setAttrs({warning_flag: 1})
     })
+
+    function removeRepeatingSection(sectionName) {
+        getSectionIDs(`repeating_${sectionName}`, function(idarray) {
+            for(var i=0; i < idarray.length; i++) {
+              removeRepeatingRow(`repeating_${sectionName}_${idarray[i]}`);
+            }
+        });
+    }
+
     on("clicked:changeclassconfirm", function() {
-        getSectionIDs("repeating_background", function(idarray) {
-            for(var i=0; i < idarray.length; i++) {
-              removeRepeatingRow("repeating_background_" + idarray[i]);
-            }
-         });
-         getSectionIDs("repeating_cyborgPath", function(idarray) {
-            for(var i=0; i < idarray.length; i++) {
-              removeRepeatingRow("repeating_cyborgPath_" + idarray[i]);
-            }
-         });
-         getSectionIDs("repeating_strangerSpecialization", function(idarray) {
-            for(var i=0; i < idarray.length; i++) {
-              removeRepeatingRow("repeating_strangerSpecialization_" + idarray[i]);
-            }
-         });
-         getSectionIDs("repeating_juggernautHandicraft", function(idarray) {
-            for(var i=0; i < idarray.length; i++) {
-              removeRepeatingRow("repeating_juggernautHandicraft_" + idarray[i]);
-            }
-         });
-         getSectionIDs("repeating_raelithFunction", function(idarray) {
-            for(var i=0; i < idarray.length; i++) {
-              removeRepeatingRow("repeating_raelithFunction_" + idarray[i]);
-            }
-         });
-         getSectionIDs("repeating_startgear", function(idarray) {
-            for(var i=0; i < idarray.length; i++) {
-              removeRepeatingRow("repeating_startgear_" + idarray[i]);
-            }
-         });
+        const sectionToRemove = [
+            'background',
+            'cyborgPath',
+            'strangerSpecialization',
+            'juggernautHandicraft',
+            'raelithFunction',
+            'startgear',
+            'moves'
+        ]
+        sectionToRemove.forEach(removeRepeatingSection);
         setAttrs({
             tip_confirm_flag: 0,
             warning_flag: 1,
@@ -1525,7 +1575,7 @@
         setAttrs(update, undefined, function() {setupClass("Raelith")})
     });
 
-    var addRepeatingInfo = function(options, param) {
+    function addRepeatingInfo(options, param) {
         var update = {}
         options.forEach(function(row) {
             var  newbackid = generateRowID();
@@ -1579,7 +1629,6 @@
 
     on('clicked:repeating_cyborgPath:setting', function() {
         getAttrs(["repeating_cyborgPath_settingsshowflag"], (v) => {
-            console.log(v.repeating_cyborgPath_settingsshowflag == 1)
             setAttrs({
                 repeating_cyborgPath_settingsshowflag: v.repeating_cyborgPath_settingsshowflag && v.repeating_cyborgPath_settingsshowflag == '1' ? 0 : 1
             });
@@ -1602,7 +1651,6 @@
 
     on('clicked:repeating_strangerSpecialization:setting', function() {
         getAttrs(["repeating_strangerSpecialization_settingsshowflag"], (v) => {
-            console.log(v.repeating_strangerSpecialization_settingsshowflag == 1)
             setAttrs({
                 repeating_strangerSpecialization_settingsshowflag: v.repeating_strangerSpecialization_settingsshowflag && v.repeating_strangerSpecialization_settingsshowflag == '1' ? 0 : 1
             });
@@ -1625,7 +1673,6 @@
 
     on('clicked:repeating_juggernautHandicraft:setting', function() {
         getAttrs(["repeating_juggernautHandicraft_settingsshowflag"], (v) => {
-            console.log(v.repeating_juggernautHandicraft_settingsshowflag == 1)
             setAttrs({
                 repeating_juggernautHandicraft_settingsshowflag: v.repeating_juggernautHandicraft_settingsshowflag && v.repeating_juggernautHandicraft_settingsshowflag == '1' ? 0 : 1
             });
@@ -1648,7 +1695,6 @@
 
     on('clicked:repeating_raelithFunction:setting', function() {
         getAttrs(["repeating_raelithFunction_settingsshowflag"], (v) => {
-            console.log(v.repeating_raelithFunction_settingsshowflag == 1)
             setAttrs({
                 repeating_raelithFunction_settingsshowflag: v.repeating_raelithFunction_settingsshowflag && v.repeating_raelithFunction_settingsshowflag == '1' ? 0 : 1
             });
@@ -1674,7 +1720,8 @@
         var gear = addRepeatingInfo(startGear[classname].options, 'startgear')
         gear.startgear_note_text = startGear[classname].note_text
         gear.startgear_choose_text = startGear[classname].choose_text
-        setAttrs({...update, ...backgroundUpdate, ...attr, ...gear});
+        var movesdata =  addRepeatingInfo(moves[classname], 'moves')
+        setAttrs({...update, ...backgroundUpdate, ...attr, ...gear, ...movesdata});
     };
 
     on("clicked:expand_look", function() {
