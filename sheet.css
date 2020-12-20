@@ -1742,6 +1742,13 @@ div.sheet-moves-starting {
 	display: none;
 }
 
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-expansion-optional input.sheet-show-expand-optional:not(:checked) ~ div {
+	display: none;
+}
+
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-expansion-optional div input.sheet-move-opt:not(:checked) + input + textarea {
+	display: none;
+}
 /* page3 moves end */
 
 /* page3 page end */
