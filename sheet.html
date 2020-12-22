@@ -604,6 +604,34 @@
                                 <span class='name' name="attr_opt6name"></span>:
                                 <span class='detail' name="attr_opt6details"></span>
                             </div>
+
+                            <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt7" value="1">
+                            <div>
+                                <input type="checkbox" class="move-opt" name="attr_opt7" value="1">
+                                <span class='name' name="attr_opt7name"></span>:
+                                <span class='detail' name="attr_opt7details"></span>
+                            </div>
+
+                            <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt8" value="1">
+                            <div>
+                                <input type="checkbox" class="move-opt" name="attr_opt8" value="1">
+                                <span class='name' name="attr_opt8name"></span>:
+                                <span class='detail' name="attr_opt8details"></span>
+                            </div>
+
+                            <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt9" value="1">
+                            <div>
+                                <input type="checkbox" class="move-opt" name="attr_opt9" value="1">
+                                <span class='name' name="attr_opt9name"></span>:
+                                <span class='detail' name="attr_opt9details"></span>
+                            </div>
+
+                            <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt10" value="1">
+                            <div>
+                                <input type="checkbox" class="move-opt" name="attr_opt10" value="1">
+                                <span class='name' name="attr_opt10name"></span>:
+                                <span class='detail' name="attr_opt10details"></span>
+                            </div>
                         </div>
                     </div>
                 </fieldset>
@@ -733,45 +761,63 @@
 
             {{#rollGreater() opt1 0}}
             <div class="rt-row">
-                <span class="label rt-label" >{{opt1name}}</span>
-                <span class="rt-value rt-text">{{opt1details}}</span>
+                <span class="rt-value rt-text"><b>{{opt1name}}</b> {{opt1details}}</span>
             </div>
             {{/rollGreater() opt1 0}} 
 
             {{#rollGreater() opt2 0}}
             <div class="rt-row">
-                <span class="label rt-label" >{{opt2name}}</span>
-                <span class="rt-value rt-text">{{opt2details}}</span>
+                <span class="rt-value rt-text"><b>{{opt2name}}</b> {{opt2details}}</span>
             </div>
             {{/rollGreater() opt2 0}} 
 
             {{#rollGreater() opt3 0}}
             <div class="rt-row">
-                <span class="label rt-label" >{{opt3name}}</span>
-                <span class="rt-value rt-text">{{opt3details}}</span>
+                <span class="rt-value rt-text"><b>{{opt3name}}</b> {{opt3details}}</span>
             </div>
             {{/rollGreater() opt3 0}} 
 
             {{#rollGreater() opt4 0}}
             <div class="rt-row">
-                <span class="label rt-label" >{{opt4name}}</span>
-                <span class="rt-value rt-text">{{opt4details}}</span>
+                <span class="rt-value rt-text"><b>{{opt4name}}</b> {{opt4details}}</span>
             </div>
             {{/rollGreater() opt4 0}} 
 
             {{#rollGreater() opt5 0}}
             <div class="rt-row">
-                <span class="label rt-label" >{{opt5name}}</span>
-                <span class="rt-value rt-text">{{opt5details}}</span>
+                <span class="rt-value rt-text"><b>{{opt5name}}</b> {{opt5details}}</span>
             </div>
             {{/rollGreater() opt5 0}} 
 
             {{#rollGreater() opt6 0}}
             <div class="rt-row">
-                <span class="label rt-label" >{{opt6name}}</span>
-                <span class="rt-value rt-text">{{opt6details}}</span>
+                <span class="rt-value rt-text"><b>{{opt6name}}</b> {{opt6details}}</span>
             </div>
             {{/rollGreater() opt6 0}} 
+
+            {{#rollGreater() opt7 0}}
+            <div class="rt-row">
+                <span class="rt-value rt-text"><b>{{opt7name}}</b> {{opt7details}}</span>
+            </div>
+            {{/rollGreater() opt7 0}} 
+
+            {{#rollGreater() opt8 0}}
+            <div class="rt-row">
+                <span class="rt-value rt-text"><b>{{opt8name}}</b> {{opt8details}}</span>
+            </div>
+            {{/rollGreater() opt8 0}} 
+
+            {{#rollGreater() opt9 0}}
+            <div class="rt-row">
+                <span class="rt-value rt-text"><b>{{opt9name}}</b> {{opt9details}}</span>
+            </div>
+            {{/rollGreater() opt9 0}} 
+
+            {{#rollGreater() opt10 0}}
+            <div class="rt-row">
+                <span class="rt-value rt-text"><b>{{opt10name}}</b> {{opt10details}}</span>
+            </div>
+            {{/rollGreater() opt10 0}} 
         </div>
     </div>
 </rolltemplate>
@@ -1548,7 +1594,46 @@
                 
             }
         ],
-        Cyborg: [],
+        Cyborg: [
+            {
+                movename_base: 'Больше, чем человек',
+                move_doroll: '0',
+                movedetails: `Ты — машина, созданная в элитных цехах синдикатов Тао. Выбери 2 кибернетических импланта из тех, что находятся на третьем листе.`,                
+            },
+            {
+                movename_base: 'Кодекс чести:',
+                move_doroll: '0',
+                movedetails: `Ты соблюдаешь кодекс чести, в котором тебя воспитали. Когда ты поступаешь бесчестно, опозорив себя или свой клан, отметь 1 ячейку Бесчестия. Ведущий может превра-тить один твой бросок в 6— за каждую заполненную ячейку Бесчестия в течение сессии.
+Посмотри на постулаты кодекса чести. Когда ты поступаешь достойно и в соответствии с выбранными постулатами, очисти 1 заполненную ячейку. Когда ты нарушаешь выбранный постулат, заполни 1 ячейку.`,
+                showopt1: "1",
+                opt1name: '',
+                opt1details: 'Не позволяй другим превзойти тебя на твоём пути.',
+                showopt2: "1",
+                opt2name: '',
+                opt2details: 'Будь всегда полезен господину.',
+                showopt3: '1',
+                opt3name: '',
+                opt3details: 'Проявляй великое сострадание и помогай людям.',
+                showopt4: '1',
+                opt4name: '',
+                opt4details: 'Прежде чем выразить человеку свое мнение, подумай о том, в состоянии ли он его принять.',
+                showopt5: '1',
+                opt5name: '',
+                opt5details: 'Совершив ошибку, ты должен тут же её исправить.',
+                showopt6: '1',
+                opt6name: '',
+                opt6details: 'Избегай большого количества сакэ, чрезмерной гордости и великой роскоши.',
+                showopt7: '1',
+                opt7name: '',
+                opt7details: 'Совершенствование не имеет конца.',
+                showopt8: '1',
+                opt8name: '',
+                opt8details: 'Путь самурая — это стремление к смерти.',
+                showopt9: '1',
+                opt9name: '',
+                opt9details: 'Следует взвешивать каждое слово и неизменно задавать себе вопрос, правда ли то, что собираешься сказать.',
+            }
+        ],
         Companion: [],
         Courier: [],
         Mercenary: [],
