@@ -715,6 +715,12 @@
                             <input type="checkbox" class="expand-hidden expand-optional" name="attr_expandoptionalval" value="1" title="Optional"/>
     
                             <div class='move-title'>
+                                <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=@{movename_base}}} {{trigger=@{movetrigger}}} {{success=@{movesuccess}}} {{partial=@{movepartial}}} {{miss=@{movemiss}}} {{doroll=[[@{move_doroll}]]}} {{result=[[2d6 + @{movestat} + (@{bonus})[bonus]]]}} {{details=@{movedetails}}} {{opt1=[[@{opt1}]]}}  {{opt1name=@{opt1name}}} {{opt1details=@{opt1details}}} {{opt2=[[@{opt2}]]}}  {{opt2name=@{opt2name}}} {{opt2details=@{opt2details}}} {{opt3=[[@{opt3}]]}}  {{opt3name=@{opt3name}}} {{opt3details=@{opt3details}}} {{opt4=[[@{opt4}]]}}  {{opt4name=@{opt4name}}} {{opt4details=@{opt4details}}} {{opt5=[[@{opt5}]]}}  {{opt5name=@{opt5name}}} {{opt5details=@{opt5details}}} {{opt6=[[@{opt6}]]}}  {{opt6name=@{opt6name}}} {{opt6details=@{opt6details}}}">
+                                    <span>Lo</span>
+                                </button>
+
+                                <button type="action" name="add_move" class='add-move'>&</button>
+
                                 <span class="rolltext" name="attr_move_name" value="@{move_name}"></span>
                                 <button type="action" name="act_expanddescription" class="expand-move">
                                     <span class="expanded">▼</span>
@@ -2545,19 +2551,20 @@
             "repeating_moves-upgrade_movedetails",
             "repeating_moves-upgrade_moveoptional"
         ], function(v) {
+            console.log(v)
             var text = ''
-            if(v.repeating_moves-upgrade_movetrigger) text += `Когда: ${v.repeating_moves-upgrade_movetrigger}\r\n` 
-            if(v.repeating_moves-upgrade_move_doroll == '1') {
-                var stat = `Проверь: ${v.repeating_moves-upgrade_movestat_name}`
-                if(v.repeating_moves-upgrade_movestat_name == '--') stat = 'Брось 2d6'
-                if(v.repeating_moves-upgrade_movestat_name == '?') stat = 'Проверь нужную харрактеристику'
+            if(v["repeating_moves-upgrade_movetrigger"]) text += `Когда: ${v["repeating_moves-upgrade_movetrigger"]}\r\n` 
+            if(v["repeating_moves-upgrade_move_doroll"] == '1') {
+                var stat = `Проверь: ${v["repeating_moves-upgrade_movestat_name"]}`
+                if(v["repeating_moves-upgrade_movestat_name"] == '--') stat = 'Брось 2d6'
+                if(v["repeating_moves-upgrade_movestat_name"] == '?') stat = 'Проверь нужную харрактеристику'
                 text += `${stat}\r\n`
-                if(v.repeating_moves-upgrade_movesuccess) text += `При успехе: ${v.repeating_moves-upgrade_movesuccess}\r\n`
-                if(v.repeating_moves-upgrade_movepartial) text += `При частичном успехе: ${v.repeating_moves-upgrade_movepartial}\r\n`
-                if(v.repeating_moves-upgrade_movemiss) text += `При провале: ${v.repeating_moves-upgrade_movemiss}\r\n`
+                if(v["repeating_moves-upgrade_movesuccess"]) text += `При успехе: ${v["repeating_moves-upgrade_movesuccess"]}\r\n`
+                if(v["repeating_moves-upgrade_movepartial"]) text += `При частичном успехе: ${v["repeating_moves-upgrade_movepartial"]}\r\n`
+                if(v["repeating_moves-upgrade_movemiss"]) text += `При провале: ${v["repeating_moves-upgrade_movemiss"]}\r\n`
             }
-            if(v.repeating_moves-upgrade_movedetails) text += `${v.repeating_moves-upgrade_movedetails}\r\n\r\n`
-            if(v.repeating_moves-upgrade_moveoptional) text += `${v.repeating_moves-upgrade_moveoptional}`
+            if(v["repeating_moves-upgrade_movedetails"]) text += `${v["repeating_moves-upgrade_movedetails"]}\r\n\r\n`
+            if(v["repeating_moves-upgrade_moveoptional"]) text += `${v["repeating_moves-upgrade_moveoptional"]}`
             setAttrs({
                 "repeating_moves-upgrade_movetext": text || ' '
             });
@@ -2567,7 +2574,7 @@
     on("change:repeating_moves-upgrade:movename_base", function() {
         getAttrs(["repeating_moves-upgrade_movename_base"], function(values) {
             setAttrs({
-                "repeating_moves-upgrade_move_name": values.repeating_moves-upgrade_movename_base
+                "repeating_moves-upgrade_move_name": values["repeating_moves-upgrade_movename_base"]
             });
         });
     });
@@ -2575,7 +2582,7 @@
     on("change:repeating_moves-upgrade:movestat_name", function() {
         getAttrs(["repeating_moves-upgrade_movestat_name"], function(values) {
             setAttrs({
-                "repeating_moves-upgrade_movestat": statnameToStatQuery(values.repeating_moves-upgrade_movestat_name)
+                "repeating_moves-upgrade_movestat": statnameToStatQuery(values["repeating_moves-upgrade_movestat_name"])
             });
         });
     });
@@ -2595,46 +2602,8 @@
 
     on("change:repeating_moves-upgrade:move_doroll", function() {
         getAttrs(["repeating_moves-upgrade_move_doroll", "repeating_moves-upgrade_movestat"], function(v) {
-            if (v.repeating_moves-upgrade_move_doroll != "1" && v.repeating_moves-upgrade_movestat == "@{statmod_query}")
+            if (v["repeating_moves-upgrade_move_doroll"] != "1" && v["repeating_moves-upgrade_movestat"] == "@{statmod_query}")
                 setAttrs({"repeating_moves-upgrade_movestat": 0});
-        });
-    });
-
-    on("change:repeating_bonds", function(eventInfo) {
-        getSectionIDs("repeating_bonds", function(ids) {
-            if (ids.length == 0){
-                setAttrs({
-                    bond_query: "(0)[Other Bond]"
-                });
-                return;
-            }
-            
-            var attrs = [];
-            for(var i=0; i < ids.length; i++) {
-                var attr = "repeating_bonds_" + ids[i] + "_bond_simple";
-                attrs.push(attr);
-            }
-            
-            getAttrs(attrs, function(v) {
-                var bonds = {};
-                _.each(v, function(val, attrName) {
-                    if (val in bonds){
-                        bonds[val] += 1;
-                    }else{
-                        bonds[val] = 1;
-                    }
-                });
-                
-                var query = "?{Связь";
-                _.each(bonds, function(count, name) {
-                    query = query.concat(`|${name}, (${count})[Bonds with ${name}]`);
-                });
-                query = query.concat("|Other, (0)[Other Bond]}");
-                
-                setAttrs({
-                    bond_query: query
-                });
-            });
         });
     });
     

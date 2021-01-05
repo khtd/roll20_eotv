@@ -1561,6 +1561,14 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 .repcontainer[data-groupname=repeating_moves] button[type=roll] span {
 	font-family: "dicefontd6";
 }
+
+.repcontainer[data-groupname=repeating_moves-upgrade]  button[type=roll] { 
+	display: none; 
+}
+.repcontainer[data-groupname=repeating_moves-upgrade]  button.sheet-add-move { 
+	font-family: "Pictos";
+}
+
  
 .sheet-moves-own,
 .sheet-moves-base,
@@ -1595,32 +1603,37 @@ div.sheet-moves-own {
 	gap: 6px;
 }
 
-.repcontainer[data-groupname=repeating_moves] {
+.repcontainer[data-groupname=repeating_moves],
+.repcontainer[data-groupname=repeating_moves-upgrade] {
 	display: grid;
 	grid-template-columns: 383px;
 	gap: 6px;
 }
 
-.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title {
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title,
+.repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-title  {
 	display: grid;
 	grid-template-columns: 26.4px max-content 18px 18px 18px;
 	gap: 5px;
-	align-items: end;
+	align-items: center;
 }
 
-.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title span {
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title span,
+.repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-title span {
 	max-width: 305px;
 	text-align: center;
 	font-weight: bold;
 }
 
-.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-expansion textarea {
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-expansion textarea,
+.repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-expansion textarea {
 	width: calc(100% - 20px);
 	resize: vertical;
 	height: 80px;
 }
 
-.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-description textarea {
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-description textarea,
+.repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-description textarea  {
 	margin: 0;
   resize: vertical;
   padding: 0;
@@ -1635,26 +1648,33 @@ div.sheet-moves-own {
 	box-shadow: none;
 }
 
-.repcontainer[data-groupname=repeating_moves] input[type='number'] {
+.repcontainer[data-groupname=repeating_moves] input[type='number'],
+.repcontainer[data-groupname=repeating_moves-upgrade] input[type='number'] {
 	width: 40px;
 	text-align: center;
 }
 /* grid end */
 
-.sheet-moves .sheet-expand-hidden {
+.sheet-moves .sheet-expand-hidden,
+.sheet-moves-upgrade .sheet-expand-hidden {
 	display: none;
 }
 
-.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title button.sheet-optional-move {
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title button.sheet-optional-move,
+.repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-title button.sheet-optional-move {
 	display: none;
 }
-.repcontainer[data-groupname=repeating_moves] .repitem .sheet-hidden {
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-hidden,
+.repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-hidden  {
 	display: none;
 }
 
 .repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title button.sheet-expand-move,
 .repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title button.sheet-change-move,
-.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title input.sheet-show-expand-optional:checked ~ button.sheet-optional-move {
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title input.sheet-show-expand-optional:checked ~ button.sheet-optional-move,
+.repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-title button.sheet-expand-move,
+.repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-title button.sheet-change-move,
+.repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-title input.sheet-show-expand-optional:checked ~ button.sheet-optional-move {
 	display: grid;
   margin: 0;
   overflow: visible;
@@ -1668,38 +1688,51 @@ div.sheet-moves-own {
 }
 
 .sheet-moves button.sheet-expand-move > span.sheet-expanded,
-.sheet-moves button.sheet-expand-move > span.sheet-not-expanded {
+.sheet-moves button.sheet-expand-move > span.sheet-not-expanded,
+.sheet-moves-upgrade button.sheet-expand-move > span.sheet-expanded,
+.sheet-moves-upgrade button.sheet-expand-move > span.sheet-not-expanded  {
 	display: block;
 }
 
 .sheet-moves button.sheet-change-move > span.sheet-save,
 .sheet-moves button.sheet-change-move > span.sheet-change,
 .sheet-moves button.sheet-optional-move > span.sheet-open,
-.sheet-moves button.sheet-optional-move > span.sheet-close  {
+.sheet-moves button.sheet-optional-move > span.sheet-close,
+.sheet-moves-upgrade button.sheet-change-move > span.sheet-save,
+.sheet-moves-upgrade button.sheet-change-move > span.sheet-change,
+.sheet-moves-upgrade button.sheet-optional-move > span.sheet-open,
+.sheet-moves-upgrade button.sheet-optional-move > span.sheet-close  {
 	display: block;
 	font-family: "Pictos";
 }
 
-.sheet-moves input.sheet-expand-description:not(:checked) ~ div > button.sheet-expand-move  > span.sheet-expanded {
+.sheet-moves input.sheet-expand-description:not(:checked) ~ div > button.sheet-expand-move  > span.sheet-expanded,
+.sheet-moves-upgrade input.sheet-expand-description:not(:checked) ~ div > button.sheet-expand-move  > span.sheet-expanded {
   display: none;
 }
-.sheet-moves input.sheet-expand-description:checked ~ div > button.sheet-expand-move  > span.sheet-not-expanded {
+.sheet-moves input.sheet-expand-description:checked ~ div > button.sheet-expand-move  > span.sheet-not-expanded,
+.sheet-moves-upgrade input.sheet-expand-description:checked ~ div > button.sheet-expand-move  > span.sheet-not-expanded  {
   display: none;
 }
-.sheet-moves input.sheet-expand-settings:not(:checked) ~ div > button.sheet-change-move  > span.sheet-save {
+.sheet-moves input.sheet-expand-settings:not(:checked) ~ div > button.sheet-change-move  > span.sheet-save,
+.sheet-moves-upgrade input.sheet-expand-settings:not(:checked) ~ div > button.sheet-change-move  > span.sheet-save  {
   display: none;
 }
-.sheet-moves input.sheet-expand-settings:checked ~ div > button.sheet-change-move  > span.sheet-change {
+.sheet-moves input.sheet-expand-settings:checked ~ div > button.sheet-change-move  > span.sheet-change,
+.sheet-moves-upgrade input.sheet-expand-settings:checked ~ div > button.sheet-change-move  > span.sheet-change {
   display: none;
 }
-.sheet-moves input.sheet-expand-optional:not(:checked) ~ div > button.sheet-optional-move  > span.sheet-close {
+.sheet-moves input.sheet-expand-optional:not(:checked) ~ div > button.sheet-optional-move  > span.sheet-close,
+.sheet-moves-upgrade input.sheet-expand-optional:not(:checked) ~ div > button.sheet-optional-move  > span.sheet-close {
   display: none;
 }
-.sheet-moves input.sheet-expand-optional:checked ~ div > button.sheet-optional-move  > span.sheet-open {
+.sheet-moves input.sheet-expand-optional:checked ~ div > button.sheet-optional-move  > span.sheet-open,
+.sheet-moves-upgrade input.sheet-expand-optional:checked ~ div > button.sheet-optional-move  > span.sheet-open {
   display: none;
 }
 
-.sheet-moves .sheet-move-expansion {
+.sheet-moves .sheet-move-expansion,
+.sheet-moves-upgrade .sheet-move-expansion {
 	display: block;
 	transition: max-height 0.5s ease-out;
 	opacity: 0;
@@ -1707,49 +1740,60 @@ div.sheet-moves-own {
 	overflow: hidden;
 }
 
-.sheet-moves input.sheet-expand-settings:checked ~ .sheet-move-expansion {
+.sheet-moves input.sheet-expand-settings:checked ~ .sheet-move-expansion,
+.sheet-moves-upgrade input.sheet-expand-settings:checked ~ .sheet-move-expansion {
 	display: block;
 	opacity: 1;
 	max-height: 1500px;
 	transition: max-height 1s ease-in;
 }
 
-.sheet-moves .sheet-move-description {
+.sheet-moves .sheet-move-description,
+.sheet-moves-upgrade .sheet-move-description {
 	display: none;
 }
 
-.sheet-moves input.sheet-expand-description:checked ~ .sheet-move-description {
+.sheet-moves input.sheet-expand-description:checked ~ .sheet-move-description,
+.sheet-moves-upgrade input.sheet-expand-description:checked ~ .sheet-move-description {
 	display: block;
 }
 
-.sheet-moves .sheet-move-optional {
+.sheet-moves .sheet-move-optional,
+.sheet-moves-upgrade .sheet-move-optional {
 	display: none;
 }
 
-.sheet-moves input.sheet-expand-optional:checked ~ .sheet-move-optional {
+.sheet-moves input.sheet-expand-optional:checked ~ .sheet-move-optional,
+.sheet-moves-upgrade input.sheet-expand-optional:checked ~ .sheet-move-optional {
 	display: block;
 }
 
-.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-expansion input.sheet-enable-roll:not(:checked) ~ div {
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-expansion input.sheet-enable-roll:not(:checked) ~ div,
+.repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-expansion input.sheet-enable-roll:not(:checked) ~ div {
 	display: none;
 }
 
-.sheet-moves .sheet-move-optional .sheet-is-hidden-move-opt {
+.sheet-moves .sheet-move-optional .sheet-is-hidden-move-opt,
+.sheet-moves-upgrade .sheet-move-optional .sheet-is-hidden-move-opt {
 	display: none;
 }
 
-.sheet-moves .sheet-move-optional .sheet-is-hidden-move-opt:checked + div {
+.sheet-moves .sheet-move-optional .sheet-is-hidden-move-opt:checked + div,
+.sheet-moves-upgrade .sheet-move-optional .sheet-is-hidden-move-opt:checked + div {
 	display: block;
 }
-.sheet-moves .sheet-move-optional .sheet-is-hidden-move-opt:not(:checked) + div {
+.sheet-moves .sheet-move-optional .sheet-is-hidden-move-opt:not(:checked) + div,
+.sheet-moves-upgrade .sheet-move-optional .sheet-is-hidden-move-opt:not(:checked) + div {
 	display: none;
 }
 
-.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-expansion-optional input.sheet-show-expand-optional:not(:checked) ~ div {
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-expansion-optional input.sheet-show-expand-optional:not(:checked) ~ div,
+.repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-expansion-optional input.sheet-show-expand-optional:not(:checked) ~ div {
 	display: none;
 }
 
-.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-expansion-optional div input.sheet-move-opt:not(:checked) + input + textarea {
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-expansion-optional div input.sheet-move-opt:not(:checked) + input + textarea,
+.repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-expansion-optional div input.sheet-move-opt:not(:checked) + input + textarea  {
 	display: none;
 }
 /* page3 moves end */
