@@ -1795,7 +1795,7 @@
         Raelith: {},
     }
 
-    var moves = {
+    var moves = {//TODO
         Noble: [
             {
                 movename_base: 'По моей воле',
@@ -1920,14 +1920,17 @@
             setAttrs({sheetTab:v.page});
         });
     });
+    
     on("change:moves_page", function() {
         getAttrs(["moves_page"], function(v) {
             setAttrs({moveTab:v.moves_page});
         });
     });
+    
     on("clicked:changeclass", function() {
         setAttrs({warning_flag: 0})
     })
+    
     on("clicked:changeclasscancel", function() {
         setAttrs({warning_flag: 1})
     })
@@ -1948,7 +1951,8 @@
             'juggernautHandicraft',
             'raelithFunction',
             'startgear',
-            'moves'
+            'moves',
+            'moves-upgrade'
         ]
         sectionToRemove.forEach(removeRepeatingSection);
         setAttrs({
@@ -1996,65 +2000,83 @@
     on("clicked:companion", () => {
         setupClass('Companion');
     });
+    
     on("clicked:courier", () => {
         setupClass('Courier');
     });
+    
     on("clicked:mercenary", () => {
         setupClass('Mercenary');
     });
+    
     on("clicked:tactician", () => {
         setupClass('Tactician');
     });
+    
     on("clicked:daredevil", () => {
         setupClass('Daredevil');
     });
+    
     on("clicked:stranger", () => {
         var update = addRepeatingInfo(special.Stranger.strangerSpecialization, 'strangerSpecialization')
         update.isStranger = 0;
         update.strangerSpecialization_show_flag = 0
         setAttrs(update, undefined, function() {setupClass("Stranger")})
     });
+    
     on("clicked:shadow", () => {
         var update = {};
         update.isShadow = 0;
         setAttrs(update, undefined, function() {setupClass("Shadow")});
     });
+    
     on("clicked:manofsteel", () => {
         setupClass('Manofsteel');
     });
+    
     on("clicked:bountyhunter", () => {
         setupClass('Bountyhunter');
     });
+    
     on("clicked:supernova", () => {
         setupClass('Supernova');
     });
+    
     on("clicked:cenzor", () => {
         setupClass('Cenzor');
     });
+    
     on("clicked:engineer", () => {
         setupClass('Engineer');
     });
+    
     on("clicked:doctor", () => {
         setupClass('Doctor');
     });
+    
     on("clicked:juggernaut", () => {
         var update = addRepeatingInfo(special.Juggernaut.juggernautHandicraft, 'juggernautHandicraft')
         update.isJuggernaut = 0;
         update.juggernautHandicraft_show_flag = 0
         setAttrs(update, undefined, function() {setupClass("Juggernaut")})
     });
+    
     on("clicked:kinetick", () => {
         setupClass('Kinetick');
     });
+    
     on("clicked:digitaldao", () => {
         setupClass('DigitalDao');
     });
+    
     on("clicked:emissary", () => {
         setupClass('Emissary');
     });
+    
     on("clicked:psychomant", () => {
         setupClass('Psychomant');
     });
+    
     on("clicked:raelith", () => {
         var update = addRepeatingInfo(special.Raelith.raelithFunction, 'raelithFunction')
         update.isRaelith = 0;
@@ -2207,7 +2229,7 @@
         var gear = addRepeatingInfo(startGear[classname].options, 'startgear')
         gear.startgear_note_text = startGear[classname].note_text
         gear.startgear_choose_text = startGear[classname].choose_text
-        var movesdata =  addRepeatingInfo(moves[classname], 'moves')
+        var movesdata =  addRepeatingInfo(moves[classname], 'moves') //TODO
         setAttrs({...update, ...backgroundUpdate, ...attr, ...gear, ...movesdata});
     };
 
@@ -2498,6 +2520,155 @@
     })
 
     /* MOVES SECTION END */
+
+    /* MOVES-UPGRADE SECTION START */
+    var statnameToStatQuery = function(statname) {
+      if (statname == "--") return "0[no stat]";
+      if (statname == "Ярость") return "(@{furry})[furry]";
+      if (statname == "Контроль") return "(@{controll})[controll]";
+      if (statname == "Навык") return "(@{skill})[skill]";
+      if (statname == "Репутация") return "(@{reputation})[reputation]";
+      if (statname == "Благосостояние") return "(@{money})[money]";
+      if (statname == "?") return "@{statmod_query}";
+      if (statname == "Связь") return "@{bond_query}";
+      return "0[no stat]";
+    }
+
+    on("change:repeating_moves-upgrade:expanddescriptionval", function() {
+        getAttrs([
+            "repeating_moves-upgrade_movetrigger",
+            "repeating_moves-upgrade_move_doroll",
+            "repeating_moves-upgrade_movestat_name",
+            "repeating_moves-upgrade_movesuccess",
+            "repeating_moves-upgrade_movepartial",
+            "repeating_moves-upgrade_movemiss",
+            "repeating_moves-upgrade_movedetails",
+            "repeating_moves-upgrade_moveoptional"
+        ], function(v) {
+            var text = ''
+            if(v.repeating_moves-upgrade_movetrigger) text += `Когда: ${v.repeating_moves-upgrade_movetrigger}\r\n` 
+            if(v.repeating_moves-upgrade_move_doroll == '1') {
+                var stat = `Проверь: ${v.repeating_moves-upgrade_movestat_name}`
+                if(v.repeating_moves-upgrade_movestat_name == '--') stat = 'Брось 2d6'
+                if(v.repeating_moves-upgrade_movestat_name == '?') stat = 'Проверь нужную харрактеристику'
+                text += `${stat}\r\n`
+                if(v.repeating_moves-upgrade_movesuccess) text += `При успехе: ${v.repeating_moves-upgrade_movesuccess}\r\n`
+                if(v.repeating_moves-upgrade_movepartial) text += `При частичном успехе: ${v.repeating_moves-upgrade_movepartial}\r\n`
+                if(v.repeating_moves-upgrade_movemiss) text += `При провале: ${v.repeating_moves-upgrade_movemiss}\r\n`
+            }
+            if(v.repeating_moves-upgrade_movedetails) text += `${v.repeating_moves-upgrade_movedetails}\r\n\r\n`
+            if(v.repeating_moves-upgrade_moveoptional) text += `${v.repeating_moves-upgrade_moveoptional}`
+            setAttrs({
+                "repeating_moves-upgrade_movetext": text || ' '
+            });
+        })
+    }) 
+
+    on("change:repeating_moves-upgrade:movename_base", function() {
+        getAttrs(["repeating_moves-upgrade_movename_base"], function(values) {
+            setAttrs({
+                "repeating_moves-upgrade_move_name": values.repeating_moves-upgrade_movename_base
+            });
+        });
+    });
+
+    on("change:repeating_moves-upgrade:movestat_name", function() {
+        getAttrs(["repeating_moves-upgrade_movestat_name"], function(values) {
+            setAttrs({
+                "repeating_moves-upgrade_movestat": statnameToStatQuery(values.repeating_moves-upgrade_movestat_name)
+            });
+        });
+    });
+
+    moveButtons.forEach(b => {
+        on(`clicked:repeating_moves-upgrade:${b}`, () => {
+            getAttrs(moveButtons.map(s=> `repeating_moves-upgrade_${s}val`), (v) => {
+                var newValue = v[`repeating_moves-upgrade_${b}val`] == "0" ? "1" : "0";
+                var update = moveButtons.reduce((acc, s) => ({...acc, [`repeating_moves-upgrade_${s}val`]: newValue == "1" ? "0" : v[`repeating_moves-upgrade_${s}val`]}), {})
+                setAttrs({
+                    ...update,
+                    [`repeating_moves-upgrade_${b}val`]: newValue
+                })
+            })
+        })
+    })
+
+    on("change:repeating_moves-upgrade:move_doroll", function() {
+        getAttrs(["repeating_moves-upgrade_move_doroll", "repeating_moves-upgrade_movestat"], function(v) {
+            if (v.repeating_moves-upgrade_move_doroll != "1" && v.repeating_moves-upgrade_movestat == "@{statmod_query}")
+                setAttrs({"repeating_moves-upgrade_movestat": 0});
+        });
+    });
+
+    on("change:repeating_bonds", function(eventInfo) {
+        getSectionIDs("repeating_bonds", function(ids) {
+            if (ids.length == 0){
+                setAttrs({
+                    bond_query: "(0)[Other Bond]"
+                });
+                return;
+            }
+            
+            var attrs = [];
+            for(var i=0; i < ids.length; i++) {
+                var attr = "repeating_bonds_" + ids[i] + "_bond_simple";
+                attrs.push(attr);
+            }
+            
+            getAttrs(attrs, function(v) {
+                var bonds = {};
+                _.each(v, function(val, attrName) {
+                    if (val in bonds){
+                        bonds[val] += 1;
+                    }else{
+                        bonds[val] = 1;
+                    }
+                });
+                
+                var query = "?{Связь";
+                _.each(bonds, function(count, name) {
+                    query = query.concat(`|${name}, (${count})[Bonds with ${name}]`);
+                });
+                query = query.concat("|Other, (0)[Other Bond]}");
+                
+                setAttrs({
+                    bond_query: query
+                });
+            });
+        });
+    });
+    
+    on(opts.map(o => `change:repeating_moves-upgrade:show${o}`).join(" "), (e) => {
+        getAttrs(opts.map(o => `repeating_moves-upgrade_show${o}`), vals => {
+            const source = e.sourceAttribute.split('_').pop().replace('show', '')
+            setAttrs({
+                "repeating_moves-upgrade_showexpandmoveoptional": _.values(vals).includes("1") ? "1" : "0",
+                [`repeating_moves-upgrade_${source}`]: "0"
+            })
+        })
+    })
+
+    on(opts.map(o => `change:repeating_moves-upgrade:${o}`).join(" "), (e) => {
+        getAttrs([
+            ...opts.map(o => `repeating_moves-upgrade_${o}`),
+            ...opts.map(o => `repeating_moves-upgrade_${o}name`),
+            ...opts.map(o => `repeating_moves-upgrade_${o}details`)
+        ], vals => {
+            let text = ''
+            for(let o of opts)  {
+                if(vals[`repeating_moves-upgrade_${o}`]==="1") {
+                    text += `□ ${vals[`repeating_moves-upgrade_${o}name`]}: ${vals[`repeating_moves-upgrade_${o}details`]}
+
+    `
+                }
+            }
+            setAttrs({
+                "repeating_moves-upgrade_moveoptional": text
+            })
+        })
+    }) 
+
+    /* MOVES-UPGRADE SECTION END */
     /* STARTGEAR SECTION START */
     on(`clicked:repeating_startgear:get`, function() {
         getAttrs(['repeating_startgear_name', 'repeating_startgear_details', 'repeating_startgear_type'], function(v) {
