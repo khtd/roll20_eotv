@@ -1796,6 +1796,36 @@ div.sheet-moves-own {
 .repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-expansion-optional div input.sheet-move-opt:not(:checked) + input + textarea  {
 	display: none;
 }
+
+.sheet-move-filtered-box {       /* By default, display no items of a filter box */
+	display: none;
+}
+					/* Decide which specific repitems to display.  */
+input.sheet-moves-tab0:checked~.sheet-move-filtered-box,      /* Always display all spells of circle zero.  */
+.sheet-moves-tab0:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem .sheet-move-filtered-box,  /* When tab0 is checked, display everything no matter what which of the inner boxes are checked. */
+.sheet-moves-tab1:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab1:checked~.sheet-move-filtered-box,
+.sheet-moves-tab2:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab2:checked~.sheet-move-filtered-box,
+.sheet-moves-tab3:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab3:checked~.sheet-move-filtered-box,
+.sheet-moves-tab4:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab4:checked~.sheet-move-filtered-box,
+.sheet-moves-tab5:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab5:checked~.sheet-move-filtered-box,
+.sheet-moves-tab6:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab6:checked~.sheet-move-filtered-box,
+.sheet-moves-tab7:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab7:checked~.sheet-move-filtered-box,
+.sheet-moves-tab8:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab8:checked~.sheet-move-filtered-box,
+.sheet-moves-tab9:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab9:checked~.sheet-move-filtered-box,
+.sheet-moves-tab10:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab10:checked~.sheet-move-filtered-box,
+.sheet-moves-tab11:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab11:checked~.sheet-move-filtered-box,
+.sheet-moves-tab12:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab12:checked~.sheet-move-filtered-box,
+.sheet-moves-tab13:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab13:checked~.sheet-move-filtered-box,
+.sheet-moves-tab14:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab14:checked~.sheet-move-filtered-box,
+.sheet-moves-tab15:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab15:checked~.sheet-move-filtered-box,
+.sheet-moves-tab16:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab16:checked~.sheet-move-filtered-box,
+.sheet-moves-tab17:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab17:checked~.sheet-move-filtered-box,
+.sheet-moves-tab18:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab18:checked~.sheet-move-filtered-box,
+.sheet-moves-tab19:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab19:checked~.sheet-move-filtered-box,
+.sheet-moves-tab20:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab20:checked~.sheet-move-filtered-box,
+.sheet-moves-tab21:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab21:checked~.sheet-move-filtered-box {
+display: block;
+} 
 /* page3 moves end */
 
 /* page3 page end */
