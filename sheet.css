@@ -747,6 +747,7 @@ input.sheet-expand-hidden:checked + div > button.sheet-expand-look  > span.sheet
 
 .sheet-start-gear button.sheet-toggle {
 	padding: 0;
+	padding-right: 1px;
   border: solid 1px #a8a8a8;
   cursor: pointer;
   width: 16px;
@@ -1566,7 +1567,17 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 	display: none; 
 }
 .repcontainer[data-groupname=repeating_moves-upgrade]  button.sheet-add-move { 
-	font-family: "Pictos";
+	padding: 0;
+	padding-right: 1px;
+  border: solid 1px #a8a8a8;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  justify-content: center;
+  align-items: center;
+	font-size: 30px;
+	vertical-align: middle;
 }
 
  
