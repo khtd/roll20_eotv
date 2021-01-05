@@ -1562,7 +1562,7 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 	font-family: "dicefontd6";
 }
  
-.sheet-moves-starting,
+.sheet-moves-own,
 .sheet-moves-base,
 .sheet-moves-additional {
 	display: none;
@@ -1571,25 +1571,28 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 /*grid start*/
 /* show the selected tab */
 
-.sheet-page3 .sheet-tabstoggle[value="starting"] ~ .sheet-moves-starting,
+.sheet-page3 .sheet-tabstoggle[value="own"] ~ .sheet-moves-own,
 .sheet-page3 .sheet-tabstoggle[value="base"] ~ .sheet-moves-base,
 .sheet-page3 .sheet-tabstoggle[value="additional"] ~ .sheet-moves-additional {
 	display: grid;
 }
 
-.sheet-page3 .sheet-tabstoggle[value="starting"] ~ .sheet-moves-base,
-.sheet-page3 .sheet-tabstoggle[value="starting"] ~ .sheet-moves-additional,
-.sheet-page3 .sheet-tabstoggle[value="base"] ~ .sheet-moves-starting,
+.sheet-page3 .sheet-tabstoggle[value="own"] ~ .sheet-moves-base,
+.sheet-page3 .sheet-tabstoggle[value="own"] ~ .sheet-moves-additional,
+.sheet-page3 .sheet-tabstoggle[value="base"] ~ .sheet-moves-own,
 .sheet-page3 .sheet-tabstoggle[value="base"] ~ .sheet-moves-additional,
-.sheet-page3 .sheet-tabstoggle[value="additional"] ~ .sheet-moves-starting,
+.sheet-page3 .sheet-tabstoggle[value="additional"] ~ .sheet-moves-own,
 .sheet-page3 .sheet-tabstoggle[value="additional"] ~ .sheet-moves-base {
 	display: none;
 }
 
-div.sheet-moves-starting {
+div.sheet-moves-own {
 	grid-area: moves-main;
+	grid-auto-flow: column;
 	grid-template-rows: auto;
-	width: 383px;
+	grid-template-columns: 383px 383px;
+	width: 772px;
+	gap: 6px;
 }
 
 .repcontainer[data-groupname=repeating_moves] {

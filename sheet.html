@@ -442,7 +442,7 @@
         <div class="moves-navigation">
             <label class="nav-moves-button">
                 <input type="radio"  name="attr_moves_page" value="starting" checked="checked">
-                <span>Стартовые</span>
+                <span>Твои</span>
             </label>
             <label class="nav-moves-button">
                 <input type="radio"  name="attr_moves_page" value="base">
@@ -453,9 +453,9 @@
                 <span>Дополнительные</span>
             </label>
         </div>
-        <input type='hidden' class='tabstoggle' name='attr_moveTab'  value='starting'/>
+        <input type='hidden' class='tabstoggle' name='attr_moveTab'  value='own'/>
 
-        <div class="moves-container moves-starting">
+        <div class="moves-container moves-own">
             <div class="moves">
                 <fieldset class="repeating_moves">
                     <div class="move-main">
@@ -635,6 +635,254 @@
                         </div>
                     </div>
                 </fieldset>
+            </div>
+
+            <div class="moves-upgrade">
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab0" value="0" title="All moves" checked/>
+                <span class="sheet-tab sheet-moves-tab0">Все</span>
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab1" value="1" title="Noble"/>
+                <span class="sheet-tab sheet-moves-tab1">Аристократ</span>
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab2" value="2" title="Cyborg"/>
+                <span class="sheet-tab sheet-moves-tab2">Киборг</span>
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab3" value="3" title="Companion"/>
+                <span class="sheet-tab sheet-moves-tab3">Компаньонка</span>
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab4" value="4" title="Courier"/>
+                <span class="sheet-tab sheet-moves-tab4">Курьер</span>
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab5" value="5" title="Mercenary"/>
+                <span class="sheet-tab sheet-moves-tab5">Наёмник</span>
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab6" value="6" title="Tactician"/>
+                <span class="sheet-tab sheet-moves-tab6">Тактик</span>
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab7" value="7" title="Daredevil"/>
+                <span class="sheet-tab sheet-moves-tab7">Сорвиголова</span> 
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab8" value="8" title="Stranger"/>
+                <span class="sheet-tab sheet-moves-tab8">Странник</span>       
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab9" value="9" title="Shadow"/>
+                <span class="sheet-tab sheet-moves-tab9">Тень</span>    
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab10" value="10" title="Manofsteel"/>
+                <span class="sheet-tab sheet-moves-tab10">Броненосец</span>    
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab11" value="11" title="Bountyhunter"/>
+                <span class="sheet-tab sheet-moves-tab11">Охотник за головами</span>    
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab12" value="12" title="Supernova"/>
+                <span class="sheet-tab sheet-moves-tab12">Сверхновая</span>  
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab13" value="13" title="Cenzor"/>
+                <span class="sheet-tab sheet-moves-tab13">Цензор</span>  
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab14" value="14" title="Engineer"/>
+                <span class="sheet-tab sheet-moves-tab14">Инженер</span>  
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab15" value="15" title="Doctor"/>
+                <span class="sheet-tab sheet-moves-tab15">Доктор</span>  
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab16" value="16" title="Juggernaut"/>
+                <span class="sheet-tab sheet-moves-tab16">Джаггернаут</span>  
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab17" value="17" title="Kinetick"/>
+                <span class="sheet-tab sheet-moves-tab17">Кинетик</span>  
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab18" value="18" title="DigitalDao"/>
+                <span class="sheet-tab sheet-moves-tab18">Дао Цифры</span>  
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab19" value="19" title="Emissary"/>
+                <span class="sheet-tab sheet-moves-tab19">Эмиссар</span> 
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab20" value="20" title="Psychomant"/>
+                <span class="sheet-tab sheet-moves-tab20">Психомант</span> 
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab22" value="21" title="Raelith"/>
+                <span class="sheet-tab sheet-moves-tab21">Раэлит</span> 
+
+                <div class="sheet-section-moves-upgrade-list">
+                    <fieldset class="repeating_moves-upgrade">
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab0" value="0" checked />
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab1" value="1"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab2" value="2"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab3" value="3"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab4" value="4"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab5" value="5"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab6" value="6"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab7" value="7"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab8" value="8"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab9" value="9"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab10" value="10"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab11" value="11"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab12" value="12"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab13" value="13"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab14" value="14"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab15" value="15"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab16" value="16"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab17" value="17"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab18" value="18"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab19" value="19"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab20" value="20"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab21" value="21"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab22" value="22"/>
+
+                        <div class="sheet-move-filtered-box">
+                            <input type="checkbox" class="expand-hidden expand-description" name="attr_expanddescriptionval" value="1" title="Details"  />
+                            <input type="checkbox" class="expand-hidden expand-settings" name="attr_expandsettingsval" value="1" title="Settings"/>
+                            <input type="checkbox" class="expand-hidden expand-optional" name="attr_expandoptionalval" value="1" title="Optional"/>
+    
+                            <div class='move-title'>
+                                <span class="rolltext" name="attr_move_name" value="@{move_name}"></span>
+                                <button type="action" name="act_expanddescription" class="expand-move">
+                                    <span class="expanded">▼</span>
+                                    <span class="not-expanded">◀</span>
+                                </button>
+                                <button type='action' name='act_expandsettings'  class='change-move'>
+                                    <span class='change'>p</span>
+                                    <span class='save'>3</span>
+                                </button>
+                                <input type="checkbox" class="expand-hidden show-expand-optional" name="attr_showexpandmoveoptional" value="1">
+                                <button type='action' name='act_expandoptional'  class='optional-move'>
+                                    <span class='open'>l</span>
+                                    <span class='close'>l</span>
+                                </button>
+                            </div>
+            
+                            <div class="move-expansion">
+                                <div class='move-expansion-name'>
+                                    <span class="label">Move Name:</span>
+                                    <input type="text" name="attr_movename_base" value="" />
+                                </div>
+                                <div class='move-expansion-when'>
+                                    <span class="label">Когда:</span>
+                                    <br>
+                                    <textarea type="text" name="attr_movetrigger"></textarea>
+                                </div>
+                                <div class='move-expansion-roll'>
+                                    <input class="enable-roll" type="checkbox" name="attr_move_doroll" value="1" checked="checked" />
+                                    <input type="hidden" name="attr_movestat">
+                                    <span class="label">Проверь:</span>
+                                        <select class="moveroll" name="attr_movestat_name">
+                                            <option selected="selected">--</option>
+                                            <option>Ярость</option>
+                                            <option>Контроль</option>
+                                            <option>Навык</option>
+                                            <option>Репутация</option>
+                                            <option>Благосостояние</option>
+                                            <option>?</option>
+                                            <option>Связь</option>
+                                        </select>
+                                    <div class="rollresults-container">
+                                        <span class="label">Успех (10+):</span>
+                                        <br>
+                                        <textarea type="text" name="attr_movesuccess"></textarea>
+                                        <span class="label">Частичный успех (7-9):</span>
+                                        <br>
+                                        <textarea type="text" name="attr_movepartial"></textarea>
+                                        <span class="label">Провал (6-):</span>
+                                        <br>
+                                        <textarea type="text" name="attr_movemiss"></textarea>
+                                    </div>
+                                </div>
+                                <div class='move-expansion-extra'>
+                                    <span class="label">Описание:</span>
+                                    <br />
+                                    <textarea class="move-details" name="attr_movedetails"></textarea>
+                                </div>
+                                <div class='move-expansion-optional'>
+                                    <input type="checkbox" class="show-expand-optional" name="attr_showexpandmoveoptional" value="1">
+                                    <span class="label">Опции:</span>
+                                    <div>
+                                        <input type="checkbox" class="move-opt" name="attr_showopt1" value="1" checked="true">
+                                        <input type="text" class='name' name="attr_opt1name"></span>:
+                                        <textarea class="move-opt-details" class='detail' name="attr_opt1details"></textarea>
+                                        <br />
+                                        <input type="checkbox" class="move-opt" name="attr_showopt2" value="1" checked="true">
+                                        <input type="text" class='name' name="attr_opt2name"></span>:
+                                        <textarea class="move-opt-details" class='detail' name="attr_opt2details"></textarea>
+                                        <br />
+                                        <input type="checkbox" class="move-opt" name="attr_showopt3" value="1" checked="true">
+                                        <input type="text" class='name' name="attr_opt3name"></span>:
+                                        <textarea class="move-opt-details" class='detail' name="attr_opt3details"></textarea>
+                                        <br />
+                                        <input type="checkbox" class="move-opt" name="attr_showopt4" value="1" checked="true">
+                                        <input type="text" class='name' name="attr_opt4name"></span>:
+                                        <textarea class="move-opt-details" class='detail' name="attr_opt4details"></textarea>
+                                        <br />
+                                        <input type="checkbox" class="move-opt" name="attr_showopt5" value="1" checked="true">
+                                        <input type="text" class='name' name="attr_opt5name"></span>:
+                                        <textarea class="move-opt-details" class='detail' name="attr_opt5details"></textarea>
+                                        <br />
+                                        <input type="checkbox" class="move-opt" name="attr_showopt6" value="1" checked="true">
+                                        <input type="text" class='name' name="attr_opt6name"></span>:
+                                        <textarea class="move-opt-details" class='detail' name="attr_opt6details"></textarea>
+                                        <br />
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class='move-description'>
+                                <textarea name='attr_movetext' readonly='true'></textarea>
+                            </div>
+    
+                            <div class='move-optional'>
+                                <input type="textarea" class="hidden optional-text" name="attr_moveoptional">
+                                <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt1" value="1">
+                                <div>
+                                    <input type="checkbox" class="move-opt" name="attr_opt1" value="1">
+                                    <span class='name' name="attr_opt1name"></span>:
+                                    <span class='detail' name="attr_opt1details"></span>
+                                </div>
+    
+                                <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt2" value="1">
+                                <div>
+                                    <input type="checkbox" class="move-opt" name="attr_opt2" value="1">
+                                    <span class='name' name="attr_opt2name"></span>:
+                                    <span class='detail' name="attr_opt2details"></span>
+                                </div>
+    
+                                <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt3" value="1">
+                                <div>
+                                    <input type="checkbox" class="move-opt" name="attr_opt3" value="1">
+                                    <span class='name' name="attr_opt3name"></span>:
+                                    <span class='detail' name="attr_opt3details"></span>
+                                </div>
+    
+                                <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt4" value="1">
+                                <div>
+                                    <input type="checkbox" class="move-opt" name="attr_opt4" value="1">
+                                    <span class='name' name="attr_opt4name"></span>:
+                                    <span class='detail' name="attr_opt4details"></span>
+                                </div>
+    
+                                <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt5" value="1">
+                                <div>
+                                    <input type="checkbox" class="move-opt" name="attr_opt5" value="1">
+                                    <span class='name' name="attr_opt5name"></span>:
+                                    <span class='detail' name="attr_opt5details"></span>
+                                </div>
+    
+                                <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt6" value="1">
+                                <div>
+                                    <input type="checkbox" class="move-opt" name="attr_opt6" value="1">
+                                    <span class='name' name="attr_opt6name"></span>:
+                                    <span class='detail' name="attr_opt6details"></span>
+                                </div>
+    
+                                <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt7" value="1">
+                                <div>
+                                    <input type="checkbox" class="move-opt" name="attr_opt7" value="1">
+                                    <span class='name' name="attr_opt7name"></span>:
+                                    <span class='detail' name="attr_opt7details"></span>
+                                </div>
+    
+                                <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt8" value="1">
+                                <div>
+                                    <input type="checkbox" class="move-opt" name="attr_opt8" value="1">
+                                    <span class='name' name="attr_opt8name"></span>:
+                                    <span class='detail' name="attr_opt8details"></span>
+                                </div>
+    
+                                <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt9" value="1">
+                                <div>
+                                    <input type="checkbox" class="move-opt" name="attr_opt9" value="1">
+                                    <span class='name' name="attr_opt9name"></span>:
+                                    <span class='detail' name="attr_opt9details"></span>
+                                </div>
+    
+                                <input type="checkbox" class="is-hidden-move-opt" name="attr_showopt10" value="1">
+                                <div>
+                                    <input type="checkbox" class="move-opt" name="attr_opt10" value="1">
+                                    <span class='name' name="attr_opt10name"></span>:
+                                    <span class='detail' name="attr_opt10details"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
             </div>
         </div>
 
