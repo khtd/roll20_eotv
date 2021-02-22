@@ -78,7 +78,7 @@
             <textarea class="description-saved-text" name="attr_description" readonly="true"></textarea>
         </div>
 
-        <input type="checkbox" class="is-raelith-flag" name="attr_isRaelith">
+        <input type="checkbox" class="is-raelith-fn-flag" name="attr_isRaelithFunction">
         <div class="background">
             <div class="title">
                 <h3><span>ПРОИСХОЖДЕНИЕ</span></h3>
@@ -149,7 +149,7 @@
             </div>
         </div>
 
-        <input type="checkbox" class="is-stranger-flag" name="attr_isStranger">
+        <input type="checkbox" class="is-stranger-spec-flag" name="attr_isStrangerSpec">
         <div class='stranger-additional stranger-specialization'>
             <div class="title">
                 <h3><span>Специализация</span></h3>
@@ -177,7 +177,7 @@
             </div>
         </div>
 
-        <input type="checkbox" class="is-juggernaut-flag" name="attr_isJuggernaut">
+        <input type="checkbox" class="is-juggernaut-craft-flag" name="attr_isJuggernautHandicraft">
         <div class='juggernaut-additional juggernaut-handicraft'>
             <div class="title">
                 <h3><span>Ремесло</span></h3>
@@ -205,7 +205,7 @@
             </div>
         </div>
 
-        <input type="checkbox" class="is-raelith-flag" name="attr_isRaelith">
+        <input type="checkbox" class="is-raelith-fn-flag" name="attr_isRaelithFunction">
         <div class='raelith-additional raelith-function'>
             <div class="title">
                 <h3><span>Функция</span></h3>
@@ -1260,16 +1260,16 @@
             <input type="checkbox" name="attr_isCyborgPath">Киборг: Путь
         </label>
         <label>
-            <input type="checkbox" name="attr_isRaelith">раэлит
+            <input type="checkbox" name="attr_isRaelithFunction">Раэлит: Функция
         </label>
         <label>
             <input type="checkbox" name="attr_isShadowBackground">Тень: Происхождение
         </label>
         <label>
-            <input type="checkbox" name="attr_isJuggernaut">джагернаут
+            <input type="checkbox" name="attr_isJuggernautHandicraft">Джагернаут: Ремесло
         </label>
         <label>
-            <input type="checkbox" name="attr_isStranger">странник
+            <input type="checkbox" name="attr_isStrangerSpec">Странник: Специализация
         </label>
     </div>
 </div>
@@ -2105,7 +2105,14 @@
         DigitalDao: {},
         Emissary: {},
         Psychomant: {},
-        Raelith: {},
+        Raelith: {
+            atack_max: 2,
+            armor_max: 0,
+            hp_max: 5,
+            gear_max: 2,
+            money_max: 1,
+            wealth_max: 0
+        },
     }
     
     var startGear = {
@@ -2174,7 +2181,37 @@
         DigitalDao: {},
         Emissary: {},
         Psychomant: {},
-        Raelith: {},
+        Raelith: {
+            note_text: 'Ты начинаешь игру, имея ID, встроенный коммуникатор, кредитный чип, комплект скрывающей фигуру одежды, спецкостюм по заказу и полость для вещей. А также электронное удостоверение «пострадавшего от Машины лица» и положенное такому лицу средство самозащиты: нейроизлучатель (средняя, штатский, по твоему желанию — нелетальное)',
+            choose_text: 'Выбери два:',
+            options: [
+                {
+                    type: 'note',
+                    name: 'Больше отличий',
+                    details: 'выбери ещё 1 пункт из хода Не-человек'
+                },
+                {
+                    type: 'item',
+                    name: 'Зонд',
+                    details: 'небольшая отделяемая часть тела, которая может летать и вести наблюдение. Потрать 1 Припас для запуска'
+                },
+                {
+                    type: 'item',
+                    name: 'Имлант «7 of 9»',
+                    details: 'раэлитская система самоконтроля. После Единения у тебя сохраняются обрывочные воспоминания. Не работает, когда зачёркнута последняя ячейка Угасания'
+                },
+                {
+                    type: 'item',
+                    name: 'Система «Призрак»',
+                    details: 'потрать 1 Припас и заставь все электронные системы наблюдения некоторое время сбоить, ве-сти себя странно и не обнаруживать тебя'
+                },
+                {
+                    type: 'item',
+                    name: 'Энергоячейка',
+                    details: 'потрать 1 Припас и очисти 1 ячейку Угасания, отменив её эффект'
+                }
+            ]
+        },
     }
 
     var moves = [
@@ -2273,7 +2310,14 @@
             showopt9: '1',
             opt9name: '',
             opt9details: 'Следует взвешивать каждое слово и неизменно задавать себе вопрос, правда ли то, что собираешься сказать.',
-        }
+        },
+        {
+            moveclass: 'Raelith',
+            type: 'start',
+            movename_base: 'Сделка с дьяволом',
+            move_doroll: '0',
+            movedetails: `Твоя жизнь поддерживается смертельным врагом человечества — Машиной, и это жизнь на лезвии ножа между Единением и Угасанием. Тебе надо исполнять Функцию, и это проблема не только для тебя: ведь исполнение задач Машины ничего хорошего для людей не несёт.`
+        },
     ]
     
     on("sheet:opened", function() {
@@ -2310,12 +2354,10 @@
 
     function removeRepeatingSection(sectionName, cb) {
         getSectionIDs(`repeating_${sectionName}`, function(idarray) {
-            console.log('here')
-            console.log(idarray)
             for(var i=0; i < idarray.length; i++) {
               removeRepeatingRow(`repeating_${sectionName}_${idarray[i]}`);
             }
-            if(cb) cb()
+            if(cb && _.isFunction(cb)) cb()
         });
     }
 
@@ -2357,9 +2399,9 @@
             isCyborgBackground: 0,
             isCyborgPath: 0,
             isShadowBackground: 0,
-            isStranger: 0,
-            isJuggernaut: 0,
-            isRaelith: 0
+            isStrangerSpec: 0,
+            isJuggernautHandicraft: 0,
+            isRaelithFunction: 0
         })
     })
 
@@ -2407,12 +2449,12 @@
     
     on("clicked:stranger", () => {
         var update = addRepeatingInfo(special.Stranger.strangerSpecialization, 'strangerSpecialization')
-        update.isStranger = "on";
+        update.isStrangerSpec = "on";
         update.strangerSpecialization_show_flag = "on"
         setAttrs(update, undefined, function() {setupClass("Stranger")})
     });
 
-    on("change:isStranger", (e) => {
+    on("change:isStrangerSpec", (e) => {
         removeRepeatingSection('strangerSpecialization', () => {
             if(e.newValue=="on") {
                 var update = addRepeatingInfo(special.Stranger.strangerSpecialization, 'strangerSpecialization')
@@ -2454,12 +2496,12 @@
     
     on("clicked:juggernaut", () => {
         var update = addRepeatingInfo(special.Juggernaut.juggernautHandicraft, 'juggernautHandicraft')
-        update.isJuggernaut = "on";
+        update.isJuggernautHandicraft = "on";
         update.juggernautHandicraft_show_flag = "on";
         setAttrs(update, undefined, function() {setupClass("Juggernaut")})
     });
 
-    on("change:isJuggernaut", (e) => {
+    on("change:isJuggernautHandicraft", (e) => {
         removeRepeatingSection('juggernautHandicraft', () => {
             if(e.newValue=="on") {
                 var update = addRepeatingInfo(special.Juggernaut.juggernautHandicraft, 'juggernautHandicraft')
@@ -2487,12 +2529,12 @@
     
     on("clicked:raelith", () => {
         var update = addRepeatingInfo(special.Raelith.raelithFunction, 'raelithFunction')
-        update.isRaelith = "on";
+        update.isRaelithFunction = "on";
         update.raelithFunction_show_flag = "on"
         setAttrs(update, undefined, function() {setupClass("Raelith")})
     });
 
-    on("change:isRaelith", (e) => {
+    on("change:isRaelithFunction", (e) => {
         removeRepeatingSection('raelithFunction', () => {
             if(e.newValue=="on") {
                 var update = addRepeatingInfo(special.Raelith.raelithFunction, 'raelithFunction')
@@ -2649,7 +2691,9 @@
         gear.startgear_note_text = startGear[classname].note_text
         gear.startgear_choose_text = startGear[classname].choose_text
         var movesdata =  addRepeatingInfo(moves.filter(m => m.moveclass == classname && m.type=='start'), 'moves')
-        var movesUpgradedata =  addRepeatingInfo(moves.filter(m => !(m.moveclass == classname && m.type=='start')), 'moves-upgrade') 
+        const upMoves = moves.filter(m => !(m.moveclass == classname && m.type=='start'))
+        var movesUpgradedata = {}
+        if(upMoves.length > 0) movesUpgradedata = addRepeatingInfo(upMoves, 'moves-upgrade') 
         setAttrs({...update, ...backgroundUpdate, ...attr, ...gear, ...movesdata, ...movesUpgradedata});
     };
 

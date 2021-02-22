@@ -614,33 +614,33 @@ button[type=roll].sheet-infoOutput::before {
 .sheet-is-cyborg-bg-flag,
 .sheet-is-cyborg-path-flag,
 .sheet-is-shadow-bg-flag,
-.sheet-is-stranger-flag,
-.sheet-is-juggernaut-flag,
-.sheet-is-raelith-flag {
+.sheet-is-stranger-spec-flag,
+.sheet-is-juggernaut-craft-flag,
+.sheet-is-raelith-fn-flag {
 	display: none;
 }
 
 .sheet-is-cyborg-bg-flag:checked + .sheet-cyborg-additional,
 .sheet-is-cyborg-path-flag:checked + .sheet-cyborg-additional,
 .sheet-is-shadow-bg-flag:checked + .sheet-shadow-additional,
-.sheet-is-stranger-flag:checked + .sheet-stranger-additional,
-.sheet-is-juggernaut-flag:checked + .sheet-juggernaut-additional,
-.sheet-is-raelith-flag:checked + .sheet-raelith-additional {
+.sheet-is-stranger-spec-flag:checked + .sheet-stranger-additional,
+.sheet-is-juggernaut-craft-flag:checked + .sheet-juggernaut-additional,
+.sheet-is-raelith-fn-flag:checked + .sheet-raelith-additional {
 	display: grid;
 }
 
 .sheet-is-cyborg-bg-flag:not(:checked) + .sheet-cyborg-additional,
 .sheet-is-cyborg-path-flag:not(:checked) + .sheet-cyborg-additional,
 .sheet-is-shadow-bg-flag:not(:checked) + .sheet-shadow-additional,
-.sheet-is-stranger-flag:not(:checked) + .sheet-stranger-additional,
-.sheet-is-juggernaut-flag:not(:checked) + .sheet-juggernaut-additional {
+.sheet-is-stranger-spec-flag:not(:checked) + .sheet-stranger-additional,
+.sheet-is-juggernaut-craft-flag:not(:checked) + .sheet-juggernaut-additional {
 	display: none;
 }
 
 .sheet-is-cyborg-flag:not(:checked) + .sheet-cyborg-path,
-.sheet-is-stranger-flag:not(:checked) + .sheet-stranger-specialization,
-.sheet-is-juggernaut-flag:not(:checked) + .sheet-juggernaut-path,
-.sheet-is-raelith-flag:not(:checked) + .sheet-raelith-path {
+.sheet-is-stranger-spec-flag:not(:checked) + .sheet-stranger-specialization,
+.sheet-is-juggernaut-craft-flag:not(:checked) + .sheet-juggernaut-path,
+.sheet-is-raelith-fn-flag:not(:checked) + .sheet-raelith-additional  {
 	display: none;
 }
 
@@ -666,21 +666,14 @@ button[type=roll].sheet-infoOutput::before {
 }
 
 /* raelith special start*/
-.sheet-is-raelith-flag:not(:checked) + .sheet-raelith-additional {
+.sheet-is-raelith-fn-flag:checked + .sheet-background {
 	display: none;
 }
 
-.sheet-is-raelith-flag:checked + .sheet-background {
-	display: none;
-}
-
-.sheet-is-raelith-flag:not(:checked) + .sheet-background {
+.sheet-is-raelith-fn-flag:not(:checked) + .sheet-background {
 	display: grid;
 }
 
-.sheet-is-raelith-flag:not(:checked) + .sheet-background {
-	display: grid;
-}
 /* raelith special end */
 /* special end*/
 
