@@ -91,7 +91,7 @@
                 <div><span><strong>Тао Прайм:</strong> Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут.</span></div>
             </div>
 
-            <input type="checkbox" class="is-shadow-flag" name="attr_isShadow">
+            <input type="checkbox" class="is-shadow-bg-flag" name="attr_isShadowBackground">
             <div class="additional-background shadow-additional">
                 <button type='roll' class="backgroundOutput infoOutput" name='roll_outAddBackground' value="&{template:info} {{name=@{character_name}}} {{type=Тао (Клоака)}} {{item=Происхождение}} {{description=Ты принадлежишь синдикату Ледяного Дракона. У тебя тоже есть кодекс чести, просто он внутренний — это то, что другие кланы так и не смогли принять. Ты — человек вне системы. Но ты не в одиночестве—иногда ты можешь получить задание. Это значит, что кто-то скоро умрёт.}}">w</button>
                 <div><span><strong>Тао (Клоака):</strong> Ты принадлежишь синдикату Ледяного Дракона. У тебя тоже есть кодекс чести, просто он внутренний — это то, что другие кланы так и не смогли принять. Ты — человек вне системы. Но ты не в одиночестве—иногда ты можешь получить задание. Это значит, что кто-то скоро умрёт.</span></div>
@@ -1260,7 +1260,7 @@
             <input type="checkbox" name="attr_isRaelith">раэлит
         </label>
         <label>
-            <input type="checkbox" name="attr_isShadow">тень
+            <input type="checkbox" name="attr_isShadowBackground">Тень: Происхождение
         </label>
         <label>
             <input type="checkbox" name="attr_isJuggernaut">джагернаут
@@ -2305,11 +2305,14 @@
         setAttrs({warning_flag: 1})
     })
 
-    function removeRepeatingSection(sectionName) {
+    function removeRepeatingSection(sectionName, cb) {
         getSectionIDs(`repeating_${sectionName}`, function(idarray) {
+            console.log('here')
+            console.log(idarray)
             for(var i=0; i < idarray.length; i++) {
               removeRepeatingRow(`repeating_${sectionName}_${idarray[i]}`);
             }
+            cb()
         });
     }
 
@@ -2324,36 +2327,37 @@
             'moves',
             'moves-upgrade'
         ]
-        sectionToRemove.forEach(removeRepeatingSection);
-        setAttrs({
-            tip_confirm_flag: 0,
-            warning_flag: 1,
-            description: ' ',
-            backgroundtype: ' ',
-            backgroundtext: ' ',
-            cyborgPath_show_flag: 0,
-            cyborgPathtype: ' ',
-            cyborgPathtext: ' ',
-            strangerSpecializationtype: ' ',
-            strangerSpecializationtext: ' ',
-            strangerSpecialization_show_flag: 0,
-            juggernautHandicrafttype: ' ',
-            juggernautHandicrafttext: ' ',
-            juggernautHandicraft_show_flag: 0,
-            raelithFunctiontype: ' ',
-            raelithFunctiontext: ' ',
-            raelithFunction_show_flag: 0,
-            look_example: ' ',
-            character_class: ' ',
-            comp_name: ' ',
-            "background_show_flag": 0,
-            "pre_background": ' ',
-            isCyborg: 0,
-            isShadow: 0,
-            isStranger: 0,
-            isJuggernaut: 0,
-            isRaelith: 0
-        })
+        sectionToRemove.forEach(removeRepeatingSection, () => {
+            setAttrs({
+                tip_confirm_flag: 0,
+                warning_flag: 1,
+                description: ' ',
+                backgroundtype: ' ',
+                backgroundtext: ' ',
+                cyborgPath_show_flag: 0,
+                cyborgPathtype: ' ',
+                cyborgPathtext: ' ',
+                strangerSpecializationtype: ' ',
+                strangerSpecializationtext: ' ',
+                strangerSpecialization_show_flag: 0,
+                juggernautHandicrafttype: ' ',
+                juggernautHandicrafttext: ' ',
+                juggernautHandicraft_show_flag: 0,
+                raelithFunctiontype: ' ',
+                raelithFunctiontext: ' ',
+                raelithFunction_show_flag: 0,
+                look_example: ' ',
+                character_class: ' ',
+                comp_name: ' ',
+                "background_show_flag": 0,
+                "pre_background": ' ',
+                isCyborg: 0,
+                isShadowBackground: 0,
+                isStranger: 0,
+                isJuggernaut: 0,
+                isRaelith: 0
+            })
+        });
     })
 
     on("clicked:noble", function(eventinfo) {
@@ -2366,6 +2370,16 @@
         update.cyborgPath_show_flag = "on";
         setAttrs(update, undefined, function() {setupClass("Cyborg")})
     });
+
+    on("change:isCyborg", (e) => {
+        removeRepeatingSection('cyborgPath', () => {
+            if(e.newValue=="on") {
+                var update = addRepeatingInfo(special.Cyborg.cyborgPath, 'cyborgPath')
+                update.cyborgPath_show_flag = "on"
+                setAttrs(update)
+            }
+        });
+    })
 
     on("clicked:companion", () => {
         setupClass('Companion');
@@ -2393,10 +2407,20 @@
         update.strangerSpecialization_show_flag = "on"
         setAttrs(update, undefined, function() {setupClass("Stranger")})
     });
+
+    on("change:isStranger", (e) => {
+        removeRepeatingSection('strangerSpecialization', () => {
+            if(e.newValue=="on") {
+                var update = addRepeatingInfo(special.Stranger.strangerSpecialization, 'strangerSpecialization')
+                update.strangerSpecialization_show_flag = "on"
+                setAttrs(update)
+            }
+        });
+    })
     
     on("clicked:shadow", () => {
         var update = {};
-        update.isShadow = "on";
+        update.isShadowBackground = "on";
         setAttrs(update, undefined, function() {setupClass("Shadow")});
     });
     
@@ -2430,6 +2454,16 @@
         update.juggernautHandicraft_show_flag = "on";
         setAttrs(update, undefined, function() {setupClass("Juggernaut")})
     });
+
+    on("change:isJuggernaut", (e) => {
+        removeRepeatingSection('juggernautHandicraft', () => {
+            if(e.newValue=="on") {
+                var update = addRepeatingInfo(special.Juggernaut.juggernautHandicraft, 'juggernautHandicraft')
+                update.juggernautHandicraft_show_flag = "on"
+                setAttrs(update)
+            }
+        });
+    })
     
     on("clicked:kinetick", () => {
         setupClass('Kinetick');
@@ -2453,6 +2487,16 @@
         update.raelithFunction_show_flag = "on"
         setAttrs(update, undefined, function() {setupClass("Raelith")})
     });
+
+    on("change:isRaelith", (e) => {
+        removeRepeatingSection('raelithFunction', () => {
+            if(e.newValue=="on") {
+                var update = addRepeatingInfo(special.Raelith.raelithFunction, 'raelithFunction')
+                update.raelithFunction_show_flag = "on"
+                setAttrs(update)
+            }
+        });
+    })
 
     function addRepeatingInfo(options, param) {
         var update = {}
