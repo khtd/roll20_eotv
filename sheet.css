@@ -614,6 +614,7 @@ button[type=roll].sheet-infoOutput::before {
 .sheet-is-cyborg-bg-flag,
 .sheet-is-cyborg-path-flag,
 .sheet-is-cyborg-imp-flag,
+.sheet-is-daredevil-tech-flag,
 .sheet-is-shadow-bg-flag,
 .sheet-is-stranger-spec-flag,
 .sheet-is-juggernaut-craft-flag,
@@ -678,15 +679,18 @@ button[type=roll].sheet-infoOutput::before {
 /* raelith special end */
 
 /* cyborg spec start */
-.sheet-is-cyborg-imp-flag + label {
+.sheet-is-cyborg-imp-flag + label,
+.sheet-is-daredevil-tech-flag + label {
 	display: none;
 }
 
-.sheet-is-cyborg-imp-flag:checked + label {
+.sheet-is-cyborg-imp-flag:checked + label,
+.sheet-is-daredevil-tech-flag:checked + label {
 	display: block;
 }
 
-.sheet-is-cyborg-imp-flag:not(:checked) + label {
+.sheet-is-cyborg-imp-flag:not(:checked) + label,
+.sheet-is-daredevil-tech-flag:not(:checked) + label {
 	display: none;
 }
 /* cyborg spec end */
@@ -1524,7 +1528,7 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 	justify-self: center;
 	align-self: end;
 	display: grid;
-	grid-template-columns: auto auto auto;
+	grid-template-columns: auto auto auto auto auto auto;
 	grid-column-gap: 5px;
 	grid-column-end: 2;
 	grid-column-start: 1;
@@ -1603,7 +1607,8 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 .sheet-moves-base,
 .sheet-moves-optional,
 .sheet-moves-space,
-.sheet-cyborg-implants {
+.sheet-cyborg-implants,
+.sheet-daredevil-tech {
 	display: none;
 }
 
@@ -1614,7 +1619,8 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 .sheet-page3 .sheet-tabstoggle[value="base"] ~ .sheet-moves-base,
 .sheet-page3 .sheet-tabstoggle[value="optional"] ~ .sheet-moves-optional,
 .sheet-page3 .sheet-tabstoggle[value="space"] ~ .sheet-moves-space,
-.sheet-page3 .sheet-tabstoggle[value="implants"] ~ .sheet-cyborg-implants {
+.sheet-page3 .sheet-tabstoggle[value="implants"] ~ .sheet-cyborg-implants,
+.sheet-page3 .sheet-tabstoggle[value="tech"] ~.sheet-daredevil-tech {
 	display: grid;
 }
 
@@ -2313,3 +2319,34 @@ div.sheet-moves-fixed {
 	justify-content: left;
 }
 /*================================================================*/
+
+/*================================
+        DAREDEVIL STYLES
+================================*/
+
+.sheet-daredevil-tech {
+	grid-template-columns: 50% 50%;
+	grid-template-rows: 1fr 1fr;
+	width: 772px;
+	border: 1px solid black;
+}
+
+.sheet-daredevil__comrade {
+	grid-column: 1 / 2;
+	grid-row: 1 / 2;
+}
+
+.sheet-daredevil__special-equipment {
+	grid-column: 1 / 2;
+	grid-row: 2 / 3;
+}
+
+.sheet-daredevil__chassis {
+	grid-column: 2 / 3;
+	grid-row: 1 / 2;
+}
+
+.sheet-daredevil__armament {
+	grid-column: 2 / 3;
+	grid-row: 2 / 3;
+}

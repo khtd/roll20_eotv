@@ -461,10 +461,17 @@
                 <input type="radio"  name="attr_moves_page" value="space">
                 <span>Космические</span>
             </label>
+
             <input type="checkbox" class="is-cyborg-imp-flag" name="attr_isCyborgImplants">
             <label class="nav-moves-button">
                 <input type="radio"  name="attr_moves_page" value="implants">
                 <span>Импланты</span>
+            </label>
+
+            <input type="checkbox" class="is-daredevil-tech-flag" name="attr_isDaredevilTech">
+            <label class="nav-moves-button">
+                <input type="radio"  name="attr_moves_page" value="tech">
+                <span>Техника</span>
             </label>
         </div>
         <input type='hidden' class='tabstoggle' name='attr_moveTab'  value='own'/>
@@ -1522,6 +1529,269 @@
                 </ul>
               </div>
         </div>
+
+        <div class="moves-container daredevil-tech moves-fixed">
+            <div class="daredevil__comrade grid-article-item">
+                <h2>
+                  КОМПАНЬОН
+                </h2>
+                <ul class="level-1-list">
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <p>
+                        Выбери тип своего кибер-компаньона:
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Ассистент:</b> Когда тебе что-то нужно, но находится далеко,
+                        ассистент передает тебе это так быстро, как только возможно
+                        (даже если эта вещь — твой транспорт).
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Исследователь:</b> Способен проводить неглубокий физический и химический
+                        анализ непосредственно на месте. Неплохая замена лаборатории.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Наблюдатель:</b> Способен вести скрытое наблюдение за объектом, а также видеть в темноте.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Связист:</b> Компаньон может проецировать ростовое голографическое
+                        изображение тебя или собеседника. Если не при- глядываться, можно подумать,
+                        что это настоящий человек.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Телохранитель:</b> В начале боя выбери цель. Эта цель может атаковать только твоего компаньона,
+                        до тех пор, пока компаньон не будет повержен (Ранения 2)
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+            </div>
+            <div class="daredevil__special-equipment grid-article-item">
+                <h2>
+                  СПЕЦСРЕДСТВА
+                </h2>
+                <ul class="level-1-list">
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <p>
+                        Выбери 2 спецсредства, установленных на твоем транспорте:
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Глушилка:</b> После включения в радиусе 50 метров не будут работать никакие средства связи.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Импульсная тяга:</b> Твой транспорт способен работать в любых условиях: в вакууме или под водой.
+                        Не факт, что ты можешь так работать, особенно без скафандра...
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Трансформер:</b> Твой транспорт на некоторое время может полностью изменить свой внешний вид
+                        (но не может стать чем-то совершенно иным). Это помогает уйти от погони.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Потайной трюм:</b> Специальное вместительное отделение для контрабанды.
+                        Практически невозможно обнаружить.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Ускоритель:</b> Проверь Контроль. На 10+ транспорт разгоняет- ся настолько сильно,
+                        что отрывается от любых соперников. На 7—9 то же самое, но ты подвергаешь себя угрозе
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Энергетический щит:</b> Потрать 1 припас и полностью игнори- руй урон от одной атаки.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+            </div>
+            <div class="daredevil__chassis grid-article-item">
+                <h2>
+                  ШАССИ
+                </h2>
+                <ul class="level-1-list">
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <p>
+                        Выбери тип шасси твоего транспорта:
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Спорт-байк:</b> Всего два колеса, зато маневренности выше крыши. 1 пассажирское место;
+                        небольшой багажник, манев- ренный (+1, когда игнорируешь угрозу, маневрируя), скоростной
+                        (+1, когда скорость имеет значение). Проходит везде, где пройдёт пешеход.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Глайдер:</b> Крупный мотоцикл без колес, зато летает на высоте до 10 метров (над водой ниже).
+                        2 пассажирских места, небольшой багажник, ховер (высота до 10м), Защита 1; скоростной
+                        (+1, когда скорость имеет значение).
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Гоночный кар:</b> Четыре посадочных места, хотя дверей всего две. До 4 пассажиров, большой багажник,
+                        ховер (высота до 10м), Защита 1. Может и по старинке ехать на колёсах.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Грузовик:</b> Тягач для ралли на антигравитационной платформе. Грубоват, но очень вместителен.
+                        До 3 пассажиров в кабине, целый грузовой отсек, Защита 2.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+            </div>
+            <div class="daredevil__armament grid-article-item">
+                <h2>
+                  ВООРУЖЕНИЕ
+                </h2>
+                <ul class="level-1-list">
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <p>
+                        Выбери оружие для твоего транспорта:
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Автопушка:</b> Очень-очень тяжелый крупнокалиберный пулемет.
+                        Урон 3, дальняя,/средняя, авто, тяжелое, стреляет только по ходу движения.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Плазменная турель:</b> Мощная и скорострельная автоматическая турель.
+                        Урон 2, средняя, авто, игнорирует щиты.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Ракетная пара:</b> Две тяжелые ракеты класса ПТРК. Чертовски мощные, но их всего две.
+                        Восстанавливаются, когда ты пополняешь припасы. Урон 5, дальняя.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>«Протуберанец»:</b> Тяжёлый огнемёт, установленный в соплах.
+                        Урон 2, ближняя, точное, бронебойное (огню плевать на бронежилет),
+                        может поражать цели сзади без разворота.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        Магазинный вариант: Выбери оружие из снаряжения персонажей.
+                        Урон как у тебя, теги как в книге правил.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="moves-container daredevil-car moves-fixed"></div>
     </div>
 
     <div class="page page4">
@@ -1545,6 +1815,9 @@
         </label>
         <label>
             <input type="checkbox" name="attr_isStrangerSpec">Странник: Специализация
+        </label>
+        <label>
+            <input type="checkbox" name="attr_isDaredevilTech">Сорвиголова: Техника
         </label>
     </div>
 </div>
@@ -2721,7 +2994,9 @@
     });
     
     on("clicked:daredevil", () => {
-        setupClass('Daredevil');
+        var update = {}
+        update.isDaredevilTech = "on";
+        setAttrs(update, undefined, function() {setupClass("Daredevil")})
     });
     
     on("clicked:stranger", () => {
