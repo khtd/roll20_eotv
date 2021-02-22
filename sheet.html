@@ -270,19 +270,19 @@
         <div class="attributes">
             <div class='main-attributes'>
                 <div class='furry attribute-container'>
-                        <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Ярость}} {{doroll=[[1]]}} {{result=[[2d6 + (@{furry}|0) + (@{bonus})[bonus]]]}} ">Ярость</button>
+                        <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Ярость}} {{doroll=[[1]]}} {{result=[[2d6 + (@{furry}) + (@{bonus})[bonus]]]}} ">Ярость</button>
                     <input class='attribute-input' name='attr_furry' type='number'>
                 </div>
                 <div class='controll attribute-container'>
-                    <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Контроль}} {{doroll=[[1]]}} {{result=[[2d6 + (@{controll}|0) + (@{bonus})[bonus]]]}} ">Контроль</button>
+                    <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Контроль}} {{doroll=[[1]]}} {{result=[[2d6 + (@{controll}) + (@{bonus})[bonus]]]}} ">Контроль</button>
                     <input class='attribute-input' name='attr_controll' type='number'>
                 </div>
                 <div class='skill attribute-container'>
-                    <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Навык}} {{doroll=[[1]]}} {{result=[[2d6 + (@{skill}|0) + (@{bonus})[bonus]]]}} ">Навык</button>
+                    <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Навык}} {{doroll=[[1]]}} {{result=[[2d6 + (@{skill}) + (@{bonus})[bonus]]]}} ">Навык</button>
                     <input class='attribute-input' name='attr_skill' type='number'>
                 </div>
                 <div class='reputation attribute-container'>
-                    <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Репутация}} {{doroll=[[1]]}} {{result=[[2d6 + (@{reputation}|0)  + (@{bonus})[bonus]]]}} ">Репутация</button>
+                    <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Репутация}} {{doroll=[[1]]}} {{result=[[2d6 + (@{reputation})  + (@{bonus})[bonus]]]}} ">Репутация</button>
                     <input class='attribute-input' name='attr_reputation' type='number'>
                 </div>
             </div>
@@ -441,7 +441,7 @@
     <div class="page page3">
         <div class="moves-navigation">
             <label class="nav-moves-button">
-                <input type="radio"  name="attr_moves_page" value="starting" checked="checked">
+                <input type="radio"  name="attr_moves_page" value="own" checked="checked">
                 <span>Твои</span>
             </label>
             <label class="nav-moves-button">
@@ -718,7 +718,7 @@
                                     <span>Lo</span>
                                 </button>
 
-                                <button type="action" name="add_move" class='add-move'>+</button>
+                                <button type="action" name="act_addmove" class='add-move'>+</button>
 
                                 <span class="rolltext" name="attr_move_name" value="@{move_name}"></span>
                                 <button type="action" name="act_expanddescription" class="expand-move">
@@ -2368,6 +2368,41 @@
     })
 
     /* MOVES SECTION START */
+    const movesStats = [
+        'moveclass',
+        'type',
+        'movename_base',
+        'move_doroll',
+        'movedetails',
+        'showopt1',
+        'opt1name',
+        'opt1details',
+        'showopt2',
+        'opt2name',
+        'opt2details',
+        'showopt3',
+        'opt3name',
+        'opt3details',
+        'showopt4',
+        'opt4name',
+        'opt4details',
+        'showopt5',
+        'opt5name',
+        'opt5details',
+        'showopt6',
+        'opt6name',
+        'opt6details',
+        'showopt7',
+        'opt7name',
+        'opt7details',
+        'showopt8',
+        'opt8name',
+        'opt8details',
+        'showopt9',
+        'opt9name',
+        'opt9details',
+    ]
+
     var statnameToStatQuery = function(statname) {
         if (statname == "--") return "0[no stat]";
         if (statname == "Ярость") return "(@{furry})[furry]";
@@ -2447,6 +2482,18 @@
                 setAttrs({repeating_moves_movestat: 0});
         });
     });
+
+    on("clicked:repeating_moves-upgrade:addmove", function() {
+        getAttrs(movesStats.map(s => `repeating_moves-upgrade_${s}`), (v) => {
+            const id = generateRowID()
+            console.log(v)
+            const upgrade = {}
+            movesStats.forEach(s => {
+                upgrade[`repeating_moves_${id}_${s}`]=  v[`repeating_moves-upgrade_${s}`] || ""
+            })
+            setAttrs(upgrade)
+        })
+    })
 
     on("change:repeating_bonds", function(eventInfo) {
         getSectionIDs("repeating_bonds", function(ids) {
