@@ -611,7 +611,8 @@ button[type=roll].sheet-infoOutput::before {
 }
 
 /*special start*/
-.sheet-is-cyborg-flag,
+.sheet-is-cyborg-bg-flag,
+.sheet-is-cyborg-path-flag,
 .sheet-is-shadow-bg-flag,
 .sheet-is-stranger-flag,
 .sheet-is-juggernaut-flag,
@@ -619,7 +620,8 @@ button[type=roll].sheet-infoOutput::before {
 	display: none;
 }
 
-.sheet-is-cyborg-flag:checked + .sheet-cyborg-additional,
+.sheet-is-cyborg-bg-flag:checked + .sheet-cyborg-additional,
+.sheet-is-cyborg-path-flag:checked + .sheet-cyborg-additional,
 .sheet-is-shadow-bg-flag:checked + .sheet-shadow-additional,
 .sheet-is-stranger-flag:checked + .sheet-stranger-additional,
 .sheet-is-juggernaut-flag:checked + .sheet-juggernaut-additional,
@@ -627,7 +629,8 @@ button[type=roll].sheet-infoOutput::before {
 	display: grid;
 }
 
-.sheet-is-cyborg-flag:not(:checked) + .sheet-cyborg-additional,
+.sheet-is-cyborg-bg-flag:not(:checked) + .sheet-cyborg-additional,
+.sheet-is-cyborg-path-flag:not(:checked) + .sheet-cyborg-additional,
 .sheet-is-shadow-bg-flag:not(:checked) + .sheet-shadow-additional,
 .sheet-is-stranger-flag:not(:checked) + .sheet-stranger-additional,
 .sheet-is-juggernaut-flag:not(:checked) + .sheet-juggernaut-additional {

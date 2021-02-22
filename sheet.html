@@ -85,7 +85,7 @@
                 <button type='action' class='change-button' name='act_changebackground'>p</button>
             </div>
 
-            <input type="checkbox" class="is-cyborg-flag" name="attr_isCyborg">
+            <input type="checkbox" class="is-cyborg-bg-flag" name="attr_isCyborgBackground">
             <div class="additional-background cyborg-additional">
                 <button type='roll' class="backgroundOutput infoOutput" name='roll_outAddBackground' value="&{template:info} {{name=@{character_name}}} {{type=Тао Прайм}} {{item=Происхождение}} {{description=Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут.}}">w</button>
                 <div><span><strong>Тао Прайм:</strong> Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут.</span></div>
@@ -120,7 +120,7 @@
 
         </div>
 
-        <input type="checkbox" class="is-cyborg-flag" name="attr_isCyborg">
+        <input type="checkbox" class="is-cyborg-path-flag" name="attr_isCyborgPath">
         <div class='cyborg-additional cyborg-path'>
             <div class="title">
                 <h3><span>ПУТЬ</span></h3>
@@ -1254,7 +1254,10 @@
 
     <div class="page page4">
         <label>
-            <input type="checkbox" name="attr_isCyborg">Киборг
+            <input type="checkbox" name="attr_isCyborgBackground">Киборг: Происхождение
+        </label>
+        <label>
+            <input type="checkbox" name="attr_isCyborgPath">Киборг: Путь
         </label>
         <label>
             <input type="checkbox" name="attr_isRaelith">раэлит
@@ -2312,7 +2315,7 @@
             for(var i=0; i < idarray.length; i++) {
               removeRepeatingRow(`repeating_${sectionName}_${idarray[i]}`);
             }
-            cb()
+            if(cb) cb()
         });
     }
 
@@ -2327,37 +2330,37 @@
             'moves',
             'moves-upgrade'
         ]
-        sectionToRemove.forEach(removeRepeatingSection, () => {
-            setAttrs({
-                tip_confirm_flag: 0,
-                warning_flag: 1,
-                description: ' ',
-                backgroundtype: ' ',
-                backgroundtext: ' ',
-                cyborgPath_show_flag: 0,
-                cyborgPathtype: ' ',
-                cyborgPathtext: ' ',
-                strangerSpecializationtype: ' ',
-                strangerSpecializationtext: ' ',
-                strangerSpecialization_show_flag: 0,
-                juggernautHandicrafttype: ' ',
-                juggernautHandicrafttext: ' ',
-                juggernautHandicraft_show_flag: 0,
-                raelithFunctiontype: ' ',
-                raelithFunctiontext: ' ',
-                raelithFunction_show_flag: 0,
-                look_example: ' ',
-                character_class: ' ',
-                comp_name: ' ',
-                "background_show_flag": 0,
-                "pre_background": ' ',
-                isCyborg: 0,
-                isShadowBackground: 0,
-                isStranger: 0,
-                isJuggernaut: 0,
-                isRaelith: 0
-            })
-        });
+        sectionToRemove.forEach(removeRepeatingSection);
+        setAttrs({
+            tip_confirm_flag: 0,
+            warning_flag: 1,
+            description: ' ',
+            backgroundtype: ' ',
+            backgroundtext: ' ',
+            cyborgPath_show_flag: 0,
+            cyborgPathtype: ' ',
+            cyborgPathtext: ' ',
+            strangerSpecializationtype: ' ',
+            strangerSpecializationtext: ' ',
+            strangerSpecialization_show_flag: 0,
+            juggernautHandicrafttype: ' ',
+            juggernautHandicrafttext: ' ',
+            juggernautHandicraft_show_flag: 0,
+            raelithFunctiontype: ' ',
+            raelithFunctiontext: ' ',
+            raelithFunction_show_flag: 0,
+            look_example: ' ',
+            character_class: ' ',
+            comp_name: ' ',
+            "background_show_flag": 0,
+            "pre_background": ' ',
+            isCyborgBackground: 0,
+            isCyborgPath: 0,
+            isShadowBackground: 0,
+            isStranger: 0,
+            isJuggernaut: 0,
+            isRaelith: 0
+        })
     })
 
     on("clicked:noble", function(eventinfo) {
@@ -2366,12 +2369,13 @@
 
     on("clicked:cyborg", function(eventinfo) {
         var update = addRepeatingInfo(special.Cyborg.cyborgPath, 'cyborgPath')
-        update.isCyborg = "on";
+        update.isCyborgBackground = "on";
+        update.isCyborgPath = "on";
         update.cyborgPath_show_flag = "on";
         setAttrs(update, undefined, function() {setupClass("Cyborg")})
     });
 
-    on("change:isCyborg", (e) => {
+    on("change:isCyborgPath", (e) => {
         removeRepeatingSection('cyborgPath', () => {
             if(e.newValue=="on") {
                 var update = addRepeatingInfo(special.Cyborg.cyborgPath, 'cyborgPath')
