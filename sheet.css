@@ -613,6 +613,7 @@ button[type=roll].sheet-infoOutput::before {
 /*special start*/
 .sheet-is-cyborg-bg-flag,
 .sheet-is-cyborg-path-flag,
+.sheet-is-cyborg-imp-flag,
 .sheet-is-shadow-bg-flag,
 .sheet-is-stranger-spec-flag,
 .sheet-is-juggernaut-craft-flag,
@@ -675,6 +676,20 @@ button[type=roll].sheet-infoOutput::before {
 }
 
 /* raelith special end */
+
+/* cyborg spec start */
+.sheet-is-cyborg-imp-flag + label {
+	display: none;
+}
+
+.sheet-is-cyborg-imp-flag:checked + label {
+	display: block;
+}
+
+.sheet-is-cyborg-imp-flag:not(:checked) + label {
+	display: none;
+}
+/* cyborg spec end */
 /* special end*/
 
 /* page1 look start */
@@ -1587,7 +1602,8 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 .sheet-moves-own,
 .sheet-moves-base,
 .sheet-moves-optional,
-.sheet-moves-space {
+.sheet-moves-space,
+.sheet-cyborg-implants {
 	display: none;
 }
 
@@ -1597,7 +1613,8 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 .sheet-page3 .sheet-tabstoggle[value="own"] ~ .sheet-moves-own,
 .sheet-page3 .sheet-tabstoggle[value="base"] ~ .sheet-moves-base,
 .sheet-page3 .sheet-tabstoggle[value="optional"] ~ .sheet-moves-optional,
-.sheet-page3 .sheet-tabstoggle[value="space"] ~ .sheet-moves-space {
+.sheet-page3 .sheet-tabstoggle[value="space"] ~ .sheet-moves-space,
+.sheet-page3 .sheet-tabstoggle[value="implants"] ~ .sheet-cyborg-implants {
 	display: grid;
 }
 
@@ -2250,3 +2267,49 @@ div.sheet-moves-fixed {
 .sheet-moves-space .sheet-grid-article-item:nth-child(5) {
 	grid-row: 7/18;
 }
+/*================================
+        CYBORG STYLES
+================================*/
+
+.sheet-cyborg-implants {
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr .1fr 1fr;
+	width: 772px;
+	border: 1px solid black;
+}
+
+.sheet-cyborg__upper-limbs {
+	grid-column: 1 / 2;
+	grid-row: 1 / 4;
+}
+
+.sheet-cyborg__lower-limbs {
+	grid-column: 1 / 2;
+	grid-row: 4 / 5;
+}
+
+.sheet-cyborg__sense-organs {
+	grid-column: 2 / 3;
+	grid-row: 1 / 2;
+}
+
+.sheet-cyborg__central-systems {
+	grid-column: 2 / 3;
+	grid-row: 2 / 5;
+}
+
+/* Это кнопки, которые ты просил. Стили у них убраны и они скрыты */
+.sheet-cyborg__button {
+	background: none;
+	border: none;
+}
+
+.sheet-cyborg__button_hidden {
+	display: none;
+}
+
+.sheet-cyborg__input-block {
+	display: flex;
+	justify-content: left;
+}
+/*================================================================*/

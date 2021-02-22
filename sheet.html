@@ -444,6 +444,7 @@
 
     <div class="page page3">
         <div class="moves-navigation">
+            
             <label class="nav-moves-button">
                 <input type="radio"  name="attr_moves_page" value="own" checked="checked">
                 <span>Твои</span>
@@ -459,6 +460,11 @@
             <label class="nav-moves-button">
                 <input type="radio"  name="attr_moves_page" value="space">
                 <span>Космические</span>
+            </label>
+            <input type="checkbox" class="is-cyborg-imp-flag" name="attr_isCyborgImplants">
+            <label class="nav-moves-button">
+                <input type="radio"  name="attr_moves_page" value="implants">
+                <span>Импланты</span>
             </label>
         </div>
         <input type='hidden' class='tabstoggle' name='attr_moveTab'  value='own'/>
@@ -1250,6 +1256,272 @@
                 <p>На 6— вы заблудились, или полёт прерван чем-то неожиданным и неприятным.</p>
             </div>
         </div>
+
+        <div class="moves-container cyborg-implants moves-fixed">
+            <div class="grid-article-item cyborg__upper-limbs">
+                <h2>
+                  ВЕРХНИЕ КОНЕЧНОСТИ
+                </h2>
+                <ul class="level-1-list">
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Встроенное оружие.</b> Выберите тип оружия:
+                      </p>
+                    </div>
+                      <ul>
+                        <li class="non-typed-list-item">
+                          <input type="checkbox"> Моноклинок (вупор,бесшумное,бронебойное)
+                        </li>
+                        <li class="non-typed-list-item">
+                          <input type="checkbox"> Пистолет-пулемет (средняя,авто)
+                        </li>
+                        <li class="non-typed-list-item">
+                          <input type="checkbox"> Разрядник (средняя,шок)
+                        </li>
+                        <li class="non-typed-list-item">
+                          <input type="checkbox"> Плазменная пушка (средняя,игнорирует щиты)
+                        </li>
+                        <li class="non-typed-list-item list-divider">
+                          Выбери 2 аксессуара:
+                        </li>
+                        <li class="non-typed-list-item">
+                          <input type="checkbox"> Глушитель (бесшумное)
+                        </li>
+                        <li class="non-typed-list-item">
+                          <input type="checkbox"> Крупный калибр (кровавый,мощный)
+                        </li>
+                        <li class="non-typed-list-item">
+                          <input type="checkbox"> Особый боеприпас (бронебойный)
+                        </li>
+                        <li class="non-typed-list-item">
+                          <input type="checkbox"> Трансформер (скрытый)
+                        </li>
+                        <li class="non-typed-list-item">
+                          <input type="checkbox"> Цифровой прицел (точное)
+                        </li>
+                      </ul>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        Выбери еще 1 аксессуар для оружия.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Многофункциональный инструмент:</b> Когда тебе требуется
+                        выполнить операцию, которая требует специальный инструмент,
+                        он у тебя есть. Ты не можешь сражаться, пока он
+                        активен. Потрать 1 припас и передай инструмент другому
+                        персонажу.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Эндоскелет:</b> Когда ты используешь грубую силу для того,
+                        чтобы сломать неодушевленный предмет, проверь Ярость.
+                        На 10+ выбери 3. На 7-9 выбери 2.
+                      </p>
+                    </div>
+                    <ul>
+                      <li class="disc-list-item">
+                        Это не заняло много времени;
+                      </li>
+                      <li class="disc-list-item">
+                        Ничего ценного не пострадало;
+                      </li>
+                      <li class="disc-list-item">
+                        Это было не очень громко;
+                      </li>
+                      <li class="disc-list-item">
+                        Это можно быстро починить;
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="grid-article-item cyborg__lower-limbs">
+                <h2>
+                  НИЖНИЕ КОНЕЧНОСТИ
+                </h2>
+                <ul class="level-1-list">
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Миомерные мышцы:</b> Когда тебе нужно оказаться где-то
+                        очень быстро, проверь Контроль. На 10+ ты попадаешь туда
+                        как раз в тот момент, когда нужно. На 7-9 то же самое, но
+                        по пути ты привлек чьё-то внимание.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Репульсоры:</b> Ты можешь прыгать на высоту до 15 метров и
+                        зависать в воздухе на 15 секунд. При падении с любой высо-
+                        ты ты можешь игнорировать угрозу разбиться насмерть с
+                        помощью Контроля.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="grid-article-item cyborg__sense-organs">
+                <h2>
+                  ОРГАНЫ ЧУВСТВ
+                </h2>
+                <ul class="level-1-list">
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>AR-интерфейс:</b> Ты получаешь +1, когда взаимодействуешь с
+                        компьютерными системами.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Сенсоры:</b> Выбери 1 сенсор из списка. Сенсор работает в
+                        радиусе 25 метров.
+                      </p>
+                    </div>
+                    <ul>
+                      <li class="non-typed-list-item">
+                        <input type="checkbox"> Сонар(ночноевидение);
+                      </li>
+                      <li class="non-typed-list-item">
+                        <input type="checkbox"> Сенсор движения;
+                      </li>
+                      <li class="non-typed-list-item">
+                        <input type="checkbox"> Сенсор изменения объема;
+                      </li>
+                      <li class="non-typed-list-item">
+                        <input type="checkbox"> Сенсор электромагнитных полей;
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        Выбери еще <b>1 сенсор.</b>
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="grid-article-item cyborg__central-systems">
+                <h2>
+                  ЦЕНТРАЛЬНЫЕ СИСТЕМЫ
+                </h2>
+                <ul class="level-1-list">
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Биодатчик:</b> Когда ты получаешь критическое ранение, система
+                        тут же лечит его. Один раз за сессию.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Голодвойник:</b> Система проецирует твоего двойника, который
+                        выполняет последовательность запрограммированных действий.
+                        Противники склонны атаковать твоего двойника, а не тебя.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Замкнутый контур:</b> Встроенная система жизнеобеспечения.
+                        Можешь обходиться без воздуха и находиться во вредной среде
+                        (как вакуум или огонь) до 4 часов без вреда. Получи 1 ранение
+                        и увеличь срок на 2 часа.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Подкожная броня:</b> Твоя Защита равна 2.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Трюм:</b> В твоем теле оборудована защищенная от сканирования
+                        полость, в которой может поместиться предмет раз- мером с тяжёлый пистолет.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Фазовый реактор:</b> Пока ты сохраняешь неподвижность, от твоего реактора
+                        можно запитать небольшой транспортный модуль типа автомобиля или некрупное устройство.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Хамелеон:</b> Пока ты не совершаешь резких движений, тебя практически невозможно заметить.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Энергетический щит:</b> Потрать 1 припас и игнорируй весь урон от одной атаки.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+        </div>
     </div>
 
     <div class="page page4">
@@ -1258,6 +1530,9 @@
         </label>
         <label>
             <input type="checkbox" name="attr_isCyborgPath">Киборг: Путь
+        </label>
+        <label>
+            <input type="checkbox" name="attr_isCyborgImplants">Киборг: Импланты
         </label>
         <label>
             <input type="checkbox" name="attr_isRaelithFunction">Раэлит: Функция
@@ -2398,6 +2673,7 @@
             "pre_background": ' ',
             isCyborgBackground: 0,
             isCyborgPath: 0,
+            isCyborgImplants: 0,
             isShadowBackground: 0,
             isStrangerSpec: 0,
             isJuggernautHandicraft: 0,
@@ -2413,6 +2689,7 @@
         var update = addRepeatingInfo(special.Cyborg.cyborgPath, 'cyborgPath')
         update.isCyborgBackground = "on";
         update.isCyborgPath = "on";
+        update.isCyborgImplants = "on";
         update.cyborgPath_show_flag = "on";
         setAttrs(update, undefined, function() {setupClass("Cyborg")})
     });
