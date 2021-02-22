@@ -473,6 +473,19 @@
                 <input type="radio"  name="attr_moves_page" value="tech">
                 <span>Техника</span>
             </label>
+
+            <input type="checkbox" class="is-engineer-probe-flag" name="attr_isEngineerProbe">
+            <label class="nav-moves-button">
+                <input type="radio"  name="attr_moves_page" value="probe">
+                <span>Зонд</span>
+            </label>
+            
+            <input type="checkbox" class="is-manofsteel-armor-flag" name="attr_isManofsteelArmor">
+            <label class="nav-moves-button">
+                <input type="radio"  name="attr_moves_page" value="armor">
+                <span>Экзоскелет</span>
+            </label>
+            
         </div>
         <input type='hidden' class='tabstoggle' name='attr_moveTab'  value='own'/>
 
@@ -1791,7 +1804,610 @@
             </div>
         </div>
 
-        <div class="moves-container daredevil-car moves-fixed"></div>
+        <div class="moves-container engineer-probe moves-fixed">
+            <div class="grid-article-item grid-article-item_borderless engineer__probe">
+                <ul class="level-1-list">
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <p>
+                        Твой главный помощник, созданный своими руками. Он умеет разговаривать, имеет манипуляторы для простейших
+                        действий, и ты можешь встраивать в него разные утилиты.
+                      </p>
+                    </div>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <p>
+                        Он имеет Предельную <i>Мощность</i> 10, а каждая утилита потреб- ляет некоторое количество мощностей. Отметь
+                        столько доступ- ных утилит, сколько хочешь, но сумма их мощностей не может превышать Предельную Мощность.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <p>
+                        <i>Пересборка.</i> Ты можешь потратить 1 час, чтобы сменить актив- ные утилиты. Правило суммы мощностей
+                        должно соблюдаться.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <p>
+                        Зонд выдерживает два ранения и имеет Защиту 1. Ты можешь сделать новый зонд взамен утерянного по правилам
+                        длительных действий с шагом в 6 часов (или за двое суток).
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <p>
+                        Выбери его ТИП, КОРПУС и имя: <input type="text">
+                      </p>
+                    </div>
+                  </li>
+                  </li>
+                </ul>
+            </div>
+            <div class="grid-article-item grid-article-item_borderless engineer__type">
+                <h2>
+                  ТИП
+                </h2>
+                <ul class="level-1-list">
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Боевой:</b> Зонд выдерживает 3 ранения и имеет энергощит (<i>потрать 1 Припас и проигнорируй весь урон
+                        от одной атаки</i>).
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Многофункциональный:</b> Предельная Мощность твоего зонда увеличена до 12.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Подмастерье:</b> 1 раз между Пересборками ты можешь акти- вировать утилиту, отключив другие с такой же
+                        или большей суммой мощностей.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Юнга:</b> Встроенный в коммуникационные системы звездолёта, зонд-юнга всегда знает, если какая-то часть
+                        корабля рабо- тает не так, как надо, в том числе мгновенно вычисляет точ- ку разгерметизации.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+            </div>
+            <div class="grid-article-item grid-article-item_borderless engineer__hull">
+                <h2>
+                  КОРПУС
+                </h2>
+                <ul class="level-1-list">
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Парящий:</b> <i>Мощность</i> 2. Небольшой антигравитационный двигатель обеспечивает полет до 3м над
+                        поверхностью, однако требует много энергии.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Паук:</b> <i>Мощность</i> 1. Платформа повышенной проходимости. Способен забираться в труднодоступные
+                        места и на вакуум- ных присосках медленно ползать по стенам.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Пешеход:</b> Надёжный экономичный корпус.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+            </div>
+            <div class="grid-article-item grid-article-item_borderless engineer__base-utilities">
+                <h2>
+                  БАЗОВЫЕ УТИЛИТЫ
+                </h2>
+                <ul class="level-1-list">
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Аватар:</b> <i>Мощность 1</i>. Наблюдая за человеком или анализируя его данные в инфосети несколько
+                        часов, зонд может загру- зить в себя его аватар (до 5). После этого он может досто- верно изображать этого
+                        человека в инфосети.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Автопилот:</b> <i>Мощность 2</i>. Зонд способен подключаться к транспортному средству и управлять им
+                        самостоятельно. Используй ход Взламываешь в случае необходимости.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Ассистент:</b> <i>Мощность 1</i>. Когда твой зонд помогает тебе, пока ты Чинишь или Разбираешь, можешь
+                        выбрать на 1 вариант больше при успехе.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Дублирующие манипуляторы:</b> <i>Мощность 2</i>. Ты можешь дистанционно Чинить/разбирать и Взламывать с
+                        помощью зонда. При этом ты не можешь применять ход Специалист и утилиту Ассистент.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Лаборатория:</b> <i>Мощность 4</i>. Ты с помощью зонда можешь проводить физико-химические исследования.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Лесопилка:</b> <i>Мощность 3</i>. Комплект из лазерного и плазмен- ного резаков и пиломеча. Преодолевает
+                        большинство видов преград, затратив некоторое время. Урон 3 (в упор).
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Проектор:</b> <i>Мощность 2</i>. Зонд способен создавать голограммы существ и предметов, Проверь Навык.
+                        На 10+ их не отли- чить от реальных. На 7–9 кто-то что-то заподозрил, но не сразу.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Системана блюдения:</b> <i>Мощность 2</i>. Комплект звуко-и видео-записывающего оборудования повышенной
+                        точности, в т.ч. узконаправленный микрофон и двадцатикратный zoom.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Усиленный корпус:</b> <i>Мощность 3</i>. Зонд получает Защиту 2.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Энергосфера.</b> <i>Мощность 1</i>. Создает вокруг себя герметичную сферу и переходит в спящий режим.
+                        Находящийся внутри человек получает 4-часовую защиту от внешней среды, но не способен с ней
+                        взаимодействовать.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+            </div>
+            <div class="grid-article-item grid-article-item_borderless engineer__advanced-utilities">
+                <h2>
+                  ПРОДВИНУТЫЕ УТИЛИТЫ
+                </h2>
+                <ul class="level-1-list">
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Белый шум:</b> <i>Мощность 3</i>. Зонд способен создавать в радиусе 20м от себя излучение, вносящее в
+                        электронику сильные помехи и мешающее устройствам функционировать нор- мально. Проверь Контроль: 7–9 – на 10
+                        минут максимум. 10+ – на 15 минут, плюс устройства перезагружаются.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Вооружение:</b> <i>Мощность 2</i>. Выбери тяжёлое оружие, установ- ленное на зонде. Оно тратит Припасы
+                        как обычно. Урон зон- да – 2. <input type="text">
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Дополнительные настройки.</b> <i>Мощность 0</i>. Зонд издаёт зву- ковые сигналы, которые понимаешь только
+                        ты. Кроме того, можешь создать ему характер, выставив уровень честности, лидерства, юмора, скепсиса и т.д.
+                        Правда, кто-то может за- подозрить в нём Искусственный Интеллект.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Ракетный ранец.</b> <i>Мощность 4</i>. Зонд может летать несколько минут и поднимать человека в воздух.
+                        После одного полёта ему требуется перезарядить ранец (примерно за 15 минут).
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Техносканер:</b> <i>Мощность 2</i>. Когда зонд сканирует устройство, проверь Навык. На 10+ получи его
+                        полные ТТХ и предназна- чение. На 7–9 получи лишь часть информации. Необычные устройства не всегда можно
+                        просканировать.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Зарядник.</b> <i>Мощность 1</i>. Зонд может подпитывать оборудование, даже полностью выключенное, стоя с
+                        ним рядом или находясь в одной комнате.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="moves-container manofsteel-armor moves-fixed">
+            <div class="grid-article-item grid-article-item_borderless manofsteel__guns">
+                <h2>
+                  ОРУДИЯ
+                </h2>
+                <ul class="level-1-list">
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <p>
+                        Выбери орудия, которые установлены на твой каркас.
+                        Каждое орудие имеет свой Урон и тратит определённое количество заряда батарей.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Гарпун:</b> <i>Урон 1, батарея 0, средняя, нелетальное.</i>
+                        Захватывает цель и подтягивает в упор.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Гаусс-орудие:</b> <i>Урон 5, батарея 3, средняя/дальняя, бронебойное, мощное, кровавое.</i>
+                        Для произведения выстрела каркас должен быть неподвижен.
+                        Не может быть бесшумным, кроме как в вакууме.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Пиломеч:</b> <i>Урон 3, батарея 1, в упор, кровавое.</i>
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Плазмотрон:</b> <i>Урон 3, батарея 2, ближняя/средняя, игнорирует щиты.</i>
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Сенсорнаямина:</b> <i>Урон 3,батарея 1,в упор,мощное.</i>
+                        Устанавливается на поверхности и детонирует при срабатывании сенсора,
+                        зафиксировавшего движение в радиусе 1 метра.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Спаренный ствол:</b> Потрать 1 заряд батареи и перебрось свой урон.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Тактический лазер:</b> <i>Урон 2, батарея 1, дальняя, точное.</i>
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Тяжелое орудие:</b> Установи тяжёлое оружие.
+                        Выстрел тратит батареи из расчета уровень цены оружия минус 1.<br>
+                        Впиши: <input type="text">
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Тяжелое орудие:</b> Установи тяжёлое оружие.
+                        Выстрел тратит батареи из расчета уровень цены оружия минус 1. <br>
+                        Впиши: <input type="text">
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Шок-волна:</b> <i>Урон 0, батарея 3, ближняя, шок.</i> Срабатывает по всем целям вокруг.
+                        При атаке на 7—9 кто-то останется на ногах, как решит Ведущий.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>ЭМИ:</b> <i>Урон 0, батарея Х.</i> Выключает всю электронику на средней дистанции — и твой экзоскелет
+                        тоже.
+                        Тратит весь оставшийся заряд батарей.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+            </div>
+            <div class="grid-article-item grid-article-item_borderless manofsteel__hull">
+                <h2>
+                  КАРКАС
+                </h2>
+                <ul class="level-1-list">
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <p>
+                        Выбери каркас. Он определяет твою защиту, а также количество стартовых орудий и систем.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Скаут:</b> Защита 1, орудия 1, системы 4, маскировка, скорость +1.
+                        малые манипуляторы позволяют взаимодействовать даже с небольшими
+                        предметами почти как обычными руками. Выбери один уже установленный сенсор.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Десант:</b> Защита 2, орудия 3, системы 2, герметичный,
+                        прыжковый двигатель (5 метров в высоту, 10 метров в длину).
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Штурмовик:</b> Защита 3, орудия 4, системы 1, манипуляторы отсутствуют.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+            </div>
+            <div class="grid-article-item grid-article-item_borderless manofsteel__systems">
+                <h2>
+                  СИСТЕМЫ
+                </h2>
+                <ul class="level-1-list">
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <p>
+                        Выбери системы, которые установлены на твой каркаc.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Аналоговое управление:</b> Когда твой экзоскелет пытаются взломать или отключить, игнорируй это.
+                        Однако пока действует эта система, все остальные системы недоступны, а ты получаешь –1 на броски.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Дистанционное управление:</b> С помощью небольшого импланта ты можешь дистанционно отдавать приказы
+                        экзоскелету:
+                        «ко мне», «открыть огонь из выбранного орудия», «прекратить огонь», «покинуть зону»,
+                        «активировать выбранную систему» и т.п.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Импульсный двигатель:</b> Экзоскелет может летать, тратя 1 заряд батареи за каждый километр пути.
+                        Двигатели разогреваются около минуты.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Конвертер:</b> Позволяет преобразовывать мусор в полезный груз.
+                        Раз в сессию ты можешь проверить Контроль. На 10+ получи 2 Припаса,
+                        на 7—9 получи 1 Припас. Эти Припасы можно сразу передать другим персонажам без ограничений.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Медкапсула:</b> Если экзоскелет неподвижен, оператор получает медицинскую помощь.
+                        Обычное ранение излечивается за 30 минут и 1 заряд батареи.
+                        Критическое ранение — 8 часов и 8 зарядов батареи.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Пассажирский модуль:</b> Дополнительное кресло, кое-как втиснутое в конструкцию. Можешь перевозить одного
+                        пассажира, но ему придётся забыть о комфорте.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Сенсоры:</b> Выбери 1 из списка: <i>датчик движения, инфракрасный датчик, ночное видение, датчик
+                        электромагнитных полей</i> (подчеркни нужное).
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Универсальный разъём:</b> Экзоскелет можно подключить к транспортному средству и управлять им (если
+                        влезешь). +1, когда взламываешь.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Фазовый реактор:</b> Когда экзоскелет находится без движе- ния, он восстанавливает 1 заряд батареи каждый
+                        час.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Эвакуатор:</b> Получив критическое ранение, игнорируй его. Вместо этого срабатывает система
+                        катапультирования. Брось кубик, чтобы узнать, сколько дней займёт капиталь- ный ремонт экзоскелета.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox">
+                      <button class="cyborg__button cyborg__button_hidden"></button>
+                      <p>
+                        <b>Энергетический щит:</b> Потрать 3 заряда батареи и полностью игнорируй урон от одной атаки.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <div class="page page4">
@@ -1818,6 +2434,12 @@
         </label>
         <label>
             <input type="checkbox" name="attr_isDaredevilTech">Сорвиголова: Техника
+        </label>
+        <label>
+            <input type="checkbox" name="attr_isEngineerProbe">Инженер: Зонд
+        </label>
+        <label>
+            <input type="checkbox" name="attr_isManofsteelArmor">Броненосец: Экзоскелет
         </label>
     </div>
 </div>
@@ -3023,7 +3645,7 @@
     });
     
     on("clicked:manofsteel", () => {
-        setupClass('Manofsteel');
+        setAttrs({isManofsteelArmor: "on"}, () => {setupClass('Manofsteel')})
     });
     
     on("clicked:bountyhunter", () => {
@@ -3039,7 +3661,7 @@
     });
     
     on("clicked:engineer", () => {
-        setupClass('Engineer');
+        setAttrs({isEngineerProbe: "on"}, () => {setupClass('Engineer')})
     });
     
     on("clicked:doctor", () => {

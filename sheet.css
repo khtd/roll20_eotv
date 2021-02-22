@@ -615,6 +615,8 @@ button[type=roll].sheet-infoOutput::before {
 .sheet-is-cyborg-path-flag,
 .sheet-is-cyborg-imp-flag,
 .sheet-is-daredevil-tech-flag,
+.sheet-is-engineer-probe-flag,
+.sheet-is-manofsteel-armor-flag,
 .sheet-is-shadow-bg-flag,
 .sheet-is-stranger-spec-flag,
 .sheet-is-juggernaut-craft-flag,
@@ -680,17 +682,23 @@ button[type=roll].sheet-infoOutput::before {
 
 /* cyborg spec start */
 .sheet-is-cyborg-imp-flag + label,
-.sheet-is-daredevil-tech-flag + label {
+.sheet-is-daredevil-tech-flag + label,
+.sheet-is-engineer-probe-flag + label,
+.sheet-is-manofsteel-armor-flag + label {
 	display: none;
 }
 
 .sheet-is-cyborg-imp-flag:checked + label,
-.sheet-is-daredevil-tech-flag:checked + label {
+.sheet-is-daredevil-tech-flag:checked + label,
+.sheet-is-engineer-probe-flag:checked + label,
+.sheet-is-manofsteel-armor-flag:checked + label {
 	display: block;
 }
 
 .sheet-is-cyborg-imp-flag:not(:checked) + label,
-.sheet-is-daredevil-tech-flag:not(:checked) + label {
+.sheet-is-daredevil-tech-flag:not(:checked) + label,
+.sheet-is-engineer-probe-flag:not(:checked)  + label,
+.sheet-is-manofsteel-armor-flag:not(:checked) + label {
 	display: none;
 }
 /* cyborg spec end */
@@ -1608,7 +1616,9 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 .sheet-moves-optional,
 .sheet-moves-space,
 .sheet-cyborg-implants,
-.sheet-daredevil-tech {
+.sheet-daredevil-tech,
+.sheet-engineer-probe,
+.sheet-manofsteel-armor {
 	display: none;
 }
 
@@ -1620,7 +1630,9 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 .sheet-page3 .sheet-tabstoggle[value="optional"] ~ .sheet-moves-optional,
 .sheet-page3 .sheet-tabstoggle[value="space"] ~ .sheet-moves-space,
 .sheet-page3 .sheet-tabstoggle[value="implants"] ~ .sheet-cyborg-implants,
-.sheet-page3 .sheet-tabstoggle[value="tech"] ~.sheet-daredevil-tech {
+.sheet-page3 .sheet-tabstoggle[value="tech"] ~.sheet-daredevil-tech,
+.sheet-page3 .sheet-tabstoggle[value="probe"] ~.sheet-engineer-probe,
+.sheet-page3 .sheet-tabstoggle[value="armor"] ~.sheet-manofsteel-armor  {
 	display: grid;
 }
 
@@ -2349,4 +2361,66 @@ div.sheet-moves-fixed {
 .sheet-daredevil__armament {
 	grid-column: 2 / 3;
 	grid-row: 2 / 3;
+}
+
+/*================================
+        ENGINEER STYLES
+================================*/
+
+.sheet-engineer-probe {
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: auto;
+	width: 772px;
+}
+
+.sheet-engineer__probe {
+	grid-column: 1 / 2;
+	grid-row: 1 / 2;
+}
+
+.sheet-engineer__type {
+	grid-column: 1 / 2;
+	grid-row: 2 / 3;
+}
+
+.sheet-engineer__hull {
+	grid-column: 1 / 2;
+	grid-row: 3 / 4;
+}
+
+.sheet-engineer__base-utilities {
+	grid-column: 2 / 3;
+	grid-row: 1 / 3;
+}
+
+.sheet-engineer__advanced-utilities {
+	grid-column: 3 / 4;
+	grid-row: 1 / 3;
+}
+
+
+
+/*================================
+        MANOFSTEEL STYLES
+================================*/
+
+.sheet-manofsteel-armor {
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: auto;
+	width: 772px;
+}
+
+.sheet-manofsteel__guns {
+	grid-column: 1 / 2;
+	grid-row: 1 / 3;
+}
+
+.sheet-manofsteel__hull {
+	grid-column: 2 / 3;
+	grid-row: 1 / 2;
+}
+
+.sheet-manofsteel__systems {
+	grid-column: 3 / 4;
+	grid-row: 1 / 3;
 }
