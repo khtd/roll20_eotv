@@ -308,7 +308,7 @@ input.sheet-exp-box0 {
 	justify-self: center;
 	align-self: end;
 	display: grid;
-	grid-template-columns: auto auto auto;
+	grid-template-columns: auto auto auto auto;
 	grid-column-gap: 5px;
 	grid-column-end: 2;
 	grid-column-start: 1;
@@ -354,16 +354,23 @@ input.sheet-exp-box0 {
 
 .sheet-tabstoggle[value="page1"] ~ .sheet-page1,
 .sheet-tabstoggle[value="page2"] ~ .sheet-page2,
-.sheet-tabstoggle[value="page3"] ~ .sheet-page3 {
+.sheet-tabstoggle[value="page3"] ~ .sheet-page3,
+.sheet-tabstoggle[value="page4"] ~ .sheet-page4 {
 	display: grid;
 }
 
 .sheet-tabstoggle[value="page1"] ~ .sheet-page2,
 .sheet-tabstoggle[value="page1"] ~ .sheet-page3,
+.sheet-tabstoggle[value="page1"] ~ .sheet-page4,
 .sheet-tabstoggle[value="page2"] ~ .sheet-page1,
 .sheet-tabstoggle[value="page2"] ~ .sheet-page3,
+.sheet-tabstoggle[value="page2"] ~ .sheet-page4,
 .sheet-tabstoggle[value="page3"] ~ .sheet-page1,
-.sheet-tabstoggle[value="page3"] ~ .sheet-page2 {
+.sheet-tabstoggle[value="page3"] ~ .sheet-page2,
+.sheet-tabstoggle[value="page3"] ~ .sheet-page4,
+.sheet-tabstoggle[value="page4"] ~ .sheet-page1,
+.sheet-tabstoggle[value="page4"] ~ .sheet-page2,
+.sheet-tabstoggle[value="page4"] ~ .sheet-page3 {
 	display: none;
 }
 /*pages common end */
@@ -617,21 +624,21 @@ button[type=roll].sheet-infoOutput::before {
 .sheet-is-stranger-flag:checked + .sheet-stranger-additional,
 .sheet-is-juggernaut-flag:checked + .sheet-juggernaut-additional,
 .sheet-is-raelith-flag:checked + .sheet-raelith-additional {
-	display: none;
+	display: grid;
 }
 
 .sheet-is-cyborg-flag:not(:checked) + .sheet-cyborg-additional,
 .sheet-is-shadow-flag:not(:checked) + .sheet-shadow-additional,
 .sheet-is-stranger-flag:not(:checked) + .sheet-stranger-additional,
 .sheet-is-juggernaut-flag:not(:checked) + .sheet-juggernaut-additional {
-	display: grid;
+	display: none;
 }
 
 .sheet-is-cyborg-flag:not(:checked) + .sheet-cyborg-path,
 .sheet-is-stranger-flag:not(:checked) + .sheet-stranger-specialization,
 .sheet-is-juggernaut-flag:not(:checked) + .sheet-juggernaut-path,
 .sheet-is-raelith-flag:not(:checked) + .sheet-raelith-path {
-	display: grid;
+	display: none;
 }
 
 .sheet-cyborgPath-show-flag,
@@ -645,31 +652,31 @@ button[type=roll].sheet-infoOutput::before {
 .sheet-strangerSpecialization-show-flag:checked + div,
 .sheet-juggernautHandicraft-show-flag:checked + div,
 .sheet-raelithFunction-show-flag:checked + div {
-	display: none;
+	display: inline;
 }
 
 .sheet-cyborgPath-show-flag:not(:checked) + div,
 .sheet-strangerSpecialization-show-flag:not(:checked) + div,
 .sheet-juggernautHandicraft-show-flag:not(:checked) + div,
 .sheet-raelithFunction-show-flag:not(:checked) + div {
-	display: inline;
+	display: none;
 }
 
 /* raelith special start*/
 .sheet-is-raelith-flag:not(:checked) + .sheet-raelith-additional {
-	display: grid;
+	display: none;
 }
 
 .sheet-is-raelith-flag:checked + .sheet-background {
+	display: none;
+}
+
+.sheet-is-raelith-flag:not(:checked) + .sheet-background {
 	display: grid;
 }
 
 .sheet-is-raelith-flag:not(:checked) + .sheet-background {
-	display: none;
-}
-
-.sheet-is-raelith-flag:not(:checked) + .sheet-background {
-	display: none;
+	display: grid;
 }
 /* raelith special end */
 /* special end*/

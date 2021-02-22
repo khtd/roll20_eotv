@@ -45,6 +45,10 @@
                 <input type="radio"  name="attr_page" value="page3">
                 <span>ходы</span>
             </label>
+            <label class="nav-button">
+                <input type="radio"  name="attr_page" value="page4">
+                <span>опции</span>
+            </label>
         </div>
 
         <div class="roll-bonus">
@@ -74,20 +78,20 @@
             <textarea class="description-saved-text" name="attr_description" readonly="true"></textarea>
         </div>
 
-        <input type="checkbox" class="is-raelith-flag" name="attr_isRaelith" value="1" checked="false">
+        <input type="checkbox" class="is-raelith-flag" name="attr_isRaelith">
         <div class="background">
             <div class="title">
                 <h3><span>ПРОИСХОЖДЕНИЕ</span></h3>
                 <button type='action' class='change-button' name='act_changebackground'>p</button>
             </div>
 
-            <input type="checkbox" class="is-cyborg-flag" name="attr_isCyborg" value="1" checked="false">
+            <input type="checkbox" class="is-cyborg-flag" name="attr_isCyborg">
             <div class="additional-background cyborg-additional">
                 <button type='roll' class="backgroundOutput infoOutput" name='roll_outAddBackground' value="&{template:info} {{name=@{character_name}}} {{type=Тао Прайм}} {{item=Происхождение}} {{description=Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут.}}">w</button>
                 <div><span><strong>Тао Прайм:</strong> Ты родился на Тао. С рождения твоё тело модифицировали кибер-имплантами. Когда общаешься с выходцем с Тао, можешь говорить так, что гайдзины вас не поймут.</span></div>
             </div>
 
-            <input type="checkbox" class="is-shadow-flag" name="attr_isShadow" value="1" checked="false">
+            <input type="checkbox" class="is-shadow-flag" name="attr_isShadow">
             <div class="additional-background shadow-additional">
                 <button type='roll' class="backgroundOutput infoOutput" name='roll_outAddBackground' value="&{template:info} {{name=@{character_name}}} {{type=Тао (Клоака)}} {{item=Происхождение}} {{description=Ты принадлежишь синдикату Ледяного Дракона. У тебя тоже есть кодекс чести, просто он внутренний — это то, что другие кланы так и не смогли принять. Ты — человек вне системы. Но ты не в одиночестве—иногда ты можешь получить задание. Это значит, что кто-то скоро умрёт.}}">w</button>
                 <div><span><strong>Тао (Клоака):</strong> Ты принадлежишь синдикату Ледяного Дракона. У тебя тоже есть кодекс чести, просто он внутренний — это то, что другие кланы так и не смогли принять. Ты — человек вне системы. Но ты не в одиночестве—иногда ты можешь получить задание. Это значит, что кто-то скоро умрёт.</span></div>
@@ -99,7 +103,7 @@
             </div>
 
            
-            <input type="checkbox" class="background-show-flag" name="attr_background_show_flag" value="1">
+            <input type="checkbox" class="background-show-flag" name="attr_background_show_flag" value="1" checked>
             <div class='background-select'>
                 <span class='emptiable' name="attr_pre_background"></span>
                 <fieldset class='repeating_background'>
@@ -116,7 +120,7 @@
 
         </div>
 
-        <input type="checkbox" class="is-cyborg-flag" name="attr_isCyborg" value="1" checked="false">
+        <input type="checkbox" class="is-cyborg-flag" name="attr_isCyborg">
         <div class='cyborg-additional cyborg-path'>
             <div class="title">
                 <h3><span>ПУТЬ</span></h3>
@@ -129,7 +133,7 @@
                 <div><strong><span name="attr_cyborgPathtype"></span>:</strong><span name="attr_cyborgPathtext"></span></div>
             </div>
 
-            <input type="checkbox" class="cyborgPath-show-flag" name="attr_cyborgPath_show_flag" value="1" checked="false">
+            <input type="checkbox" class="cyborgPath-show-flag" name="attr_cyborgPath_show_flag">
             <div class="cyborgPath-select">
                 <span>Выбери мотив, который вынуждает тебя путешествовать:</span>
                 <fieldset class='repeating_cyborgPath'>
@@ -145,7 +149,7 @@
             </div>
         </div>
 
-        <input type="checkbox" class="is-stranger-flag" name="attr_isStranger" value="1" checked="false">
+        <input type="checkbox" class="is-stranger-flag" name="attr_isStranger">
         <div class='stranger-additional stranger-specialization'>
             <div class="title">
                 <h3><span>Специализация</span></h3>
@@ -157,7 +161,7 @@
                 <div><strong><span name="attr_strangerSpecializationtype"></span>:</strong><span name="attr_strangerSpecializationtext"></span></div>
             </div>
 
-            <input type="checkbox" class="strangerSpecialization-show-flag" name="attr_strangerSpecialization_show_flag" value="1" checked="false">
+            <input type="checkbox" class="strangerSpecialization-show-flag" name="attr_strangerSpecialization_show_flag">
             <div class="strangerSpecialization-select">
                 <span>Это то, чем ты занимаешься в иерархии странников. Выбери 1:</span>
                 <fieldset class='repeating_strangerSpecialization'>
@@ -173,7 +177,7 @@
             </div>
         </div>
 
-        <input type="checkbox" class="is-juggernaut-flag" name="attr_isJuggernaut" value="1" checked="false">
+        <input type="checkbox" class="is-juggernaut-flag" name="attr_isJuggernaut">
         <div class='juggernaut-additional juggernaut-handicraft'>
             <div class="title">
                 <h3><span>Ремесло</span></h3>
@@ -185,7 +189,7 @@
                 <div><strong><span name="attr_juggernautHandicrafttype"></span>:</strong><span name="attr_juggernautHandicrafttext"></span></div>
             </div>
 
-            <input type="checkbox" class="juggernautHandicraft-show-flag" name="attr_juggernautHandicraft_show_flag" value="1" checked="false">
+            <input type="checkbox" class="juggernautHandicraft-show-flag" name="attr_juggernautHandicraft_show_flag">
             <div class="juggernautHandicraft-select">
                 <span>Какова была твоя роль в племени? Ты можешь брать Усиления только своего Ремесла. Выбери 1:</span>
                 <fieldset class='repeating_juggernautHandicraft'>
@@ -201,7 +205,7 @@
             </div>
         </div>
 
-        <input type="checkbox" class="is-raelith-flag" name="attr_isRaelith" value="1" checked="false">
+        <input type="checkbox" class="is-raelith-flag" name="attr_isRaelith">
         <div class='raelith-additional raelith-function'>
             <div class="title">
                 <h3><span>Функция</span></h3>
@@ -217,7 +221,7 @@
                 <div><strong><span name="attr_raelithFunctiontype"></span>:</strong><span name="attr_raelithFunctiontext"></span></div>
             </div>
 
-            <input type="checkbox" class="raelithFunction-show-flag" name="attr_raelithFunction_show_flag" value="1" checked="false">
+            <input type="checkbox" class="raelithFunction-show-flag" name="attr_raelithFunction_show_flag">
             <div class="raelithFunction-select">
                 <span>Выбери один вариант:</span>
                 <fieldset class='repeating_raelithFunction'>
@@ -1246,6 +1250,24 @@
                 <p>На 6— вы заблудились, или полёт прерван чем-то неожиданным и неприятным.</p>
             </div>
         </div>
+    </div>
+
+    <div class="page page4">
+        <label>
+            <input type="checkbox" name="attr_isCyborg">Киборг
+        </label>
+        <label>
+            <input type="checkbox" name="attr_isRaelith">раэлит
+        </label>
+        <label>
+            <input type="checkbox" name="attr_isShadow">тень
+        </label>
+        <label>
+            <input type="checkbox" name="attr_isJuggernaut">джагернаут
+        </label>
+        <label>
+            <input type="checkbox" name="attr_isStranger">странник
+        </label>
     </div>
 </div>
 
@@ -2309,28 +2331,28 @@
             description: ' ',
             backgroundtype: ' ',
             backgroundtext: ' ',
-            cyborgPath_show_flag: 1,
+            cyborgPath_show_flag: 0,
             cyborgPathtype: ' ',
             cyborgPathtext: ' ',
             strangerSpecializationtype: ' ',
             strangerSpecializationtext: ' ',
-            strangerSpecialization_show_flag: 1,
+            strangerSpecialization_show_flag: 0,
             juggernautHandicrafttype: ' ',
             juggernautHandicrafttext: ' ',
-            juggernautHandicraft_show_flag: 1,
+            juggernautHandicraft_show_flag: 0,
             raelithFunctiontype: ' ',
             raelithFunctiontext: ' ',
-            raelithFunction_show_flag: 1,
+            raelithFunction_show_flag: 0,
             look_example: ' ',
             character_class: ' ',
             comp_name: ' ',
             "background_show_flag": 0,
             "pre_background": ' ',
-            isCyborg: 1,
-            isShadow: 1,
-            isStranger: 1,
-            isJuggernaut: 1,
-            isRaelith: 1
+            isCyborg: 0,
+            isShadow: 0,
+            isStranger: 0,
+            isJuggernaut: 0,
+            isRaelith: 0
         })
     })
 
@@ -2340,8 +2362,8 @@
 
     on("clicked:cyborg", function(eventinfo) {
         var update = addRepeatingInfo(special.Cyborg.cyborgPath, 'cyborgPath')
-        update.isCyborg = 0;
-        update.cyborgPath_show_flag = 0
+        update.isCyborg = "on";
+        update.cyborgPath_show_flag = "on";
         setAttrs(update, undefined, function() {setupClass("Cyborg")})
     });
 
@@ -2367,14 +2389,14 @@
     
     on("clicked:stranger", () => {
         var update = addRepeatingInfo(special.Stranger.strangerSpecialization, 'strangerSpecialization')
-        update.isStranger = 0;
-        update.strangerSpecialization_show_flag = 0
+        update.isStranger = "on";
+        update.strangerSpecialization_show_flag = "on"
         setAttrs(update, undefined, function() {setupClass("Stranger")})
     });
     
     on("clicked:shadow", () => {
         var update = {};
-        update.isShadow = 0;
+        update.isShadow = "on";
         setAttrs(update, undefined, function() {setupClass("Shadow")});
     });
     
@@ -2404,8 +2426,8 @@
     
     on("clicked:juggernaut", () => {
         var update = addRepeatingInfo(special.Juggernaut.juggernautHandicraft, 'juggernautHandicraft')
-        update.isJuggernaut = 0;
-        update.juggernautHandicraft_show_flag = 0
+        update.isJuggernaut = "on";
+        update.juggernautHandicraft_show_flag = "on";
         setAttrs(update, undefined, function() {setupClass("Juggernaut")})
     });
     
@@ -2427,8 +2449,8 @@
     
     on("clicked:raelith", () => {
         var update = addRepeatingInfo(special.Raelith.raelithFunction, 'raelithFunction')
-        update.isRaelith = 0;
-        update.raelithFunction_show_flag = 0
+        update.isRaelith = "on";
+        update.raelithFunction_show_flag = "on"
         setAttrs(update, undefined, function() {setupClass("Raelith")})
     });
 
@@ -2471,7 +2493,7 @@
     })
 
     on('clicked:changecyborgPath', function() {
-        setAttrs({"cyborgPath_show_flag": 0}, 'silent');
+        setAttrs({"cyborgPath_show_flag": "on"}, 'silent');
     });
 
     on('clicked:repeating_cyborgPath:select', () => {
@@ -2479,7 +2501,7 @@
 			setAttrs({
                 cyborgPathtype: v.repeating_cyborgPath_button,
                 cyborgPathtext: v.repeating_cyborgPath_text,
-                cyborgPath_show_flag: 1
+                cyborgPath_show_flag: 0
 			});
 		});
     });
@@ -2493,7 +2515,7 @@
     })
 
     on('clicked:changestrangerSpecialization', function() {
-        setAttrs({"strangerSpecialization_show_flag": 0}, 'silent');
+        setAttrs({"strangerSpecialization_show_flag": "on"}, 'silent');
     });
 
     on('clicked:repeating_strangerSpecialization:select', () => {
@@ -2501,7 +2523,7 @@
 			setAttrs({
                 strangerSpecializationtype: v.repeating_strangerSpecialization_button,
                 strangerSpecializationtext: v.repeating_strangerSpecialization_text,
-                strangerSpecialization_show_flag: 1
+                strangerSpecialization_show_flag: 0
 			});
 		});
     });
@@ -2515,7 +2537,7 @@
     })
 
     on('clicked:changejuggernautHandicraft', function() {
-        setAttrs({"juggernautHandicraft_show_flag": 0}, 'silent');
+        setAttrs({"juggernautHandicraft_show_flag": "on"}, 'silent');
     });
 
     on('clicked:repeating_juggernautHandicraft:select', () => {
@@ -2523,7 +2545,7 @@
 			setAttrs({
                 juggernautHandicrafttype: v.repeating_juggernautHandicraft_button,
                 juggernautHandicrafttext: v.repeating_juggernautHandicraft_text,
-                juggernautHandicraft_show_flag: 1
+                juggernautHandicraft_show_flag: 0
 			});
 		});
     });
@@ -2537,7 +2559,7 @@
     })
 
     on('clicked:changeraelithFunction', function() {
-        setAttrs({"raelithFunction_show_flag": 0}, 'silent');
+        setAttrs({"raelithFunction_show_flag": "on"}, 'silent');
     });
 
     on('clicked:repeating_raelithFunction:select', () => {
@@ -2545,7 +2567,7 @@
 			setAttrs({
                 raelithFunctiontype: v.repeating_raelithFunction_button,
                 raelithFunctiontext: v.repeating_raelithFunction_text,
-                raelithFunction_show_flag: 1
+                raelithFunction_show_flag: 0
 			});
 		});
     });
