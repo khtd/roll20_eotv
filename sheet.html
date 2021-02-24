@@ -2295,6 +2295,32 @@
                 </ul>
             </div>
             <div class="grid-article-item grid-article-item_borderless manofsteel__hull">
+                <div class='powermanofsteel'>
+                  <span class='powermanofsteel-lbl'>Батарея</span>
+                  <input type="checkbox" class="powermanofsteel-box powermanofsteel-box0" name="attr_powermanofsteel" value="0" checked="checked">
+                  <input type="checkbox" class="powermanofsteel-box powermanofsteel-box1" name="attr_powermanofsteel" value="1"><span class="powermanofsteel-box1"></span>
+                  <input type="checkbox" class ="powermanofsteel-max" name="attr_powermanofsteel_max" value="1">
+                  <input type="checkbox" class="powermanofsteel-box powermanofsteel-box2" name="attr_powermanofsteel" value="2"><span class="powermanofsteel-box2"></span>
+                  <input type="checkbox" class ="powermanofsteel-max" name="attr_powermanofsteel_max" value="2">
+                  <input type="checkbox" class="powermanofsteel-box powermanofsteel-box3" name="attr_powermanofsteel" value="3"><span class="powermanofsteel-box3"></span>
+                  <input type="checkbox" class ="powermanofsteel-max" name="attr_powermanofsteel_max" value="3">
+                  <input type="checkbox" class="powermanofsteel-box powermanofsteel-box4" name="attr_powermanofsteel" value="4"><span class="powermanofsteel-box4"></span>
+                  <input type="checkbox" class ="powermanofsteel-max" name="attr_powermanofsteel_max" value="4">
+                  <input type="checkbox" class="powermanofsteel-box powermanofsteel-box5" name="attr_powermanofsteel" value="5"><span class="powermanofsteel-box5"></span>
+                  <input type="checkbox" class ="powermanofsteel-max" name="attr_powermanofsteel_max" value="5">
+                  <input type="checkbox" class="powermanofsteel-box powermanofsteel-box6" name="attr_powermanofsteel" value="6"><span class="powermanofsteel-box6"></span>
+                  <input type="checkbox" class ="powermanofsteel-max" name="attr_powermanofsteel_max" value="6">
+                  <input type="checkbox" class="powermanofsteel-box powermanofsteel-box7" name="attr_powermanofsteel" value="7"><span class="powermanofsteel-box7"></span>
+                  <input type="checkbox" class ="powermanofsteel-max" name="attr_powermanofsteel_max" value="7">
+                  <input type="checkbox" class="powermanofsteel-box powermanofsteel-box8" name="attr_powermanofsteel" value="8"><span class="powermanofsteel-box8"></span>
+                  <input type="checkbox" class ="powermanofsteel-max" name="attr_powermanofsteel_max" value="8">
+                  <input type="checkbox" class="powermanofsteel-box powermanofsteel-box9" name="attr_powermanofsteel" value="9"><span class="powermanofsteel-box9"></span>
+                  <input type="checkbox" class ="powermanofsteel-max" name="attr_powermanofsteel_max" value="9">
+                  <input type="checkbox" class="powermanofsteel-box powermanofsteel-box10" name="attr_powermanofsteel" value="10"><span class="powermanofsteel-box10"></span>
+                  <input type="checkbox" class ="powermanofsteel-max" name="attr_powermanofsteel_max" value="10">
+                  <button type="action" class="addpowermanofsteelbutton" name='act_addmaxpowermanofsteel'>&</button>
+                  <button type="action" class="sbstrctpowermanofsteelbutton" name='act_subtractmaxpowermanofsteel'>_</button>
+                </div>
                 <h2>
                   КАРКАС
                 </h2>
@@ -4270,6 +4296,26 @@
         getAttrs(['wealth_max'], (v) => {
             var update = {
                 wealth_max: parseInt(v.wealth_max) + 1 > 3 ? 3 : parseInt(v.wealth_max) + 1
+            }
+            setAttrs(update);
+        })
+    })
+
+    on('clicked:subtractmaxpowermanofsteel', ()=> {
+        getAttrs(['powermanofsteel_max', 'powermanofsteel'], (v) => {
+            let update = {};
+            update.powermanofsteel_max = parseInt(v.powermanofsteel_max) -1 < 0 ? 0 : parseInt(v.powermanofsteel_max) - 1
+            if(parseInt(v.powermanofsteel_max) -1 < parseInt(v.powermanofsteel)) {
+                update.powermanofsteel = update.powermanofsteel_max
+            }
+            setAttrs(update);
+        })
+    })
+
+    on('clicked:addmaxpowermanofsteel', ()=> {
+        getAttrs(['powermanofsteel_max'], (v) => {
+            var update = {
+                powermanofsteel_max: parseInt(v.powermanofsteel_max) + 1 > 10 ? 10 : parseInt(v.powermanofsteel_max) + 1
             }
             setAttrs(update);
         })
