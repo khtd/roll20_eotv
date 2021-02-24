@@ -103,7 +103,7 @@
             </div>
 
            
-            <input type="checkbox" class="background-show-flag" name="attr_background_show_flag" value="1" checked>
+            <input type="checkbox" class="background-show-flag" name="attr_background_show_flag" value="1">
             <div class='background-select'>
                 <span class='emptiable' name="attr_pre_background"></span>
                 <fieldset class='repeating_background'>
@@ -403,6 +403,24 @@
                     <input type="checkbox" class ="wealth-max" name="attr_wealth_max" value="3">
                     <button type="action" class="addwealthbutton" name='act_addmaxwealth'>&</button>
                     <button type="action" class="sbstrctwealthbutton" name='act_subtractmaxwealth'>_</button>
+                </div>
+
+                <input type="checkbox" class="is-cyborg-dh-flag" name="attr_isCyborgDishonor">
+                <div class='cyborgdishonour fortune-container cyborg-additional'>
+                  <span class='cyborgdishonour-lbl'>Бечестье</span>
+                  <input type="checkbox" class="cyborgdishonour-box cyborgdishonour-box0" name="attr_cyborgdishonour" value="0" checked="checked">
+                  <input type="checkbox" class="cyborgdishonour-box cyborgdishonour-box1" name="attr_cyborgdishonour" value="1"><span class="cyborgdishonour-box1"></span>
+                  <input type="checkbox" class ="cyborgdishonour-max" name="attr_cyborgdishonour_max" value="1">
+                  <input type="checkbox" class="cyborgdishonour-box cyborgdishonour-box2" name="attr_cyborgdishonour" value="2"><span class="cyborgdishonour-box2"></span>
+                  <input type="checkbox" class ="cyborgdishonour-max" name="attr_cyborgdishonour_max" value="2">
+                  <input type="checkbox" class="cyborgdishonour-box cyborgdishonour-box3" name="attr_cyborgdishonour" value="3"><span class="cyborgdishonour-box3"></span>
+                  <input type="checkbox" class ="cyborgdishonour-max" name="attr_cyborgdishonour_max" value="3">
+                  <input type="checkbox" class="cyborgdishonour-box cyborgdishonour-box4" name="attr_cyborgdishonour" value="4"><span class="cyborgdishonour-box4"></span>
+                  <input type="checkbox" class ="cyborgdishonour-max" name="attr_cyborgdishonour_max" value="4">
+                  <input type="checkbox" class="cyborgdishonour-box cyborgdishonour-box5" name="attr_cyborgdishonour" value="5"><span class="cyborgdishonour-box5"></span>
+                  <input type="checkbox" class ="cyborgdishonour-max" name="attr_cyborgdishonour_max" value="5" checked>
+                  <button type="action" class="addcyborgdishonourbutton" name='act_addmaxcyborgdishonour'>&</button>
+                  <button type="action" class="sbstrctcyborgdishonourbutton" name='act_subtractmaxcyborgdishonour'>_</button>
                 </div>
             </div>
         </div>
@@ -2500,6 +2518,9 @@
             <input type="checkbox" name="attr_isCyborgPath">Киборг: Путь
         </label>
         <label>
+          <input type="checkbox" name="attr_isCyborgDishonor">Киборг: Бесчестье
+        </label>
+        <label>
             <input type="checkbox" name="attr_isCyborgImplants">Киборг: Импланты
         </label>
         <label>
@@ -3839,6 +3860,7 @@
         update.isCyborgBackground = "on";
         update.isCyborgPath = "on";
         update.isCyborgImplants = "on";
+        update.isCyborgDishonor = "on"
         update.cyborgPath_show_flag = "on";
         setAttrs(update, undefined, function() {setupClass("Cyborg")})
     });
@@ -4307,6 +4329,26 @@
             update.powermanofsteel_max = parseInt(v.powermanofsteel_max) -1 < 0 ? 0 : parseInt(v.powermanofsteel_max) - 1
             if(parseInt(v.powermanofsteel_max) -1 < parseInt(v.powermanofsteel)) {
                 update.powermanofsteel = update.powermanofsteel_max
+            }
+            setAttrs(update);
+        })
+    })
+
+    on('clicked:subtractmaxcyborgdishonour', ()=> {
+        getAttrs(['cyborgdishonour_max', 'cyborgdishonour'], (v) => {
+            let update = {};
+            update.cyborgdishonour_max = parseInt(v.cyborgdishonour_max) -1 < 0 ? 0 : parseInt(v.cyborgdishonour_max) - 1
+            if(parseInt(v.cyborgdishonour_max) -1 < parseInt(v.cyborgdishonour)) {
+                update.cyborgdishonour = update.cyborgdishonour_max
+            }
+            setAttrs(update);
+        })
+    })
+    
+    on('clicked:addmaxcyborgdishonour', ()=> {
+        getAttrs(['cyborgdishonour_max'], (v) => {
+            var update = {
+                cyborgdishonour_max: parseInt(v.cyborgdishonour_max) + 1 > 5 ? 5 : parseInt(v.cyborgdishonour_max) + 1
             }
             setAttrs(update);
         })
