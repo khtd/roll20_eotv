@@ -1162,6 +1162,9 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                     ПОЛУЧАЕШЬ ПРЕИМУЩЕСТВО
+                    <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ПОЛУЧАЕШЬ ПРЕИМУЩЕСТВО}} {{trigger=Когда ты получаешь преимущество в бою}} {{success=получи 1 фишку против выбранного противника}} {{partial=получи 1 фишку против выбранного противника и выбери 1 осложнение}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Ярость,(@{furry})[furry]|Контроль,(@{controll})[controll]|Навык,(@{skill})[skill]|Репутация,(@{reputation})[reputation]} + (@{bonus})[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[9]]}} {{successOpt1Text=ты получаешь 1 ранение (игнорирует Защиту)}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[9]]}} {{successOpt2Text=ты становишься уязвимым (Защита–1, если есть)}} {{successOpt3Min=[[7]]}} {{successOpt3Max=[[9]]}} {{successOpt3Text=союзник подвергается угрозе}} {{successOpt4Min=[[7]]}} {{successOpt4Max=[[9]]}} {{successOpt4Text=противник проявляет инициативу}}">
+                      <span>Lo</span>
+                    </button>
                 </h2>
                 <p>Когда ты <b>получаешь преимущество</b> в бою, скажи, как ты хочешь этого добиться (обнаружить уязвимость, окружить, выманить и т.д.) и проверь:
                 </p>
@@ -1197,6 +1200,9 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ПРОВОДИШЬ БОЙ
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ПРОВОДИШЬ БОЙ}} {{trigger=Когда ты участвуешь в драке или сражении}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Ярость,(@{furry})[furry]|Контроль,(@{controll})[controll]} + (@{bonus})[bonus]]]}}">
+                    <span>Lo</span>
+                  </button>
                 </h2>
                 <p>(Эта опция позволяет провести бой за один ход)</p>
                 <p>Когда ты <b>участвуешь в драке или сражении</b> чётко обозначь чего ты хочешь в этом бою добиться. Проверь Ярость, если сражаешься в ближнем бою, или Контроль, если ведёшь перестрелку. При успехе выбери 1:</p>
@@ -1239,6 +1245,9 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   СПАСАЕШЬ КОРАБЛЬ
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=СПАСАЕШЬ КОРАБЛЬ}} {{trigger=Если ты выводишь корабль из трудной ситуации}} {{success=ты успешно избегаешь опасности на этот раз}} {{partial=ты успешно избегаешь опасности на этот раз но выбери 1}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Ярость,(@{furry})[furry]|Контроль,(@{controll})[controll]|Навык,(@{skill})[skill]|Репутация,(@{reputation})[reputation]} + (@{bonus})[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[9]]}} {{successOpt1Text=Корабль получил повреждения}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[9]]}} {{successOpt2Text=Потрачен заряд реактора;}} {{successOpt3Min=[[7]]}} {{successOpt3Max=[[9]]}} {{successOpt3Text=Опасность сменилась на другую, или воз-никли осложнения}} {{successOpt4Min=[[7]]}} {{successOpt4Max=[[9]]}} {{successOpt4Text=Это лишь передышка – опасность скоро вернётся}}">
+                    <span>Lo</span>
+                  </button>
                 </h2>
                 <p>Если ты <b>выводишь корабль из трудной ситуации</b> проверь…</p>
                 <ul class="level-1-list">
@@ -1258,7 +1267,10 @@
           
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
-                  ДАЁШЬ ЗАЛП 
+                  ДАЁШЬ ЗАЛП
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ДАЁШЬ ЗАЛП}} {{trigger=Если ты ведёшь огонь по цели}} {{success=нанеси урон противнику, противник нанесёт твоему кораблю свой, но выбери 1}} {{partial=нанеси урон противнику, противник нанесёт твоему кораблю свой}} {{doroll=[[1]]}} {{result=[[2d6 + (@{controll})[controll] + (@{bonus})[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[10]]}} {{successOpt1Max=[[100]]}} {{successOpt1Text=Ты не получаешь повреждений от противника}} {{successOpt2Min=[[10]]}} {{successOpt2Max=[[100]]}} {{successOpt2Text=Ты наносишь Урон +1}} {{successOpt3Min=[[10]]}} {{successOpt3Max=[[100]]}} {{successOpt3Text=Противник оказался в невыгодной ситуа-ции}} {{details=Потрать Заряд реактора и нанеси урон ещё и из другого орудия (если оно есть)}}">
+                    <span>Lo</span>
+                  </button>
                 </h2>
                 <p>Если ты <b>ведёшь огонь по цели</b> выбери орудие корабля и проверь Контроль. На 7—9 нанеси урон противнику, противник нанесёт твоему кораблю свой. На 10+ то же самое, но выбери 1:</p>
                 <ul class="level-1-list">
@@ -1272,6 +1284,9 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   РЕМОНТИРУЕШЬ СИСТЕМЫ
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=РЕМОНТИРУЕШЬ СИСТЕМЫ}} {{trigger=Ты восстанавливаешь свой корабль прямо в полёте}} {{success=всё выглядит потрёпанным, но работает}} {{partial=выбери 1}} {{doroll=[[1]]}} {{result=[[2d6 + (@{skill})[skill] + (@{bonus})[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[9]]}} {{successOpt1Text=Одна система полностью уничтожена. Восстановить её невозможно, проще купить заново}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[9]]}} {{successOpt2Text=До 4 систем ты сможешь восстановить только в порту}}">
+                    <span>Lo</span>
+                  </button>
                 </h2>
                 <p>Если повреждено более 1 системы, тебе надо использовать этот ход вместо Чинишь. Ты <b>восстанавливаешь свой корабль</b> прямо в полёте. Проверь Навык. На 10+ всё выглядит потрёпанным, но работает. На 7—9 выбери 1:</p>
                 <ul class="level-1-list">
@@ -1283,6 +1298,9 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ТОРОПИШЬСЯ ВЫЛЕТЕТЬ
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ТОРОПИШЬСЯ ВЫЛЕТЕТЬ}} {{trigger=Когда ты хочешь поскорее покинуть порт}} {{success=всё идёт как задумано: все системы восстановлены, реактор заряжен, корабль готов к полёту}} {{partial=выбери 1}} {{doroll=[[1]]}} {{result=[[2d6 + (@{money})[money] + (@{bonus})[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[9]]}} {{successOpt1Text=Если системы были повреждены, то они так и не отремонтированы}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[9]]}} {{successOpt2Text=Реактор разряжен}} {{successOpt3Min=[[7]]}} {{successOpt3Max=[[9]]}} {{successOpt3Text=Профилактика выявила проблемы: часть систем вышла из строя}} {{successOpt4Min=[[7]]}} {{successOpt4Max=[[9]]}} {{successOpt4Text=Всё работает, но корабль по каким-то причинам не может лететь}}">
+                    <span>Lo</span>
+                  </button>
                 </h2>
                 <p>Когда ты <b>хочешь поскорее покинуть порт</b>, проверь Благосостояние. На 10+ всё идёт как задумано: все системы восстановлены, реактор заряжен, корабль готов к полёту. На 7—9 выбери 1:</p>
                 <ul class="level-1-list">
@@ -1299,7 +1317,10 @@
           
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
-                  ПРОКЛАДЫВАЕШЬ ПУТЬ 
+                  ПРОКЛАДЫВАЕШЬ ПУТЬ
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ПРОКЛАДЫВАЕШЬ ПУТЬ}} {{trigger=Когда ты прокладываешь курс через открытый космос}} {{doroll=[[1]]}} {{result=[[2d6 + (@{skill})[skill] + (@{bonus})[bonus]]]}}">
+                    <span>Lo</span>
+                  </button>
                 </h2>
                 <p>Когда ты <b>прокладываешь курс</b> через открытый космос, согласуй с Ведущим тип маршрута и проверь Навык:
                 </p>
@@ -2634,7 +2655,8 @@
             {{/rollGreater() doroll 0}}
             
             {{#details}}
-            <div class="rt-row">
+            <div class="rt-details">
+                <h4>Детали:</h4>
                 <span class="rt-value rt-text">{{details}}</span>
             </div>
             {{/details}}
