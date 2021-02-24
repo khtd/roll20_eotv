@@ -929,7 +929,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   СРАЖАЕШЬСЯ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=СРАЖАЕШЬСЯ}} {{trigger=Когда ты атакуешь противника}} {{success=нанеси противнику свой урон или получи небольшое преимущество, но и пострадай: получи урон от противника (или из другого источника) или лишись чего-то важного и выбери 1:}} {{partial=нанеси противнику свой урон или получи небольшое преимущество, но и пострадай: получи урон от противника (или из другого источника) или лишись чего-то важного}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Ярость,(@{furry})[furry]|Контроль,(@{controll})[controll]} + (@{bonus})[bonus]]]}} {{successOpts=true}} {{successOpt1=[[10]]}} {{successOpt1Text=Ты не получаешь вреда}} {{successOpt2=[[10]]}} {{successOpt2Text=Ты наносишь урон +1}} {{successOpt3=[[10]]}} {{successOpt3Text=Защита противника падает на 1}} {{successOpt4=[[10]]}} {{successOpt4Text=Противник совершает ошибку (опиши ее)}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=СРАЖАЕШЬСЯ}} {{trigger=Когда ты атакуешь противника}} {{success=нанеси противнику свой урон или получи небольшое преимущество, но и пострадай: получи урон от противника (или из другого источника) или лишись чего-то важного и выбери 1:}} {{partial=нанеси противнику свой урон или получи небольшое преимущество, но и пострадай: получи урон от противника (или из другого источника) или лишись чего-то важного}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Ярость,(@{furry})[furry]|Контроль,(@{controll})[controll]} + (@{bonus})[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[10]]}} {{successOpt1Max=[[100]]}} {{successOpt1Text=Ты не получаешь вреда}} {{successOpt2Min=[[10]]}} {{successOpt2Max=[[100]]}} {{successOpt2Text=Ты наносишь урон +1}} {{successOpt3Min=[[10]]}} {{successOpt3Max=[[100]]}} {{successOpt3Text=Защита противника падает на 1}} {{successOpt4Min=[[10]]}} {{successOpt4Max=[[100]]}} {{successOpt4Text=Противник совершает ошибку (опиши ее)}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -950,7 +950,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ЗАЩИЩАЕШЬ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ЗАЩИЩАЕШЬ}} {{trigger=Ты защищаешь человека, вещь или место}} {{success=возьми 3 фишки}} {{partial=возьми 1 фишку}} {{details=Когда находящегося под твоей защитой атакуют, потрать 1 фишку и выбери 1 из списка}} {{doroll=[[1]]}} {{result=[[2d6 + (@{controll})[controll] + (@{bonus})[bonus]]]}} {{opt1=[[1]]}} {{opt1details=Противник атакует тебя вместо цели}} {{opt2=[[1]]}} {{opt2details=Защита цели увеличивается на 1}} {{opt3=[[1]]}} {{opt3details=Дай союзнику +1 на следующее действие}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ЗАЩИЩАЕШЬ}} {{trigger=Когда ты защищаешь человека, вещь или место}} {{success=возьми 3 фишки}} {{partial=возьми 1 фишку}} {{details=Когда находящегося под твоей защитой атакуют, потрать 1 фишку и выбери 1 из списка}} {{doroll=[[1]]}} {{result=[[2d6 + (@{controll})[controll] + (@{bonus})[bonus]]]}} {{opt1=[[1]]}} {{opt1details=Противник атакует тебя вместо цели}} {{opt2=[[1]]}} {{opt2details=Защита цели увеличивается на 1}} {{opt3=[[1]]}} {{opt3details=Дай союзнику +1 на следующее действие}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -966,7 +966,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ИГНОРИРУЕШЬ УГРОЗУ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ИГНОРИРУЕШЬ УГРОЗУ}} {{trigger=Ты действуешь, игнорируя угрозу, или подвергаешься опасности}} {{success=ты избегаешь угрозы}} {{partial=ты избегаешь угрозы,но что-то пошло не так. Ты чем-то жертвуешь, сталкиваешься со сложным выбором или дополнительными проблемами}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Ярость,(@{furry})[furry]|Контроль,(@{controll})[controll]|Навык,(@{skill})[skill]|Репутация,(@{reputation})[reputation]} + (@{bonus})[bonus]]]}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ИГНОРИРУЕШЬ УГРОЗУ}} {{trigger=Когда ты действуешь, игнорируя угрозу, или подвергаешься опасности}} {{success=ты избегаешь угрозы}} {{partial=ты избегаешь угрозы,но что-то пошло не так. Ты чем-то жертвуешь, сталкиваешься со сложным выбором или дополнительными проблемами}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Ярость,(@{furry})[furry]|Контроль,(@{controll})[controll]|Навык,(@{skill})[skill]|Репутация,(@{reputation})[reputation]} + (@{bonus})[bonus]]]}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -1001,6 +1001,9 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   УМИРАЕШЬ
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=УМИРАЕШЬ}} {{trigger=Когда у тебя нет свободных ячеек ранений, и ты получаешь ещё ранения}} {{success=раны очень серьёзные, но более твоей жизни ничего не угрожает}} {{partial=ты истекаешь кровью. Если в ближайшее время ты не получишь медицинскую помощь, твои приключения закончатся навсегда}} {{miss=тебе не повезло. У твоих соратников есть всего один шанс спасти тебя, и времени для этого отпущено лишь пара-тройка секунд}} {{doroll=[[1]]}} {{result=[[2d6 + (@{controll})[controll] + (@{bonus})[bonus]]]}}">
+                    <span>Lo</span>
+                  </button>
                 </h2>
                 <p>Когда <b>у тебя нет свободных ячеек ранений, и ты получаешь ещё ранения</b> потеряй сознание и проверь Контроль. На 10+ раны очень серьёзные, но более твоей жизни ничего не угрожает.</p>
                 <p>На 7—9 ты истекаешь кровью. Если в ближайшее время ты не получишь медицинскую помощь, твои приключения закончатся навсегда.</p>
@@ -1010,6 +1013,9 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ОКАЗЫВАЕШЬ ПЕРВУЮ ПОМОЩЬ
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ОКАЗЫВАЕШЬ ПЕРВУЮ ПОМОЩЬ}} {{trigger=Когда ты не даешь соратнику умереть}} {{success=ты стабилизируешь пациента}} {{partial=ты стабилизируешь пациента, но подвергаешься угрозе}} {{doroll=[[1]]}} {{result=[[2d6 + (@{skill})[skill] + (@{bonus})[bonus]]]}}">
+                    <span>Lo</span>
+                  </button>
                 </h2>
                 <p>Когда ты <b>не даешь соратнику умереть</b> проверь Навык. На 10+ ты стабилизируешь пациента. На 7—9 то же самое, но ты подвергаешься угрозе.</p>
             </div>
@@ -1017,6 +1023,9 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ТЕРЯЕШЬ КОНТРОЛЬ
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ТЕРЯЕШЬ КОНТРОЛЬ}} {{trigger=Когда ты боишься, паникуешь или испытываешь смятение}} {{success=ты сжимаешь свою волю в кулак}} {{partial=ты ещё контролируешь себя, но выбери 1}} {{miss=ты полностью теряешь контроль над собой — твою судьбу решит Ведущий}} {{doroll=[[1]]}} {{result=[[2d6 + (@{controll})[controll] + (@{bonus})[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[9]]}} {{successOpt1Text=Тебя пробивает дрожь (–1 на все проверки, пока причина не исчезнет)}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[9]]}} {{successOpt2Text=Ты получаешь урон или страдаешь иначе}} {{successOpt3Min=[[7]]}} {{successOpt3Max=[[9]]}} {{successOpt3Text=Ты мешкаешь и теряешь инициативу}}">
+                    <span>Lo</span>
+                  </button>
                 </h2>
                 <p>Когда ты <b>боишься, паникуешь или испытываешь смятение</b> проверь Контроль. На 10+ ты сжимаешь свою волю в кулак. На 7–9 ты ещё контролируешь себя, но выбери 1:</p>
                 <ul class="level-1-list">
@@ -2564,41 +2573,41 @@
                 {{/rollGreater() result 9}}
 
                 {{#successOpts}}
-                {{#rollGreater() result successOpt1}}
+                {{#rollBetween() result successOpt1Min successOpt1Max}}
                 <div class="rt-row">
                     <span class="rt-value rt-text">{{successOpt1Text}}</span>
                 </div>
-                {{/rollGreater() result successOpt1}} 
+                {{/rollBetween() result successOpt1Min successOpt1Max}} 
 
-                {{#rollGreater() result successOpt2}}
+                {{#rollBetween() result successOpt2Min successOpt2Max}}
                 <div class="rt-row">
                     <span class="rt-value rt-text">{{successOpt2Text}}</span>
                 </div>
-                {{/rollGreater() result successOpt2}} 
+                {{/rollBetween() result successOpt2Min successOpt2Max}} 
 
-                {{#rollGreater() result successOpt3}}
+                {{#rollBetween() result successOpt3Min successOpt3Max}}
                 <div class="rt-row">
                     <span class="rt-value rt-text">{{successOpt3Text}}</span>
                 </div>
-                {{/rollGreater() result successOpt3}} 
+                {{/rollBetween() result successOpt3Min successOpt3Max}} 
 
-                {{#rollGreater() result successOpt4}}
+                {{#rollBetween() result successOpt4Min successOpt4Max}}
                 <div class="rt-row">
                     <span class="rt-value rt-text">{{successOpt4Text}}</span>
                 </div>
-                {{/rollGreater() result successOpt4}} 
+                {{/rollBetween() result successOpt4Min successOpt4Max}} 
 
-                {{#rollGreater() result successOpt5}}
+                {{#rollBetween() result successOpt5Min successOpt5Max}}
                 <div class="rt-row">
                     <span class="rt-value rt-text">{{successOpt5Text}}</span>
                 </div>
-                {{/rollGreater() result successOpt5}} 
+                {{/rollBetween() result successOpt5Min successOpt5Max}} 
 
-                {{#rollGreater() result successOpt6}}
+                {{#rollBetween() result successOpt6Min successOpt6Max}}
                 <div class="rt-row">
                     <span class="rt-value rt-text">{{successOpt6Text}}</span>
                 </div>
-                {{/rollGreater() result successOpt6}} 
+                {{/rollBetween() result successOpt6Min successOpt6Max}} 
                 {{/successOpts}}
             {{/result}}
             {{/rollGreater() doroll 0}}
