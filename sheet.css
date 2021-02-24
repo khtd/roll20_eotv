@@ -2371,6 +2371,9 @@ div.sheet-moves-fixed {
 	display: flex;
 	justify-content: left;
 }
+.sheet-cyborg__input-block-center {
+	justify-content: center;
+}
 /*================================================================*/
 
 /*================================
