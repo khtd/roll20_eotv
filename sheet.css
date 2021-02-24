@@ -2265,13 +2265,13 @@ div.sheet-moves-fixed {
 	grid-row: 19/28;
 }
 .sheet-moves-base .sheet-grid-article-item:nth-child(10)  {
-	grid-row: 26/30;
+	grid-row: 26/31;
 }
 .sheet-moves-base .sheet-grid-article-item:nth-child(11)  {
-	grid-row: 30/34;
+	grid-row: 31/35;
 }
 .sheet-moves-base .sheet-grid-article-item:nth-child(12)  {
-	grid-row: 34/37;
+	grid-row: 35/38;
 }
 .sheet-moves-base .sheet-grid-article-item:nth-child(13)  {
 	grid-row: 28/31;
