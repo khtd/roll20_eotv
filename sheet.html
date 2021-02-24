@@ -529,7 +529,7 @@
                             </div>
                             <div class='move-expansion-roll'>
                                 <input class="enable-roll" type="checkbox" name="attr_move_doroll" value="1" checked="checked" />
-                                <input type="hidden" name="attr_movestat">
+                                <input type="hidden" name="attr_movestat" value="0[no stat]">
                                 <span class="label">Проверь:</span>
                                     <select class="moveroll" name="attr_movestat_name">
                                         <option selected="selected">--</option>
@@ -782,7 +782,7 @@
                                 </div>
                                 <div class='move-expansion-roll'>
                                     <input class="enable-roll" type="checkbox" name="attr_move_doroll" value="1" checked="checked" />
-                                    <input type="hidden" name="attr_movestat">
+                                    <input type="hidden" name="attr_movestat" value="0">
                                     <span class="label">Проверь:</span>
                                         <select class="moveroll" name="attr_movestat_name">
                                             <option selected="selected">--</option>
@@ -929,13 +929,16 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   СРАЖАЕШЬСЯ
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=СРАЖАЕШЬСЯ}} {{trigger=Когда ты атакуешь противника}} {{success=нанеси противнику свой урон или получи небольшое преимущество, но и пострадай: получи урон от противника (или из другого источника) или лишись чего-то важного и выбери 1:}} {{partial=нанеси противнику свой урон или получи небольшое преимущество, но и пострадай: получи урон от противника (или из другого источника) или лишись чего-то важного}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Ярость,(@{furry})[furry]|Контроль,(@{controll})[controll]} + (@{bonus})[bonus]]]}} {{successOpts=true}} {{successOpt1=[[10]]}} {{successOpt1Text=Ты не получаешь вреда}} {{successOpt2=[[10]]}} {{successOpt2Text=Ты наносишь урон +1}} {{successOpt3=[[10]]}} {{successOpt3Text=Защита противника падает на 1}} {{successOpt4=[[10]]}} {{successOpt4Text=Противник совершает ошибку (опиши ее)}}">
+                    <span>Lo</span>
+                  </button>
                 </h2>
                 <p>Когда ты атакуешь противника, проверь:</p>
                 <ul class="level-1-list">
                   <li class="arrowed-list-item">Ярость, если сражаешься в ближнем бою;</li>
                   <li class="arrowed-list-item">Контроль, если применяешь дистанционное оружие.</li>
                 </ul>
-                <p>На 7—9 нанеси противнику свой урон или получинебольшое преимущество, но и пострадай: получи урон от противника (или из другого источника)или лишись чего-то важного. На 10+ то же самое, но выбери 1:</p>
+                <p>На 7—9 нанеси противнику свой урон или получи небольшое преимущество, но и пострадай: получи урон от противника (или из другого источника) или лишись чего-то важного. На 10+ то же самое, но выбери 1:</p>
                 <ul class="level-1-list">
                   <li class="disc-list-item">Ты не получаешь вреда;</li>
                   <li class="disc-list-item">Ты наносишь Урон +1;</li>
@@ -947,11 +950,14 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ЗАЩИЩАЕШЬ
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ЗАЩИЩАЕШЬ}} {{trigger=Ты защищаешь человека, вещь или место}} {{success=возьми 3 фишки}} {{partial=возьми 1 фишку}} {{details=Когда находящегося под твоей защитой атакуют, потрать 1 фишку и выбери 1 из списка}} {{doroll=[[1]]}} {{result=[[2d6 + (@{controll})[controll] + (@{bonus})[bonus]]]}} {{opt1=[[1]]}} {{opt1details=Противник атакует тебя вместо цели}} {{opt2=[[1]]}} {{opt2details=Защита цели увеличивается на 1}} {{opt3=[[1]]}} {{opt3details=Дай союзнику +1 на следующее действие}}">
+                    <span>Lo</span>
+                  </button>
                 </h2>
                 <p>Когда ты <b>защищаешь</b> человека, вещь или место, проверь Контроль. На 10+ возьми 3 фишки. На 7—9 возьми 1 фишку. Когда находящегося под твоей защитой атакуют, потрать 1 фишку и выбери 1 из списка:</p>
                 <ul class="level-1-list">
                   <li class="disc-list-item">Противник атакует тебя вместо цели;</li>
-                  <li class="disc-list-item">Защита цели увеличивается на 1;</li>
+                  <li class="disc-list-item">Защита цели увеличивается на 1;</li> 
                   <li class="disc-list-item">Дай союзнику +1 на следующее действие.</li>
                 </ul>
                 <p>Фишки исчезают, когда бой заканчивается или принципиально меняется.</p>
@@ -960,6 +966,9 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ИГНОРИРУЕШЬ УГРОЗУ
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ИГНОРИРУЕШЬ УГРОЗУ}} {{trigger=Ты действуешь, игнорируя угрозу, или подвергаешься опасности}} {{success=ты избегаешь угрозы}} {{partial=ты избегаешь угрозы,но что-то пошло не так. Ты чем-то жертвуешь, сталкиваешься со сложным выбором или дополнительными проблемами}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Ярость,(@{furry})[furry]|Контроль,(@{controll})[controll]|Навык,(@{skill})[skill]|Репутация,(@{reputation})[reputation]} + (@{bonus})[bonus]]]}}">
+                    <span>Lo</span>
+                  </button>
                 </h2>
                 <p>Когда ты <b>действуешь, игнорируя угрозу</b>, или <b>подвергаешься опасности</b>, скажи, как ты справляешься с этим, и проверь:</p>
                 <ul class="level-1-list">
@@ -974,6 +983,9 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   РАНИШЬ ИЛИ ПОЛУЧАЕШЬ РАНЫ
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:harm} {{charname=@{character_name}}} {{number=[[?{dices|1|2|3|4|5}]]}} {{result1=[[d6]]}} {{result2=[[d6]]}} {{result3=[[d6]]}} {{result4=[[d6]]}} {{result5=[[d6]]}}">
+                    <span>Lo</span>
+                  </button>
                 </h2>
                 <p>Когда ты <b>получаешь или наносишь урон</b> брось 1 кубик за каждую единицу урона.</p>
                 <ul class="level-1-list">
@@ -2550,6 +2562,44 @@
                 </div>
                 {{/success}}
                 {{/rollGreater() result 9}}
+
+                {{#successOpts}}
+                {{#rollGreater() result successOpt1}}
+                <div class="rt-row">
+                    <span class="rt-value rt-text">{{successOpt1Text}}</span>
+                </div>
+                {{/rollGreater() result successOpt1}} 
+
+                {{#rollGreater() result successOpt2}}
+                <div class="rt-row">
+                    <span class="rt-value rt-text">{{successOpt2Text}}</span>
+                </div>
+                {{/rollGreater() result successOpt2}} 
+
+                {{#rollGreater() result successOpt3}}
+                <div class="rt-row">
+                    <span class="rt-value rt-text">{{successOpt3Text}}</span>
+                </div>
+                {{/rollGreater() result successOpt3}} 
+
+                {{#rollGreater() result successOpt4}}
+                <div class="rt-row">
+                    <span class="rt-value rt-text">{{successOpt4Text}}</span>
+                </div>
+                {{/rollGreater() result successOpt4}} 
+
+                {{#rollGreater() result successOpt5}}
+                <div class="rt-row">
+                    <span class="rt-value rt-text">{{successOpt5Text}}</span>
+                </div>
+                {{/rollGreater() result successOpt5}} 
+
+                {{#rollGreater() result successOpt6}}
+                <div class="rt-row">
+                    <span class="rt-value rt-text">{{successOpt6Text}}</span>
+                </div>
+                {{/rollGreater() result successOpt6}} 
+                {{/successOpts}}
             {{/result}}
             {{/rollGreater() doroll 0}}
             
@@ -2622,6 +2672,137 @@
     </div>
 </rolltemplate>
 
+<rolltemplate class="sheet-rolltemplate-harm">
+  <div class="rt-container">
+    <div class="rt-header rt-header-minor">{{charname}}</div>
+    <div class="rt-header">Урон</div>
+    <div class="rt-content">
+        {{#rollGreater() number 0}}
+          {{#rollBetween() result1 1 3}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 1:</span>
+            <span class="rt-value rt-text">{{result1}} -> 0.5</span>
+          </div>
+          {{/rollBetween() result1 1 3}}
+
+          {{#rollBetween() result1 4 5}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 1:</span>
+            <span class="rt-value rt-text">{{result1}} -> 1</span>
+          </div>
+          {{/rollBetween() result1 4 5}}
+
+          {{#rollGreater() result1 5}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 1:</span>
+            <span class="rt-value rt-text">{{result1}} -> 2</span>
+          </div>
+          {{/rollGreater() result1 5}}
+        {{/rollGreater() number 0}}
+
+        {{#rollGreater() number 1}}
+          {{#rollBetween() result2 1 3}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 2:</span>
+            <span class="rt-value rt-text">{{result2}} -> 0.5</span>
+          </div>
+          {{/rollBetween() result2 1 3}}
+
+          {{#rollBetween() result2 4 5}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 2:</span>
+            <span class="rt-value rt-text">{{result2}} -> 1</span>
+          </div>
+          {{/rollBetween() result2 4 5}}
+
+          {{#rollGreater() result2 5}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 2:</span>
+            <span class="rt-value rt-text">{{result2}} -> 2</span>
+          </div>
+          {{/rollGreater() result2 5}}
+        {{/rollGreater() number 1}}
+
+        {{#rollGreater() number 2}}
+          {{#rollBetween() result3 1 3}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 3:</span>
+            <span class="rt-value rt-text">{{result3}} -> 0.5</span>
+          </div>
+          {{/rollBetween() result3 1 3}}
+
+          {{#rollBetween() result3 4 5}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 3:</span>
+            <span class="rt-value rt-text">{{result3}} -> 1</span>
+          </div>
+          {{/rollBetween() result3 4 5}}
+
+          {{#rollGreater() result3 5}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 3:</span>
+            <span class="rt-value rt-text">{{result3}} -> 2</span>
+          </div>
+          {{/rollGreater() result3 5}}
+        {{/rollGreater() number 2}}
+
+        {{#rollGreater() number 3}}
+          {{#rollBetween() result4 1 3}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 4:</span>
+            <span class="rt-value rt-text">{{result4}} -> 0.5</span>
+          </div>
+          {{/rollBetween() result4 1 3}}
+
+          {{#rollBetween() result4 4 5}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 4:</span>
+            <span class="rt-value rt-text">{{result4}} -> 1</span>
+          </div>
+          {{/rollBetween() result4 4 5}}
+
+          {{#rollGreater() result4 5}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 4:</span>
+            <span class="rt-value rt-text">{{result4}} -> 2</span>
+          </div>
+          {{/rollGreater() result4 5}}
+        {{/rollGreater() number 3}}
+
+        {{#rollGreater() number 4}}
+          {{#rollBetween() result5 1 3}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 5:</span>
+            <span class="rt-value rt-text">{{result5}} -> 0.5</span>
+          </div>
+          {{/rollBetween() result5 1 3}}
+
+          {{#rollBetween() result5 4 5}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 5:</span>
+            <span class="rt-value rt-text">{{result5}} -> 1</span>
+          </div>
+          {{/rollBetween() result5 4 5}}
+
+          {{#rollGreater() result5 5}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 5:</span>
+            <span class="rt-value rt-text">{{result5}} -> 2</span>
+          </div>
+          {{/rollGreater() result5 5}}
+        {{/rollGreater() number 4}}
+        <div class="rt-row">
+          <span class="rt-value rt-text">Половинки ранений складываются, но лишние — сгорают. Если ты получаешь 2,5 ранения, в итоге ты получишь всего 2 ранения</span>
+        </div>
+        <div class="rt-row">
+          <span class="rt-value rt-text">Вычти из количества полученных ранений твою защиту, и за каждое оставшееся зачеркни ячейку на буклете. Если ты зачёркиваешь последнюю ячейку—ты в Критическом ранении. Получи –1 на все броски</span>
+        </div>
+        <div class="rt-row">
+          <span class="rt-value rt-text">Обычные ранения восстанавливаются за сутки отдыха, а Критическое — за 5-8 дней.</span>
+        </div>
+    </div>
+</div>
+</rolltemplate>
 <!-- type="text/worker" -->
 <script type="text/worker">
     var classNames = {
@@ -4010,9 +4191,12 @@
     /* MOVES SECTION START */
     const movesStats = [
         'moveclass',
-        'type',
         'movename_base',
+        'movetrigger',
         'move_doroll',
+        'movestat_name',
+        'movesuccuess',
+        'movemiss',
         'movedetails',
         'showopt1',
         'opt1name',
@@ -4126,7 +4310,6 @@
     on("clicked:repeating_moves-upgrade:addmove", function() {
         getAttrs(movesStats.map(s => `repeating_moves-upgrade_${s}`), (v) => {
             const id = generateRowID()
-            console.log(v)
             const upgrade = {}
             movesStats.forEach(s => {
                 upgrade[`repeating_moves_${id}_${s}`]=  v[`repeating_moves-upgrade_${s}`] || ""

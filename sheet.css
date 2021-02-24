@@ -1930,7 +1930,8 @@ display: block;
 }
 /* rolltemplate info end */ 
 /* rolltemplate move start */ 
-.sheet-rolltemplate-move .sheet-rt-container {
+.sheet-rolltemplate-move .sheet-rt-container ,
+.sheet-rolltemplate-harm .sheet-rt-container {
 	background-color: rgb(35, 31, 32);
 /* 	background-image: url("https://github.com/khtd/roll20_eotv/blob/master/space.jpg?raw=true");
 	background-position: bottom; */
@@ -1940,7 +1941,8 @@ display: block;
 	flex-direction: column;
 }
 
-.sheet-rolltemplate-move .sheet-rt-header {
+.sheet-rolltemplate-move .sheet-rt-header ,
+.sheet-rolltemplate-harm .sheet-rt-header {
 	font-weight: bold;
 	font-size: medium;
   padding: 6px 6px 0px 6px;
@@ -1952,12 +1954,14 @@ display: block;
 		1px 1px 0 #000; */
 }
 
-.sheet-rolltemplate-move .sheet-rt-header-minor {
+.sheet-rolltemplate-move .sheet-rt-header-minor ,
+.sheet-rolltemplate-harm .sheet-rt-header-minor {
 	font-size: 90%;
 	font-style: italic;
 }
 
-.sheet-rolltemplate-move .sheet-rt-content {
+.sheet-rolltemplate-move .sheet-rt-content ,
+.sheet-rolltemplate-harm .sheet-rt-content {
 	background-color: white;
 	margin: 5px;
 	padding: 2px;
@@ -1965,7 +1969,8 @@ display: block;
 	flex-direction: column;
 }
 
-.sheet-rolltemplate-move .sheet-rt-row {
+.sheet-rolltemplate-move .sheet-rt-row ,
+.sheet-rolltemplate-harm .sheet-rt-row {
 	flex: 1 0 auto;
 	display: flex;
 	padding-top: 6px;
@@ -1973,7 +1978,8 @@ display: block;
 	border-bottom: 1px solid black;
 }
 
-.sheet-rolltemplate-move .sheet-rt-label {
+.sheet-rolltemplate-move .sheet-rt-label ,
+.sheet-rolltemplate-harm .sheet-rt-label {
 	font-weight: bold;
 	font-size: 0.9em;
 	display: block;
@@ -1983,7 +1989,8 @@ display: block;
 	text-align: right;
 }
 
-.sheet-rolltemplate-move .sheet-rt-value {
+.sheet-rolltemplate-move .sheet-rt-value ,
+.sheet-rolltemplate-harm .sheet-rt-value {
 	display: block;
 	font-size: .9em;
 	flex: 3;
@@ -2100,6 +2107,26 @@ span.sheet-emptiable:empty + br {
 .sheet-moves-fixed * {
 	font-size: 12px;
 	line-height: 1.5rem;
+}
+
+.sheet-moves-fixed  button[type=roll]::before { 
+	content: none; 
+}
+
+.sheet-moves-fixed button[type=roll] {
+	margin: 0;
+  overflow: visible;
+  text-transform: none;
+  border-style: none;
+  padding: 0;
+  background: transparent;
+	cursor: pointer;
+	background-color: transparent;
+	line-height: 1.5em;
+}
+.sheet-moves-fixed button[type=roll] span {
+	font-family: "dicefontd6";
+	font-size: 17px;
 }
 
 div.sheet-moves-fixed {
