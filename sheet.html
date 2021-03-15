@@ -690,6 +690,17 @@
             </div>
 
             <div class="moves-upgrade">
+              <input type="checkbox" class="expand-hidden" name="attr_expand_upgrade" value="1" checked="true">
+
+              <div class="moves-upgrade-title">
+                  <h3><span>Повышения</span></h3>
+                  <button type="action" name="act_expand_upgrade" class="expand-upgrade">
+                      <span class="expanded">▼</span>
+                      <span class="notexpanded">◀</span>
+                  </button>
+              </div>
+
+              <div class="moves-upgrade-body">
                 <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab0" value="All" title="All" checked/>
                 <span class="sheet-tab sheet-moves-tab0">Все</span>
                 <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab1" value="Noble" title="Noble"/>
@@ -732,7 +743,7 @@
                 <span class="sheet-tab sheet-moves-tab19">Эмиссар</span> 
                 <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab20" value="Psychomant" title="Psychomant"/>
                 <span class="sheet-tab sheet-moves-tab20">Психомант</span> 
-                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab22" value="Raelith" title="Raelith"/>
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab21" value="Raelith" title="Raelith"/>
                 <span class="sheet-tab sheet-moves-tab21">Раэлит</span> 
 
                 <div class="sheet-section-moves-upgrade-list">
@@ -940,6 +951,9 @@
                         </div>
                     </fieldset>
                 </div>
+                
+              </div>
+
             </div>
         </div>
 
@@ -4595,6 +4609,14 @@
         getAttrs(["repeating_moves_move_doroll", "repeating_moves_movestat"], function(v) {
             if (v.repeating_moves_move_doroll != "1" && v.repeating_moves_movestat == "@{statmod_query}")
                 setAttrs({repeating_moves_movestat: 0});
+        });
+    });
+
+    on("clicked:expand_upgrade", function() {
+        getAttrs(["expand_upgrade"], function(v) {
+          setAttrs({
+            "expand_upgrade": v["expand_upgrade"] == 1 ? 0 : 1
+          });
         });
     });
 

@@ -1706,6 +1706,49 @@ div.sheet-moves-own {
 	width: 40px;
 	text-align: center;
 }
+
+.sheet-moves-upgrade {
+	display: grid;
+	grid-template-rows: 26.4px auto;
+}
+
+.sheet-moves-upgrade  .sheet-expand-hidden {
+	display: none;
+}
+
+.sheet-moves-upgrade .sheet-moves-upgrade-title {
+	display: grid;
+	grid-template-columns: max-content 26.4px auto;
+	gap: 10px;
+}
+
+.sheet-moves-upgrade  button.sheet-expand-upgrade {
+  margin: 0;
+  overflow: visible;
+  text-transform: none;
+  border-style: none;
+  padding: 0;
+  background: transparent;
+	cursor: pointer;
+	border:0.1em solid rgb(14, 13, 13);
+	background-color: transparent;
+}
+
+/* Hide the section(s) that do not match the attribute value */
+.sheet-moves-upgrade input.sheet-expand-hidden:not(:checked) + div > button.sheet-expand-upgrade  > span.sheet-expanded {
+  display: none;
+}
+.sheet-moves-upgrade input.sheet-expand-hidden:checked + div > button.sheet-expand-upgrade  > span.sheet-notexpanded {
+  display: none;
+}
+
+.sheet-moves-upgrade-body {
+	display: none;
+}
+
+.sheet-moves-upgrade .sheet-expand-hidden:checked ~ .sheet-moves-upgrade-body {
+	display: block;
+}
 /* grid end */
 
 .sheet-moves .sheet-expand-hidden,
