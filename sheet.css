@@ -3,6 +3,9 @@ input:focus {
 	background: unset;
 	outline: unset;
 }
+.sheet-hidden {
+	display: none;
+}
 
 .sheet-container {
 	width: 772px;
@@ -1893,6 +1896,11 @@ div.sheet-moves-own {
 	display: none;
 }
 
+.sheet-moves-upgrade-body .sheet-hidden:not(:checked) + input.sheet-tab,
+.sheet-moves-upgrade-body .sheet-hidden:not(:checked) + input.sheet-tab + span.sheet-tab  {
+	display: none;
+}
+
 .sheet-move-filtered-box {       /* By default, display no items of a filter box */
 	display: none;
 }
@@ -1925,6 +1933,13 @@ display: block;
 /* page3 moves end */
 
 /* page3 page end */
+
+/* page4 page star */
+.sheet-page4 {
+	grid-template-rows: repeat(14, auto);
+  grid-auto-flow: column;
+}
+/* page4 page end */
 
 /* rolltemplate start*/
 .sheet-rolltemplate-move .inlinerollresult,
