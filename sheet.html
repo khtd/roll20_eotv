@@ -465,7 +465,7 @@
             
             <label class="nav-moves-button">
                 <input type="radio"  name="attr_moves_page" value="own" checked="checked">
-                <span>Твои</span>
+                <span>Буклет</span>
             </label>
             <label class="nav-moves-button">
                 <input type="radio"  name="attr_moves_page" value="base">
@@ -1001,7 +1001,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   РАНИШЬ ИЛИ ПОЛУЧАЕШЬ РАНЫ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:harm} {{charname=@{character_name}}} {{number=[[?{dices|1|2|3|4|5}]]}} {{result1=[[d6]]}} {{result2=[[d6]]}} {{result3=[[d6]]}} {{result4=[[d6]]}} {{result5=[[d6]]}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:harm} {{charname=@{character_name}}} {{number=[[?{dices|1|2|3|4|5|6|7|8|9|10}]]}} {{result1=[[d6]]}} {{result2=[[d6]]}} {{result3=[[d6]]}} {{result4=[[d6]]}} {{result5=[[d6]]}} {{result6=[[d6]]}} {{result7=[[d6]]}} {{result8=[[d6]]}} {{result9=[[d6]]}} {{result10=[[d6]]}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -2883,6 +2883,121 @@
           </div>
           {{/rollGreater() result5 5}}
         {{/rollGreater() number 4}}
+
+        {{#rollGreater() number 5}}
+          {{#rollBetween() result6 1 3}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 6:</span>
+            <span class="rt-value rt-text">{{result6}} -> 0.5</span>
+          </div>
+          {{/rollBetween() result6 1 3}}
+
+          {{#rollBetween() result6 4 5}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 6:</span>
+            <span class="rt-value rt-text">{{result6}} -> 1</span>
+          </div>
+          {{/rollBetween() result6 4 5}}
+
+          {{#rollGreater() result6 5}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 6:</span>
+            <span class="rt-value rt-text">{{result6}} -> 2</span>
+          </div>
+          {{/rollGreater() result6 5}}
+        {{/rollGreater() number 5}}
+
+        {{#rollGreater() number 6}}
+          {{#rollBetween() result7 1 3}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 7:</span>
+            <span class="rt-value rt-text">{{result7}} -> 0.5</span>
+          </div>
+          {{/rollBetween() result7 1 3}}
+
+          {{#rollBetween() result7 4 5}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 7:</span>
+            <span class="rt-value rt-text">{{result7}} -> 1</span>
+          </div>
+          {{/rollBetween() result7 4 5}}
+
+          {{#rollGreater() result7 5}}
+          <div class="rt-row">
+            <span class="label rt-label" >Куб 7:</span>
+            <span class="rt-value rt-text">{{result7}} -> 2</span>
+          </div>
+          {{/rollGreater() result7 5}}
+        {{/rollGreater() number 6}}
+
+        {{#rollGreater() number 7}}
+        {{#rollBetween() result8 1 3}}
+        <div class="rt-row">
+          <span class="label rt-label" >Куб 8:</span>
+          <span class="rt-value rt-text">{{result8}} -> 0.5</span>
+        </div>
+        {{/rollBetween() result8 1 3}}
+
+        {{#rollBetween() result8 4 5}}
+        <div class="rt-row">
+          <span class="label rt-label" >Куб 8:</span>
+          <span class="rt-value rt-text">{{result8}} -> 1</span>
+        </div>
+        {{/rollBetween() result8 4 5}}
+
+        {{#rollGreater() result8 5}}
+        <div class="rt-row">
+          <span class="label rt-label" >Куб 8:</span>
+          <span class="rt-value rt-text">{{result8}} -> 2</span>
+        </div>
+        {{/rollGreater() result8 5}}
+      {{/rollGreater() number 7}}
+
+      {{#rollGreater() number 8}}
+      {{#rollBetween() result9 1 3}}
+      <div class="rt-row">
+        <span class="label rt-label" >Куб 9:</span>
+        <span class="rt-value rt-text">{{result9}} -> 0.5</span>
+      </div>
+      {{/rollBetween() result9 1 3}}
+
+      {{#rollBetween() result9 4 5}}
+      <div class="rt-row">
+        <span class="label rt-label" >Куб 9:</span>
+        <span class="rt-value rt-text">{{result9}} -> 1</span>
+      </div>
+      {{/rollBetween() result9 4 5}}
+
+      {{#rollGreater() result9 5}}
+      <div class="rt-row">
+        <span class="label rt-label" >Куб 9:</span>
+        <span class="rt-value rt-text">{{result9}} -> 2</span>
+      </div>
+      {{/rollGreater() result9 5}}
+    {{/rollGreater() number 8}}
+
+    {{#rollGreater() number 9}}
+    {{#rollBetween() result10 1 3}}
+    <div class="rt-row">
+      <span class="label rt-label" >Куб 1:</span>
+      <span class="rt-value rt-text">{{result10}} -> 0.5</span>
+    </div>
+    {{/rollBetween() result10 1 3}}
+
+    {{#rollBetween() result10 4 5}}
+    <div class="rt-row">
+      <span class="label rt-label" >Куб 10:</span>
+      <span class="rt-value rt-text">{{result10}} -> 1</span>
+    </div>
+    {{/rollBetween() result10 4 5}}
+
+    {{#rollGreater() result10 5}}
+    <div class="rt-row">
+      <span class="label rt-label" >Куб 10:</span>
+      <span class="rt-value rt-text">{{result10}} -> 2</span>
+    </div>
+    {{/rollGreater() result10 5}}
+  {{/rollGreater() number 9}}
         <div class="rt-row">
           <span class="rt-value rt-text">Половинки ранений складываются, но лишние — сгорают. Если ты получаешь 2,5 ранения, в итоге ты получишь всего 2 ранения</span>
         </div>
@@ -4371,6 +4486,7 @@
         'move_doroll',
         'movestat_name',
         'movesuccuess',
+        'movepartial',
         'movemiss',
         'movedetails',
         'showopt1',
