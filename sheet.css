@@ -1687,6 +1687,9 @@ div.sheet-moves-own {
 .repcontainer[data-groupname=repeating_moves-upgrade] {
 	display: grid;
 	grid-template-columns: 383px;
+}
+
+.repcontainer[data-groupname=repeating_moves] {
 	gap: 6px;
 }
 
@@ -1927,6 +1930,7 @@ div.sheet-moves-own {
 
 .sheet-move-filtered-box {       /* By default, display no items of a filter box */
 	display: none;
+	margin-bottom: 0px;
 }
 					/* Decide which specific repitems to display.  */
 input.sheet-moves-tab0:checked~.sheet-move-filtered-box,      /* Always display all spells of circle zero.  */
@@ -1952,7 +1956,8 @@ input.sheet-moves-tab0:checked~.sheet-move-filtered-box,      /* Always display 
 .sheet-moves-tab19:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab19:checked~.sheet-move-filtered-box,
 .sheet-moves-tab20:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab20:checked~.sheet-move-filtered-box,
 .sheet-moves-tab21:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab21:checked~.sheet-move-filtered-box {
-display: block;
+	display: block;
+	margin-bottom: 2px;
 } 
 /* page3 moves end */
 
