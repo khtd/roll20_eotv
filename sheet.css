@@ -624,7 +624,15 @@ button[type=roll].sheet-infoOutput::before {
 .sheet-is-shadow-bg-flag,
 .sheet-is-stranger-spec-flag,
 .sheet-is-juggernaut-craft-flag,
-.sheet-is-raelith-fn-flag {
+.sheet-is-raelith-fn-flag,
+.sheet-is-courier-dng-flag,
+.sheet-is-mercenary-death-flag,
+.sheet-is-stranger-fvr-flag,
+.sheet-is-supernova-imp-flag,
+.sheet-is-juggernaut-adr-flag,
+.sheet-is-digitaldao-ovr-flag,
+.sheet-is-emissary-st-flag,
+.sheet-is-raelith-fd-flag {
 	display: none;
 }
 
@@ -634,7 +642,15 @@ button[type=roll].sheet-infoOutput::before {
 .sheet-is-shadow-bg-flag:checked + .sheet-shadow-additional,
 .sheet-is-stranger-spec-flag:checked + .sheet-stranger-additional,
 .sheet-is-juggernaut-craft-flag:checked + .sheet-juggernaut-additional,
-.sheet-is-raelith-fn-flag:checked + .sheet-raelith-additional {
+.sheet-is-raelith-fn-flag:checked + .sheet-raelith-additional,
+.sheet-is-courier-dng-flag:checked + .sheet-courier-additional,
+.sheet-is-mercenary-death-flag:checked + .sheet-mercenary-additional,
+.sheet-is-stranger-fvr-flag:checked + .sheet-stranger-additional,
+.sheet-is-supernova-imp-flag:checked + .sheet-supernova-additional,
+.sheet-is-juggernaut-adr-flag:checked + .sheet-juggernaut-additional,
+.sheet-is-digitaldao-ovr-flag:checked + .sheet-digitaldao-additional,
+.sheet-is-emissary-st-flag:checked + .sheet-emissary-additional,
+.sheet-is-raelith-fd-flag:checked + .sheet-raelith-additional {
 	display: grid;
 }
 
@@ -643,7 +659,15 @@ button[type=roll].sheet-infoOutput::before {
 .sheet-is-cyborg-dh-flag:not(:checked) + .sheet-cyborg-additional,
 .sheet-is-shadow-bg-flag:not(:checked) + .sheet-shadow-additional,
 .sheet-is-stranger-spec-flag:not(:checked) + .sheet-stranger-additional,
-.sheet-is-juggernaut-craft-flag:not(:checked) + .sheet-juggernaut-additional {
+.sheet-is-juggernaut-craft-flag:not(:checked) + .sheet-juggernaut-additional,
+.sheet-is-courier-dng-flag:not(:checked) + .sheet-courier-additional,
+.sheet-is-mercenary-death-flag:not(:checked) + .sheet-mercenary-additional,
+.sheet-is-stranger-fvr-flag:not(:checked) + .sheet-stranger-additional,
+.sheet-is-supernova-imp-flag:not(:checked) + .sheet-supernova-additional,
+.sheet-is-juggernaut-adr-flag:not(:checked) + .sheet-juggernaut-additional,
+.sheet-is-digitaldao-ovr-flag:not(:checked) + .sheet-digitaldao-additional,
+.sheet-is-emissary-st-flag:not(:checked) + .sheet-emissary-additional,
+.sheet-is-raelith-fd-flag:not(:checked) + .sheet-raelith-additional {
 	display: none;
 }
 
@@ -3048,4 +3072,753 @@ input[type="checkbox"].sheet-cyborgdishonour-max:checked ~ input[type="checkbox"
 }
 .sheet-addcyborgdishonourbutton {
 	grid-area: addcyborgdishonourbutton;
+}
+
+.sheet-courierdanger {
+	display: grid;
+	align-self: center;
+}
+
+.sheet-courierdanger {
+	grid-template-rows: 5px 25px 5px;
+	grid-template-columns: 80px 25px 2px 25px 2px 25px 2px 25px 2px 25px 2px 25px 2px 25px 2px 25px;
+	grid-template-areas: 
+	". . . . . . . . . . . . . . . ."
+	"courierdanger-lbl courierdanger-box1 . courierdanger-box2 . courierdanger-box3 . courierdanger-box4 . courierdanger-box5 . courierdanger-box6 . addcourierdangerbutton . sbstrctcourierdangerbutton"
+	". . . . . . . . . . . . . . . .";
+}
+
+
+.sheet-courierdanger-lbl {
+	align-self: center;
+	line-height: 1;
+	background-color: black;
+	color: white;
+	padding: 5px;
+	height: 15px;
+}
+
+.sheet-courierdanger-lbl {
+	grid-area: courierdanger-lbl;
+}
+
+input[type="checkbox"].sheet-courierdanger-box {
+	opacity: 0;
+	cursor: pointer;
+	z-index: 1;
+	width: 25px;
+	height: 25px;
+	align-self: center;
+}
+
+input[type="checkbox"].sheet-courierdanger-box + span {
+	border: solid 2px black;
+	border-right: solid 4px black;
+	display: block;
+	background-color: #000000;
+	background-image: linear-gradient(315deg, #000000 -50%, #ffffff 194%);
+	border-radius: 0px;
+	align-self: center;
+	height: 21px;
+	width: 21px;
+}
+input[type="checkbox"].sheet-courierdanger-box6 + span {
+	border-right: 2px solid black;
+}
+
+input[type="checkbox"].sheet-courierdanger-box:checked ~ input[type="checkbox"].sheet-courierdanger-box + span {    
+	background: white;
+}
+
+input.sheet-courierdanger-box0 {
+	z-index: 0;
+	display: none;
+}
+
+.sheet-courierdanger-box1 {
+	grid-area: courierdanger-box1;
+}
+.sheet-courierdanger-box2 {
+	grid-area: courierdanger-box2;
+}
+.sheet-courierdanger-box3 {
+	grid-area: courierdanger-box3;
+}
+.sheet-courierdanger-box4 {
+	grid-area: courierdanger-box4;
+}
+.sheet-courierdanger-box5 {
+	grid-area: courierdanger-box5;
+}
+.sheet-courierdanger-box6 {
+	grid-area: courierdanger-box6;
+}
+
+input.sheet-courierdanger-max {
+	display: none;
+}
+
+input[type="checkbox"].sheet-courierdanger-max:checked ~ input[type="checkbox"].sheet-courierdanger-box {
+	pointer-events: none;
+}
+
+input[type="checkbox"].sheet-courierdanger-max:checked ~ input[type="checkbox"].sheet-courierdanger-box +span {
+	opacity:0.5;
+	background-color: #b8c6db;
+	background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+	border-color: #b8c6db;
+}
+
+.sheet-sbstrctcourierdangerbutton, .sheet-addcourierdangerbutton {
+	font-family: "Pictos";
+}
+
+.sheet-sbstrctcourierdangerbutton {
+	grid-area: sbstrctcourierdangerbutton;
+}
+.sheet-addcourierdangerbutton {
+	grid-area: addcourierdangerbutton;
+}
+
+.sheet-strangerfavor {
+	display: grid;
+	align-self: center;
+}
+
+.sheet-strangerfavor {
+	grid-template-rows: 5px 25px 5px;
+	grid-template-columns: 120px 25px 2px 25px 2px 25px 2px 25px 2px 25px 2px 25px 2px 25px;
+	grid-template-areas: 
+	". . . . . . . . . . . . . ."
+	"strangerfavor-lbl strangerfavor-box1 . strangerfavor-box2 . strangerfavor-box3 . strangerfavor-box4 . strangerfavor-box5 . addstrangerfavorbutton . sbstrctstrangerfavorbutton"
+	". . . . . . . . . . . . . .";
+}
+
+
+.sheet-strangerfavor-lbl {
+	align-self: center;
+	line-height: 1;
+	background-color: black;
+	color: white;
+	padding: 5px;
+	height: 15px;
+}
+
+.sheet-strangerfavor-lbl {
+	grid-area: strangerfavor-lbl;
+}
+
+input[type="checkbox"].sheet-strangerfavor-box {
+	opacity: 0;
+	cursor: pointer;
+	z-index: 1;
+	width: 25px;
+	height: 25px;
+	align-self: center;
+}
+
+input[type="checkbox"].sheet-strangerfavor-box + span {
+	border: solid 2px black;
+	border-right: solid 4px black;
+	display: block;
+	background-color: #000000;
+	background-image: linear-gradient(315deg, #000000 -50%, #ffffff 194%);
+	border-radius: 0px;
+	align-self: center;
+	height: 21px;
+	width: 21px;
+}
+input[type="checkbox"].sheet-strangerfavor-box5 + span {
+	border-right: 2px solid black;
+}
+
+input[type="checkbox"].sheet-strangerfavor-box:checked ~ input[type="checkbox"].sheet-strangerfavor-box + span {    
+	background: white;
+}
+
+input.sheet-strangerfavor-box0 {
+	z-index: 0;
+	display: none;
+}
+
+.sheet-strangerfavor-box1 {
+	grid-area: strangerfavor-box1;
+}
+.sheet-strangerfavor-box2 {
+	grid-area: strangerfavor-box2;
+}
+.sheet-strangerfavor-box3 {
+	grid-area: strangerfavor-box3;
+}
+.sheet-strangerfavor-box4 {
+	grid-area: strangerfavor-box4;
+}
+.sheet-strangerfavor-box5 {
+	grid-area: strangerfavor-box5;
+}
+.sheet-strangerfavor-box6 {
+	grid-area: strangerfavor-box6;
+}
+
+input.sheet-strangerfavor-max {
+	display: none;
+}
+
+input[type="checkbox"].sheet-strangerfavor-max:checked ~ input[type="checkbox"].sheet-strangerfavor-box {
+	pointer-events: none;
+}
+
+input[type="checkbox"].sheet-strangerfavor-max:checked ~ input[type="checkbox"].sheet-strangerfavor-box +span {
+	opacity:0.5;
+	background-color: #b8c6db;
+	background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+	border-color: #b8c6db;
+}
+
+.sheet-sbstrctstrangerfavorbutton, .sheet-addstrangerfavorbutton {
+	font-family: "Pictos";
+}
+
+.sheet-sbstrctstrangerfavorbutton {
+	grid-area: sbstrctstrangerfavorbutton;
+}
+.sheet-addstrangerfavorbutton {
+	grid-area: addstrangerfavorbutton;
+}
+
+.sheet-raelithfade {
+	display: grid;
+	align-self: center;
+}
+
+.sheet-raelithfade {
+	grid-template-rows: 5px 25px 5px;
+	grid-template-columns: 80px 25px 2px 25px 2px 25px 2px 25px 2px 25px 2px 25px;
+	grid-template-areas: 
+	". . . . . . . . . . . ."
+	"raelithfade-lbl raelithfade-box1 . raelithfade-box2 . raelithfade-box3 . raelithfade-box4 . raelithfade-box5 . raelithfade-box6"
+	". . . . . . . . . . . .";
+}
+
+
+.sheet-raelithfade-lbl {
+	align-self: center;
+	line-height: 1;
+	background-color: black;
+	color: white;
+	padding: 5px;
+	height: 15px;
+}
+
+.sheet-raelithfade-lbl {
+	grid-area: raelithfade-lbl;
+}
+
+input[type="checkbox"].sheet-raelithfade-box {
+	opacity: 0;
+	cursor: pointer;
+	z-index: 1;
+	width: 25px;
+	height: 25px;
+	align-self: center;
+}
+
+input[type="checkbox"].sheet-raelithfade-box + span {
+	border: solid 2px black;
+	border-right: solid 4px black;
+	display: block;
+	background-color: #000000;
+	background-image: linear-gradient(315deg, #000000 -50%, #ffffff 194%);
+	border-radius: 0px;
+	align-self: center;
+	height: 21px;
+	width: 21px;
+}
+input[type="checkbox"].sheet-raelithfade-box6 + span {
+	border-right: 2px solid black;
+}
+
+input[type="checkbox"].sheet-raelithfade-box:checked ~ input[type="checkbox"].sheet-raelithfade-box + span {    
+	background: white;
+}
+
+input.sheet-raelithfade-box0 {
+	z-index: 0;
+	display: none;
+}
+
+.sheet-raelithfade-box1 {
+	grid-area: raelithfade-box1;
+}
+.sheet-raelithfade-box2 {
+	grid-area: raelithfade-box2;
+}
+.sheet-raelithfade-box3 {
+	grid-area: raelithfade-box3;
+}
+.sheet-raelithfade-box4 {
+	grid-area: raelithfade-box4;
+}
+.sheet-raelithfade-box5 {
+	grid-area: raelithfade-box5;
+}
+.sheet-raelithfade-box6 {
+	grid-area: raelithfade-box6;
+}
+
+input.sheet-raelithfade-max {
+	display: none;
+}
+
+input[type="checkbox"].sheet-raelithfade-max:checked ~ input[type="checkbox"].sheet-raelithfade-box {
+	pointer-events: none;
+}
+
+input[type="checkbox"].sheet-raelithfade-max:checked ~ input[type="checkbox"].sheet-raelithfade-box +span {
+	opacity:0.5;
+	background-color: #b8c6db;
+	background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+	border-color: #b8c6db;
+}
+
+.sheet-digitaldaooverload {
+	display: grid;
+	align-self: center;
+}
+
+.sheet-digitaldaooverload {
+	grid-template-rows: 5px 25px 5px;
+	grid-template-columns: 90px 25px 2px 25px 2px 25px 2px 25px 2px 25px;
+	grid-template-areas: 
+	". . . . . . . . . ."
+	"digitaldaooverload-lbl digitaldaooverload-box1 . digitaldaooverload-box2 . digitaldaooverload-box3 . digitaldaooverload-box4 . digitaldaooverload-box5"
+	". . . . . . . . . .";
+}
+
+
+.sheet-digitaldaooverload-lbl {
+	align-self: center;
+	line-height: 1;
+	background-color: black;
+	color: white;
+	padding: 5px;
+	height: 15px;
+}
+
+.sheet-digitaldaooverload-lbl {
+	grid-area: digitaldaooverload-lbl;
+}
+
+input[type="checkbox"].sheet-digitaldaooverload-box {
+	opacity: 0;
+	cursor: pointer;
+	z-index: 1;
+	width: 25px;
+	height: 25px;
+	align-self: center;
+}
+
+input[type="checkbox"].sheet-digitaldaooverload-box + span {
+	border: solid 2px black;
+	border-right: solid 4px black;
+	display: block;
+	background-color: #000000;
+	background-image: linear-gradient(315deg, #000000 -50%, #ffffff 194%);
+	border-radius: 0px;
+	align-self: center;
+	height: 21px;
+	width: 21px;
+}
+input[type="checkbox"].sheet-digitaldaooverload-box5 + span {
+	border-right: 2px solid black;
+}
+
+input[type="checkbox"].sheet-digitaldaooverload-box:checked ~ input[type="checkbox"].sheet-digitaldaooverload-box + span {    
+	background: white;
+}
+
+input.sheet-digitaldaooverload-box0 {
+	z-index: 0;
+	display: none;
+}
+
+.sheet-digitaldaooverload-box1 {
+	grid-area: digitaldaooverload-box1;
+}
+.sheet-digitaldaooverload-box2 {
+	grid-area: digitaldaooverload-box2;
+}
+.sheet-digitaldaooverload-box3 {
+	grid-area: digitaldaooverload-box3;
+}
+.sheet-digitaldaooverload-box4 {
+	grid-area: digitaldaooverload-box4;
+}
+.sheet-digitaldaooverload-box5 {
+	grid-area: digitaldaooverload-box5;
+}
+.sheet-digitaldaooverload-box6 {
+	grid-area: digitaldaooverload-box6;
+}
+
+input.sheet-digitaldaooverload-max {
+	display: none;
+}
+
+input[type="checkbox"].sheet-digitaldaooverload-max:checked ~ input[type="checkbox"].sheet-digitaldaooverload-box {
+	pointer-events: none;
+}
+
+input[type="checkbox"].sheet-digitaldaooverload-max:checked ~ input[type="checkbox"].sheet-digitaldaooverload-box +span {
+	opacity:0.5;
+	background-color: #b8c6db;
+	background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+	border-color: #b8c6db;
+}
+
+.sheet-juggernautadrenaline {
+	display: grid;
+	align-self: center;
+}
+
+.sheet-juggernautadrenaline {
+	grid-template-rows: 5px 25px 5px;
+	grid-template-columns: 90px 25px 2px 25px 2px 25px 2px 25px 2px 25px;
+	grid-template-areas: 
+	". . . . . . . . . ."
+	"juggernautadrenaline-lbl juggernautadrenaline-box1 . juggernautadrenaline-box2 . juggernautadrenaline-box3 . juggernautadrenaline-box4 . juggernautadrenaline-box5"
+	". . . . . . . . . .";
+}
+
+
+.sheet-juggernautadrenaline-lbl {
+	align-self: center;
+	line-height: 1;
+	background-color: black;
+	color: white;
+	padding: 5px;
+	height: 15px;
+}
+
+.sheet-juggernautadrenaline-lbl {
+	grid-area: juggernautadrenaline-lbl;
+}
+
+input[type="checkbox"].sheet-juggernautadrenaline-box {
+	opacity: 0;
+	cursor: pointer;
+	z-index: 1;
+	width: 25px;
+	height: 25px;
+	align-self: center;
+}
+
+input[type="checkbox"].sheet-juggernautadrenaline-box + span {
+	border: solid 2px black;
+	border-right: solid 4px black;
+	display: block;
+	background-color: #000000;
+	background-image: linear-gradient(315deg, #000000 -50%, #ffffff 194%);
+	border-radius: 0px;
+	align-self: center;
+	height: 21px;
+	width: 21px;
+}
+input[type="checkbox"].sheet-juggernautadrenaline-box5 + span {
+	border-right: 2px solid black;
+}
+
+input[type="checkbox"].sheet-juggernautadrenaline-box:checked ~ input[type="checkbox"].sheet-juggernautadrenaline-box + span {    
+	background: white;
+}
+
+input.sheet-juggernautadrenaline-box0 {
+	z-index: 0;
+	display: none;
+}
+
+.sheet-juggernautadrenaline-box1 {
+	grid-area: juggernautadrenaline-box1;
+}
+.sheet-juggernautadrenaline-box2 {
+	grid-area: juggernautadrenaline-box2;
+}
+.sheet-juggernautadrenaline-box3 {
+	grid-area: juggernautadrenaline-box3;
+}
+.sheet-juggernautadrenaline-box4 {
+	grid-area: juggernautadrenaline-box4;
+}
+.sheet-juggernautadrenaline-box5 {
+	grid-area: juggernautadrenaline-box5;
+}
+.sheet-juggernautadrenaline-box6 {
+	grid-area: juggernautadrenaline-box6;
+}
+
+input.sheet-juggernautadrenaline-max {
+	display: none;
+}
+
+input[type="checkbox"].sheet-juggernautadrenaline-max:checked ~ input[type="checkbox"].sheet-juggernautadrenaline-box {
+	pointer-events: none;
+}
+
+input[type="checkbox"].sheet-juggernautadrenaline-max:checked ~ input[type="checkbox"].sheet-juggernautadrenaline-box +span {
+	opacity:0.5;
+	background-color: #b8c6db;
+	background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+	border-color: #b8c6db;
+}
+
+.sheet-supernovaimpro {
+	display: grid;
+	align-self: center;
+}
+
+.sheet-supernovaimpro {
+	grid-template-rows: 5px 25px 5px;
+	grid-template-columns: 110px 25px 2px 25px 2px 25px;
+	grid-template-areas: 
+	". . . . . ."
+	"supernovaimpro-lbl supernovaimpro-box1 . supernovaimpro-box2 . supernovaimpro-box3"
+	". . . . . .";
+}
+
+
+.sheet-supernovaimpro-lbl {
+	align-self: center;
+	line-height: 1;
+	background-color: black;
+	color: white;
+	padding: 5px;
+	height: 15px;
+}
+
+.sheet-supernovaimpro-lbl {
+	grid-area: supernovaimpro-lbl;
+}
+
+input[type="checkbox"].sheet-supernovaimpro-box {
+	opacity: 0;
+	cursor: pointer;
+	z-index: 1;
+	width: 25px;
+	height: 25px;
+	align-self: center;
+}
+
+input[type="checkbox"].sheet-supernovaimpro-box + span {
+	border: solid 2px black;
+	border-right: solid 4px black;
+	display: block;
+	background-color: #000000;
+	background-image: linear-gradient(315deg, #000000 -50%, #ffffff 194%);
+	border-radius: 0px;
+	align-self: center;
+	height: 21px;
+	width: 21px;
+}
+input[type="checkbox"].sheet-supernovaimpro-box3 + span {
+	border-right: 2px solid black;
+}
+
+input[type="checkbox"].sheet-supernovaimpro-box:checked ~ input[type="checkbox"].sheet-supernovaimpro-box + span {    
+	background: white;
+}
+
+input.sheet-supernovaimpro-box0 {
+	z-index: 0;
+	display: none;
+}
+
+.sheet-supernovaimpro-box1 {
+	grid-area: supernovaimpro-box1;
+}
+.sheet-supernovaimpro-box2 {
+	grid-area: supernovaimpro-box2;
+}
+.sheet-supernovaimpro-box3 {
+	grid-area: supernovaimpro-box3;
+}
+
+input.sheet-supernovaimpro-max {
+	display: none;
+}
+
+input[type="checkbox"].sheet-supernovaimpro-max:checked ~ input[type="checkbox"].sheet-supernovaimpro-box {
+	pointer-events: none;
+}
+
+input[type="checkbox"].sheet-supernovaimpro-max:checked ~ input[type="checkbox"].sheet-supernovaimpro-box +span {
+	opacity:0.5;
+	background-color: #b8c6db;
+	background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+	border-color: #b8c6db;
+}
+
+.sheet-emissarystatus {
+	display: grid;
+	align-self: center;
+}
+
+.sheet-emissarystatus {
+	grid-template-rows: 5px 25px 5px;
+	grid-template-columns: 70px 25px 2px 25px 2px 25px;
+	grid-template-areas: 
+	". . . . . ."
+	"emissarystatus-lbl emissarystatus-box1 . emissarystatus-box2 . emissarystatus-box3"
+	". . . . . .";
+}
+
+
+.sheet-emissarystatus-lbl {
+	align-self: center;
+	line-height: 1;
+	background-color: black;
+	color: white;
+	padding: 5px;
+	height: 15px;
+}
+
+.sheet-emissarystatus-lbl {
+	grid-area: emissarystatus-lbl;
+}
+
+input[type="checkbox"].sheet-emissarystatus-box {
+	opacity: 0;
+	cursor: pointer;
+	z-index: 1;
+	width: 25px;
+	height: 25px;
+	align-self: center;
+}
+
+input[type="checkbox"].sheet-emissarystatus-box + span {
+	border: solid 2px black;
+	border-right: solid 4px black;
+	display: block;
+	background-color: #000000;
+	background-image: linear-gradient(315deg, #000000 -50%, #ffffff 194%);
+	border-radius: 0px;
+	align-self: center;
+	height: 21px;
+	width: 21px;
+}
+input[type="checkbox"].sheet-emissarystatus-box3 + span {
+	border-right: 2px solid black;
+}
+
+input[type="checkbox"].sheet-emissarystatus-box:checked ~ input[type="checkbox"].sheet-emissarystatus-box + span {    
+	background: white;
+}
+
+input.sheet-emissarystatus-box0 {
+	z-index: 0;
+	display: none;
+}
+
+.sheet-emissarystatus-box1 {
+	grid-area: emissarystatus-box1;
+}
+.sheet-emissarystatus-box2 {
+	grid-area: emissarystatus-box2;
+}
+.sheet-emissarystatus-box3 {
+	grid-area: emissarystatus-box3;
+}
+
+input.sheet-emissarystatus-max {
+	display: none;
+}
+
+input[type="checkbox"].sheet-emissarystatus-max:checked ~ input[type="checkbox"].sheet-emissarystatus-box {
+	pointer-events: none;
+}
+
+input[type="checkbox"].sheet-emissarystatus-max:checked ~ input[type="checkbox"].sheet-emissarystatus-box +span {
+	opacity:0.5;
+	background-color: #b8c6db;
+	background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+	border-color: #b8c6db;
+}
+
+.sheet-mercenarydeath {
+	display: grid;
+	align-self: center;
+}
+
+.sheet-mercenarydeath {
+	grid-template-rows: 5px 25px 5px;
+	grid-template-columns: 70px 25px;
+	grid-template-areas: 
+	". ."
+	"mercenarydeath-lbl mercenarydeath-box1"
+	". .";
+}
+
+
+.sheet-mercenarydeath-lbl {
+	align-self: center;
+	line-height: 1;
+	background-color: black;
+	color: white;
+	padding: 5px;
+	height: 15px;
+}
+
+.sheet-mercenarydeath-lbl {
+	grid-area: mercenarydeath-lbl;
+}
+
+input[type="checkbox"].sheet-mercenarydeath-box {
+	opacity: 0;
+	cursor: pointer;
+	z-index: 1;
+	width: 25px;
+	height: 25px;
+	align-self: center;
+}
+
+input[type="checkbox"].sheet-mercenarydeath-box + span {
+	border: solid 2px black;
+	border-right: solid 4px black;
+	display: block;
+	background-color: #000000;
+	background-image: linear-gradient(315deg, #000000 -50%, #ffffff 194%);
+	border-radius: 0px;
+	align-self: center;
+	height: 21px;
+	width: 21px;
+}
+input[type="checkbox"].sheet-mercenarydeath-box1 + span {
+	border-right: 2px solid black;
+}
+
+input[type="checkbox"].sheet-mercenarydeath-box:checked ~ input[type="checkbox"].sheet-mercenarydeath-box + span {    
+	background: white;
+}
+
+input.sheet-mercenarydeath-box0 {
+	z-index: 0;
+	display: none;
+}
+
+.sheet-mercenarydeath-box1 {
+	grid-area: mercenarydeath-box1;
+}
+
+input.sheet-mercenarydeath-max {
+	display: none;
+}
+
+input[type="checkbox"].sheet-mercenarydeath-max:checked ~ input[type="checkbox"].sheet-mercenarydeath-box {
+	pointer-events: none;
+}
+
+input[type="checkbox"].sheet-mercenarydeath-max:checked ~ input[type="checkbox"].sheet-mercenarydeath-box +span {
+	opacity:0.5;
+	background-color: #b8c6db;
+	background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+	border-color: #b8c6db;
 }
