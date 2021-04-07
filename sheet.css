@@ -1696,7 +1696,7 @@ div.sheet-moves-own {
 .repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title,
 .repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-title  {
 	display: grid;
-	grid-template-columns: 26.4px max-content 18px 18px 18px;
+	grid-template-columns: 26.4px max-content 18px 18px 18px 18px;
 	gap: 5px;
 	align-items: center;
 }
@@ -1787,7 +1787,9 @@ div.sheet-moves-own {
 }
 
 .repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title button.sheet-optional-move,
-.repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-title button.sheet-optional-move {
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title .sheet-checkablecheck,
+.repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-title button.sheet-optional-move,
+.repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-title .sheet-checkablecheck {
 	display: none;
 }
 .repcontainer[data-groupname=repeating_moves] .repitem .sheet-hidden,
@@ -1811,6 +1813,11 @@ div.sheet-moves-own {
 	cursor: pointer;
 	border: none;
 	background-color: transparent;
+}
+
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title input.sheet-show-checkable:checked ~ .sheet-checkablecheck,
+.repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-title input.sheet-show-checkable:checked ~ .sheet-checkablecheck {
+	display: block;
 }
 
 .sheet-moves button.sheet-expand-move > span.sheet-expanded,
