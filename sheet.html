@@ -8155,14 +8155,15 @@
         })
     }) 
 
-    on("change:repeating_moves:movename_base", function() {
-        getAttrs(["repeating_moves_movename_base"], function(values) {
+    on("change:repeating_moves:movename_base change:repeating_moves:inscribedtext", function() {
+        getAttrs(["repeating_moves_movename_base", "repeating_moves_inscribedtext"], function(values) {
+            var inscribedtext = values.repeating_moves_inscribedtext && values.repeating_moves_inscribedtext.trim()
             setAttrs({
-                repeating_moves_move_name: values.repeating_moves_movename_base
+                repeating_moves_move_name: `${values.repeating_moves_movename_base}${inscribedtext ? ` (${inscribedtext})` : ''}`
             });
         });
     });
-
+    
     on("change:repeating_moves:movestat_name", function() {
         getAttrs(["repeating_moves_movestat_name"], function(values) {
             setAttrs({
