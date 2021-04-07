@@ -414,6 +414,7 @@
                 <div class='cyborgdishonour fortune-container cyborg-additional'>
                   <span class='cyborgdishonour-lbl'>Бечестье</span>
                   <input type="checkbox" class="cyborgdishonour-box cyborgdishonour-box0" name="attr_cyborgdishonour" value="0" checked="checked">
+                  <input type="checkbox" class ="cyborgdishonour-max" name="attr_cyborgdishonour_max" value="0">
                   <input type="checkbox" class="cyborgdishonour-box cyborgdishonour-box1" name="attr_cyborgdishonour" value="1"><span class="cyborgdishonour-box1"></span>
                   <input type="checkbox" class ="cyborgdishonour-max" name="attr_cyborgdishonour_max" value="1">
                   <input type="checkbox" class="cyborgdishonour-box cyborgdishonour-box2" name="attr_cyborgdishonour" value="2"><span class="cyborgdishonour-box2"></span>
@@ -446,14 +447,6 @@
                   <input type="checkbox" class ="courierdanger-max" name="attr_courierdanger_max" value="6">
                   <button type="action" class="addcourierdangerbutton" name='act_addmaxcourierdanger'>&</button>
                   <button type="action" class="sbstrctcourierdangerbutton" name='act_subtractmaxcourierdanger'>_</button>
-                </div>
-
-                <input type="checkbox" class="is-mercenary-death-flag" name="attr_isMervenaryDeath">
-                <div class='mercenarydeath fortune-container mercenary-additional'>
-                  <span class='mercenarydeath-lbl'>Смерть</span>
-                  <input type="checkbox" class="mercenarydeath-box mercenarydeath-box0" name="attr_mercenarydeath" value="0" checked="checked">
-                  <input type="checkbox" class="mercenarydeath-box mercenarydeath-box1" name="attr_mercenarydeath" value="1"><span class="mercenarydeath-box1"></span>
-                  <input type="checkbox" class ="mercenarydeath-max" name="attr_mercenarydeath_max" value="1" checked>
                 </div>
 
                 <input type="checkbox" class="is-stranger-fvr-flag" name="attr_isStrangerFavor">
@@ -2684,57 +2677,51 @@
     </div>
 
     <div class="page page4">
+        <label></label>
+        <label><input type="checkbox" name="attr_isManofsteelArmor"> Броненосец: Экзоскелет</label>
+        <label><input type="checkbox" name="attr_isDigitaldaoOverload"> Дао Цифры: Перегрузка</label>
+        <label><input type="checkbox" name="attr_isJuggernautAdrenaline"> Джаггернаут: Адреналин</label>
+        <label><input type="checkbox" name="attr_isJuggernautHandicraft"> Джагернаут: Ремесло</label>
+        <label><input type="checkbox" name="attr_isEngineerProbe"> Инженер: Зонд</label>
         <label><input type="checkbox" name="attr_isCyborgBackground"> Киборг: Происхождение</label>
         <label><input type="checkbox" name="attr_isCyborgPath"> Киборг: Путь</label>
         <label><input type="checkbox" name="attr_isCyborgDishonor"> Киборг: Бесчестье</label>
         <label><input type="checkbox" name="attr_isCyborgImplants"> Киборг: Импланты</label>
-
-        <label><input type="checkbox" name="attr_isCourierDanger"> Курьер: Опасность</label>
         <label><input type="checkbox" name="attr_isKinetickGravitygene"> Кинетик: Гравиген</label>
-        
-        <label><input type="checkbox" name="attr_isMervenaryDeath"> Наемник: Смерть</label>
-        <label><input type="checkbox" name="attr_isStrangerFavor"> Странник: Благосклонность</label>
-        <label><input type="checkbox" name="attr_isSupernovaImpro"> Супернова: Импровизация</label>
-        <label><input type="checkbox" name="attr_isJuggernautAdrenaline"> Джаггернаут: Адреналин</label>
-        <label><input type="checkbox" name="attr_isDigitaldaoOverload"> Дао Цифры: Перегрузка</label>
-        <label><input type="checkbox" name="attr_isEmissaryStatus"> Эмиссар: Статус</label>
+        <label><input type="checkbox" name="attr_isCourierDanger"> Курьер: Опасность</label>
         <label><input type="checkbox" name="attr_isRaelithFade"> Раэлит: Угасание</label>
-        
         <label><input type="checkbox" name="attr_isRaelithFunction"> Раэлит: Функция</label>
-
-        <label><input type="checkbox" name="attr_isShadowBackground"> Тень: Происхождение</label>
-
-        <label><input type="checkbox" name="attr_isJuggernautHandicraft"> Джагернаут: Ремесло</label>
-
         <label><input type="checkbox" name="attr_isStrangerSpec"> Странник: Специализация</label>
-
+        <label><input type="checkbox" name="attr_isStrangerFavor"> Странник: Благосклонность</label>
         <label><input type="checkbox" name="attr_isDaredevilTech"> Сорвиголова: Техника</label>
-
-        <label><input type="checkbox" name="attr_isEngineerProbe"> Инженер: Зонд</label>
-
-        <label><input type="checkbox" name="attr_isManofsteelArmor"> Броненосец: Экзоскелет</label>
-
+        <label><input type="checkbox" name="attr_isSupernovaImpro"> Супернова: Импровизация</label>       
+        <label><input type="checkbox" name="attr_isShadowBackground"> Тень: Происхождение</label>
+        <label><input type="checkbox" name="attr_isEmissaryStatus"> Эмиссар: Статус</label>
+        <label></label>
+        <label></label>
+        <label></label>
+        <label>Повышения. текст про потенциальные проблемы с производительностью roll20</label>
         <label><input type="checkbox" name="attr_filter-noble"> Повышения: Аристократ</label>
+        <label><input type="checkbox" name="attr_filter-manofsteel"> Повышения: Броненосец</label>
+        <label><input type="checkbox" name="attr_filter-digitaldao"> Повышения: Дао Цифры</label>
+        <label><input type="checkbox" name="attr_filter-juggernaut"> Повышения: Джаггернаут</label>
+        <label><input type="checkbox" name="attr_filter-doctor"> Повышения: Доктор</label>
+        <label><input type="checkbox" name="attr_filter-engineer"> Повышения: Инженер</label>
         <label><input type="checkbox" name="attr_filter-cyborg"> Повышения: Киборг</label>
+        <label><input type="checkbox" name="attr_filter-kinetick"> Повышения: Кинетик</label>
         <label><input type="checkbox" name="attr_filter-companion"> Повышения: Компаньонка</label>
         <label><input type="checkbox" name="attr_filter-courier"> Повышения: Курьер</label>
         <label><input type="checkbox" name="attr_filter-mercenary"> Повышения: Наёмник</label>
-        <label><input type="checkbox" name="attr_filter-tactician"> Повышения: Тактик</label>
-        <label><input type="checkbox" name="attr_filter-daredevil"> Повышения: Сорвиголова</label>
-        <label><input type="checkbox" name="attr_filter-stranger"> Повышения: Странник</label>
-        <label><input type="checkbox" name="attr_filter-shadow"> Повышения: Тень</label>
-        <label><input type="checkbox" name="attr_filter-manofsteel"> Повышения: Броненосец</label>
         <label><input type="checkbox" name="attr_filter-bountyhunter"> Повышения: Охотник за головами</label>
-        <label><input type="checkbox" name="attr_filter-supernova"> Повышения: Сверхновая</label>
-        <label><input type="checkbox" name="attr_filter-cenzor"> Повышения: Цензор</label>
-        <label><input type="checkbox" name="attr_filter-engineer"> Повышения: Инженер</label>
-        <label><input type="checkbox" name="attr_filter-doctor"> Повышения: Доктор</label>
-        <label><input type="checkbox" name="attr_filter-juggernaut"> Повышения: Джаггернаут</label>
-        <label><input type="checkbox" name="attr_filter-kinetick"> Повышения: Кинетик</label>
-        <label><input type="checkbox" name="attr_filter-digitaldao"> Повышения: Дао Цифры</label>
-        <label><input type="checkbox" name="attr_filter-emissary"> Повышения: Эмиссар</label>
         <label><input type="checkbox" name="attr_filter-psychomant"> Повышения: Психомант</label>
         <label><input type="checkbox" name="attr_filter-raelith"> Повышения: Раэлит</label>
+        <label><input type="checkbox" name="attr_filter-supernova"> Повышения: Сверхновая</label>
+        <label><input type="checkbox" name="attr_filter-daredevil"> Повышения: Сорвиголова</label>
+        <label><input type="checkbox" name="attr_filter-stranger"> Повышения: Странник</label>
+        <label><input type="checkbox" name="attr_filter-tactician"> Повышения: Тактик</label>
+        <label><input type="checkbox" name="attr_filter-shadow"> Повышения: Тень</label>
+        <label><input type="checkbox" name="attr_filter-cenzor"> Повышения: Цензор</label>
+        <label><input type="checkbox" name="attr_filter-emissary"> Повышения: Эмиссар</label>
     </div>
 </div>
 
