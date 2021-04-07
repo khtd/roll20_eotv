@@ -4,7 +4,7 @@
 <div class="container">
 
     <div class="header-container">
-        <img class="logo" src="https://github.com/khtd/roll20_eotv/blob/master/logo_black.png?raw=true">
+        <img class="logo" src="https://github.com/khtd/roll20_eotv/blob/master/logo.png?raw=true">
 
         <div class="name-container">
             <span class="name-label">Имя</span>
@@ -288,6 +288,11 @@
                 <div class='reputation attribute-container'>
                     <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Репутация}} {{doroll=[[1]]}} {{result=[[2d6 + (@{reputation})  + (@{bonus})[bonus]]]}} ">Репутация</button>
                     <input class='attribute-input' name='attr_reputation' type='number'>
+                </div>
+                <input type="checkbox" class="is-kinetick-gg-flag" name="attr_isKinetickGravitygene">
+                <div class='gravitygene additional-attribute-container'>
+                  <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Гравиген}} {{doroll=[[1]]}} {{result=[[2d6 + (@{gravitygene})  + (@{bonus})[bonus]]]}} ">Гравиген</button>
+                  <input class='attribute-input' name='attr_gravitygene' type='number'>
                 </div>
             </div>
 
@@ -2685,6 +2690,8 @@
         <label><input type="checkbox" name="attr_isCyborgImplants"> Киборг: Импланты</label>
 
         <label><input type="checkbox" name="attr_isCourierDanger"> Курьер: Опасность</label>
+        <label><input type="checkbox" name="attr_isKinetickGravitygene"> Кинетик: Гравиген</label>
+        
         <label><input type="checkbox" name="attr_isMervenaryDeath"> Наемник: Смерть</label>
         <label><input type="checkbox" name="attr_isStrangerFavor"> Странник: Благосклонность</label>
         <label><input type="checkbox" name="attr_isSupernovaImpro"> Супернова: Импровизация</label>
@@ -7487,6 +7494,7 @@
             isCyborgPath: 0,
             isCyborgImplants: 0,
             isCyborgDishonor: 0,
+            isKinetickGravitygene: 0,
             isCourierDanger: 0,
             isMervenaryDeath: 0,
             isStrangerFavor: 0,
@@ -7627,7 +7635,7 @@
     })
     
     on("clicked:kinetick", () => {
-        setupClass('Kinetick');
+      setAttrs({isKinetickGravitygene: 'on'}, undefined, () => setupClass("Kinetick"))  
     });
     
     on("clicked:digitaldao", () => {
@@ -8120,6 +8128,8 @@
         if (statname == "Навык") return "(@{skill})[skill]";
         if (statname == "Репутация") return "(@{reputation})[reputation]";
         if (statname == "Благосостояние") return "(@{money})[money]";
+        if (statname == "Благосклонность") return "(@{strangerfavor})[strangerfavor]";
+        if (statname == "Гравиген") return "(@{gravitygene})[gravitygene]";
         if (statname == "?") return "@{statmod_query}";
         if (statname == "Связь") return "@{bond_query}";
         return "0[no stat]";
@@ -8285,18 +8295,6 @@
     /* MOVES SECTION END */
 
     /* MOVES-UPGRADE SECTION START */
-    var statnameToStatQuery = function(statname) {
-      if (statname == "--") return "0[no stat]";
-      if (statname == "Ярость") return "(@{furry})[furry]";
-      if (statname == "Контроль") return "(@{controll})[controll]";
-      if (statname == "Навык") return "(@{skill})[skill]";
-      if (statname == "Репутация") return "(@{reputation})[reputation]";
-      if (statname == "Благосостояние") return "(@{money})[money]";
-      if (statname == "?") return "@{statmod_query}";
-      if (statname == "Связь") return "@{bond_query}";
-      return "0[no stat]";
-    }
-
     on("change:repeating_moves-upgrade:expanddescriptionval", function() {
         getAttrs([
             "repeating_moves-upgrade_movetrigger",

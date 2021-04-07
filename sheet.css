@@ -618,6 +618,7 @@ button[type=roll].sheet-infoOutput::before {
 .sheet-is-cyborg-path-flag,
 .sheet-is-cyborg-imp-flag,
 .sheet-is-cyborg-dh-flag,
+.sheet-is-kinetick-gg-flag,
 .sheet-is-daredevil-tech-flag,
 .sheet-is-engineer-probe-flag,
 .sheet-is-manofsteel-armor-flag,
@@ -639,6 +640,7 @@ button[type=roll].sheet-infoOutput::before {
 .sheet-is-cyborg-bg-flag:checked + .sheet-cyborg-additional,
 .sheet-is-cyborg-path-flag:checked + .sheet-cyborg-additional,
 .sheet-is-cyborg-dh-flag:checked + .sheet-cyborg-additional,
+.sheet-is-kinetick-gg-flag:checked + .sheet-gravitygene,
 .sheet-is-shadow-bg-flag:checked + .sheet-shadow-additional,
 .sheet-is-stranger-spec-flag:checked + .sheet-stranger-additional,
 .sheet-is-juggernaut-craft-flag:checked + .sheet-juggernaut-additional,
@@ -657,6 +659,7 @@ button[type=roll].sheet-infoOutput::before {
 .sheet-is-cyborg-bg-flag:not(:checked) + .sheet-cyborg-additional,
 .sheet-is-cyborg-path-flag:not(:checked) + .sheet-cyborg-additional,
 .sheet-is-cyborg-dh-flag:not(:checked) + .sheet-cyborg-additional,
+.sheet-is-kinetick-gg-flag:not(:checked) + .sheet-gravitygene,
 .sheet-is-shadow-bg-flag:not(:checked) + .sheet-shadow-additional,
 .sheet-is-stranger-spec-flag:not(:checked) + .sheet-stranger-additional,
 .sheet-is-juggernaut-craft-flag:not(:checked) + .sheet-juggernaut-additional,
@@ -867,15 +870,18 @@ input.sheet-expand-hidden:checked + div > button.sheet-expand-look  > span.sheet
 	row-gap: 3px;
 	height: min-content;
 }
-
-.sheet-attributes .sheet-main-attributes .sheet-attribute-container {
-	display: grid;
+.sheet-attributes .sheet-main-attributes .sheet-attribute-container,
+.sheet-attributes .sheet-main-attributes .sheet-additional-attribute-container {
 	grid-template-columns: 75px 35px;
 	grid-template-rows: 5px 25px 5px;
 	grid-gap: 0px;
 	background-color: white;
 	color: #fff;
 }
+.sheet-attributes .sheet-main-attributes .sheet-attribute-container {
+	display: grid;
+}
+
 
 .sheet-attribute-input {
 	grid-column-start: 2;
