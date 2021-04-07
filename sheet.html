@@ -4,7 +4,7 @@
 <div class="container">
 
     <div class="header-container">
-        <img class="logo" src="https://github.com/khtd/roll20_eotv/blob/master/EotV_Logotype_3.png?raw=true">
+        <img class="logo" src="https://github.com/khtd/roll20_eotv/blob/master/logo_black.png?raw=true">
 
         <div class="name-container">
             <span class="name-label">Имя</span>
@@ -634,6 +634,7 @@
                         <input type="checkbox" class="expand-hidden expand-description" name="attr_expanddescriptionval" value="1" title="Details"  />
                         <input type="checkbox" class="expand-hidden expand-settings" name="attr_expandsettingsval" value="1" title="Settings"/>
                         <input type="checkbox" class="expand-hidden expand-optional" name="attr_expandoptionalval" value="1" title="Optional"/>
+                        <input type="checkbox" class="expand-hidden expand-inscribe" name="attr_expandinscribeval" value="1" title="Inscribe"/>
 
                         <div class='move-title'>
                             <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=@{movename_base}}} {{trigger=@{movetrigger}}} {{success=@{movesuccess}}} {{partial=@{movepartial}}} {{miss=@{movemiss}}} {{doroll=[[@{move_doroll}]]}} {{result=[[2d6 + @{movestat} + (@{bonus})[bonus]]]}} {{details=@{movedetails}}} {{opt1=[[@{opt1}]]}}  {{opt1name=@{opt1name}}} {{opt1details=@{opt1details}}} {{opt2=[[@{opt2}]]}}  {{opt2name=@{opt2name}}} {{opt2details=@{opt2details}}} {{opt3=[[@{opt3}]]}}  {{opt3name=@{opt3name}}} {{opt3details=@{opt3details}}} {{opt4=[[@{opt4}]]}}  {{opt4name=@{opt4name}}} {{opt4details=@{opt4details}}} {{opt5=[[@{opt5}]]}}  {{opt5name=@{opt5name}}} {{opt5details=@{opt5details}}} {{opt6=[[@{opt6}]]}}  {{opt6name=@{opt6name}}} {{opt6details=@{opt6details}}}">
@@ -652,6 +653,11 @@
                             <button type='action' name='act_expandoptional'  class='optional-move'>
                                 <span class='open'>l</span>
                                 <span class='close'>l</span>
+                            </button>
+                            <input type="checkbox" class="expand-hidden show-expand-inscribe" name="attr_inscribe" value="1">
+                            <button type='action' name='act_expandinscribe'  class='inscribe-move'>
+                                <span class='open'>W</span>
+                                <span class='close'>W</span>
                             </button>
                             <input type="checkbox" class="expand-hidden show-checkable" name="attr_checkable">
                             <input type="checkbox" class="checkablecheck" name="attr_checkable-check">
@@ -806,6 +812,10 @@
                                 <span class='name' name="attr_opt10name"></span>:
                                 <span class='detail' name="attr_opt10details"></span>
                             </div>
+                        </div>
+
+                        <div class='move-inscribe'>
+                          <input type="text" name="attr_inscribedtext"/>
                         </div>
                     </div>
                 </fieldset>
@@ -5077,7 +5087,7 @@
           movename_base: 'Отмщение',
           move_doroll: '0',
           movedetails: 'Если ты уличаешь кого-то в обмане или предательстве, впиши его имя (не более 1 человека одновременно). Ты получаешь +1 против него, пока он не искупит вину, или ты не почувствуешь себя отмщённым',
-          inscribe: true,
+          inscribe: 'on',
         },
         {
           movename_base: 'Мировой',
@@ -5778,7 +5788,7 @@
           movename_base: 'Специализация',
           move_doroll: '0',
           movedetails: `Когда ты берёшь этот ход, выбери характеристику. Впиши её. Получи к ней +1, и её предел увеличивается до +3. Когда ты проверяешь эту характеристику и получаешь 12+, ты добиваешься выдающихся результатов.`,
-          inscribe: true,
+          inscribe: 'on',
         },
         {
           movename_base: 'Усиленные сенсоры',
@@ -6370,7 +6380,7 @@
           movename_base: 'В неоплатном долгу',
           move_doroll: '0',
           movedetails: `Когда ты вытаскиваешь персонажа с того света, впиши его имя. Когда придет время, вычеркни его и скажи, что он должен сделать. Он не может отказаться. Одновременно у тебя может быть только один должник.`,
-          inscribe: true,
+          inscribe: 'on',
         },
         {
           movename_base: 'Жизненно важные органы',
@@ -7381,7 +7391,7 @@
           movename_base: 'Сверхчеловек',
           move_doroll: '0',
           movedetails: `Взяв этот ход, выбери характеристику. Ты можешь потратить 1 Пневму, чтобы увеличить результат её проверки на одну категорию. Получив 12+, ты добиваешься экстраординарных результатов.`,
-          inscribe: true,
+          inscribe: 'on',
         },
         {
           movename_base: 'Убеждённость',
@@ -8161,7 +8171,7 @@
         });
     });
 
-    const moveButtons = ["expanddescription", "expandsettings", "expandoptional"]
+    const moveButtons = ["expanddescription", "expandsettings", "expandoptional", "expandinscribe"]
 
     moveButtons.forEach(b => {
         on(`clicked:repeating_moves:${b}`, () => {

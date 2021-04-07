@@ -1788,6 +1788,7 @@ div.sheet-moves-own {
 
 .repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title button.sheet-optional-move,
 .repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title .sheet-checkablecheck,
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title button.sheet-inscribe-move,
 .repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-title button.sheet-optional-move,
 .repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-title .sheet-checkablecheck {
 	display: none;
@@ -1800,6 +1801,7 @@ div.sheet-moves-own {
 .repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title button.sheet-expand-move,
 .repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title button.sheet-change-move,
 .repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title input.sheet-show-expand-optional:checked ~ button.sheet-optional-move,
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-title input.sheet-show-expand-inscribe:checked ~ button.sheet-inscribe-move,
 .repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-title button.sheet-expand-move,
 .repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-title button.sheet-change-move,
 .repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-title input.sheet-show-expand-optional:checked ~ button.sheet-optional-move {
@@ -1831,6 +1833,8 @@ div.sheet-moves-own {
 .sheet-moves button.sheet-change-move > span.sheet-change,
 .sheet-moves button.sheet-optional-move > span.sheet-open,
 .sheet-moves button.sheet-optional-move > span.sheet-close,
+.sheet-moves button.sheet-inscribe-move > span.sheet-open,
+.sheet-moves button.sheet-inscribe-move > span.sheet-close,
 .sheet-moves-upgrade button.sheet-change-move > span.sheet-save,
 .sheet-moves-upgrade button.sheet-change-move > span.sheet-change,
 .sheet-moves-upgrade button.sheet-optional-move > span.sheet-open,
@@ -1856,10 +1860,12 @@ div.sheet-moves-own {
   display: none;
 }
 .sheet-moves input.sheet-expand-optional:not(:checked) ~ div > button.sheet-optional-move  > span.sheet-close,
+.sheet-moves input.sheet-expand-inscribe:not(:checked) ~ div > button.sheet-inscribe-move  > span.sheet-close,
 .sheet-moves-upgrade input.sheet-expand-optional:not(:checked) ~ div > button.sheet-optional-move  > span.sheet-close {
   display: none;
 }
 .sheet-moves input.sheet-expand-optional:checked ~ div > button.sheet-optional-move  > span.sheet-open,
+.sheet-moves input.sheet-expand-inscribe:checked ~ div > button.sheet-inscribe-move  > span.sheet-open,
 .sheet-moves-upgrade input.sheet-expand-optional:checked ~ div > button.sheet-optional-move  > span.sheet-open {
   display: none;
 }
@@ -1892,11 +1898,13 @@ div.sheet-moves-own {
 }
 
 .sheet-moves .sheet-move-optional,
+.sheet-moves .sheet-move-inscribe,
 .sheet-moves-upgrade .sheet-move-optional {
 	display: none;
 }
 
 .sheet-moves input.sheet-expand-optional:checked ~ .sheet-move-optional,
+.sheet-moves input.sheet-expand-inscribe:checked ~ .sheet-move-inscribe,
 .sheet-moves-upgrade input.sheet-expand-optional:checked ~ .sheet-move-optional {
 	display: block;
 }
@@ -1921,6 +1929,7 @@ div.sheet-moves-own {
 }
 
 .repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-expansion-optional input.sheet-show-expand-optional:not(:checked) ~ div,
+.repcontainer[data-groupname=repeating_moves] .repitem .sheet-move-expansion-optional input.sheet-show-expand-inscribe:not(:checked) ~ div,
 .repcontainer[data-groupname=repeating_moves-upgrade] .repitem .sheet-move-expansion-optional input.sheet-show-expand-optional:not(:checked) ~ div {
 	display: none;
 }
