@@ -2695,7 +2695,6 @@
 
         <label><input type="checkbox" name="attr_isManofsteelArmor"> Броненосец: Экзоскелет</label>
 
-        <label><input type="checkbox" name="attr_filter-all"> Повышения: Все</label>
         <label><input type="checkbox" name="attr_filter-noble"> Повышения: Аристократ</label>
         <label><input type="checkbox" name="attr_filter-cyborg"> Повышения: Киборг</label>
         <label><input type="checkbox" name="attr_filter-companion"> Повышения: Компаньонка</label>
@@ -3184,7 +3183,7 @@
 </div>
 </rolltemplate>
 <!-- type="text/worker" -->
-<script>
+<script type="text/worker">
     var classNames = {
         Noble: 'Аристократ',
         Cyborg: 'Киборг',
@@ -3816,7 +3815,9 @@
         hp_max: 5,
         gear_max: 2,
         money_max: 2,
-        wealth_max: 0
+        wealth_max: 0,
+        cyborgdishonour: 0,
+        cyborgdishonour_max: 5
       },
       Companion: {
         atack_max: 1,
@@ -7799,11 +7800,7 @@
         gear.startgear_note_text = startGear[classname].note_text
         gear.startgear_choose_text = startGear[classname].choose_text
         var movesdata =  addRepeatingInfo(moves[classname].filter(m => m.type=='start'), 'moves')
-        const upMoves = []
-        Object.keys(moves).forEach(c => upMoves.push(...moves[c].filter(m => c !== classname || m.type !== 'start').map(el => ({...el, moveclass: c}))))
-        var movesUpgradedata = {}
-        if(upMoves.length > 0) movesUpgradedata = addRepeatingInfo(upMoves, 'moves-upgrade') 
-        setAttrs({...update, ...backgroundUpdate, ...attr, ...gear, ...movesdata, ...movesUpgradedata});
+        setAttrs({...update, ...backgroundUpdate, ...attr, ...gear, ...movesdata});
     };
 
     on("clicked:expand_look", function() {
@@ -8403,4 +8400,317 @@
         });
     });
     /* STARTGEAR SECTION END */
+
+  on('change:filter-noble', (e) => {
+    console.log(e)
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Noble.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Noble'})), 'moves-upgrade')
+      console.log(movesUpgradedata)
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        console.log(idarray)
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Noble').map(v => v.slice(0, -10))
+          console.log(toDrop)
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+  on('change:filter-noble', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Noble.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Noble'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Noble').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+on('change:filter-cyborg', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Cyborg.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Cyborg'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Cyborg').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+on('change:filter-companion', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Companion.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Companion'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Companion').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+on('change:filter-courier', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Courier.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Courier'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Courier').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+on('change:filter-mercenary', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Mercenary.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Mercenary'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Mercenary').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+on('change:filter-tactician', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Tactician.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Tactician'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Tactician').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+on('change:filter-daredevil', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Daredevil.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Daredevil'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Daredevil').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+on('change:filter-stranger', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Stranger.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Stranger'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Stranger').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+on('change:filter-shadow', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Shadow.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Shadow'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Shadow').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+on('change:filter-manofsteel', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Manofsteel.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Manofsteel'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Manofsteel').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+on('change:filter-bountyhunter', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Bountyhunter.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Bountyhunter'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Bountyhunter').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+on('change:filter-supernova', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Supernova.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Supernova'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Supernova').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+on('change:filter-cenzor', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Cenzor.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Cenzor'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Cenzor').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+on('change:filter-engineer', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Engineer.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Engineer'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Engineer').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+on('change:filter-doctor', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Doctor.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Doctor'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Doctor').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+on('change:filter-juggernaut', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Juggernaut.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Juggernaut'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Juggernaut').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+on('change:filter-kinetick', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Kinetick.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Kinetick'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Kinetick').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+on('change:filter-digitaldao', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Digitaldao.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Digitaldao'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Digitaldao').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+on('change:filter-emissary', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Emissary.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Emissary'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Emissary').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+on('change:filter-psychomant', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Psychomant.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Psychomant'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Psychomant').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+on('change:filter-raelith', (e) => {
+    if(e.newValue == 'on') {
+      const movesUpgradedata = addRepeatingInfo(moves.Raelith.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Raelith'})), 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'Raelith').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
 </script>
