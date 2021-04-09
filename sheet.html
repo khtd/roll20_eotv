@@ -1960,6 +1960,14 @@
                       </p>
                     </div>
                   </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox" name="attr_daredevilCheckbox25">
+                      <p>
+                        <b>Шагающий дрон (Пограничье):</b> Пассажир +1, Груз +2, Защита 2, выбери еще 1 оружие
+                      </p>
+                    </div>
+                  </li>
                 </ul>
             </div>
             <div class="daredevil__armament grid-article-item">
@@ -2550,6 +2558,14 @@
                       <input type="checkbox" name="attr_manofsteelCheckbox14">
                       <p>
                         <b>Штурмовик:</b> Защита 3, орудия 4, системы 1, манипуляторы отсутствуют.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="non-typed-list-item">
+                    <div class="cyborg__input-block">
+                      <input type="checkbox" name="attr_manofsteelCheckbox30">
+                      <p>
+                        <b>Погрузчик (Клоака):</b> Защита 2, оружие 2, системы 3, вместительный грузовой трюм. При использовании сервопривода выбери 1 даже на 6—.
                       </p>
                     </div>
                   </li>
@@ -3726,7 +3742,7 @@
                 },
                 {
                     button: 'Висдегри',
-                    text: 'У тебя есть личный транспорт. Выбери 2: скоростной (+1, когда скорость имеет значение), герметичный (работает в вакууме и под водой), двухместный (+1 пассажир) или грузовой (огромный багажник). Реши, что это.'
+                    text: 'У тебя есть личный транспорт. Выбери 2: скоростной (+1, когда скорость имеет значение), герметичный (работает в вакууме и под водой), двухместный (+1 пассажир) или грузовой (огромный багажник). Реши, что это и впиши в снаряжение.'
                 },
                 {
                     button: 'Юнити',
@@ -4439,7 +4455,7 @@
             type: "item",
             name: "Визуальный анализатор",
             details:
-              "Потрать 1 Припас, когда смотришь через эти «очки» на подозреваемого — если он в розыске, ты получишь его имя, персональные данные и заведённые дела;□",
+              "Потрать 1 Припас, когда смотришь через эти «очки» на подозреваемого — если он в розыске, ты получишь его имя, персональные данные и заведённые дела;",
           },
           {
             type: "item",
@@ -5378,6 +5394,9 @@
 • Разрядник (средняя, двуручное, шок)
 • Револьвер (средняя, мощное, бронебойное, отдача)
 • Штурмовая винтовка (средняя, авто, двуручное)
+Если ты родом из Империи, тебе доступны еще:
+• Ионный излучатель (средняя, бронебойное, точное, двуручное)
+• Плазменная, винтовка (средняя, игнорирует щиты, авто, двуручное)
 Выбери 2 аксессуара:
 • Глушитель (бесшумное)
 • Крупный калибр (кровавый, мощный)
@@ -5481,13 +5500,25 @@
           type: 'start',
           movename_base: 'Тактика',
           move_doroll: '0',
-          movedetails: `В начале боя ты можешь выбрать одну тактику из списка:
-• Агрессивная: Получи +1, атакуя, но —1, игнорируя угрозу.
-• Выжидательная Добавь в ход Сражаешься вариант: «Не наноси Урон, но твоя следующая проверка будет 10+»
-• Обманная: В первый раз ты не наносишь противнику урон, зато он наносит урон самому себе, а не тебе. Объясни, что произошло.
-• Оборонительная: Ты получаешь Защиту 2, но -1 к Урону.
-• Разведка боем: Когда ты успешно атакуешь, задай Ведущему один вопрос из списка хода Ориентируешься.
-• Штурмовая: Твой Урон и Урон по тебе получают +1.`,
+          movedetails: `В начале боя ты можешь выбрать одну тактику из списка:`,
+          showopt1: "1",
+          opt1name: 'Агрессивная',
+          opt1details: 'Получи +1, атакуя, но —1, игнорируя угрозу.',
+          showopt2: "1",
+          opt2name: 'Выжидательная',
+          opt2details: 'Добавь в ход Сражаешься вариант: «Не наноси Урон, но твоя следующая проверка будет 10+»ю',
+          showopt3: "1",
+          opt3name: 'Обманная',
+          opt3details: 'В первый раз ты не наносишь противнику урон, зато он наносит урон самому себе, а не тебе. Объясни, что произошло.',
+          showopt4: "1",
+          opt4name: 'Оборонительная',
+          opt4details: 'Ты получаешь Защиту 2, но -1 к Урону.',
+          showopt5: "1",
+          opt5name: 'Разведка боем',
+          opt5details: 'Когда ты успешно атакуешь, задай Ведущему один вопрос из списка хода Ориентируешься.',
+          showopt6: "1",
+          opt6name: 'Штурмовая',
+          opt6details: 'Твой Урон и Урон по тебе получают +1.',
         },
         {
           type: 'start',
@@ -5762,9 +5793,15 @@
         {
           movename_base: 'Усиленная специализация',
           move_doroll: '0',
-          movedetails: `• Слышащий: Потратив Благосклонность, пройди проверку, прибавив количество оставшейся Благосклонности. На 10+ Благосклонность не тратится.
-• Оберегающий. После броска на урон можешь потратить 1 Благосклонность, чтобы нанести противнику 2 ранения, невзирая на его защиту.
-• Сохраняющий. Потрать 1 Благосклонность, чтобы за короткое время собрать устройство (которое встречается в продаже) из подручных материалов. Ведущий может накладывать на это ограничения.`,
+          showopt1: "1",
+          opt1name: 'Слышащий',
+          opt1details: 'Потратив Благосклонность, пройди проверку, прибавив количество оставшейся Благосклонности. На 10+ Благосклонность не тратится.',
+          showopt2: "1",
+          opt2name: 'Оберегающий',
+          opt2details: 'После броска на урон можешь потратить 1 Благосклонность, чтобы нанести противнику 2 ранения, невзирая на его защиту.',
+          showopt3: "1",
+          opt3name: 'Сохраняющий',
+          opt3details: 'Потрать 1 Благосклонность, чтобы за короткое время собрать устройство (которое встречается в продаже) из подручных материалов. Ведущий может накладывать на это ограничения.'
         },
       ],
       Shadow: [
@@ -8331,7 +8368,7 @@
             let text = ''
             for(let o of opts)  {
                 if(vals[`repeating_moves_${o}`]==="1") {
-                    text += `□ ${vals[`repeating_moves_${o}name`]}: ${vals[`repeating_moves_${o}details`]}
+                    text += `• ${vals[`repeating_moves_${o}name`]}: ${vals[`repeating_moves_${o}details`]}
 
 `
                 }
@@ -8356,7 +8393,6 @@
             "repeating_moves-upgrade_movedetails",
             "repeating_moves-upgrade_moveoptional"
         ], function(v) {
-            console.log(v)
             var text = ''
             if(v["repeating_moves-upgrade_movetrigger"]) text += `Когда: ${v["repeating_moves-upgrade_movetrigger"]}\r\n` 
             if(v["repeating_moves-upgrade_move_doroll"] == '1') {
@@ -8431,7 +8467,7 @@
             let text = ''
             for(let o of opts)  {
                 if(vals[`repeating_moves-upgrade_${o}`]==="1") {
-                    text += `□ ${vals[`repeating_moves-upgrade_${o}name`]}: ${vals[`repeating_moves-upgrade_${o}details`]}
+                    text += `• ${vals[`repeating_moves-upgrade_${o}name`]}: ${vals[`repeating_moves-upgrade_${o}details`]}
 
     `
                 }
@@ -8486,7 +8522,7 @@ on('change:filter-cyborg', (e) => {
     if(e.newValue == 'on') {
       let toAdd = moves.Cyborg.map(el => ({...el, moveclass: 'Cyborg'}))
       getAttrs(['comp_name'], values => {
-        if(values.comp_name == 'Cyborg') toAdd = toAdd.filter(m => m.type=='start')
+        if(values.comp_name == 'Cyborg') toAdd = toAdd.filter(m => m.type !=='start')
         const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
         setAttrs(movesUpgradedata)
       })
@@ -8504,7 +8540,7 @@ on('change:filter-companion', (e) => {
     if(e.newValue == 'on') {
       let toAdd = moves.Companion.map(el => ({...el, moveclass: 'Companion'}))
       getAttrs(['comp_name'], values => {
-        if(values.comp_name == 'Companion') toAdd = toAdd.filter(m => m.type=='start')
+        if(values.comp_name == 'Companion') toAdd = toAdd.filter(m => m.type !=='start')
         const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
         setAttrs(movesUpgradedata)
       })
@@ -8522,7 +8558,7 @@ on('change:filter-courier', (e) => {
     if(e.newValue == 'on') {
       let toAdd = moves.Courier.map(el => ({...el, moveclass: 'Courier'}))
       getAttrs(['comp_name'], values => {
-        if(values.comp_name == 'Courier') toAdd = toAdd.filter(m => m.type=='start')
+        if(values.comp_name == 'Courier') toAdd = toAdd.filter(m => m.type !=='start')
         const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
         setAttrs(movesUpgradedata)
       })
@@ -8540,7 +8576,7 @@ on('change:filter-mercenary', (e) => {
     if(e.newValue == 'on') {
       let toAdd = moves.Mercenary.map(el => ({...el, moveclass: 'Mercenary'}))
       getAttrs(['comp_name'], values => {
-        if(values.comp_name == 'Mercenary') toAdd = toAdd.filter(m => m.type=='start')
+        if(values.comp_name == 'Mercenary') toAdd = toAdd.filter(m => m.type !=='start')
         const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
         setAttrs(movesUpgradedata)
       })
@@ -8558,7 +8594,7 @@ on('change:filter-tactician', (e) => {
     if(e.newValue == 'on') {
       let toAdd = moves.Tactician.map(el => ({...el, moveclass: 'Tactician'}))
       getAttrs(['comp_name'], values => {
-        if(values.comp_name == 'Tactician') toAdd = toAdd.filter(m => m.type=='start')
+        if(values.comp_name == 'Tactician') toAdd = toAdd.filter(m => m.type !=='start')
         const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
         setAttrs(movesUpgradedata)
       })
@@ -8576,7 +8612,7 @@ on('change:filter-daredevil', (e) => {
     if(e.newValue == 'on') {
       let toAdd = moves.Daredevil.map(el => ({...el, moveclass: 'Daredevil'}))
       getAttrs(['comp_name'], values => {
-        if(values.comp_name == 'Daredevil') toAdd = toAdd.filter(m => m.type=='start')
+        if(values.comp_name == 'Daredevil') toAdd = toAdd.filter(m => m.type !=='start')
         const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
         setAttrs(movesUpgradedata)
       })
@@ -8594,7 +8630,7 @@ on('change:filter-stranger', (e) => {
     if(e.newValue == 'on') {
       let toAdd = moves.Stranger.map(el => ({...el, moveclass: 'Stranger'}))
       getAttrs(['comp_name'], values => {
-        if(values.comp_name == 'Stranger') toAdd = toAdd.filter(m => m.type=='start')
+        if(values.comp_name == 'Stranger') toAdd = toAdd.filter(m => m.type !=='start')
         const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
         setAttrs(movesUpgradedata)
       })
@@ -8612,7 +8648,7 @@ on('change:filter-shadow', (e) => {
     if(e.newValue == 'on') {
       let toAdd = moves.Shadow.map(el => ({...el, moveclass: 'Shadow'}))
       getAttrs(['comp_name'], values => {
-        if(values.comp_name == 'Shadow') toAdd = toAdd.filter(m => m.type=='start')
+        if(values.comp_name == 'Shadow') toAdd = toAdd.filter(m => m.type !=='start')
         const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
         setAttrs(movesUpgradedata)
       })
@@ -8630,7 +8666,7 @@ on('change:filter-manofsteel', (e) => {
     if(e.newValue == 'on') {
       let toAdd = moves.Manofsteel.map(el => ({...el, moveclass: 'Manofsteel'}))
       getAttrs(['comp_name'], values => {
-        if(values.comp_name == 'Manofsteel') toAdd = toAdd.filter(m => m.type=='start')
+        if(values.comp_name == 'Manofsteel') toAdd = toAdd.filter(m => m.type !=='start')
         const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
         setAttrs(movesUpgradedata)
       })
@@ -8648,7 +8684,7 @@ on('change:filter-bountyhunter', (e) => {
     if(e.newValue == 'on') {
       let toAdd = moves.Bountyhunter.map(el => ({...el, moveclass: 'Bountyhunter'}))
       getAttrs(['comp_name'], values => {
-        if(values.comp_name == 'Bountyhunter') toAdd = toAdd.filter(m => m.type=='start')
+        if(values.comp_name == 'Bountyhunter') toAdd = toAdd.filter(m => m.type !=='start')
         const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
         setAttrs(movesUpgradedata)
       })
@@ -8666,7 +8702,7 @@ on('change:filter-supernova', (e) => {
     if(e.newValue == 'on') {
       let toAdd = moves.Supernova.map(el => ({...el, moveclass: 'Supernova'}))
       getAttrs(['comp_name'], values => {
-        if(values.comp_name == 'Supernova') toAdd = toAdd.filter(m => m.type=='start')
+        if(values.comp_name == 'Supernova') toAdd = toAdd.filter(m => m.type !=='start')
         const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
         setAttrs(movesUpgradedata)
       })
@@ -8684,7 +8720,7 @@ on('change:filter-cenzor', (e) => {
     if(e.newValue == 'on') {
       let toAdd = moves.Cenzor.map(el => ({...el, moveclass: 'Cenzor'}))
       getAttrs(['comp_name'], values => {
-        if(values.comp_name == 'Cenzor') toAdd = toAdd.filter(m => m.type=='start')
+        if(values.comp_name == 'Cenzor') toAdd = toAdd.filter(m => m.type !=='start')
         const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
         setAttrs(movesUpgradedata)
       })
@@ -8702,7 +8738,7 @@ on('change:filter-engineer', (e) => {
     if(e.newValue == 'on') {
       let toAdd = moves.Engineer.map(el => ({...el, moveclass: 'Engineer'}))
       getAttrs(['comp_name'], values => {
-        if(values.comp_name == 'Engineer') toAdd = toAdd.filter(m => m.type=='start')
+        if(values.comp_name == 'Engineer') toAdd = toAdd.filter(m => m.type !=='start')
         const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
         setAttrs(movesUpgradedata)
       })
@@ -8720,7 +8756,7 @@ on('change:filter-doctor', (e) => {
     if(e.newValue == 'on') {
       let toAdd = moves.Doctor.map(el => ({...el, moveclass: 'Doctor'}))
       getAttrs(['comp_name'], values => {
-        if(values.comp_name == 'Doctor') toAdd = toAdd.filter(m => m.type=='start')
+        if(values.comp_name == 'Doctor') toAdd = toAdd.filter(m => m.type !=='start')
         const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
         setAttrs(movesUpgradedata)
       })
@@ -8738,7 +8774,7 @@ on('change:filter-juggernaut', (e) => {
     if(e.newValue == 'on') {
       let toAdd = moves.Juggernaut.map(el => ({...el, moveclass: 'Juggernaut'}))
       getAttrs(['comp_name'], values => {
-        if(values.comp_name == 'Juggernaut') toAdd = toAdd.filter(m => m.type=='start')
+        if(values.comp_name == 'Juggernaut') toAdd = toAdd.filter(m => m.type !=='start')
         const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
         setAttrs(movesUpgradedata)
       })
@@ -8786,7 +8822,7 @@ on('change:filter-kinetick', (e) => {
     if(e.newValue == 'on') {
       let toAdd = moves.Kinetick.map(el => ({...el, moveclass: 'Kinetick'}))
       getAttrs(['comp_name'], values => {
-        if(values.comp_name == 'Kinetick') toAdd = toAdd.filter(m => m.type=='start')
+        if(values.comp_name == 'Kinetick') toAdd = toAdd.filter(m => m.type !=='start')
         const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
         setAttrs(movesUpgradedata)
       })
@@ -8804,7 +8840,7 @@ on('change:filter-digitaldao', (e) => {
     if(e.newValue == 'on') {
       let toAdd = moves.DigitalDao.map(el => ({...el, moveclass: 'DigitalDao'}))
       getAttrs(['comp_name'], values => {
-        if(values.comp_name == 'DigitalDao') toAdd = toAdd.filter(m => m.type=='start')
+        if(values.comp_name == 'DigitalDao') toAdd = toAdd.filter(m => m.type !=='start')
         const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
         setAttrs(movesUpgradedata)
       })
@@ -8822,7 +8858,7 @@ on('change:filter-emissary', (e) => {
     if(e.newValue == 'on') {
       let toAdd = moves.Emissary.map(el => ({...el, moveclass: 'Emissary'}))
       getAttrs(['comp_name'], values => {
-        if(values.comp_name == 'Emissary') toAdd = toAdd.filter(m => m.type=='start')
+        if(values.comp_name == 'Emissary') toAdd = toAdd.filter(m => m.type !=='start')
         const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
         setAttrs(movesUpgradedata)
       })
@@ -8840,7 +8876,7 @@ on('change:filter-psychomant', (e) => {
     if(e.newValue == 'on') {
       let toAdd = moves.Psychomant.map(el => ({...el, moveclass: 'Psychomant'}))
       getAttrs(['comp_name'], values => {
-        if(values.comp_name == 'Psychomant') toAdd = toAdd.filter(m => m.type=='start')
+        if(values.comp_name == 'Psychomant') toAdd = toAdd.filter(m => m.type !=='start')
         const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
         setAttrs(movesUpgradedata)
       })
@@ -8858,7 +8894,7 @@ on('change:filter-raelith', (e) => {
     if(e.newValue == 'on') {
       let toAdd = moves.Raelith.map(el => ({...el, moveclass: 'Raelith'}))
       getAttrs(['comp_name'], values => {
-        if(values.comp_name == 'Raelith') toAdd = toAdd.filter(m => m.type=='start')
+        if(values.comp_name == 'Raelith') toAdd = toAdd.filter(m => m.type !=='start')
         const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
         setAttrs(movesUpgradedata)
       })
