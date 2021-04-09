@@ -883,21 +883,27 @@
                 <input type="checkbox" class="hidden" name="attr_filter-juggernaut">  
                 <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab16" value="Juggernaut" title="Juggernaut"/>
                 <span class="sheet-tab sheet-moves-tab16">Джаггернаут</span>
+                <input type="checkbox" class="hidden" name="attr_filter-jHunter">  
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab17" value="JuggernautHunter" title="JuggernautHunter"/>
+                <span class="sheet-tab sheet-moves-tab17">Джаггернаут: Охотник</span>
+                <input type="checkbox" class="hidden" name="attr_filter-jWarrior">  
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab18" value="JuggernautWarrior" title="JuggernautWarrior"/>
+                <span class="sheet-tab sheet-moves-tab18">Джаггернаут: Воин</span>
                 <input type="checkbox" class="hidden" name="attr_filter-kinetick">  
-                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab17" value="Kinetick" title="Kinetick"/>
-                <span class="sheet-tab sheet-moves-tab17">Кинетик</span>
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab19" value="Kinetick" title="Kinetick"/>
+                <span class="sheet-tab sheet-moves-tab19">Кинетик</span>
                 <input type="checkbox" class="hidden" name="attr_filter-digitaldao">  
-                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab18" value="DigitalDao" title="DigitalDao"/>
-                <span class="sheet-tab sheet-moves-tab18">Дао Цифры</span>
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab20" value="DigitalDao" title="DigitalDao"/>
+                <span class="sheet-tab sheet-moves-tab120">Дао Цифры</span>
                 <input type="checkbox" class="hidden" name="attr_filter-emissary">  
-                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab19" value="Emissary" title="Emissary"/>
-                <span class="sheet-tab sheet-moves-tab19">Эмиссар</span>
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab21" value="Emissary" title="Emissary"/>
+                <span class="sheet-tab sheet-moves-tab21">Эмиссар</span>
                 <input type="checkbox" class="hidden" name="attr_filter-psychomant"> 
-                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab20" value="Psychomant" title="Psychomant"/>
-                <span class="sheet-tab sheet-moves-tab20">Психомант</span>
+                <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab22" value="Psychomant" title="Psychomant"/>
+                <span class="sheet-tab sheet-moves-tab22">Психомант</span>
                 <input type="checkbox" class="hidden" name="attr_filter-raelith"> 
                 <input type="radio" name="attr_tab-moves" class="sheet-tab sheet-moves-tab21" value="Raelith" title="Raelith"/>
-                <span class="sheet-tab sheet-moves-tab21">Раэлит</span> 
+                <span class="sheet-tab sheet-moves-tab23">Раэлит</span> 
 
                 <div class="sheet-section-moves-upgrade-list">
                     <fieldset class="repeating_moves-upgrade">
@@ -918,11 +924,13 @@
                         <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab14" value="Engineer"/>
                         <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab15" value="Doctor"/>
                         <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab16" value="Juggernaut"/>
-                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab17" value="Kinetick"/>
-                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab18" value="DigitalDao"/>
-                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab19" value="Emissary"/>
-                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab20" value="Psychomant"/>
-                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab21" value="Raelith"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab17" value="JuggernautHunter"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab18" value="JuggernautWarrior"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab19" value="Kinetick"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab20" value="DigitalDao"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab21" value="Emissary"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab22" value="Psychomant"/>
+                        <input type="radio" name="attr_moveclass" class="sheet-hidden sheet-moves-tab23" value="Raelith"/>
 
                         <div class="sheet-move-filtered-box">
                             <input type="checkbox" class="expand-hidden expand-description" name="attr_expanddescriptionval" value="1" title="Details"  />
@@ -7791,19 +7799,29 @@
     });
 
     on('clicked:repeating_juggernautHandicraft:select', () => {
-        getAttrs(["repeating_juggernautHandicraft_button", "repeating_juggernautHandicraft_text"], (v) => {
-			setAttrs({
-                juggernautHandicrafttype: v.repeating_juggernautHandicraft_button,
-                juggernautHandicrafttext: v.repeating_juggernautHandicraft_text,
-                juggernautHandicraft_show_flag: 0
-			});
-		});
+      getAttrs(["repeating_juggernautHandicraft_button", "repeating_juggernautHandicraft_text"], (v) => {
+			  setAttrs({
+            juggernautHandicrafttype: v.repeating_juggernautHandicraft_button,
+            juggernautHandicrafttext: v.repeating_juggernautHandicraft_text,
+            juggernautHandicraft_show_flag: 0
+			  });
+		  });
     });
+
+    on('change:juggernautHandicrafttype', (v) => {
+      var update = {
+        "filter-jWarrior": 0,
+        "filter-jHunter": 0
+      }
+      if(v.newValue == "Воин") update['filter-jWarrior'] = "on"
+      if(v.newValue == "Охотник") update['filter-jHunter'] = "on"
+      setAttrs(update)
+    })
 
     on('clicked:repeating_juggernautHandicraft:setting', function() {
         getAttrs(["repeating_juggernautHandicraft_settingsshowflag"], (v) => {
             setAttrs({
-                repeating_juggernautHandicraft_settingsshowflag: v.repeating_juggernautHandicraft_settingsshowflag && v.repeating_juggernautHandicraft_settingsshowflag == '1' ? 0 : 1
+              repeating_juggernautHandicraft_settingsshowflag: v.repeating_juggernautHandicraft_settingsshowflag && v.repeating_juggernautHandicraft_settingsshowflag == '1' ? 0 : 1
             });
         });
     })
@@ -8729,6 +8747,36 @@ on('change:filter-juggernaut', (e) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
         getAttrs(attrToGet, values => {
           const toDrop = Object.keys(values).filter(key => values[key] == 'Juggernaut').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+  on('change:filter-jWarrior', (e) => {
+    if(e.newValue == 'on') {
+      let toAdd = moves.JuggernautWarrior.map(el => ({...el, moveclass: 'JuggernautWarrior'}))
+      const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'JuggernautWarrior').map(v => v.slice(0, -10))
+          toDrop.forEach(d => removeRepeatingRow( d ))
+        })
+      })
+    }
+  })
+  on('change:filter-jHunter', (e) => {
+    if(e.newValue == 'on') {
+      let toAdd = moves.JuggernautHunter.map(el => ({...el, moveclass: 'JuggernautHunter'}))
+      const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+      setAttrs(movesUpgradedata)
+    } else {
+      getSectionIDs('repeating_moves-upgrade', (idarray) => {
+        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
+        getAttrs(attrToGet, values => {
+          const toDrop = Object.keys(values).filter(key => values[key] == 'JuggernautHunter').map(v => v.slice(0, -10))
           toDrop.forEach(d => removeRepeatingRow( d ))
         })
       })

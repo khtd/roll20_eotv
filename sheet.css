@@ -1998,7 +1998,9 @@ input.sheet-moves-tab0:checked~.sheet-move-filtered-box,      /* Always display 
 .sheet-moves-tab18:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab18:checked~.sheet-move-filtered-box,
 .sheet-moves-tab19:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab19:checked~.sheet-move-filtered-box,
 .sheet-moves-tab20:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab20:checked~.sheet-move-filtered-box,
-.sheet-moves-tab21:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab21:checked~.sheet-move-filtered-box {
+.sheet-moves-tab21:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab21:checked~.sheet-move-filtered-box,
+.sheet-moves-tab22:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab22:checked~.sheet-move-filtered-box,
+.sheet-moves-tab23:checked~.sheet-section-moves-upgrade-list>fieldset.repeating_moves-upgrade+.repcontainer>.repitem input.sheet-moves-tab23:checked~.sheet-move-filtered-box {
 	display: block;
 	margin-bottom: 2px;
 } 
