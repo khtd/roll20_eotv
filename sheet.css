@@ -24,7 +24,7 @@ input:focus {
 	border-image-width:12px 12px 12px 12px;
 	border-image-outset:0px 0px 0px 0px;
 	border-image-repeat:stretch stretch;
-	border-image-source: url("https://github.com/khtd/roll20_eotv/blob/master/border2.jpg?raw=true");
+	border-image-source: url("https://github.com/khtd/roll20_eotv/blob/master/border.jpg?raw=true");
   padding: 20px;
   padding-left: 30px;
   padding-bottom: 30px;
@@ -2027,8 +2027,6 @@ input.sheet-moves-tab0:checked~.sheet-move-filtered-box,      /* Always display 
 /* rolltemplate info start */ 
 .sheet-rolltemplate-info .sheet-templateMain {
 	background:rgba(35, 31, 32);
-/* 	background-image: url("https://github.com/khtd/roll20_eotv/blob/master/space.jpg?raw=true");
-	background-position: bottom; */
 	border-radius: 2px;
 	margin-left: -10px;
 	display:-webkit-box;
@@ -2067,8 +2065,6 @@ input.sheet-moves-tab0:checked~.sheet-move-filtered-box,      /* Always display 
 .sheet-rolltemplate-move .sheet-rt-container ,
 .sheet-rolltemplate-harm .sheet-rt-container {
 	background-color: rgb(35, 31, 32);
-/* 	background-image: url("https://github.com/khtd/roll20_eotv/blob/master/space.jpg?raw=true");
-	background-position: bottom; */
 	border-radius: 2px;
 	margin-left: -10px;
 	display: flex;
