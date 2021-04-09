@@ -248,9 +248,15 @@ input[type="checkbox"].sheet-exp-box4 {
     height: 25px;
 }
 
-input[type="checkbox"].sheet-exp-box5 {
+input[type="number"].sheet-exp-box5 {
 	width: 45px;
     height: 45px;
+		background: white;
+    border-color: black;
+    border-width: 2px;
+    text-align: center;
+    border-radius: 0px;
+		font-size: x-large;
 }
 
 input[type="checkbox"].sheet-exp-box + span {
