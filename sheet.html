@@ -8430,8 +8430,12 @@
 
   on('change:filter-noble', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Noble.map(el => ({...el, moveclass: 'Noble'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.Noble.map(el => ({...el, moveclass: 'Noble'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'Noble') toAdd = toAdd.filter(m => m.type !=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
@@ -8444,8 +8448,12 @@
   })
 on('change:filter-cyborg', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Cyborg.map(el => ({...el, moveclass: 'Cyborg'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.Cyborg.map(el => ({...el, moveclass: 'Cyborg'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'Cyborg') toAdd = toAdd.filter(m => m.type=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
@@ -8458,8 +8466,12 @@ on('change:filter-cyborg', (e) => {
   })
 on('change:filter-companion', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Companion.map(el => ({...el, moveclass: 'Companion'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.Companion.map(el => ({...el, moveclass: 'Companion'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'Companion') toAdd = toAdd.filter(m => m.type=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
@@ -8472,8 +8484,12 @@ on('change:filter-companion', (e) => {
   })
 on('change:filter-courier', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Courier.map(el => ({...el, moveclass: 'Courier'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.Courier.map(el => ({...el, moveclass: 'Courier'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'Courier') toAdd = toAdd.filter(m => m.type=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
@@ -8486,8 +8502,12 @@ on('change:filter-courier', (e) => {
   })
 on('change:filter-mercenary', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Mercenary.map(el => ({...el, moveclass: 'Mercenary'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.Mercenary.map(el => ({...el, moveclass: 'Mercenary'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'Mercenary') toAdd = toAdd.filter(m => m.type=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
@@ -8500,8 +8520,12 @@ on('change:filter-mercenary', (e) => {
   })
 on('change:filter-tactician', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Tactician.map(el => ({...el, moveclass: 'Tactician'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.Tactician.map(el => ({...el, moveclass: 'Tactician'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'Tactician') toAdd = toAdd.filter(m => m.type=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
@@ -8514,8 +8538,12 @@ on('change:filter-tactician', (e) => {
   })
 on('change:filter-daredevil', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Daredevil.map(el => ({...el, moveclass: 'Daredevil'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.Daredevil.map(el => ({...el, moveclass: 'Daredevil'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'Daredevil') toAdd = toAdd.filter(m => m.type=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
@@ -8528,8 +8556,12 @@ on('change:filter-daredevil', (e) => {
   })
 on('change:filter-stranger', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Stranger.map(el => ({...el, moveclass: 'Stranger'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.Stranger.map(el => ({...el, moveclass: 'Stranger'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'Stranger') toAdd = toAdd.filter(m => m.type=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
@@ -8542,8 +8574,12 @@ on('change:filter-stranger', (e) => {
   })
 on('change:filter-shadow', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Shadow.map(el => ({...el, moveclass: 'Shadow'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.Shadow.map(el => ({...el, moveclass: 'Shadow'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'Shadow') toAdd = toAdd.filter(m => m.type=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
@@ -8556,8 +8592,12 @@ on('change:filter-shadow', (e) => {
   })
 on('change:filter-manofsteel', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Manofsteel.map(el => ({...el, moveclass: 'Manofsteel'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.Manofsteel.map(el => ({...el, moveclass: 'Manofsteel'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'Manofsteel') toAdd = toAdd.filter(m => m.type=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
@@ -8570,8 +8610,12 @@ on('change:filter-manofsteel', (e) => {
   })
 on('change:filter-bountyhunter', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Bountyhunter.map(el => ({...el, moveclass: 'Bountyhunter'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.Bountyhunter.map(el => ({...el, moveclass: 'Bountyhunter'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'Bountyhunter') toAdd = toAdd.filter(m => m.type=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
@@ -8584,8 +8628,12 @@ on('change:filter-bountyhunter', (e) => {
   })
 on('change:filter-supernova', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Supernova.map(el => ({...el, moveclass: 'Supernova'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.Supernova.map(el => ({...el, moveclass: 'Supernova'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'Supernova') toAdd = toAdd.filter(m => m.type=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
@@ -8598,8 +8646,12 @@ on('change:filter-supernova', (e) => {
   })
 on('change:filter-cenzor', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Cenzor.map(el => ({...el, moveclass: 'Cenzor'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.Cenzor.map(el => ({...el, moveclass: 'Cenzor'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'Cenzor') toAdd = toAdd.filter(m => m.type=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
@@ -8612,8 +8664,12 @@ on('change:filter-cenzor', (e) => {
   })
 on('change:filter-engineer', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Engineer.map(el => ({...el, moveclass: 'Engineer'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.Engineer.map(el => ({...el, moveclass: 'Engineer'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'Engineer') toAdd = toAdd.filter(m => m.type=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
@@ -8626,8 +8682,12 @@ on('change:filter-engineer', (e) => {
   })
 on('change:filter-doctor', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Doctor.map(el => ({...el, moveclass: 'Doctor'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.Doctor.map(el => ({...el, moveclass: 'Doctor'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'Doctor') toAdd = toAdd.filter(m => m.type=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
@@ -8640,8 +8700,12 @@ on('change:filter-doctor', (e) => {
   })
 on('change:filter-juggernaut', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Juggernaut.map(el => ({...el, moveclass: 'Juggernaut'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.Juggernaut.map(el => ({...el, moveclass: 'Juggernaut'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'Juggernaut') toAdd = toAdd.filter(m => m.type=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
@@ -8654,8 +8718,12 @@ on('change:filter-juggernaut', (e) => {
   })
 on('change:filter-kinetick', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Kinetick.map(el => ({...el, moveclass: 'Kinetick'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.Kinetick.map(el => ({...el, moveclass: 'Kinetick'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'Kinetick') toAdd = toAdd.filter(m => m.type=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
@@ -8668,8 +8736,12 @@ on('change:filter-kinetick', (e) => {
   })
 on('change:filter-digitaldao', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.DigitalDao.map(el => ({...el, moveclass: 'DigitalDao'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.DigitalDao.map(el => ({...el, moveclass: 'DigitalDao'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'DigitalDao') toAdd = toAdd.filter(m => m.type=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
@@ -8682,8 +8754,12 @@ on('change:filter-digitaldao', (e) => {
   })
 on('change:filter-emissary', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Emissary.map(el => ({...el, moveclass: 'Emissary'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.Emissary.map(el => ({...el, moveclass: 'Emissary'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'Emissary') toAdd = toAdd.filter(m => m.type=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
@@ -8696,8 +8772,12 @@ on('change:filter-emissary', (e) => {
   })
 on('change:filter-psychomant', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Psychomant.map(el => ({...el, moveclass: 'Psychomant'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.Psychomant.map(el => ({...el, moveclass: 'Psychomant'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'Psychomant') toAdd = toAdd.filter(m => m.type=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
@@ -8710,8 +8790,12 @@ on('change:filter-psychomant', (e) => {
   })
 on('change:filter-raelith', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Raelith.map(el => ({...el, moveclass: 'Raelith'})), 'moves-upgrade')
-      setAttrs(movesUpgradedata)
+      let toAdd = moves.Raelith.map(el => ({...el, moveclass: 'Raelith'}))
+      getAttrs(['comp_name'], values => {
+        if(values.comp_name == 'Raelith') toAdd = toAdd.filter(m => m.type=='start')
+        const movesUpgradedata = addRepeatingInfo(toAdd, 'moves-upgrade')
+        setAttrs(movesUpgradedata)
+      })
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
