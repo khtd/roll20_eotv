@@ -347,6 +347,9 @@ input.sheet-exp-box0 {
 .sheet-nav-button input[type=radio]:checked + span {
 	color: rgb(35, 31, 32);
 }
+.charsheet .sheet-nav-button:hover span {
+	color: rgb(35, 31, 32);
+}
 /* navigation end */
 
 /* pages common start */
@@ -811,6 +814,8 @@ input.sheet-expand-hidden:checked + div > button.sheet-expand-look  > span.sheet
 .sheet-start-gear button.sheet-toggle {
 	padding: 0;
 	padding-right: 1px;
+	padding-left: 1px;
+	padding-bottom: 2px;
   border: solid 1px #a8a8a8;
   cursor: pointer;
   width: 16px;
@@ -818,9 +823,18 @@ input.sheet-expand-hidden:checked + div > button.sheet-expand-look  > span.sheet
   border-radius: 3px;
   justify-content: center;
   align-items: center;
-	font-size: 30px;
+	font-size: 21px;
 	vertical-align: middle;
+	font-family: "Pictos";
 }
+.sheet-start-gear button.sheet-toggle span.sheet-added,
+.sheet-start-gear button.sheet-toggle:active span.sheet-checked {
+	display: none;
+}
+.sheet-start-gear button.sheet-toggle:active span.sheet-added {
+	display: inline;
+}
+
 /* .repcontainer[data-groupname="repeating_startgear"] > .repitem  {
 	line-height: 12px;
 } */
@@ -1605,7 +1619,8 @@ input[type="checkbox"].sheet-wealth-max:checked ~ input[type="checkbox"].sheet-w
 	padding: 2px 6px 2px 6px;
 }
 
-.sheet-moves-navigation .sheet-nav-moves-button input[type=radio]:checked + span {
+.sheet-moves-navigation .sheet-nav-moves-button input[type=radio]:checked + span,
+.sheet-moves-navigation .sheet-nav-moves-button:hover span {
 	color: rgb(35, 31, 32);
 }
 
