@@ -4440,31 +4440,31 @@
         choose_text: "Выбери один набор:",
         options: [
           {
-            type: "item",
+            type: "note",
             name: "",
             details:
               "Благосостояние 1, Припасы 2, плазменная винтовка (средняя, игнорирует щиты, авто), хамелеон (потрать 1 Припас; тебя нельзя увидеть, пока ты не совершаешь резких движений), одежда среднего класса, билет на лайнер до другой планеты, короткое прощальное письмо;",
           },
           {
-            type: "item",
+            type: "note",
             name: "",
             details:
               "Благосостояние 1, Припасы 1, кибер-протезы (+1 урона в упор, возможность медленно ломать неодушевлённые предметы) со встроенными лезвиями (в упор, бронебойное, скрытое), лохмотья, загадочное неработающее устройство;",
           },
           {
-            type: "item",
+            type: "note",
             name: "",
             details:
               "Благосостояние 2, Припасы 2, карманный лазер (ближняя, скрытый, штатский), дорогие безделушки (потрать 1 Припас и получи +1, когда Договариваешься), шикарная одежда, ID на неизвестного человека;",
           },
           {
-            type: "item",
+            type: "note",
             name: "",
             details:
               "Благосостояние 1, Припасы 1, наруч с лазерным генератором (в упор,/ближняя, точное), боевая броня (защита 2), вакуумные гранаты (потрать 1 Припас; урон 3, средняя, бесшумное), записка, написанная твоим почерком «Извини, мне надо это сделать»;",
           },
           {
-            type: "item",
+            type: "note",
             name: "",
             details:
               "Благосостояние 2, Припасы 2, пистолет (средняя, штатский), встроенная медсистема (потрать 1 Припас и излечи себе 1 некритическое ранение), непонятная документация, странная татуировка, шрам от смертельного ранения.",
@@ -8413,13 +8413,13 @@
             if(v.repeating_startgear_type == 'item') {
                 var newrowid = generateRowID();
                 var newItem = {}
-                newItem[`repeating_inventory_${newrowid}_inventory_simple`] = v.repeating_startgear_name;
-                newItem[`repeating_inventory_${newrowid}_inventory_details`] = v.repeating_startgear_details;
+                newItem[`repeating_inventory_${newrowid}_inventory_simple`] = v.repeating_startgear_name || '';
+                newItem[`repeating_inventory_${newrowid}_inventory_details`] = v.repeating_startgear_details || '';
                 setAttrs(newItem);
             } else {
                 getAttrs(['notes'], (vv) => {
                     setAttrs({
-                        notes: vv.notes += `\n${v.repeating_startgear_name}: ${v.repeating_startgear_details}`
+                        notes: vv.notes += `\n${v.repeating_startgear_name ? `${v.repeating_startgear_name}: ` : ''}${v.repeating_startgear_details}`
                     })
                 })
             }
