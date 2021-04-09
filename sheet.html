@@ -3830,7 +3830,25 @@
       powerprobe: 0,
       powerprobe_max: 18,
       powermanofsteel: 0,
-      powermanofsteel_max: 10
+      powermanofsteel_max: 10,
+      description: ' ',
+      backgroundtype: ' ',
+      backgroundtext: ' ',
+      cyborgPath_show_flag: 0,
+      cyborgPathtype: ' ',
+      cyborgPathtext: ' ',
+      strangerSpecializationtype: ' ',
+      strangerSpecializationtext: ' ',
+      strangerSpecialization_show_flag: 0,
+      juggernautHandicrafttype: ' ',
+      juggernautHandicrafttext: ' ',
+      juggernautHandicraft_show_flag: 0,
+      raelithFunctiontype: ' ',
+      raelithFunctiontext: ' ',
+      raelithFunction_show_flag: 0,
+      look_example: ' ',
+      character_class: ' ',
+      comp_name: ' ',
     }
 
     var startAttrs = {
@@ -7834,7 +7852,7 @@
         gear.startgear_note_text = startGear[classname].note_text
         gear.startgear_choose_text = startGear[classname].choose_text
         var movesdata =  addRepeatingInfo(moves[classname].filter(m => m.type=='start'), 'moves')
-        setAttrs({...update, ...backgroundUpdate, ...commonStartAttrs, ...attr, ...gear, ...movesdata});
+        setAttrs({...commonStartAttrs, ...update, ...backgroundUpdate, ...attr, ...gear, ...movesdata});
     };
 
     on("clicked:expand_look", function() {
