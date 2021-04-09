@@ -53,11 +53,10 @@
 
         <div class="roll-bonus">
             <div class="toggler">
-                <input type="text" name="attr_hold" value="+0" />
                 <label>
-                    <input type="checkbox" class="roll-query" name="attr_bonus" value="@{hold}"><span>К броску</span>
+                    <span>Фишки</span><input type="checkbox" class="roll-query" name="attr_bonus" value="@{hold}">
                 </label>
-
+                <input type="text" name="attr_hold" value="0" />
             </div>
         </div>
     </div>
@@ -275,24 +274,24 @@
         <div class="attributes">
             <div class='main-attributes'>
                 <div class='furry attribute-container'>
-                        <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Ярость}} {{doroll=[[1]]}} {{result=[[2d6 + (@{furry}) + (@{bonus})[bonus]]]}} ">Ярость</button>
+                        <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Ярость}} {{doroll=[[1]]}} {{result=[[2d6 + (@{furry}) + ?{bonus|0}[bonus]]]}} ">Ярость</button>
                     <input class='attribute-input' name='attr_furry' type='number'>
                 </div>
                 <div class='controll attribute-container'>
-                    <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Контроль}} {{doroll=[[1]]}} {{result=[[2d6 + (@{controll}) + (@{bonus})[bonus]]]}} ">Контроль</button>
+                    <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Контроль}} {{doroll=[[1]]}} {{result=[[2d6 + (@{controll}) + ?{bonus|0}[bonus]]]}} ">Контроль</button>
                     <input class='attribute-input' name='attr_controll' type='number'>
                 </div>
                 <div class='skill attribute-container'>
-                    <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Навык}} {{doroll=[[1]]}} {{result=[[2d6 + (@{skill}) + (@{bonus})[bonus]]]}} ">Навык</button>
+                    <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Навык}} {{doroll=[[1]]}} {{result=[[2d6 + (@{skill}) + ?{bonus|0}[bonus]]]}} ">Навык</button>
                     <input class='attribute-input' name='attr_skill' type='number'>
                 </div>
                 <div class='reputation attribute-container'>
-                    <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Репутация}} {{doroll=[[1]]}} {{result=[[2d6 + (@{reputation})  + (@{bonus})[bonus]]]}} ">Репутация</button>
+                    <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Репутация}} {{doroll=[[1]]}} {{result=[[2d6 + (@{reputation})  + ?{bonus|0}[bonus]]]}} ">Репутация</button>
                     <input class='attribute-input' name='attr_reputation' type='number'>
                 </div>
                 <input type="checkbox" class="is-kinetick-gg-flag" name="attr_isKinetickGravitygene">
                 <div class='gravitygene additional-attribute-container'>
-                  <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Гравиген}} {{doroll=[[1]]}} {{result=[[2d6 + (@{gravitygene})  + (@{bonus})[bonus]]]}} ">Гравиген</button>
+                  <button type='roll' class="roll_attr attribute-name" name='roll_attr' value="&{template:move} {{charname=@{character_name}}} {{movename=Проверка: Гравиген}} {{doroll=[[1]]}} {{result=[[2d6 + (@{gravitygene})  + ?{bonus|0}[bonus]]]}} ">Гравиген</button>
                   <input class='attribute-input' name='attr_gravitygene' type='number'>
                 </div>
             </div>
@@ -636,7 +635,7 @@
                         <input type="checkbox" class="expand-hidden expand-inscribe" name="attr_expandinscribeval" value="1" title="Inscribe"/>
 
                         <div class='move-title'>
-                            <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=@{movename_base}}} {{trigger=@{movetrigger}}} {{success=@{movesuccess}}} {{partial=@{movepartial}}} {{miss=@{movemiss}}} {{doroll=[[@{move_doroll}]]}} {{result=[[2d6 + @{movestat} + (@{bonus})[bonus]]]}} {{details=@{movedetails}}} {{opt1=[[@{opt1}]]}}  {{opt1name=@{opt1name}}} {{opt1details=@{opt1details}}} {{opt2=[[@{opt2}]]}}  {{opt2name=@{opt2name}}} {{opt2details=@{opt2details}}} {{opt3=[[@{opt3}]]}}  {{opt3name=@{opt3name}}} {{opt3details=@{opt3details}}} {{opt4=[[@{opt4}]]}}  {{opt4name=@{opt4name}}} {{opt4details=@{opt4details}}} {{opt5=[[@{opt5}]]}}  {{opt5name=@{opt5name}}} {{opt5details=@{opt5details}}} {{opt6=[[@{opt6}]]}}  {{opt6name=@{opt6name}}} {{opt6details=@{opt6details}}}">
+                            <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=@{movename_base}}} {{trigger=@{movetrigger}}} {{success=@{movesuccess}}} {{partial=@{movepartial}}} {{miss=@{movemiss}}} {{doroll=[[@{move_doroll}]]}} {{result=[[2d6 + @{movestat} + ?{bonus|0}[bonus]]]}} {{details=@{movedetails}}} {{opt1=[[@{opt1}]]}}  {{opt1name=@{opt1name}}} {{opt1details=@{opt1details}}} {{opt2=[[@{opt2}]]}}  {{opt2name=@{opt2name}}} {{opt2details=@{opt2details}}} {{opt3=[[@{opt3}]]}}  {{opt3name=@{opt3name}}} {{opt3details=@{opt3details}}} {{opt4=[[@{opt4}]]}}  {{opt4name=@{opt4name}}} {{opt4details=@{opt4details}}} {{opt5=[[@{opt5}]]}}  {{opt5name=@{opt5name}}} {{opt5details=@{opt5details}}} {{opt6=[[@{opt6}]]}}  {{opt6name=@{opt6name}}} {{opt6details=@{opt6details}}}">
                                 <span>Lo</span>
                             </button>
                             <span class="rolltext" name="attr_move_name" value="@{move_name}"></span>
@@ -938,7 +937,7 @@
                             <input type="checkbox" class="expand-hidden expand-optional" name="attr_expandoptionalval" value="1" title="Optional"/>
     
                             <div class='move-title'>
-                                <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=@{movename_base}}} {{trigger=@{movetrigger}}} {{success=@{movesuccess}}} {{partial=@{movepartial}}} {{miss=@{movemiss}}} {{doroll=[[@{move_doroll}]]}} {{result=[[2d6 + @{movestat} + (@{bonus})[bonus]]]}} {{details=@{movedetails}}} {{opt1=[[@{opt1}]]}}  {{opt1name=@{opt1name}}} {{opt1details=@{opt1details}}} {{opt2=[[@{opt2}]]}}  {{opt2name=@{opt2name}}} {{opt2details=@{opt2details}}} {{opt3=[[@{opt3}]]}}  {{opt3name=@{opt3name}}} {{opt3details=@{opt3details}}} {{opt4=[[@{opt4}]]}}  {{opt4name=@{opt4name}}} {{opt4details=@{opt4details}}} {{opt5=[[@{opt5}]]}}  {{opt5name=@{opt5name}}} {{opt5details=@{opt5details}}} {{opt6=[[@{opt6}]]}}  {{opt6name=@{opt6name}}} {{opt6details=@{opt6details}}}">
+                                <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=@{movename_base}}} {{trigger=@{movetrigger}}} {{success=@{movesuccess}}} {{partial=@{movepartial}}} {{miss=@{movemiss}}} {{doroll=[[@{move_doroll}]]}} {{result=[[2d6 + @{movestat} + ?{bonus|0}[bonus]]]}} {{details=@{movedetails}}} {{opt1=[[@{opt1}]]}}  {{opt1name=@{opt1name}}} {{opt1details=@{opt1details}}} {{opt2=[[@{opt2}]]}}  {{opt2name=@{opt2name}}} {{opt2details=@{opt2details}}} {{opt3=[[@{opt3}]]}}  {{opt3name=@{opt3name}}} {{opt3details=@{opt3details}}} {{opt4=[[@{opt4}]]}}  {{opt4name=@{opt4name}}} {{opt4details=@{opt4details}}} {{opt5=[[@{opt5}]]}}  {{opt5name=@{opt5name}}} {{opt5details=@{opt5details}}} {{opt6=[[@{opt6}]]}}  {{opt6name=@{opt6name}}} {{opt6details=@{opt6details}}}">
                                     <span>Lo</span>
                                 </button>
 
@@ -1122,7 +1121,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   СРАЖАЕШЬСЯ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=СРАЖАЕШЬСЯ}} {{trigger=Когда ты атакуешь противника}} {{success=нанеси противнику свой урон или получи небольшое преимущество, но и пострадай: получи урон от противника (или из другого источника) или лишись чего-то важного и выбери 1:}} {{partial=нанеси противнику свой урон или получи небольшое преимущество, но и пострадай: получи урон от противника (или из другого источника) или лишись чего-то важного}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Ярость,(@{furry})[furry]|Контроль,(@{controll})[controll]} + (@{bonus})[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[10]]}} {{successOpt1Max=[[100]]}} {{successOpt1Text=Ты не получаешь вреда}} {{successOpt2Min=[[10]]}} {{successOpt2Max=[[100]]}} {{successOpt2Text=Ты наносишь урон +1}} {{successOpt3Min=[[10]]}} {{successOpt3Max=[[100]]}} {{successOpt3Text=Защита противника падает на 1}} {{successOpt4Min=[[10]]}} {{successOpt4Max=[[100]]}} {{successOpt4Text=Противник совершает ошибку (опиши ее)}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=СРАЖАЕШЬСЯ}} {{trigger=Когда ты атакуешь противника}} {{success=нанеси противнику свой урон или получи небольшое преимущество, но и пострадай: получи урон от противника (или из другого источника) или лишись чего-то важного и выбери 1:}} {{partial=нанеси противнику свой урон или получи небольшое преимущество, но и пострадай: получи урон от противника (или из другого источника) или лишись чего-то важного}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Ярость,(@{furry})[furry]|Контроль,(@{controll})[controll]} + ?{bonus|0}[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[10]]}} {{successOpt1Max=[[100]]}} {{successOpt1Text=Ты не получаешь вреда}} {{successOpt2Min=[[10]]}} {{successOpt2Max=[[100]]}} {{successOpt2Text=Ты наносишь урон +1}} {{successOpt3Min=[[10]]}} {{successOpt3Max=[[100]]}} {{successOpt3Text=Защита противника падает на 1}} {{successOpt4Min=[[10]]}} {{successOpt4Max=[[100]]}} {{successOpt4Text=Противник совершает ошибку (опиши ее)}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -1143,7 +1142,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ЗАЩИЩАЕШЬ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ЗАЩИЩАЕШЬ}} {{trigger=Когда ты защищаешь человека, вещь или место}} {{success=возьми 3 фишки}} {{partial=возьми 1 фишку}} {{details=Когда находящегося под твоей защитой атакуют, потрать 1 фишку и выбери 1 из списка}} {{doroll=[[1]]}} {{result=[[2d6 + (@{controll})[controll] + (@{bonus})[bonus]]]}} {{opt1=[[1]]}} {{opt1details=Противник атакует тебя вместо цели}} {{opt2=[[1]]}} {{opt2details=Защита цели увеличивается на 1}} {{opt3=[[1]]}} {{opt3details=Дай союзнику +1 на следующее действие}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ЗАЩИЩАЕШЬ}} {{trigger=Когда ты защищаешь человека, вещь или место}} {{success=возьми 3 фишки}} {{partial=возьми 1 фишку}} {{details=Когда находящегося под твоей защитой атакуют, потрать 1 фишку и выбери 1 из списка}} {{doroll=[[1]]}} {{result=[[2d6 + (@{controll})[controll] + ?{bonus|0}[bonus]]]}} {{opt1=[[1]]}} {{opt1details=Противник атакует тебя вместо цели}} {{opt2=[[1]]}} {{opt2details=Защита цели увеличивается на 1}} {{opt3=[[1]]}} {{opt3details=Дай союзнику +1 на следующее действие}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -1159,7 +1158,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ИГНОРИРУЕШЬ УГРОЗУ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ИГНОРИРУЕШЬ УГРОЗУ}} {{trigger=Когда ты действуешь, игнорируя угрозу, или подвергаешься опасности}} {{success=ты избегаешь угрозы}} {{partial=ты избегаешь угрозы,но что-то пошло не так. Ты чем-то жертвуешь, сталкиваешься со сложным выбором или дополнительными проблемами}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Ярость,(@{furry})[furry]|Контроль,(@{controll})[controll]|Навык,(@{skill})[skill]|Репутация,(@{reputation})[reputation]} + (@{bonus})[bonus]]]}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ИГНОРИРУЕШЬ УГРОЗУ}} {{trigger=Когда ты действуешь, игнорируя угрозу, или подвергаешься опасности}} {{success=ты избегаешь угрозы}} {{partial=ты избегаешь угрозы,но что-то пошло не так. Ты чем-то жертвуешь, сталкиваешься со сложным выбором или дополнительными проблемами}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Ярость,(@{furry})[furry]|Контроль,(@{controll})[controll]|Навык,(@{skill})[skill]|Репутация,(@{reputation})[reputation]} + ?{bonus|0}[bonus]]]}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -1194,7 +1193,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   УМИРАЕШЬ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=УМИРАЕШЬ}} {{trigger=Когда у тебя нет свободных ячеек ранений, и ты получаешь ещё ранения}} {{success=раны очень серьёзные, но более твоей жизни ничего не угрожает}} {{partial=ты истекаешь кровью. Если в ближайшее время ты не получишь медицинскую помощь, твои приключения закончатся навсегда}} {{miss=тебе не повезло. У твоих соратников есть всего один шанс спасти тебя, и времени для этого отпущено лишь пара-тройка секунд}} {{doroll=[[1]]}} {{result=[[2d6 + (@{controll})[controll] + (@{bonus})[bonus]]]}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=УМИРАЕШЬ}} {{trigger=Когда у тебя нет свободных ячеек ранений, и ты получаешь ещё ранения}} {{success=раны очень серьёзные, но более твоей жизни ничего не угрожает}} {{partial=ты истекаешь кровью. Если в ближайшее время ты не получишь медицинскую помощь, твои приключения закончатся навсегда}} {{miss=тебе не повезло. У твоих соратников есть всего один шанс спасти тебя, и времени для этого отпущено лишь пара-тройка секунд}} {{doroll=[[1]]}} {{result=[[2d6 + (@{controll})[controll] + ?{bonus|0}[bonus]]]}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -1206,7 +1205,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ОКАЗЫВАЕШЬ ПЕРВУЮ ПОМОЩЬ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ОКАЗЫВАЕШЬ ПЕРВУЮ ПОМОЩЬ}} {{trigger=Когда ты не даешь соратнику умереть}} {{success=ты стабилизируешь пациента}} {{partial=ты стабилизируешь пациента, но подвергаешься угрозе}} {{doroll=[[1]]}} {{result=[[2d6 + (@{skill})[skill] + (@{bonus})[bonus]]]}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ОКАЗЫВАЕШЬ ПЕРВУЮ ПОМОЩЬ}} {{trigger=Когда ты не даешь соратнику умереть}} {{success=ты стабилизируешь пациента}} {{partial=ты стабилизируешь пациента, но подвергаешься угрозе}} {{doroll=[[1]]}} {{result=[[2d6 + (@{skill})[skill] + ?{bonus|0}[bonus]]]}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -1216,7 +1215,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ТЕРЯЕШЬ КОНТРОЛЬ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ТЕРЯЕШЬ КОНТРОЛЬ}} {{trigger=Когда ты боишься, паникуешь или испытываешь смятение}} {{success=ты сжимаешь свою волю в кулак}} {{partial=ты ещё контролируешь себя, но выбери 1}} {{miss=ты полностью теряешь контроль над собой — твою судьбу решит Ведущий}} {{doroll=[[1]]}} {{result=[[2d6 + (@{controll})[controll] + (@{bonus})[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[9]]}} {{successOpt1Text=Тебя пробивает дрожь (–1 на все проверки, пока причина не исчезнет)}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[9]]}} {{successOpt2Text=Ты получаешь урон или страдаешь иначе}} {{successOpt3Min=[[7]]}} {{successOpt3Max=[[9]]}} {{successOpt3Text=Ты мешкаешь и теряешь инициативу}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ТЕРЯЕШЬ КОНТРОЛЬ}} {{trigger=Когда ты боишься, паникуешь или испытываешь смятение}} {{success=ты сжимаешь свою волю в кулак}} {{partial=ты ещё контролируешь себя, но выбери 1}} {{miss=ты полностью теряешь контроль над собой — твою судьбу решит Ведущий}} {{doroll=[[1]]}} {{result=[[2d6 + (@{controll})[controll] + ?{bonus|0}[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[9]]}} {{successOpt1Text=Тебя пробивает дрожь (–1 на все проверки, пока причина не исчезнет)}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[9]]}} {{successOpt2Text=Ты получаешь урон или страдаешь иначе}} {{successOpt3Min=[[7]]}} {{successOpt3Max=[[9]]}} {{successOpt3Text=Ты мешкаешь и теряешь инициативу}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -1232,7 +1231,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ВЗЛАМЫВАЕШЬ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ВЗЛАМЫВАЕШЬ}} {{trigger=Когда ты проникаешь сквозь защиту (взламываешь терминал, сервер, коммуникатор или замок)}} {{success=выбери 3}} {{partial=выбери 2}} {{doroll=[[1]]}} {{result=[[2d6 + @{skill}[skill] + (@{bonus})[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[100]]}} {{successOpt1Text=Взлом заметят не скоро}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[100]]}} {{successOpt2Text=Взлом не занял много времени}} {{successOpt3Min=[[7]]}} {{successOpt3Max=[[100]]}} {{successOpt3Text=Ничего ценного не пострадало (от вирусов, Льда или иного)}} {{successOpt4Min=[[7]]}} {{successOpt4Max=[[100]]}} {{successOpt4Text=Ты можешь использовать это ещё раз}} {{successOpt5Min=[[7]]}} {{successOpt5Max=[[100]]}} {{successOpt5Text=Ты обнаруживаешь что-то необычное или получаешь больший доступ}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ВЗЛАМЫВАЕШЬ}} {{trigger=Когда ты проникаешь сквозь защиту (взламываешь терминал, сервер, коммуникатор или замок)}} {{success=выбери 3}} {{partial=выбери 2}} {{doroll=[[1]]}} {{result=[[2d6 + @{skill}[skill] + ?{bonus|0}[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[100]]}} {{successOpt1Text=Взлом заметят не скоро}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[100]]}} {{successOpt2Text=Взлом не занял много времени}} {{successOpt3Min=[[7]]}} {{successOpt3Max=[[100]]}} {{successOpt3Text=Ничего ценного не пострадало (от вирусов, Льда или иного)}} {{successOpt4Min=[[7]]}} {{successOpt4Max=[[100]]}} {{successOpt4Text=Ты можешь использовать это ещё раз}} {{successOpt5Min=[[7]]}} {{successOpt5Max=[[100]]}} {{successOpt5Text=Ты обнаруживаешь что-то необычное или получаешь больший доступ}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -1249,7 +1248,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ОРИЕНТИРУЕШЬСЯ В СИТУАЦИИ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ОРИЕНТИРУЕШЬСЯ В СИТУАЦИИ}} {{trigger=Когда ты изучаешь ситуацию (сцену или персону)}} {{success=задай Ведущему 3 вопроса из списка (или похожих)}} {{partial=задай Ведущему 1 вопрос из списка (или похожих)}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Репутация,(@{reputation})[reputation]|Контроль,(@{controll})[controll]} + (@{bonus})[bonus]]]}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ОРИЕНТИРУЕШЬСЯ В СИТУАЦИИ}} {{trigger=Когда ты изучаешь ситуацию (сцену или персону)}} {{success=задай Ведущему 3 вопроса из списка (или похожих)}} {{partial=задай Ведущему 1 вопрос из списка (или похожих)}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Репутация,(@{reputation})[reputation]|Контроль,(@{controll})[controll]} + ?{bonus|0}[bonus]]]}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -1278,7 +1277,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ПОЛУЧАЕШЬ ИНФОРМАЦИЮ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ПОЛУЧАЕШЬ ИНФОРМАЦИЮ}} {{trigger=Когда ты применяешь знания (свои или чужие) для поиска решения}} {{success=Ведущий скажет тебе что-то полезное об объекте твоего исследования}} {{partial=Ведущий скажет тебе что-то полезное об объекте твоего исследования и выбери один из списка}} {{doroll=[[1]]}} {{result=[[2d6 + (@{skill})[skill] + (@{bonus})[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[9]]}} {{successOpt1Text=Поиск займет больше времени, чем тебе хотелось бы.}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[9]]}} {{successOpt2Text=Тебе потребуется консультация эксперта.}} {{successOpt3Min=[[7]]}} {{successOpt3Max=[[9]]}} {{successOpt3Text=Данные не полны / частично повреждены.}} {{successOpt4Min=[[7]]}} {{successOpt4Max=[[9]]}} {{successOpt4Text=Ты привлечёшь нежелательное внимание.}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ПОЛУЧАЕШЬ ИНФОРМАЦИЮ}} {{trigger=Когда ты применяешь знания (свои или чужие) для поиска решения}} {{success=Ведущий скажет тебе что-то полезное об объекте твоего исследования}} {{partial=Ведущий скажет тебе что-то полезное об объекте твоего исследования и выбери один из списка}} {{doroll=[[1]]}} {{result=[[2d6 + (@{skill})[skill] + ?{bonus|0}[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[9]]}} {{successOpt1Text=Поиск займет больше времени, чем тебе хотелось бы.}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[9]]}} {{successOpt2Text=Тебе потребуется консультация эксперта.}} {{successOpt3Min=[[7]]}} {{successOpt3Max=[[9]]}} {{successOpt3Text=Данные не полны / частично повреждены.}} {{successOpt4Min=[[7]]}} {{successOpt4Max=[[9]]}} {{successOpt4Text=Ты привлечёшь нежелательное внимание.}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -1294,7 +1293,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ЧИНИШЬ ИЛИ РАЗБИРАЕШЬ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ЧИНИШЬ ИЛИ РАЗБИРАЕШЬ}} {{trigger=Когда ты ремонтируешь или разбираешь предмет}} {{success=выбери 3}} {{partial=выбери 1}} {{doroll=[[1]]}} {{result=[[2d6 + (@{skill})[skill] + (@{bonus})[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[100]]}} {{successOpt1Text=Это не заняло много времени}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[100]]}} {{successOpt2Text=Это не привлекло чужого внимания}} {{successOpt3Min=[[7]]}} {{successOpt3Max=[[100]]}} {{successOpt3Text=Это возможно без спец. инструмента}} {{successOpt4Min=[[7]]}} {{successOpt4Max=[[100]]}} {{successOpt4Text=Это будет сложно сломать (или починить)}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ЧИНИШЬ ИЛИ РАЗБИРАЕШЬ}} {{trigger=Когда ты ремонтируешь или разбираешь предмет}} {{success=выбери 3}} {{partial=выбери 1}} {{doroll=[[1]]}} {{result=[[2d6 + (@{skill})[skill] + ?{bonus|0}[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[100]]}} {{successOpt1Text=Это не заняло много времени}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[100]]}} {{successOpt2Text=Это не привлекло чужого внимания}} {{successOpt3Min=[[7]]}} {{successOpt3Max=[[100]]}} {{successOpt3Text=Это возможно без спец. инструмента}} {{successOpt4Min=[[7]]}} {{successOpt4Max=[[100]]}} {{successOpt4Text=Это будет сложно сломать (или починить)}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -1310,7 +1309,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ДОГОВАРИВАЕШЬСЯ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ДОГОВАРИВАЕШЬСЯ}} {{trigger=Когда у тебя есть повод и рычаг воздействия на NPC и ты используешь его}} {{success=он выполнит просьбу}} {{partial=он мешкает, сомневается, говорит о дополнительных проблемах или хочет от тебя чего-то ещё}} {{doroll=[[1]]}} {{result=[[2d6 + (@{reputation})[reputation] + (@{bonus})[bonus]]]}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ДОГОВАРИВАЕШЬСЯ}} {{trigger=Когда у тебя есть повод и рычаг воздействия на NPC и ты используешь его}} {{success=он выполнит просьбу}} {{partial=он мешкает, сомневается, говорит о дополнительных проблемах или хочет от тебя чего-то ещё}} {{doroll=[[1]]}} {{result=[[2d6 + (@{reputation})[reputation] + ?{bonus|0}[bonus]]]}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -1320,7 +1319,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ПОМОГАЕШЬ ИЛИ МЕШАЕШЬ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ПОМОГАЕШЬ ИЛИ МЕШАЕШЬ}} {{trigger=Когда ты помогаешь или мешаешь соратнику}} {{success=он получит +1 или –2 (на твой выбор) на свой следующий бросок}} {{partial=он получит +1 или –2 (на твой выбор) на свой следующий бросок, но ты также подвергаешь себя опасности или навлекаешь на себя проблемы}} {{doroll=[[1]]}} {{result=[[2d6 + @{bond_query} + (@{bonus})[bonus]]]}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ПОМОГАЕШЬ ИЛИ МЕШАЕШЬ}} {{trigger=Когда ты помогаешь или мешаешь соратнику}} {{success=он получит +1 или –2 (на твой выбор) на свой следующий бросок}} {{partial=он получит +1 или –2 (на твой выбор) на свой следующий бросок, но ты также подвергаешь себя опасности или навлекаешь на себя проблемы}} {{doroll=[[1]]}} {{result=[[2d6 + @{bond_query} + ?{bonus|0}[bonus]]]}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -1330,7 +1329,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ПОКУПАЕШЬ ИЛИ НАНИМАЕШЬ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ПОКУПАЕШЬ ИЛИ НАНИМАЕШЬ}} {{trigger=Когда ты покупаешь что-то ценное или нанимаешь специалиста}} {{success=ты получаешь то, что тебе нужно}} {{partial=ты получаешь то, что тебе нужно, но выбери один из списка}} {{doroll=[[1]]}} {{result=[[2d6 + (@{money})[money] + (@{bonus})[bonus] -  ?{уровень покупки} ]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[9]]}} {{successOpt1Text=Это стоит дороже (потрать 1 Благосостояние или реши вопрос иначе)}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[9]]}} {{successOpt2Text=Нужно время на доставку и оформление}} {{successOpt3Min=[[7]]}} {{successOpt3Max=[[9]]}} {{successOpt3Text=Это привлечёт нежелательное внимание или иные проблемы}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ПОКУПАЕШЬ ИЛИ НАНИМАЕШЬ}} {{trigger=Когда ты покупаешь что-то ценное или нанимаешь специалиста}} {{success=ты получаешь то, что тебе нужно}} {{partial=ты получаешь то, что тебе нужно, но выбери один из списка}} {{doroll=[[1]]}} {{result=[[2d6 + (@{money})[money] + ?{bonus|0}[bonus] -  ?{уровень покупки} ]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[9]]}} {{successOpt1Text=Это стоит дороже (потрать 1 Благосостояние или реши вопрос иначе)}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[9]]}} {{successOpt2Text=Нужно время на доставку и оформление}} {{successOpt3Min=[[7]]}} {{successOpt3Max=[[9]]}} {{successOpt3Text=Это привлечёт нежелательное внимание или иные проблемы}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -1355,7 +1354,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                     ПОЛУЧАЕШЬ ПРЕИМУЩЕСТВО
-                    <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ПОЛУЧАЕШЬ ПРЕИМУЩЕСТВО}} {{trigger=Когда ты получаешь преимущество в бою}} {{success=получи 1 фишку против выбранного противника}} {{partial=получи 1 фишку против выбранного противника и выбери 1 осложнение}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Ярость,(@{furry})[furry]|Контроль,(@{controll})[controll]|Навык,(@{skill})[skill]|Репутация,(@{reputation})[reputation]} + (@{bonus})[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[9]]}} {{successOpt1Text=ты получаешь 1 ранение (игнорирует Защиту)}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[9]]}} {{successOpt2Text=ты становишься уязвимым (Защита–1, если есть)}} {{successOpt3Min=[[7]]}} {{successOpt3Max=[[9]]}} {{successOpt3Text=союзник подвергается угрозе}} {{successOpt4Min=[[7]]}} {{successOpt4Max=[[9]]}} {{successOpt4Text=противник проявляет инициативу}}">
+                    <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ПОЛУЧАЕШЬ ПРЕИМУЩЕСТВО}} {{trigger=Когда ты получаешь преимущество в бою}} {{success=получи 1 фишку против выбранного противника}} {{partial=получи 1 фишку против выбранного противника и выбери 1 осложнение}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Ярость,(@{furry})[furry]|Контроль,(@{controll})[controll]|Навык,(@{skill})[skill]|Репутация,(@{reputation})[reputation]} + ?{bonus|0}[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[9]]}} {{successOpt1Text=ты получаешь 1 ранение (игнорирует Защиту)}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[9]]}} {{successOpt2Text=ты становишься уязвимым (Защита–1, если есть)}} {{successOpt3Min=[[7]]}} {{successOpt3Max=[[9]]}} {{successOpt3Text=союзник подвергается угрозе}} {{successOpt4Min=[[7]]}} {{successOpt4Max=[[9]]}} {{successOpt4Text=противник проявляет инициативу}}">
                       <span>Lo</span>
                     </button>
                 </h2>
@@ -1393,7 +1392,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ПРОВОДИШЬ БОЙ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ПРОВОДИШЬ БОЙ}} {{trigger=Когда ты участвуешь в драке или сражении}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Ярость,(@{furry})[furry]|Контроль,(@{controll})[controll]} + (@{bonus})[bonus]]]}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ПРОВОДИШЬ БОЙ}} {{trigger=Когда ты участвуешь в драке или сражении}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Ярость,(@{furry})[furry]|Контроль,(@{controll})[controll]} + ?{bonus|0}[bonus]]]}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -1438,7 +1437,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   СПАСАЕШЬ КОРАБЛЬ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=СПАСАЕШЬ КОРАБЛЬ}} {{trigger=Если ты выводишь корабль из трудной ситуации}} {{success=ты успешно избегаешь опасности на этот раз}} {{partial=ты успешно избегаешь опасности на этот раз но выбери 1}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Ярость,(@{furry})[furry]|Контроль,(@{controll})[controll]|Навык,(@{skill})[skill]|Репутация,(@{reputation})[reputation]} + (@{bonus})[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[9]]}} {{successOpt1Text=Корабль получил повреждения}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[9]]}} {{successOpt2Text=Потрачен заряд реактора;}} {{successOpt3Min=[[7]]}} {{successOpt3Max=[[9]]}} {{successOpt3Text=Опасность сменилась на другую, или воз-никли осложнения}} {{successOpt4Min=[[7]]}} {{successOpt4Max=[[9]]}} {{successOpt4Text=Это лишь передышка – опасность скоро вернётся}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=СПАСАЕШЬ КОРАБЛЬ}} {{trigger=Если ты выводишь корабль из трудной ситуации}} {{success=ты успешно избегаешь опасности на этот раз}} {{partial=ты успешно избегаешь опасности на этот раз но выбери 1}} {{doroll=[[1]]}} {{result=[[2d6 + ?{Stat|Ярость,(@{furry})[furry]|Контроль,(@{controll})[controll]|Навык,(@{skill})[skill]|Репутация,(@{reputation})[reputation]} + ?{bonus|0}[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[9]]}} {{successOpt1Text=Корабль получил повреждения}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[9]]}} {{successOpt2Text=Потрачен заряд реактора;}} {{successOpt3Min=[[7]]}} {{successOpt3Max=[[9]]}} {{successOpt3Text=Опасность сменилась на другую, или воз-никли осложнения}} {{successOpt4Min=[[7]]}} {{successOpt4Max=[[9]]}} {{successOpt4Text=Это лишь передышка – опасность скоро вернётся}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -1461,7 +1460,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ДАЁШЬ ЗАЛП
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ДАЁШЬ ЗАЛП}} {{trigger=Если ты ведёшь огонь по цели}} {{success=нанеси урон противнику, противник нанесёт твоему кораблю свой, но выбери 1}} {{partial=нанеси урон противнику, противник нанесёт твоему кораблю свой}} {{doroll=[[1]]}} {{result=[[2d6 + (@{controll})[controll] + (@{bonus})[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[10]]}} {{successOpt1Max=[[100]]}} {{successOpt1Text=Ты не получаешь повреждений от противника}} {{successOpt2Min=[[10]]}} {{successOpt2Max=[[100]]}} {{successOpt2Text=Ты наносишь Урон +1}} {{successOpt3Min=[[10]]}} {{successOpt3Max=[[100]]}} {{successOpt3Text=Противник оказался в невыгодной ситуа-ции}} {{details=Потрать Заряд реактора и нанеси урон ещё и из другого орудия (если оно есть)}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ДАЁШЬ ЗАЛП}} {{trigger=Если ты ведёшь огонь по цели}} {{success=нанеси урон противнику, противник нанесёт твоему кораблю свой, но выбери 1}} {{partial=нанеси урон противнику, противник нанесёт твоему кораблю свой}} {{doroll=[[1]]}} {{result=[[2d6 + (@{controll})[controll] + ?{bonus|0}[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[10]]}} {{successOpt1Max=[[100]]}} {{successOpt1Text=Ты не получаешь повреждений от противника}} {{successOpt2Min=[[10]]}} {{successOpt2Max=[[100]]}} {{successOpt2Text=Ты наносишь Урон +1}} {{successOpt3Min=[[10]]}} {{successOpt3Max=[[100]]}} {{successOpt3Text=Противник оказался в невыгодной ситуа-ции}} {{details=Потрать Заряд реактора и нанеси урон ещё и из другого орудия (если оно есть)}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -1477,7 +1476,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   РЕМОНТИРУЕШЬ СИСТЕМЫ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=РЕМОНТИРУЕШЬ СИСТЕМЫ}} {{trigger=Ты восстанавливаешь свой корабль прямо в полёте}} {{success=всё выглядит потрёпанным, но работает}} {{partial=выбери 1}} {{doroll=[[1]]}} {{result=[[2d6 + (@{skill})[skill] + (@{bonus})[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[9]]}} {{successOpt1Text=Одна система полностью уничтожена. Восстановить её невозможно, проще купить заново}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[9]]}} {{successOpt2Text=До 4 систем ты сможешь восстановить только в порту}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=РЕМОНТИРУЕШЬ СИСТЕМЫ}} {{trigger=Ты восстанавливаешь свой корабль прямо в полёте}} {{success=всё выглядит потрёпанным, но работает}} {{partial=выбери 1}} {{doroll=[[1]]}} {{result=[[2d6 + (@{skill})[skill] + ?{bonus|0}[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[9]]}} {{successOpt1Text=Одна система полностью уничтожена. Восстановить её невозможно, проще купить заново}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[9]]}} {{successOpt2Text=До 4 систем ты сможешь восстановить только в порту}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -1491,7 +1490,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ТОРОПИШЬСЯ ВЫЛЕТЕТЬ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ТОРОПИШЬСЯ ВЫЛЕТЕТЬ}} {{trigger=Когда ты хочешь поскорее покинуть порт}} {{success=всё идёт как задумано: все системы восстановлены, реактор заряжен, корабль готов к полёту}} {{partial=выбери 1}} {{doroll=[[1]]}} {{result=[[2d6 + (@{money})[money] + (@{bonus})[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[9]]}} {{successOpt1Text=Если системы были повреждены, то они так и не отремонтированы}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[9]]}} {{successOpt2Text=Реактор разряжен}} {{successOpt3Min=[[7]]}} {{successOpt3Max=[[9]]}} {{successOpt3Text=Профилактика выявила проблемы: часть систем вышла из строя}} {{successOpt4Min=[[7]]}} {{successOpt4Max=[[9]]}} {{successOpt4Text=Всё работает, но корабль по каким-то причинам не может лететь}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ТОРОПИШЬСЯ ВЫЛЕТЕТЬ}} {{trigger=Когда ты хочешь поскорее покинуть порт}} {{success=всё идёт как задумано: все системы восстановлены, реактор заряжен, корабль готов к полёту}} {{partial=выбери 1}} {{doroll=[[1]]}} {{result=[[2d6 + (@{money})[money] + ?{bonus|0}[bonus]]]}} {{successOpts=true}} {{successOpt1Min=[[7]]}} {{successOpt1Max=[[9]]}} {{successOpt1Text=Если системы были повреждены, то они так и не отремонтированы}} {{successOpt2Min=[[7]]}} {{successOpt2Max=[[9]]}} {{successOpt2Text=Реактор разряжен}} {{successOpt3Min=[[7]]}} {{successOpt3Max=[[9]]}} {{successOpt3Text=Профилактика выявила проблемы: часть систем вышла из строя}} {{successOpt4Min=[[7]]}} {{successOpt4Max=[[9]]}} {{successOpt4Text=Всё работает, но корабль по каким-то причинам не может лететь}}">
                     <span>Lo</span>
                   </button>
                 </h2>
@@ -1511,7 +1510,7 @@
             <div class="grid-article-item grid-article-item_borderless">
                 <h2>
                   ПРОКЛАДЫВАЕШЬ ПУТЬ
-                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ПРОКЛАДЫВАЕШЬ ПУТЬ}} {{trigger=Когда ты прокладываешь курс через открытый космос}} {{doroll=[[1]]}} {{result=[[2d6 + (@{skill})[skill] + (@{bonus})[bonus]]]}}">
+                  <button type="roll" name="roll_move" class='role-move' value="&{template:move} {{charname=@{character_name}}} {{movename=ПРОКЛАДЫВАЕШЬ ПУТЬ}} {{trigger=Когда ты прокладываешь курс через открытый космос}} {{doroll=[[1]]}} {{result=[[2d6 + (@{skill})[skill] + ?{bonus|0}[bonus]]]}}">
                     <span>Lo</span>
                   </button>
                 </h2>

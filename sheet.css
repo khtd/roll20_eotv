@@ -166,14 +166,10 @@ input:focus {
 	margin: 0;
 	width: fit-content;
 	width: -moz-fit-content;
-	padding: 0px;
+	padding: 2px;
 	align-items: end;
 	display: grid;
 	font-size: 1em;
-}
-
-.sheet-toggler label:hover {
-	cursor: pointer;
 }
 
 .sheet-toggler input[type=radio],
@@ -206,7 +202,7 @@ input:focus {
 	border-radius: 0px;
 	text-align: center;
 	height: 24px;
-	width: 42px;
+	width: 24px;
 }
 /* rollbonus end */
 
