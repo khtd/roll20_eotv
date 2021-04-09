@@ -2482,6 +2482,7 @@
                 <div class='powermanofsteel'>
                   <span class='powermanofsteel-lbl'>Батарея</span>
                   <input type="checkbox" class="powermanofsteel-box powermanofsteel-box0" name="attr_powermanofsteel" value="0" checked="checked">
+                  <input type="checkbox" class ="powermanofsteel-max" name="attr_powermanofsteel_max" value="0">
                   <input type="checkbox" class="powermanofsteel-box powermanofsteel-box1" name="attr_powermanofsteel" value="1"><span class="powermanofsteel-box1"></span>
                   <input type="checkbox" class ="powermanofsteel-max" name="attr_powermanofsteel_max" value="1">
                   <input type="checkbox" class="powermanofsteel-box powermanofsteel-box2" name="attr_powermanofsteel" value="2"><span class="powermanofsteel-box2"></span>
@@ -3804,6 +3805,31 @@
                 }
             ]
         },
+    }
+
+    var commonStartAttrs = {
+      cyborgdishonour: 0,
+      cyborgdishonour_max: 5,
+      courierdanger: 0,
+      courierdanger_max: 5,
+      strangerfavor: 0,
+      strangerfavor_max: 4,
+      supernovaimpro: 0,
+      supernovaimpro_max: 3,
+      juggernautadrenaline: 0,
+      juggernautadrenaline_max: 5,
+      digitaldaooverload: 0,
+      digitaldaooverload_max: 5,
+      emissarystatus: 0,
+      emissarystatus_max: 3,
+      raelithfade: 0,
+      raelithfade_max: 6,
+      hpprobe: 0,
+      hpprobe_max: 3,
+      powerprobe: 0,
+      powerprobe_max: 18,
+      powermanofsteel: 0,
+      powermanofsteel_max: 10
     }
 
     var startAttrs = {
@@ -7807,7 +7833,7 @@
         gear.startgear_note_text = startGear[classname].note_text
         gear.startgear_choose_text = startGear[classname].choose_text
         var movesdata =  addRepeatingInfo(moves[classname].filter(m => m.type=='start'), 'moves')
-        setAttrs({...update, ...backgroundUpdate, ...attr, ...gear, ...movesdata});
+        setAttrs({...update, ...backgroundUpdate, ...commonStartAttrs, ...attr, ...gear, ...movesdata});
     };
 
     on("clicked:expand_look", function() {
@@ -8020,7 +8046,7 @@
     on('clicked:subtractmaxcourierdanger', ()=> {
         getAttrs(['courierdanger_max', 'courierdanger'], (v) => {
             let update = {};
-            update.courierdanger_max = parseInt(v.courierdanger_max) -1 < 0 ? 0 : parseInt(v.courierdanger_max) - 1
+            update.courierdanger_max = parseInt(v.courierdanger_max) -1 < 1 ? 1 : parseInt(v.courierdanger_max) - 1
             if(parseInt(v.courierdanger_max) -1 < parseInt(v.courierdanger)) {
                 update.courierdanger = update.courierdanger_max
             }
@@ -8040,7 +8066,7 @@
     on('clicked:subtractmaxstrangerfavor', ()=> {
         getAttrs(['strangerfavor_max', 'strangerfavor'], (v) => {
             let update = {};
-            update.strangerfavor_max = parseInt(v.strangerfavor_max) -1 < 0 ? 0 : parseInt(v.strangerfavor_max) - 1
+            update.strangerfavor_max = parseInt(v.strangerfavor_max) -1 < 1 ? 1 : parseInt(v.strangerfavor_max) - 1
             if(parseInt(v.strangerfavor_max) -1 < parseInt(v.strangerfavor)) {
                 update.strangerfavor = update.strangerfavor_max
             }
@@ -8402,26 +8428,8 @@
     /* STARTGEAR SECTION END */
 
   on('change:filter-noble', (e) => {
-    console.log(e)
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Noble.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Noble'})), 'moves-upgrade')
-      console.log(movesUpgradedata)
-      setAttrs(movesUpgradedata)
-    } else {
-      getSectionIDs('repeating_moves-upgrade', (idarray) => {
-        console.log(idarray)
-        var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
-        getAttrs(attrToGet, values => {
-          const toDrop = Object.keys(values).filter(key => values[key] == 'Noble').map(v => v.slice(0, -10))
-          console.log(toDrop)
-          toDrop.forEach(d => removeRepeatingRow( d ))
-        })
-      })
-    }
-  })
-  on('change:filter-noble', (e) => {
-    if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Noble.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Noble'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.Noble.map(el => ({...el, moveclass: 'Noble'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
@@ -8435,7 +8443,7 @@
   })
 on('change:filter-cyborg', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Cyborg.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Cyborg'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.Cyborg.map(el => ({...el, moveclass: 'Cyborg'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
@@ -8449,7 +8457,7 @@ on('change:filter-cyborg', (e) => {
   })
 on('change:filter-companion', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Companion.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Companion'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.Companion.map(el => ({...el, moveclass: 'Companion'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
@@ -8463,7 +8471,7 @@ on('change:filter-companion', (e) => {
   })
 on('change:filter-courier', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Courier.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Courier'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.Courier.map(el => ({...el, moveclass: 'Courier'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
@@ -8477,7 +8485,7 @@ on('change:filter-courier', (e) => {
   })
 on('change:filter-mercenary', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Mercenary.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Mercenary'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.Mercenary.map(el => ({...el, moveclass: 'Mercenary'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
@@ -8491,7 +8499,7 @@ on('change:filter-mercenary', (e) => {
   })
 on('change:filter-tactician', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Tactician.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Tactician'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.Tactician.map(el => ({...el, moveclass: 'Tactician'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
@@ -8505,7 +8513,7 @@ on('change:filter-tactician', (e) => {
   })
 on('change:filter-daredevil', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Daredevil.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Daredevil'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.Daredevil.map(el => ({...el, moveclass: 'Daredevil'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
@@ -8519,7 +8527,7 @@ on('change:filter-daredevil', (e) => {
   })
 on('change:filter-stranger', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Stranger.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Stranger'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.Stranger.map(el => ({...el, moveclass: 'Stranger'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
@@ -8533,7 +8541,7 @@ on('change:filter-stranger', (e) => {
   })
 on('change:filter-shadow', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Shadow.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Shadow'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.Shadow.map(el => ({...el, moveclass: 'Shadow'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
@@ -8547,7 +8555,7 @@ on('change:filter-shadow', (e) => {
   })
 on('change:filter-manofsteel', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Manofsteel.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Manofsteel'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.Manofsteel.map(el => ({...el, moveclass: 'Manofsteel'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
@@ -8561,7 +8569,7 @@ on('change:filter-manofsteel', (e) => {
   })
 on('change:filter-bountyhunter', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Bountyhunter.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Bountyhunter'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.Bountyhunter.map(el => ({...el, moveclass: 'Bountyhunter'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
@@ -8575,7 +8583,7 @@ on('change:filter-bountyhunter', (e) => {
   })
 on('change:filter-supernova', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Supernova.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Supernova'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.Supernova.map(el => ({...el, moveclass: 'Supernova'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
@@ -8589,7 +8597,7 @@ on('change:filter-supernova', (e) => {
   })
 on('change:filter-cenzor', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Cenzor.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Cenzor'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.Cenzor.map(el => ({...el, moveclass: 'Cenzor'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
@@ -8603,7 +8611,7 @@ on('change:filter-cenzor', (e) => {
   })
 on('change:filter-engineer', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Engineer.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Engineer'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.Engineer.map(el => ({...el, moveclass: 'Engineer'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
@@ -8617,7 +8625,7 @@ on('change:filter-engineer', (e) => {
   })
 on('change:filter-doctor', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Doctor.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Doctor'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.Doctor.map(el => ({...el, moveclass: 'Doctor'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
@@ -8631,7 +8639,7 @@ on('change:filter-doctor', (e) => {
   })
 on('change:filter-juggernaut', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Juggernaut.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Juggernaut'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.Juggernaut.map(el => ({...el, moveclass: 'Juggernaut'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
@@ -8645,7 +8653,7 @@ on('change:filter-juggernaut', (e) => {
   })
 on('change:filter-kinetick', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Kinetick.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Kinetick'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.Kinetick.map(el => ({...el, moveclass: 'Kinetick'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
@@ -8659,13 +8667,13 @@ on('change:filter-kinetick', (e) => {
   })
 on('change:filter-digitaldao', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Digitaldao.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Digitaldao'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.DigitalDao.map(el => ({...el, moveclass: 'DigitalDao'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
         var attrToGet = idarray.map(id => `repeating_moves-upgrade_${id}_moveclass`)
         getAttrs(attrToGet, values => {
-          const toDrop = Object.keys(values).filter(key => values[key] == 'Digitaldao').map(v => v.slice(0, -10))
+          const toDrop = Object.keys(values).filter(key => values[key] == 'DigitalDao').map(v => v.slice(0, -10))
           toDrop.forEach(d => removeRepeatingRow( d ))
         })
       })
@@ -8673,7 +8681,7 @@ on('change:filter-digitaldao', (e) => {
   })
 on('change:filter-emissary', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Emissary.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Emissary'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.Emissary.map(el => ({...el, moveclass: 'Emissary'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
@@ -8687,7 +8695,7 @@ on('change:filter-emissary', (e) => {
   })
 on('change:filter-psychomant', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Psychomant.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Psychomant'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.Psychomant.map(el => ({...el, moveclass: 'Psychomant'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
@@ -8701,7 +8709,7 @@ on('change:filter-psychomant', (e) => {
   })
 on('change:filter-raelith', (e) => {
     if(e.newValue == 'on') {
-      const movesUpgradedata = addRepeatingInfo(moves.Raelith.filter(m => m.type!=='start').map(el => ({...el, moveclass: 'Raelith'})), 'moves-upgrade')
+      const movesUpgradedata = addRepeatingInfo(moves.Raelith.map(el => ({...el, moveclass: 'Raelith'})), 'moves-upgrade')
       setAttrs(movesUpgradedata)
     } else {
       getSectionIDs('repeating_moves-upgrade', (idarray) => {
