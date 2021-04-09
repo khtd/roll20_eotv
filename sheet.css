@@ -445,7 +445,7 @@ button.sheet-change-descriprion  > span.sheet-change  {
 .sheet-description textarea.sheet-description-saved-text {
 	display: block;
  	width: 380px;
-	resize: none;
+	resize: vertical;
 	padding: 0px;
 	margin: 0px;
 	background: none;
